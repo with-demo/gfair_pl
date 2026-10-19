@@ -1,0 +1,6 @@
+#content tr[data-list-row-navigation]{cursor:pointer}
+#content tr[data-list-row-navigation]:hover>td{background:#f4f4f4}
+#content tr[data-list-row-navigation]:focus-visible{outline:2px solid #333;outline-offset:-2px}
+#content [data-list-row-trigger][hidden]{display:none!important}
+#content .journal-review-list td:last-child{min-width:132px}
+#content .journal-review-list td:last-child .btn{white-space:nowrap;min-width:48px}
