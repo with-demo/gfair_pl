@@ -439,4 +439,4 @@ window.GFAIR_MENU.find(group=>group.name==="모니터링").items.push(["MON-08",
  GFAIR_MENU.find(g=>g.name==='행사정보').items.find(i=>i[0]==='PRE-04')[3].exportOperator='△';
 })();
 
-Object.assign(GFAIR_MENU.find(g=>g.name==='기본정보관리').items.find(i=>i[0]==='BAS-15')[3],{buyOperator:'△',exportOperator:'△'});
+Object.assign(GFAIR_MENU.find(g=>g.name==='기본정보관리').items.find(i=>i[0]==='BAS-15')[3],{buyOperator:'X',exportOperator:'X'});
