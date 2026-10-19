@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"version": "v1.0", "screenId": "COM-06", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "release": true, "summary": "신규 화면 작업 완료", "changes": ["내정보에서 담당자 관리로 연결", "운영용역사 역할별 자기 회사·배정 행사 범위 분리"], "note": "대표 담당자 예시. 하위 담당자 역할의 세부 권한은 미확정. 실제 계정 발급·서버 저장 미연결."},
+{"version": "v1.0", "screenId": "COM-07", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "release": true, "summary": "신규 화면 작업 완료", "changes": ["전용 담당자 엑셀 양식·일괄 업로드·검증·예시 계정 발급 화면", "운영용역사 역할별 자기 회사·배정 행사 범위 분리"], "note": "대표 담당자 예시. 하위 담당자 역할의 세부 권한은 미확정. 실제 계정 발급·서버 저장 미연결."},
 {"version": "v2.2", "screenId": "BAS-15", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "운영용역사 역할의 기본정보관리 메뉴·직접 접근 차단", "note": "하위 담당자 등록을 위한 대표 담당자 전용 경로는 별도 구성 필요."},
 {"version": "v1.2", "screenId": "BAS-17", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "운영용역사 역할의 기본정보관리 메뉴·직접 접근 차단", "note": "하위 담당자 등록을 위한 대표 담당자 전용 경로는 별도 구성 필요."},
 {"version": "v1.1", "screenId": "BAS-17", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "하위 담당자 엑셀 일괄 등록·예시 계정 발급 흐름 적용", "changes": ["개별 입력을 전용 양식 다운로드·파일 검증·일괄 발급으로 전환", "소속·연도·필수값·중복 확인과 ID/PW 예시 발급 결과 표시"], "note": "실제 계정 발급·서버 저장 미연결. 양식·계정 규칙은 검토용 제안."},

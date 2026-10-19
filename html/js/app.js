@@ -232,7 +232,7 @@ exportRows=function(){if(current!=='STA-03')return buyerOnlyExport();const d=buy
 
 const buyerPageWithoutHistory=annualPage;
 annualPage=function(s){const html=buyerPageWithoutHistory(s);return s.id==='STA-03'?html.replace(/<section class="panel"><div class="panelhead"><h2>연도별 바이어 참가 이력<\/h2>[\s\S]*?<\/section>/,''):html};
-root.addEventListener('click',ev=>{if(ev.target.closest('[data-action=my-info]'))modal('내정보',`<dl class="detaildata"><dt>사용자 유형</dt><dd>${E(roles[role])}</dd><dt>선택 행사</dt><dd>G-FAIR KOREA ${E(event)}</dd><dt>계정 상태</dt><dd>검토용 예시 계정</dd></dl><p class="small" style="margin-top:18px">실제 계정 정보는 회원 연계 후 제공됩니다.</p>`)});
+root.addEventListener('click',ev=>{if(ev.target.closest('[data-action=my-info]')){if(['buyOperator','exportOperator'].includes(role)){nav('COM-06');return}modal('내정보',`<dl class="detaildata"><dt>사용자 유형</dt><dd>${E(roles[role])}</dd><dt>선택 행사</dt><dd>G-FAIR KOREA ${E(event)}</dd><dt>계정 상태</dt><dd>검토용 예시 계정</dd></dl><p class="small" style="margin-top:18px">실제 계정 정보는 회원 연계 후 제공됩니다.</p>`);}});
 const surveyTargets=['국내 바이어','해외 바이어','통역원'],surveyTypes=['단일응답형','복수응답형','단답형','서술형','척도형'];
 const surveyClone=v=>JSON.parse(JSON.stringify(v));
 function surveyQuestion(type='단일응답형',title=''){return {title,type,required:true,options:(type==='척도형'?['매우 불만족','불만족','보통','만족','매우 만족']:['예','아니오']).map(label=>({label,extra:false}))}}
@@ -267,9 +267,9 @@ root.addEventListener('click',ev=>{const a=ev.target.closest('a[href="#SET-05"],
 
 // 관리 목록·상세는 전용 목업 모듈을 사용한다.
 const managementBaseList=list;
-list=function(s){if(!['BAS-15','BAS-16','BAS-17','BAS-18'].includes(s.id))return managementBaseList(s);return head(s)+(window.GFAIR_MANAGEMENT?window.GFAIR_MANAGEMENT.render(s.id,role,event):'<p>화면을 불러오는 중입니다.</p>')};
+list=function(s){if(!['BAS-15','BAS-16','BAS-17','BAS-18','COM-06','COM-07'].includes(s.id))return managementBaseList(s);return (['COM-06','COM-07'].includes(s.id)?`<div class="pagehead"><div><nav class="breadcrumb" aria-label="현재 위치"><a href="#MON-01">홈</a><span>›</span><a href="#COM-06">내정보</a>${s.id==='COM-07'?'<span>›</span><span>담당자 관리</span>':''}</nav><h1>${E(s.title)}</h1><p class="subtitle">${E(s.summary)}</p></div></div>`:head(s))+(window.GFAIR_MANAGEMENT?window.GFAIR_MANAGEMENT.render(s.id,role,event):'<p>화면을 불러오는 중입니다.</p>')};
 parentRoutes['BAS-17']='BAS-15';parentRoutes['BAS-18']='BAS-16';
-window.addEventListener('management-ui-ready',()=>{if(['BAS-15','BAS-16','BAS-17','BAS-18'].includes(current))render()});
+window.addEventListener('management-ui-ready',()=>{if(['BAS-15','BAS-16','BAS-17','BAS-18','COM-06','COM-07'].includes(current))render()});
 // 운영사는 담당 상담 범위만 조회·검수한다. 기존 관리자/작성자 흐름은 유지한다.
 const workflowDashboard=dash;
 dash=function(s){
@@ -332,6 +332,7 @@ render=function(){
  listReviewRender();
 };
 
+const accountMenuOwner=menuOwner;menuOwner=function(id){return ['COM-06','COM-07'].includes(id)?id:accountMenuOwner(id)};
 window.addEventListener("attendance-dashboard-ready",()=>{if(location.hash==="#MON-08"||!location.hash&&document.body.dataset.screen==="MON-08")render();});
 render();})();
 
