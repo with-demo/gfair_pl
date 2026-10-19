@@ -264,6 +264,7 @@ root.addEventListener('change',ev=>{if(ev.target.matches('[data-survey-type]')){
 root.addEventListener('submit',ev=>{const f=ev.target;if(f.id==='survey-list-filter'){Object.assign(f.dataset.response==='true'?surveyUi.responseFilters:surveyUi.filters,Object.fromEntries(new FormData(f)));render()}else if(f.id==='survey-date-filter'){const fd=new FormData(f),from=fd.get('from'),to=fd.get('to');if(from&&to&&from>to)return toast('응답 종료일은 시작일 이후로 선택해주세요.');surveyUi.from=from;surveyUi.to=to;surveyUi.historyPage=1;render()}else if(f.id==='survey-editor'){if(!f.reportValidity())return;surveyReadEditor();const q=surveyUi.editor;if(q.start>q.end)return toast('조사 종료일은 시작일 이후로 입력해주세요.');if(!q.title.trim()||q.groups.some(g=>!g.title.trim()||g.questions.some(v=>!v.title.trim()||(!['단답형','서술형'].includes(v.type)&&v.options.some(o=>!o.label.trim())))))return toast('설문제목·그룹명·질문·보기 내용을 입력해주세요.');const i=surveyStore.findIndex(s=>s.id===q.id),before=surveyClone(surveyStore);if(i<0)surveyStore.push(surveyClone(q));else surveyStore[i]=surveyClone(q);if(!surveyPersist()){surveyStore=before;return}surveyUi.manage='list';render();toast('이 기기에 검토용 설문을 저장했습니다.')}});
 root.addEventListener('click',ev=>{const a=ev.target.closest('a[href="#SET-05"],a[href="#SET-06"]');if(a){surveyUi.manage='list';surveyUi.response='list';if(location.hash===a.getAttribute('href'))render()}});
 
+window.addEventListener("attendance-dashboard-ready",()=>{if(location.hash==="#MON-08"||!location.hash&&document.body.dataset.screen==="MON-08")render();});
 render();})();
 
 
@@ -282,4 +283,4 @@ render();})();
 
 
 
-window.addEventListener("attendance-dashboard-ready",()=>{if(location.hash==="#MON-08"||!location.hash&&document.body.dataset.screen==="MON-08")render();});
+
