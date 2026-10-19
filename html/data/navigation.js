@@ -422,3 +422,20 @@ window.GFAIR_NAV={
 
 
 window.GFAIR_MENU.find(group=>group.name==="모니터링").items.push(["MON-08","출결 대시보드",[],{"admin":"O","buyOperator":"△","exportOperator":"△","interpreter":"X","buyer":"X"}]);
+
+// 2026-10-19: 행사업무플로우의 사본과 사용자/관리자 메뉴 구조 반영.
+(()=>{
+ const adminOnly={admin:'O',buyOperator:'X',exportOperator:'X',interpreter:'X',buyer:'X'};
+ const basic=GFAIR_MENU.find(g=>g.name==='기본정보관리');
+ basic.items.splice(1,0,['BAS-15','운영용역사 관리',[],{...adminOnly}]);
+ basic.items.push(['BAS-16','관리자 관리',[],{...adminOnly}]);
+ const journal=GFAIR_MENU.find(g=>g.name==='상담일지');
+ const children=journal.items[0][2];
+ children[0][3].buyOperator='O';children[1][3].exportOperator='O';
+ journal.items.splice(0,1,...children);
+ const review=journal.items.find(i=>i[0]==='REVIEW-01');
+ review[3].buyOperator='△';review[3].exportOperator='△';
+ const monitoring=GFAIR_MENU.find(g=>g.name==='모니터링').items[0];
+ monitoring[3].buyOperator='△';monitoring[3].exportOperator='△';
+ GFAIR_MENU.find(g=>g.name==='행사정보').items.find(i=>i[0]==='PRE-04')[3].exportOperator='△';
+})();

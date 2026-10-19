@@ -1,5 +1,12 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"version": "v1.0", "screenId": "BAS-15", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "release": true, "summary": "메뉴 및 기본 진입 화면 추가 완료", "changes": ["운영용역사 관리 메뉴·예시 진입 화면 추가"], "note": "메뉴 우선 구성. 상세 기능·Description은 후속 작업 대상."},
+{"version": "v1.0", "screenId": "BAS-16", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "release": true, "summary": "메뉴 및 기본 진입 화면 추가 완료", "changes": ["관리자 관리 메뉴·예시 진입 화면 추가"], "note": "메뉴 우선 구성. 상세 기능·Description은 후속 작업 대상."},
+{"version": "v0.1", "screenId": "MON-01", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "구매·수출 운영용역사 메뉴 접근 및 담당 상담 대시보드 분리"},
+{"version": "v0.1", "screenId": "PRE-04", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "수출상담 운영용역사 통역원 매칭 메뉴 접근 반영"},
+{"version": "v0.1", "screenId": "JNL-BUY", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "구매상담일지 독립 메뉴 및 구매 운영용역사 접근 반영"},
+{"version": "v0.1", "screenId": "JNL-EXP", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "수출상담일지 독립 메뉴 및 수출 운영용역사 접근 반영"},
+{"version": "v0.1", "screenId": "REVIEW-01", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "운영용역사 담당 상담 유형 검수 메뉴 접근 반영"},
  {"version": "v1.0", "screenId": "MON-08", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "release": true, "summary": "신규 화면 작업 완료", "changes": ["모니터링 출결 대시보드 메뉴 추가 및 관리자·구매/수출 운영사 조회 범위 분리", "그룹별 출석 카운트·이름/소속 검색·최신순 고정 스크롤 목록 구성", "마지막 갱신 시각·30초 예시 자동 갱신·수동 새로고침 구성"], "note": "실제 QR·서버 출결 연동 전의 예시 데이터 화면"},
  {"version":"v5.19","screenId":"NTC-01","date":"2026.10.15","accountName":"yulotso0310-cyber","summary":"필터 대상·공지구분·게시상태 순서 및 검색·초기화 중앙 정렬"},
  {"version": "v5.18", "screenId": "NTC-01", "date": "2026.10.15", "accountName": "yulotso0310-cyber", "summary": "검색 필터 전체 폭 정렬 및 게시상태 라디오 전환"},
