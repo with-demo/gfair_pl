@@ -1,0 +1,14 @@
+[data-management-root] .management-actions{display:flex;justify-content:flex-end;gap:10px;margin:0 0 18px;flex-wrap:wrap}
+[data-management-root] .management-year{margin:20px 0}
+.management-note{font-size:13px;color:#666;line-height:1.7;margin:12px 0 20px;padding:0 18px}
+[data-management-root]>.management-note{padding:0}
+[data-management-root] .management-company{margin-top:20px}
+.management-form{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin:20px 0}
+.management-form .field{flex:1;min-width:160px}
+.management-password{display:inline-block;min-width:76px;font-family:monospace;letter-spacing:1px}
+[data-management-root] tr[data-management-company],[data-management-root] tr[data-management-admin]{cursor:pointer}
+[data-management-root] tr[data-management-company]:hover>td,[data-management-root] tr[data-management-admin]:hover>td{background:#f4f4f4}
+[data-management-root] tr:focus-visible{outline:2px solid #333;outline-offset:-2px}
+[data-management-root] .management-name{text-align:left;text-decoration:underline}
+[data-management-error]{color:#a11;line-height:1.6;margin-top:14px}
+@media(max-width:700px){.management-form{display:grid;grid-template-columns:1fr}.management-form .field{min-width:0}}

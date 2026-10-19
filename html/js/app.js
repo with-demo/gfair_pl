@@ -265,24 +265,11 @@ root.addEventListener('submit',ev=>{const f=ev.target;if(f.id==='survey-list-fil
 root.addEventListener('click',ev=>{const a=ev.target.closest('a[href="#SET-05"],a[href="#SET-06"]');if(a){surveyUi.manage='list';surveyUi.response='list';if(location.hash===a.getAttribute('href'))render()}});
 
 
-// 메뉴 우선 추가: 상세 기능을 확정하지 않은 관리 화면의 검토용 진입점.
-const workflowMenuList=list;
-list=function(s){
- if(!['BAS-15','BAS-16'].includes(s.id))return workflowMenuList(s);
- const operator=s.id==='BAS-15';
- const columns=operator?['용역사명','상담 구분','행사','하위 담당자','계정 표시']:['관리자명','관리 항목','검토 상태'];
- const data=operator?[
- ['예시 구매상담 운영사','구매상담','G-FAIR KOREA '+event,'상세 화면에서 구성 예정','실제 계정 미발급'],
- ['예시 수출상담 운영사','수출상담','G-FAIR KOREA '+event,'상세 화면에서 구성 예정','실제 계정 미발급']
- ]:[['예시 관리자','계정·담당 범위 등 상세 항목','협의 필요']];
- const steps=operator?[
- ['01','엑셀 양식 다운로드 → 용역사 정보 일괄 업로드'],
- ['02','기업 기본정보 및 행사 이력 확인'],
- ['03','행사 연도별 임시 계정 발급·표시 흐름 검토'],
- ['04','운영용역사가 하위 담당자를 직접 등록하는 흐름 검토']
- ]:[['01','관리자 관리 메뉴 진입'],['02','등록·수정 항목 및 역할별 관리 범위 협의'],['03','상세 화면은 다음 작업에서 구성']];
- return `${head(s)}<section class="panel pad"><h2>메뉴 및 업무 흐름 검토</h2><p style="margin:12px 0">메뉴 위치와 진입 화면을 우선 구성했습니다. 아래는 예시이며 등록·업로드·계정 발급은 아직 동작하지 않습니다.</p>${operator?'<p class="small">계정 번호·비밀번호 길이 등 시트의 물음표가 있는 정책은 확정하지 않았습니다. 실제 비밀번호를 표시하거나 저장하지 않습니다.</p>':'<p class="small">기준 시트에 관리자 관리의 상세 기능·권한이 기재되어 있지 않아 임의로 확정하지 않았습니다. 현재는 관리자가 진입하는 검토용 화면입니다.</p>'}</section><section class="panel"><div class="panelhead"><h2>${E(s.title)} · 예시 목록</h2></div><div class="tablewrap"><table><thead><tr>${columns.map(t=>`<th scope="col">${E(t)}</th>`).join('')}</tr></thead><tbody>${data.map(r=>`<tr>${r.map(v=>`<td>${E(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div></section><section class="panel pad" style="margin-top:20px"><h2>후속 화면 구성 범위</h2><ol style="padding-left:24px;margin-top:12px">${steps.map(([,text])=>`<li style="margin:10px 0">${E(text)}</li>`).join('')}</ol></section>`;
-};
+// 관리 목록·상세는 전용 목업 모듈을 사용한다.
+const managementBaseList=list;
+list=function(s){if(!['BAS-15','BAS-16','BAS-17','BAS-18'].includes(s.id))return managementBaseList(s);return head(s)+(window.GFAIR_MANAGEMENT?window.GFAIR_MANAGEMENT.render(s.id,role,event):'<p>화면을 불러오는 중입니다.</p>')};
+parentRoutes['BAS-17']='BAS-15';parentRoutes['BAS-18']='BAS-16';
+window.addEventListener('management-ui-ready',()=>{if(['BAS-15','BAS-16','BAS-17','BAS-18'].includes(current))render()});
 // 운영사는 담당 상담 범위만 조회·검수한다. 기존 관리자/작성자 흐름은 유지한다.
 const workflowDashboard=dash;
 dash=function(s){
