@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"version": "v5.22", "screenId": "NTC-01", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "열람 역할의 게시 상태 필터·목록 열 숨김", "note": "게시 글만 열람하는 조건과 관리자 화면 유지. FAQ·자료실은 기존 읽기 전용 표시 유지."},
 {"version": "v5.21", "screenId": "NTC-01", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "열람 역할의 대상 검색·목록 대상 열 숨김", "note": "관리자 대상 표시와 역할별 열람 조건 유지."},
 {"version": "v1.1", "screenId": "NTC-02", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "열람 역할의 대상 검색·목록 대상 열 숨김", "note": "관리자 대상 표시와 역할별 열람 조건 유지."},
 {"version": "v1.1", "screenId": "NTC-03", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "열람 역할의 대상 검색·목록 대상 열 숨김", "note": "관리자 대상 표시와 역할별 열람 조건 유지."},
