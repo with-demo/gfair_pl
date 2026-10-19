@@ -2,9 +2,9 @@
  const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const companies=[{id:'OP-A',name:'예시 구매상담 운영사',representative:'예시 대표 A',address:'예시 사업장 A',contact:'예시 담당자 A'},{id:'OP-B',name:'예시 수출상담 운영사',representative:'예시 대표 B',address:'예시 사업장 B',contact:'예시 담당자 B'},{id:'OP-C',name:'예시 운영사 C',representative:'예시 대표 C',address:'예시 사업장 C',contact:'예시 담당자 C'}];
  const assignments=[{year:'2027',company:'OP-A',type:'구매상담',id:'M0005',pw:'D27005'},{year:'2027',company:'OP-B',type:'수출상담',id:'',pw:''},{year:'2026',company:'OP-A',type:'구매상담',id:'M0003',pw:'D26003'},{year:'2026',company:'OP-B',type:'수출상담',id:'M0004',pw:'D26004'},{year:'2025',company:'OP-C',type:'구매상담',id:'M0001',pw:'D25001'},{year:'2025',company:'OP-B',type:'수출상담',id:'M0002',pw:'D25002'}];
- const staff=[{company:'OP-A',year:'2027',name:'예시 구매 담당자',id:'DEMO-BUY-01'},{company:'OP-B',year:'2027',name:'예시 수출 담당자',id:'DEMO-EXP-01'}];
+ const staff=[{company:'OP-A',year:'2027',name:'예시 구매 담당자',code:'STAFF-001',id:'DEMO-BUY-01',pw:'D27001'},{company:'OP-B',year:'2027',name:'예시 수출 담당자',code:'STAFF-002',id:'DEMO-EXP-01',pw:'D27002'}];
  const admins=[{id:'DEMO-ADMIN-01',name:'예시 관리자 A',org:'예시 운영기관',status:'사용',date:'2026.10.19'},{id:'DEMO-ADMIN-02',name:'예시 관리자 B',org:'예시 운영기관',status:'사용',date:'2026.10.18'},{id:'DEMO-ADMIN-03',name:'예시 관리자 C',org:'예시 운영기관',status:'미사용',date:'2026.10.17'}];
- const state={screen:'BAS-15',role:'admin',event:'2026',company:'OP-A',admin:'DEMO-ADMIN-01',year:'전체',query:'',status:'전체',staffYear:'2027',shown:new Set(),notice:'',upload:null};
+ const state={screen:'BAS-15',role:'admin',event:'2026',company:'OP-A',admin:'DEMO-ADMIN-01',year:'전체',query:'',status:'전체',staffYear:'2027',shown:new Set(),notice:'',upload:null,staffUpload:null};
  const fields=['연도','상담 구분','기업코드','기업명','대표자','주소','담당자명'];
  const isAdmin=()=>state.role==='admin';
  const ownCompany=()=>state.role==='buyOperator'?'OP-A':state.role==='exportOperator'?'OP-B':null;
@@ -25,7 +25,7 @@
   const c=companies.find(c=>c.id===state.company);if(!c||!allowed(c.id))return '<div class="empty">담당 운영용역사만 확인할 수 있습니다.</div>';
   const history=assignments.filter(a=>a.company===c.id&&allowedAssignment(a)).sort((a,b)=>b.year.localeCompare(a.year));
   if(!history.some(a=>a.year===state.staffYear))state.staffYear=history[0]?.year||'';
-  return `${note()}<div class="management-actions"><a href="#BAS-15" class="btn">목록</a></div><section class="panel pad"><h2>기업 기본정보</h2><dl class="detaildata management-company">${[['기업명',c.name],['기업코드',c.id],['대표자',c.representative],['주소',c.address],['담당자',c.contact]].map(([k,v])=>`<dt>${k}</dt><dd>${E(v)}</dd>`).join('')}</dl></section><section class="panel management-year"><div class="panelhead"><h2>행사 이력 및 연도별 임시 계정</h2></div>${table(['연도','행사','상담 구분','ID','PW','계정 발급'],history.map(a=>{const key=a.year+'|'+a.company+'|'+a.type;return `<tr><td>${a.year}</td><td>G-FAIR KOREA ${a.year}</td><td>${a.type}</td><td>${E(a.id||'미발급')}</td><td><span class="management-password">${a.pw?(state.shown.has(key)?E(a.pw):'••••••'):'—'}</span>${a.pw?button('toggle-password',state.shown.has(key)?'숨기기':'보기',`data-key="${E(key)}" aria-pressed="${state.shown.has(key)}"`):''}</td><td>${a.id?'발급 완료':isAdmin()?button('issue','예시 계정 발급',`data-year="${a.year}" data-type="${a.type}"`):'관리자 발급 대기'}</td></tr>`}).join(''))}<p class="management-note">ID는 M0001부터 이어지는 예시 번호이며 연도별로 별도 발급됩니다. PW는 검토용 6자리 예시입니다. 실제 길이·문자 조합·재발급 정책은 협의 필요합니다.</p></section><section class="panel pad"><h2>하위 담당자</h2><form data-management-form="staff" class="management-form">${field('행사 연도',`<select name="year" data-management-staff-year>${options([...new Set(history.map(a=>a.year))],state.staffYear)}</select>`)}${input('name','담당자명 *','',true)}${input('id','담당자 ID *','',true)}<button class="btn primary" type="submit">담당자 예시 등록</button></form><p class="small">선택 연도·소속 용역사에 연결해 등록합니다. 구매·수출 담당 범위는 해당 행사 계약 구분을 따릅니다. 실제 권한 부여·계정 발급은 하지 않습니다.</p>${table(['이름','ID','행사 연도','소속'],staff.filter(s=>s.company===c.id&&s.year===state.staffYear).map(s=>`<tr><td>${E(s.name)}</td><td>${E(s.id)}</td><td>${s.year}</td><td>${E(c.name)}</td></tr>`).join(''))}</section>`;
+  return `${note()}<div class="management-actions"><a href="#BAS-15" class="btn">목록</a></div><section class="panel pad"><h2>기업 기본정보</h2><dl class="detaildata management-company">${[['기업명',c.name],['기업코드',c.id],['대표자',c.representative],['주소',c.address],['담당자',c.contact]].map(([k,v])=>`<dt>${k}</dt><dd>${E(v)}</dd>`).join('')}</dl></section><section class="panel management-year"><div class="panelhead"><h2>행사 이력 및 연도별 임시 계정</h2></div>${table(['연도','행사','상담 구분','ID','PW','계정 발급'],history.map(a=>{const key=a.year+'|'+a.company+'|'+a.type;return `<tr><td>${a.year}</td><td>G-FAIR KOREA ${a.year}</td><td>${a.type}</td><td>${E(a.id||'미발급')}</td><td><span class="management-password">${a.pw?(state.shown.has(key)?E(a.pw):'••••••'):'—'}</span>${a.pw?button('toggle-password',state.shown.has(key)?'숨기기':'보기',`data-key="${E(key)}" aria-pressed="${state.shown.has(key)}"`):''}</td><td>${a.id?'발급 완료':isAdmin()?button('issue','예시 계정 발급',`data-year="${a.year}" data-type="${a.type}"`):'관리자 발급 대기'}</td></tr>`}).join(''))}<p class="management-note">ID는 M0001부터 이어지는 예시 번호이며 연도별로 별도 발급됩니다. PW는 검토용 6자리 예시입니다. 실제 길이·문자 조합·재발급 정책은 협의 필요합니다.</p></section><section class="panel pad"><h2>하위 담당자</h2><div class="management-form">${field('행사 연도',`<select data-management-staff-year>${options([...new Set(history.map(a=>a.year))],state.staffYear)}</select>`)}${button('staff-template','담당자 엑셀 양식 다운로드')}${button('staff-upload-open','담당자 엑셀 일괄 업로드','','true')}</div><p class="small">① 양식 다운로드 → ② 담당자 작성·파일 업로드·검증 → ③ 예시 계정 일괄 발급</p><p class="small">선택 연도·소속 용역사는 양식에 미리 기입됩니다. 담당자코드는 중복 확인용 예시 항목이며 로그인 ID·PW는 검증 후 자동 생성됩니다. 실제 양식·계정 규칙은 협의 필요합니다.</p>${table(['담당자코드','이름','발급 ID','임시 PW','행사 연도','계정 상태'],staff.filter(s=>s.company===c.id&&s.year===state.staffYear).map(s=>{const key='staff|'+s.id;return `<tr><td>${E(s.code)}</td><td>${E(s.name)}</td><td>${E(s.id)}</td><td><span class="management-password">${state.shown.has(key)?E(s.pw):'••••••'}</span>${button('toggle-password',state.shown.has(key)?'숨기기':'보기',`data-key="${E(key)}" aria-pressed="${state.shown.has(key)}"`)}</td><td>${s.year}</td><td>예시 발급 완료</td></tr>`}).join(''))}</section>`;
  }
  function adminList(){
   const rr=admins.filter(a=>(state.status==='전체'||a.status===state.status)&&(!state.query||[a.id,a.name,a.org].join(' ').includes(state.query)));
@@ -38,6 +38,21 @@
  function modal(title,body){const d=document.getElementById('dialog');document.getElementById('dialog-content').innerHTML=`<div class="dialoghead"><h2>${title}</h2>${button('close','닫기')}</div><div class="dialogbody">${body}<p data-management-error role="alert"></p></div>`;d.showModal();}
  function close(){document.getElementById('dialog').close();}
  function adminForm(){modal('관리자 예시 등록',`<form data-management-form="admin-create" class="management-form">${input('id','관리자 ID *','',true)}${input('name','이름 *','',true)}${input('org','소속')}<button type="submit" class="btn primary">등록</button></form><p class="small">실제 로그인 계정은 생성하지 않습니다.</p>`);}
+
+ const staffFields=['행사 연도','기업코드','담당자코드','담당자명'];
+ function staffAllowed(){return state.screen==='BAS-17'&&allowed(state.company)&&assignments.some(a=>a.company===state.company&&a.year===state.staffYear&&allowedAssignment(a));}
+ function validateStaffRows(rows,company,year,existing){
+  const header=rows[0]||[];
+  if(!staffFields.every(h=>header.includes(h)))throw Error('담당자 전용 양식의 열 이름을 확인해 주세요.');
+  const indices=staffFields.map(h=>header.indexOf(h)),seen=new Set(existing.filter(s=>s.company===company&&s.year===year).map(s=>s.code)),good=[],errors=[];
+  rows.slice(1).forEach((row,i)=>{
+   const r=indices.map(j=>String(row[j]??'').trim());if(r.every(v=>!v))return;
+   let error='';if(r.some(v=>!v))error='필수값 누락';else if(r[0]!==year||r[1]!==company)error='선택한 행사 연도·소속 용역사와 불일치';else if(seen.has(r[2]))error='동일 행사·소속의 담당자코드 중복';
+   if(error)errors.push({line:i+2,error});else{seen.add(r[2]);good.push({code:r[2],name:r[3]})}
+  });
+  if(!good.length&&!errors.length)throw Error('등록할 담당자가 없습니다.');
+  return {good,errors};
+ }
  async function action(b){
   const a=b.dataset.managementAction;
   if(a==='close'){close();return;}
@@ -47,6 +62,19 @@
    const item=assignments.find(a=>a.company===state.company&&a.year===b.dataset.year&&a.type===b.dataset.type);if(!item||item.id)return;
    const n=Math.max(0,...assignments.map(a=>Number(a.id.replace('M',''))||0))+1;
    item.id='M'+String(n).padStart(4,'0');item.pw='D'+item.year.slice(-2)+String(n).padStart(3,'0');message('현재 연도의 예시 임시 계정을 발급했습니다.');return;
+  }
+  if(a==='staff-template'&&staffAllowed()){
+   const blob=await GFAIRWorkbook.write([staffFields,[state.staffYear,state.company,'DEMO-STAFF-NEW','예시 신규 담당자']]),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='하위담당자_'+state.company+'_'+state.staffYear+'_예시양식.xlsx';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('선택 행사·소속이 기입된 담당자 양식을 다운로드했습니다.');return;
+  }
+  if(a==='staff-upload-open'&&staffAllowed()){
+   state.staffUpload=null;
+   modal('하위 담당자 엑셀 일괄 업로드',`<p>${E(companies.find(c=>c.id===state.company).name)} · ${state.staffYear}년</p><form data-management-form="staff-upload"><p>담당자코드·이름을 작성해 업로드해 주세요. 계정 ID·PW는 직접 입력하지 않습니다.</p>${field('담당자 엑셀 파일','<input type="file" name="file" accept=".xlsx" required>')}<button type="submit" class="btn primary">파일 검증</button></form><div data-management-upload-result></div><p class="small">검토용 예시 발급이며 실제 로그인 계정은 생성하지 않습니다.</p>`);return;
+  }
+  if(a==='staff-upload-confirm'){
+   const upload=state.staffUpload;if(!staffAllowed()||!upload||upload.company!==state.company||upload.year!==state.staffYear)return;
+   if(upload.rows.some(r=>staff.some(s=>s.company===upload.company&&s.year===upload.year&&s.code===r.code)))return message('담당자 목록이 변경되었습니다. 다시 검증해 주세요.');
+   upload.rows.forEach(r=>{const n=staff.length+1;staff.push({company:upload.company,year:upload.year,code:r.code,name:r.name,id:'DEMO-S'+String(n).padStart(4,'0'),pw:'D'+upload.year.slice(-2)+String(n).padStart(3,'0')})});
+   const n=upload.rows.length;state.staffUpload=null;close();message(n+'명의 담당자를 등록하고 예시 계정을 일괄 발급했습니다.');return;
   }
   if(a==='admin-create'&&isAdmin()){adminForm();return;}
   if(a==='template'&&isAdmin()){
@@ -68,11 +96,17 @@
   const fd=new FormData(f),v=k=>String(fd.get(k)||'').trim(),type=f.dataset.managementForm;
   const fail=text=>{const err=document.querySelector('[data-management-error]');if(err)err.textContent=text;else message(text)};
   if(type==='search'||type==='admin-search'){state.query=v('query');state.year=v('year')||'전체';state.status=v('status')||'전체';state.notice='';paint();return;}
-  if(type==='staff'){
-   if(!allowed(state.company)||!assignments.some(a=>a.company===state.company&&a.year===v('year')&&allowedAssignment(a)))return fail('담당 행사 범위를 확인해 주세요.');
-   if(!v('name')||!v('id'))return message('담당자명과 ID는 공백만 입력할 수 없습니다.');
-   if(staff.some(s=>s.id===v('id')))return message('이미 등록된 담당자 ID입니다.');
-   staff.push({company:state.company,year:v('year'),name:v('name'),id:v('id')});state.staffYear=v('year');message('하위 담당자를 예시 등록했습니다. 실제 계정은 생성되지 않습니다.');return;
+  if(type==='staff-upload'){
+   state.staffUpload=null;const result=document.querySelector('[data-management-upload-result]');result.innerHTML='';
+   try{
+    if(!staffAllowed())throw Error('담당 행사 범위를 확인해 주세요.');
+    const file=fd.get('file');if(!/\.xlsx$/i.test(file.name))throw Error('XLSX 파일을 선택해 주세요.');
+    const rr=await GFAIRWorkbook.read(file),checked=validateStaffRows(rr,state.company,state.staffYear,staff);
+    if(checked.errors.length){result.innerHTML=`<p>정상 ${checked.good.length}건 · 오류 ${checked.errors.length}건</p>${table(['엑셀 행','오류 사유'],checked.errors.map(e=>`<tr><td>${e.line}</td><td>${E(e.error)}</td></tr>`).join(''))}<p>오류를 수정한 뒤 다시 검증해 주세요. 아직 등록·발급하지 않았습니다.</p>`;return;}
+    state.staffUpload={company:state.company,year:state.staffYear,rows:checked.good};
+    result.innerHTML=`<p>정상 ${checked.good.length}건 · 오류 0건. 예시 계정 일괄 발급 대기</p>${table(['담당자코드','이름','발급 상태'],checked.good.map(r=>`<tr><td>${E(r.code)}</td><td>${E(r.name)}</td><td>발급 대기</td></tr>`).join(''))}${button('staff-upload-confirm','예시 계정 일괄 발급','','true')}`;
+   }catch(e){fail(e.message)}
+   return;
   }
   if(!isAdmin())return;
   if(['admin-create','admin-save'].includes(type)){

@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"version": "v1.1", "screenId": "BAS-17", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "하위 담당자 엑셀 일괄 등록·예시 계정 발급 흐름 적용", "changes": ["개별 입력을 전용 양식 다운로드·파일 검증·일괄 발급으로 전환", "소속·연도·필수값·중복 확인과 ID/PW 예시 발급 결과 표시"], "note": "실제 계정 발급·서버 저장 미연결. 양식·계정 규칙은 검토용 제안."},
 {"version": "v2.1", "screenId": "BAS-15", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "연도별 그룹을 단일 운영용역사 목록으로 통합", "changes": ["연도·상담 구분을 열로 표시하고 최신 연도순 나열", "검색·엑셀·기업 상세 이동 유지"]},
 {"version": "v2.0", "fromVersion": "v1.0", "screenId": "BAS-15", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "release": true, "summary": "연도별 운영용역사 목록·엑셀 일괄 등록 구성", "changes": ["2027·2026·2025 연도별 목록과 검색", "XLSX 양식 다운로드·검증·예시 등록", "운영사 본인 회사 조회 범위 적용"], "note": "목업용 데이터이며 실제 계정·권한·서버 저장은 연결하지 않음. 비밀번호 발급 정책 협의 필요."},
 {"version": "v2.0", "fromVersion": "v1.0", "screenId": "BAS-16", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "release": true, "summary": "상담시스템 관리자 목록 구성", "changes": ["관리자 검색·상태 필터·예시 등록", "행 클릭 관리자 상세 연결"], "note": "목업용 데이터이며 실제 계정·권한·서버 저장은 연결하지 않음. 비밀번호 발급 정책 협의 필요."},
