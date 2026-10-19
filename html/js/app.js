@@ -60,7 +60,7 @@ function render(){stop();current=decodeURIComponent(location.hash.slice(1))||doc
 function modal(title,body,action='close',label='확인'){document.getElementById('dialog-content').innerHTML=`<div class="dialoghead"><h2>${E(title)}</h2>${B('close','닫기','btn ghost')}</div><div class="dialogbody">${body}</div><div class="dialogactions">${B('close','취소')}${B(action,label,'btn primary')}</div>`;dialog.showModal()}
 function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 function csv(){const s=map.get(current);let rr;if(current.startsWith('JNL')||s?.kind==='dashboard')rr=[['일지번호','유형','기업','부스','바이어','작성자','제출 일자','상태','상담액','계약추진액','통화'],...jRows({...s,id:current==='JNL-07'?'JNL-07':'JNL-01'}).map(j=>[j.id,j.type,j.company,j.booth,j.buyer,j.writer,j.time,j.status,j.amount,j.contract,j.currency])];else rr=[s.ui.columns||['항목','값'],...rows(s)];const text='\ufeff'+rr.map(r=>r.map(v=>{let t=String(v??'');if(/^[=+@-]/.test(t))t="'"+t;return '"'+t.replaceAll('"','""')+'"'}).join(',')).join('\r\n');download(new Blob([text],{type:'text/csv;charset=utf-8'}),'G-FAIR_'+current+'_예시.csv');toast('예시 데이터를 CSV로 다운로드했습니다.')}
-function approve(reject){const j=journals.find(j=>j.id===selected);if(!j||j.status!=='검수 대기')return toast('최신 처리 상태를 다시 확인해 주세요.');if(scope==='stats'||scope!=='all'&&scope!==(j.type==='구매'?'buy':'export'))return toast('해당 유형의 검수 권한이 없습니다.');if(reject){const v=document.getElementById('reject-reason')?.value.trim();if(!v){document.getElementById('reject-reason')?.focus();return toast('반려 사유를 입력해 주세요.')}j.reason=v}j.status=reject?'반려':'승인 완료';j.history.unshift([j.status,'운영 관리자 · '+new Date().toLocaleTimeString('ko-KR')]);log(j.status,j.id);render();toast('검토용 일지를 '+j.status+' 상태로 변경했습니다.')}
+function approve(reject){const j=journals.find(j=>j.id===selected);if(!j||j.status!=='검수 대기')return toast('최신 처리 상태를 다시 확인해 주세요.');if(scope==='stats'||scope!=='all'&&scope!==(j.type==='구매'?'buy':'export'))return toast('해당 유형의 검수 권한이 없습니다.');if(reject){const v=document.getElementById('reject-reason')?.value.trim();if(!v){document.getElementById('reject-reason')?.focus();return toast('반려 사유를 입력해 주세요.')}j.reason=v}j.status=reject?'반려':'승인 완료';j.history.unshift([j.status,roles[role]+' · '+new Date().toLocaleTimeString('ko-KR')]);log(j.status,j.id);render();toast('검토용 일지를 '+j.status+' 상태로 변경했습니다.')}
 function genericAction(label){const s=map.get(current),f=document.getElementById('generic-form');if(/취소|목록/.test(label)){nav(groups.find(g=>g.key===s.group).screens[0].id);return}if(/다운로드/.test(label)){if(label.includes('엑셀'))xlsx();else if(label.includes('PDF'))window.print();else csv();return}if(label==='QR 확인'){nav('PRE-03');return}if(label==='긴급 호출'||label==='매칭 안내'){nav('NTC-05');return}if(label.includes('이력')){modal('처리 이력',logs.length?`<div class="timeline">${logs.slice(0,8).map(x=>`<div><strong>${E(x.action)}</strong><small>${E(x.target+' · '+x.time)}</small></div>`).join('')}</div>`:'<p>이 화면에서 아직 처리한 내용이 없습니다.</p>');return}if(label==='미리보기'){modal(label,`<dl class="detaildata">${[...new FormData(f)].filter(([,v])=>typeof v==='string').map(([k,v])=>`<dt>${E(s.ui.fields[Number(k.replace('field',''))]?.[0]||k)}</dt><dd>${E(v||'미입력')}</dd>`).join('')}</dl>`);return}if(label==='문항 추가'){const g=f.querySelector('.formgrid'),i=g.children.length;g.insertAdjacentHTML('beforeend',F('추가 문항 '+(i+1),I('field'+i,'text','','required'),true));return}if(label==='발송'){modal('발송 대상 확인','<p>예시 대상과 내용을 확인합니다. 실제 SMS는 발송하지 않습니다.</p>','demo-send','검토 완료');return}if(['승인','반려','비활성화','활성화','신규 발급','재발급'].includes(label)){const ix=s.ui.fields.findIndex(x=>/상태/.test(x[0]));const el=f.elements['field'+ix];if(el?.tagName==='SELECT'){const val={'승인':'승인','반려':'반려','비활성화':'비활성','활성화':'활성','신규 발급':'활성','재발급':'활성'}[label];if([...el.options].some(o=>o.value===val))el.value=val}}if(label==='QR 관리'){nav('BAS-14');return}if(label==='반려'){const ix=s.ui.fields.findIndex(x=>x[0].includes('반려 사유'));if(ix>=0&&!f.elements['field'+ix].value.trim())return toast('반려 사유를 입력해 주세요.');}if(!f.reportValidity())return;const fd=new FormData(f);for(const [k,v] of fd){if(k.endsWith('-start')&&v&&fd.get(k.replace('-start','-end'))&&v>fd.get(k.replace('-start','-end')))return toast('종료일은 시작일 이후로 입력해 주세요.');}forms[current]=Object.fromEntries([...new FormData(f)].filter(([,v])=>typeof v==='string'));log(label,current);document.getElementById('form-result').innerHTML=`<div class="notice"><strong>${E(label)} 확인 완료</strong><span>현재 화면의 예시 상태에 반영했습니다.</span></div>`;toast(label+' 예시 상태를 반영했습니다.')}
 function action(label){const s=map.get(current),paths={'신규 행사':'BAS-02','등록':current==='SET-01'?undefined:target[current],'상세·수정':target[current],'상세':target[current],'일괄등록':'BAS-12','참가이력':'BAS-11','방한정보':'PRE-01','매칭 등록':'PRE-05','매칭 상세':'PRE-05','사전 안내':'NTC-05','방한 상세':'PRE-02','긴급 호출':'NTC-05','자료 연결':'NTC-03','대상 안내':'NTC-05','상세·권한':'SET-02','일지 상세':'JNL-02','검수 대상':'JNL-01','일괄 업로드':'JNL-11','바이어 출석':'MON-05','일지 현황':'JNL-01','방한 현황':'PRE-01','매칭 현황':'MON-04','구매 대시보드':'MON-02','수출 대시보드':'MON-03','연도별 실적':'STA-02','바이어 통계':'STA-03','품목·기관 통계':'STA-04','내역 조회':'BAS-11','상세 분류':'STA-04','공지 등록':'NTC-04','질문 등록':'NTC-04','자료 등록':'NTC-04','알림 발송':'NTC-05','연결화면':'NTC-06','내용 확인':'NTC-06','기업 상세':'ENT-02','선택 행사 진입':'MON-01','내 상담일지':'JNL-07','이력 상세':'JNL-08','새 일지':effective(s)==='interpreter'?'JNL-05':'JNL-04','초안 이어쓰기':draft.type==='구매'?'JNL-04':'JNL-05','일정 상세':'PRE-07','수출일지 작성':'JNL-05'};
 if(/다운로드/.test(label)){if(label.includes('PDF'))window.print();else if(label.includes('엑셀'))xlsx();else csv();return}if(paths[label]){nav(paths[label]);return}if(/출석|보정|QR/.test(label)){modal(label,`${F('대상',`<select id="att-person">${O(rows(s).map(r=>r[0]))}</select>`)}${F('처리 상태','<select id="att-state"><option>출석</option><option>미출석</option></select>')}${F('사유','<textarea id="att-reason" placeholder="확인 또는 보정 사유" required></textarea>')}`,'att-confirm','상태 반영');return}if(/등록/.test(label)){modal(label,`${F('이름 또는 제목',I('title','text','','id="new-title" required'),true)}${F('내용','<textarea id="new-content"></textarea>')}`,'add-row','예시 등록');return}modal(label,`<p>${E(s.summary)}</p><p class="small" style="margin-top:12px">현재 조회 결과 ${rows(s).length}건을 기준으로 확인합니다.</p>`,'confirm-action','확인')}
@@ -304,6 +304,45 @@ approve=function(reject){
  const j=journals.find(j=>j.id===selected);
  if(['buyOperator','exportOperator'].includes(role)&&j?.type!==(role==='buyOperator'?'구매':'수출'))return toast('담당 상담 유형의 검수 권한만 있습니다.');
  return workflowApprove(reject);
+};
+
+
+// 승인/반려는 별도 메뉴가 아닌 구매·수출 목록의 행 단위 조작이다.
+function canReviewJournal(j){
+ return !!j&&['admin','buyOperator','exportOperator'].includes(role)
+  &&(role==='admin'||j.type===(role==='buyOperator'?'구매':'수출'))
+  &&scope!=='stats'&&(scope==='all'||scope===(j.type==='구매'?'buy':'export'));
+}
+const listReviewTable=jTable;
+jTable=function(rr,personal=false){
+ if(personal||!['JNL-BUY','JNL-EXP'].includes(current)||!['admin','buyOperator','exportOperator'].includes(role))return listReviewTable(rr,personal);
+ return `<div class="tablewrap"><table class="journal-review-list"><thead><tr>${['일지번호','유형','참가기업 / 부스','바이어 / 작성자','제출 일자','처리 상태','상세','승인·반려'].map(t=>`<th scope="col">${t}</th>`).join('')}</tr></thead><tbody>${rr.length?rr.map(j=>`<tr><td>${E(j.id)}</td><td>${E(j.type)}</td><td><strong>${E(j.company)}</strong><small>${E(j.booth)}</small></td><td>${E(j.buyer)}<small>작성 ${E(j.writer)}</small></td><td>${E(j.time)}</td><td>${badge(j.status)}</td><td>${B('j-detail','조회','btn ghost',`data-id="${E(j.id)}"`)}</td><td>${canReviewJournal(j)&&j.status==='검수 대기'?`<span class="row" style="flex-wrap:nowrap;justify-content:center">${B('journal-list-approve','승인','btn',`data-id="${E(j.id)}"`)}${B('journal-list-reject','반려','btn',`data-id="${E(j.id)}"`)}</span>`:'<span class="small">—</span>'}</td></tr>`).join(''):'<tr><td colspan="8"><div class="empty">해당 조건의 상담일지가 없습니다.</div></td></tr>'}</tbody></table></div>`;
+};
+root.addEventListener('click',ev=>{
+ const b=ev.target.closest('[data-action]');
+ if(!b||!['journal-list-approve','journal-list-reject'].includes(b.dataset.action))return;
+ const j=journals.find(j=>j.id===b.dataset.id);
+ if(!canReviewJournal(j)||j.status!=='검수 대기')return toast('담당 범위와 최신 처리 상태를 확인해 주세요.');
+ selected=j.id;
+ const reject=b.dataset.action==='journal-list-reject';
+ modal(reject?'상담일지 반려':'상담일지 승인',`<p><strong>${E(j.id)}</strong> · ${E(j.company)} · ${E(j.writer)}</p><p style="margin:12px 0">${reject?'반려 사유를 입력해 주세요.':'해당 상담일지를 승인할까요?'}</p>${reject?F('반려 사유','<textarea id="reject-reason" required placeholder="반려 사유를 입력해 주세요."></textarea>'):''}<p class="small">검토용 예시 처리이며 실제 서버에 저장하지 않습니다.</p>`,reject?'journal-list-confirm-reject':'journal-list-confirm-approve',reject?'반려':'승인');
+ if(reject)document.getElementById('reject-reason').focus();
+});
+document.getElementById('dialog-content').addEventListener('click',ev=>{
+ const b=ev.target.closest('[data-action]');
+ if(!b||!['journal-list-confirm-approve','journal-list-confirm-reject'].includes(b.dataset.action))return;
+ ev.stopImmediatePropagation();
+ const j=journals.find(j=>j.id===selected);
+ if(!canReviewJournal(j)||j.status!=='검수 대기')return toast('담당 범위와 최신 처리 상태를 확인해 주세요.');
+ const reject=b.dataset.action==='journal-list-confirm-reject';
+ if(reject&&!document.getElementById('reject-reason').value.trim()){document.getElementById('reject-reason').focus();return toast('반려 사유를 입력해 주세요.');}
+ approve(reject);
+ if(j.status===(reject?'반려':'승인 완료'))dialog.close();
+},true);
+const listReviewRender=render;
+render=function(){
+ if(location.hash==='#REVIEW-01'){nav(role==='exportOperator'?'JNL-EXP':'JNL-BUY');return;}
+ listReviewRender();
 };
 
 window.addEventListener("attendance-dashboard-ready",()=>{if(location.hash==="#MON-08"||!location.hash&&document.body.dataset.screen==="MON-08")render();});

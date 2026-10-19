@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"version": "v0.2", "screenId": "JNL-BUY", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "별도 승인/반려 메뉴 제거 및 목록 내 행별 검수 버튼 추가", "changes": ["검수 대기 일지에 승인·반려 버튼 표시", "승인 확인·반려 사유 필수 팝업과 담당 유형별 처리 범위 적용"]},
+{"version": "v0.2", "screenId": "JNL-EXP", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "별도 승인/반려 메뉴 제거 및 목록 내 행별 검수 버튼 추가", "changes": ["검수 대기 일지에 승인·반려 버튼 표시", "승인 확인·반려 사유 필수 팝업과 담당 유형별 처리 범위 적용"]},
 {"version": "v1.0", "screenId": "BAS-15", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "release": true, "summary": "메뉴 및 기본 진입 화면 추가 완료", "changes": ["운영용역사 관리 메뉴·예시 진입 화면 추가"], "note": "메뉴 우선 구성. 상세 기능·Description은 후속 작업 대상."},
 {"version": "v1.0", "screenId": "BAS-16", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "release": true, "summary": "메뉴 및 기본 진입 화면 추가 완료", "changes": ["관리자 관리 메뉴·예시 진입 화면 추가"], "note": "메뉴 우선 구성. 상세 기능·Description은 후속 작업 대상."},
 {"version": "v0.1", "screenId": "MON-01", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "구매·수출 운영용역사 메뉴 접근 및 담당 상담 대시보드 분리"},

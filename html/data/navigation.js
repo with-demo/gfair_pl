@@ -433,8 +433,7 @@ window.GFAIR_MENU.find(group=>group.name==="모니터링").items.push(["MON-08",
  const children=journal.items[0][2];
  children[0][3].buyOperator='O';children[1][3].exportOperator='O';
  journal.items.splice(0,1,...children);
- const review=journal.items.find(i=>i[0]==='REVIEW-01');
- review[3].buyOperator='△';review[3].exportOperator='△';
+ journal.items=journal.items.filter(i=>i[0]!=='REVIEW-01');
  const monitoring=GFAIR_MENU.find(g=>g.name==='모니터링').items[0];
  monitoring[3].buyOperator='△';monitoring[3].exportOperator='△';
  GFAIR_MENU.find(g=>g.name==='행사정보').items.find(i=>i[0]==='PRE-04')[3].exportOperator='△';
