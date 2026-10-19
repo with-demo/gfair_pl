@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"version": "v5.21", "screenId": "NTC-01", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "열람 역할의 대상 검색·목록 대상 열 숨김", "note": "관리자 대상 표시와 역할별 열람 조건 유지."},
+{"version": "v1.1", "screenId": "NTC-02", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "열람 역할의 대상 검색·목록 대상 열 숨김", "note": "관리자 대상 표시와 역할별 열람 조건 유지."},
+{"version": "v1.1", "screenId": "NTC-03", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "열람 역할의 대상 검색·목록 대상 열 숨김", "note": "관리자 대상 표시와 역할별 열람 조건 유지."},
 {"version": "v5.20", "screenId": "NTC-01", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "공지/알림 운영용역사 열람 메뉴 및 사용자별 게시물 범위 적용", "changes": ["관리자 외 구매·수출 운영용역사·국내 바이어·통역원 읽기 전용", "행사·대상·게시 여부 기준 목록·상세 열람 및 첨부 다운로드", "관리자만 등록·수정, 직접 편집 접근 차단"]},
 {"version": "v1.0", "screenId": "NTC-02", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "공지/알림 운영용역사 열람 메뉴 및 사용자별 게시물 범위 적용", "changes": ["관리자 외 구매·수출 운영용역사·국내 바이어·통역원 읽기 전용", "행사·대상·게시 여부 기준 목록·상세 열람 및 첨부 다운로드", "관리자만 등록·수정, 직접 편집 접근 차단"]},
 {"version": "v1.0", "screenId": "NTC-03", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "공지/알림 운영용역사 열람 메뉴 및 사용자별 게시물 범위 적용", "changes": ["관리자 외 구매·수출 운영용역사·국내 바이어·통역원 읽기 전용", "행사·대상·게시 여부 기준 목록·상세 열람 및 첨부 다운로드", "관리자만 등록·수정, 직접 편집 접근 차단"]},
