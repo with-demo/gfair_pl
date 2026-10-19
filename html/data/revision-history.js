@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"version": "v5.20", "screenId": "NTC-01", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "공지/알림 운영용역사 열람 메뉴 및 사용자별 게시물 범위 적용", "changes": ["관리자 외 구매·수출 운영용역사·국내 바이어·통역원 읽기 전용", "행사·대상·게시 여부 기준 목록·상세 열람 및 첨부 다운로드", "관리자만 등록·수정, 직접 편집 접근 차단"]},
+{"version": "v1.0", "screenId": "NTC-02", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "공지/알림 운영용역사 열람 메뉴 및 사용자별 게시물 범위 적용", "changes": ["관리자 외 구매·수출 운영용역사·국내 바이어·통역원 읽기 전용", "행사·대상·게시 여부 기준 목록·상세 열람 및 첨부 다운로드", "관리자만 등록·수정, 직접 편집 접근 차단"]},
+{"version": "v1.0", "screenId": "NTC-03", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "공지/알림 운영용역사 열람 메뉴 및 사용자별 게시물 범위 적용", "changes": ["관리자 외 구매·수출 운영용역사·국내 바이어·통역원 읽기 전용", "행사·대상·게시 여부 기준 목록·상세 열람 및 첨부 다운로드", "관리자만 등록·수정, 직접 편집 접근 차단"]},
 {"version": "v1.0", "screenId": "COM-06", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "release": true, "summary": "신규 화면 작업 완료", "changes": ["내정보에서 담당자 관리로 연결", "운영용역사 역할별 자기 회사·배정 행사 범위 분리"], "note": "대표 담당자 예시. 하위 담당자 역할의 세부 권한은 미확정. 실제 계정 발급·서버 저장 미연결."},
 {"version": "v1.0", "screenId": "COM-07", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "release": true, "summary": "신규 화면 작업 완료", "changes": ["전용 담당자 엑셀 양식·일괄 업로드·검증·예시 계정 발급 화면", "운영용역사 역할별 자기 회사·배정 행사 범위 분리"], "note": "대표 담당자 예시. 하위 담당자 역할의 세부 권한은 미확정. 실제 계정 발급·서버 저장 미연결."},
 {"version": "v2.2", "screenId": "BAS-15", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "운영용역사 역할의 기본정보관리 메뉴·직접 접근 차단", "note": "하위 담당자 등록을 위한 대표 담당자 전용 경로는 별도 구성 필요."},

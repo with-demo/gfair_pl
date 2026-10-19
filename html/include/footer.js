@@ -2,9 +2,9 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 // 상대 경로로 공지사항 개발 명세 패널을 불러온다.
 (()=>{const base=document.currentScript.src;const data=document.createElement('script');data.src=new URL('../data/notice-spec.js?v=notice-filter-order-20261015',base).href;data.onload=()=>{const detailData=document.createElement('script');detailData.src=new URL('../data/notice-detail-spec.js?v=notice-filter-order-20261015',base).href;detailData.onload=()=>{const reader=document.createElement('script');reader.src=new URL('sheet-spec.js?v=notice-filter-order-20261015',base).href;reader.onload=reader.onerror=()=>{const script=document.createElement('script');script.src=new URL('spec-panel.js?v=notice-filter-order-20261015',base).href;document.head.append(script);};document.head.append(reader);};document.head.append(detailData);};document.head.append(data);})();
-(()=>{const script=document.createElement('script');script.src=new URL('notice-ui.js?v=notice-filter-order-20261015',document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement('script');script.src=new URL('notice-ui.js?v=public-access-20261019',document.currentScript.src).href;document.head.append(script);})();
 
-(()=>{const script=document.createElement('script');script.onload=()=>window.dispatchEvent(new Event('revision-history-loaded'));script.src=new URL('../data/revision-history.js?v=operator-staff-20261019',document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement('script');script.onload=()=>window.dispatchEvent(new Event('revision-history-loaded'));script.src=new URL('../data/revision-history.js?v=public-access-20261019',document.currentScript.src).href;document.head.append(script);})();
 // 목록 본문은 가운데 정렬, 긴 텍스트 열은 왼쪽 정렬한다.
 (()=>{
  const app=document.getElementById('app');if(!app)return;
@@ -23,3 +23,5 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 (()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/list-row-navigation.css?v=row-navigation-20261019',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('list-row-navigation.js?v=row-navigation-20261019',base).href;document.head.append(script);})();
 
 (()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/management-ui.css?v=management-full-20261019',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('management-ui.js?v=operator-staff-20261019',base).href;document.head.append(script);})();
+
+(()=>{const script=document.createElement('script');script.src=new URL('public-boards.js?v=public-access-20261019',document.currentScript.src).href;document.head.append(script);})();

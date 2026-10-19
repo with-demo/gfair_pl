@@ -109,7 +109,7 @@ render=function(){oldRender();const s=map.get(current);if(!s||isMobile(s)||curre
  if(current==='REVIEW-01'){filter.status=filter.status||'검수 대기';const select=root.querySelector('[name=status]');if(select)select.value=filter.status;root.querySelector('.tablewrap')?.replaceWith(document.createRange().createContextualFragment(jTable(jRows(map.get('JNL-01')))));}
  if(current==='BAS-09')root.querySelector('.head-actions')?.insertAdjacentHTML('beforeend',A('BAS-13','연계현황'));
 
- if(current==='NTC-02')root.querySelectorAll('.panel details').forEach(d=>d.insertAdjacentHTML('beforeend',A('NTC-04','질문 상세·수정','btn ghost')));
+ if(current==='NTC-02'&&role==='admin')root.querySelectorAll('.panel details').forEach(d=>d.insertAdjacentHTML('beforeend',A('NTC-04','질문 상세·수정','btn ghost')));
  
  if(current==='EVT-01')root.querySelector('.head-actions')?.insertAdjacentHTML('beforeend',A('MON-05','출석 현황')+A('PRE-09','사전교육'));
  if(current==='EVT-02')root.querySelector('.head-actions')?.insertAdjacentHTML('beforeend',A('MON-06','출석 현황')+A('PRE-08','담당 일정'));
@@ -333,6 +333,11 @@ render=function(){
 };
 
 const accountMenuOwner=menuOwner;menuOwner=function(id){return ['COM-06','COM-07'].includes(id)?id:accountMenuOwner(id)};
+const publicBoardList=list;
+list=function(s){if(!['NTC-02','NTC-03'].includes(s.id))return publicBoardList(s);return window.GFAIR_PUBLIC_BOARDS?window.GFAIR_PUBLIC_BOARDS.render(s.id,role,event):head(s)};
+const publicBoardForm=form;
+form=function(s){if(s.id==='NTC-04'&&role!=='admin')return `${head(s)}<div class="empty">목록에서 열람할 게시물을 선택해 주세요. 등록·수정은 관리자만 가능합니다.${A('NTC-01','공지사항 목록')}</div>`;return publicBoardForm(s)};
+window.addEventListener('public-boards-ready',()=>{if(['NTC-02','NTC-03'].includes(current))render()});
 window.addEventListener("attendance-dashboard-ready",()=>{if(location.hash==="#MON-08"||!location.hash&&document.body.dataset.screen==="MON-08")render();});
 render();})();
 

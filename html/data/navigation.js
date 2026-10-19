@@ -440,3 +440,5 @@ window.GFAIR_MENU.find(group=>group.name==="모니터링").items.push(["MON-08",
 })();
 
 Object.assign(GFAIR_MENU.find(g=>g.name==='기본정보관리').items.find(i=>i[0]==='BAS-15')[3],{buyOperator:'X',exportOperator:'X'});
+
+GFAIR_MENU.find(g=>g.name==='공지/알림').items.forEach(i=>{if(['NTC-01','NTC-02','NTC-03'].includes(i[0]))Object.assign(i[3],{admin:'O',buyOperator:'△',exportOperator:'△',buyer:'△',interpreter:'△'})});
