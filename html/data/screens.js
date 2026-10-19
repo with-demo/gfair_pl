@@ -3509,3 +3509,5 @@ window.GFAIR_SCREENS=[
     ]
   }
 ];
+
+window.GFAIR_SCREENS.find(group=>group.screens.some(screen=>screen.id==="MON-01")).screens.push({"id": "MON-08", "title": "출결 대시보드", "role": "관리자·구매/수출상담 운영용역사", "kind": "dashboard", "refs": "사이트맵 모니터링 > 출결 대시보드 / 사용자 요청 2026-10-19", "summary": "역할별 국내 바이어·해외 바이어·통역원의 출석 현황을 확인한다.", "ui": {"metrics": [], "columns": [], "actions": []}, "rules": ["관리자는 전체, 구매 운영사는 국내 바이어, 수출 운영사는 해외 바이어·통역원만 조회한다.", "출석자 인원은 검색 결과와 분리하여 집계한다. 이름·소속 검색, 최신순 출석 목록을 제공한다.", "30초 예시 자동 갱신 및 수동 갱신 시각 표시. 실제 서버 출결 연동은 미구현."], "check": "실제 출결 연동 방식·조회 범위·갱신 주기·출석 집계 기준 협의."});

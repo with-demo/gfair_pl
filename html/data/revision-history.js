@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+ {"version": "v1.0", "screenId": "MON-08", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "release": true, "summary": "신규 화면 작업 완료", "changes": ["모니터링 출결 대시보드 메뉴 추가 및 관리자·구매/수출 운영사 조회 범위 분리", "그룹별 출석 카운트·이름/소속 검색·최신순 고정 스크롤 목록 구성", "마지막 갱신 시각·30초 예시 자동 갱신·수동 새로고침 구성"], "note": "실제 QR·서버 출결 연동 전의 예시 데이터 화면"},
  {"version":"v5.19","screenId":"NTC-01","date":"2026.10.15","accountName":"yulotso0310-cyber","summary":"필터 대상·공지구분·게시상태 순서 및 검색·초기화 중앙 정렬"},
  {"version": "v5.18", "screenId": "NTC-01", "date": "2026.10.15", "accountName": "yulotso0310-cyber", "summary": "검색 필터 전체 폭 정렬 및 게시상태 라디오 전환"},
  {"version": "v5.18", "screenId": "NTC-04", "date": "2026.10.15", "accountName": "yulotso0310-cyber", "summary": "게시 상태 다음 제목 라벨을 좌측 새 행에 배치"},

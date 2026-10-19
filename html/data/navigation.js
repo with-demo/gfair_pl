@@ -420,3 +420,5 @@ window.GFAIR_NAV={
  visible(role){return window.GFAIR_MENU.map(g=>({...g,items:g.items.map(i=>[i[0],i[1],i[2].filter(c=>this.allowed(c,role)),i[3]]).filter(i=>this.allowed(i,role)||i[2].length)})).filter(g=>g.items.length)}
 };
 
+
+window.GFAIR_MENU.find(group=>group.name==="모니터링").items.push(["MON-08","출결 대시보드",[],{"admin":"O","buyOperator":"△","exportOperator":"△","interpreter":"X","buyer":"X"}]);
