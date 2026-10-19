@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"version": "v0.1", "screenId": "BAS-12", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "참가자 엑셀에 초청기관 유형·기관 사무소명 2열 추가 제안", "note": "클라이언트 최종 엑셀 양식·통계 집계 규칙은 협의 필요. 예시 데이터."},
+{"version": "v0.1", "screenId": "BAS-04", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "엑셀에서 연결한 행사별 초청기관 정보 표시", "note": "클라이언트 최종 엑셀 양식·통계 집계 규칙은 협의 필요. 예시 데이터."},
+{"version": "v0.1", "screenId": "STA-01", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "GBC·KBC·민간 에이전시 및 사무소별 상담·계약 추진 통계 추가", "note": "클라이언트 최종 엑셀 양식·통계 집계 규칙은 협의 필요. 예시 데이터."},
 {"version": "v5.22", "screenId": "NTC-01", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "열람 역할의 게시 상태 필터·목록 열 숨김", "note": "게시 글만 열람하는 조건과 관리자 화면 유지. FAQ·자료실은 기존 읽기 전용 표시 유지."},
 {"version": "v5.21", "screenId": "NTC-01", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "열람 역할의 대상 검색·목록 대상 열 숨김", "note": "관리자 대상 표시와 역할별 열람 조건 유지."},
 {"version": "v1.1", "screenId": "NTC-02", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "열람 역할의 대상 검색·목록 대상 열 숨김", "note": "관리자 대상 표시와 역할별 열람 조건 유지."},

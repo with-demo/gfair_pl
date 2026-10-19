@@ -338,6 +338,44 @@ list=function(s){if(!['NTC-02','NTC-03'].includes(s.id))return publicBoardList(s
 const publicBoardForm=form;
 form=function(s){if(s.id==='NTC-04'&&role!=='admin')return `${head(s)}<div class="empty">목록에서 열람할 게시물을 선택해 주세요. 등록·수정은 관리자만 가능합니다.${A('NTC-01','공지사항 목록')}</div>`;return publicBoardForm(s)};
 window.addEventListener('public-boards-ready',()=>{if(['NTC-02','NTC-03'].includes(current))render()});
+
+// 초청기관 2열은 클라이언트 양식 확정 전의 제안 스키마다.
+const agencyTypes=['GBC','KBC','민간 에이전시'];
+const invitationFields=['초청기관 유형','초청기관·사무소명'];
+const invitationInfo=new Map([['2026|해외-예시01',{type:'GBC',office:'GBC 두바이'}],['2026|임시-예시02',{type:'KBC',office:'KBC 도쿄'}]]);
+const agencyFilter={type:'전체',office:'전체'};
+const agencyBaseTemplate=template,agencyBaseCheck=checkUpload,agencyBaseRegister=registerUpload;
+template=async function(){if(current!=='BAS-12')return agencyBaseTemplate();download(await GFAIRWorkbook.write([['내부번호','이름','역할','행사',...invitationFields],['DEMO-001','예시 참가자','국내바이어','2026','',''],['DEMO-FOREIGN-001','해외바이어 예시','해외바이어','2026','GBC','GBC 두바이']]),'G-FAIR_참가자_기관정보추가_검토용양식.xlsx');toast('초청기관 2열은 제안 항목입니다. 클라이언트 최종 양식에 따라 변경될 수 있습니다.')};
+function invitationError(d){if(d[2]!=='해외바이어')return d[4]||d[5]?'초청기관은 해외바이어에만 입력':'';if(!d[4]&&!d[5])return '';if(!agencyTypes.includes(d[4]))return '초청기관 유형 확인';if(!d[5])return '기관·사무소명 누락';return ''}
+checkUpload=async function(){
+ if(current!=='BAS-12')return agencyBaseCheck();
+ uploadData=null;const f=document.getElementById('upload-file').files[0];if(!f)return toast('파일을 먼저 선택해 주세요.');const el=document.getElementById('upload-result');
+ try{if(!/\.xlsx$/i.test(f.name))throw Error('XLSX 파일을 선택해 주세요.');const rr=await GFAIRWorkbook.read(f),header=rr[0]||[],base=['내부번호','이름','역할','행사'];if(!base.every(c=>header.includes(c)))throw Error('기존 필수 열 이름을 확인해 주세요.');const cols=[...base,...invitationFields],indices=cols.map(c=>header.indexOf(c)),seen=new Set(),good=[],bad=[];
+ rr.slice(1).forEach((r,i)=>{const data=indices.map(j=>j<0?'':String(r[j]??'').trim());if(data.every(v=>!v))return;let error=data.slice(0,4).some(v=>!v)?'필수값 누락':!['국내바이어','해외바이어','통역원'].includes(data[2])?'역할 형식':seen.has(data[0])?'내부번호 중복':invitationError(data);if(!error)seen.add(data[0]);(error?bad:good).push({line:i+2,data,error})});
+ uploadData={route:current,good,bad};el.innerHTML=`<div class="notice">정상 ${good.length}건 · 오류 ${bad.length}건 · 검토용 양식</div><p class="small">초청기관 두 열은 선택 제안 항목입니다. 미입력 시 미지정으로 분류합니다. 값이 있으면 유형·사무소명을 함께 입력하는 검토용 정책입니다. 클라이언트 최종 양식에 따라 변경됩니다.</p><div class="tablewrap"><table><thead><tr>${['엑셀 행','이름','역할',...invitationFields,'결과'].map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${[...good,...bad].map(x=>`<tr><td>${x.line}</td><td>${E(x.data[1])}</td><td>${E(x.data[2])}</td><td>${E(x.data[4]||'미지정')}</td><td>${E(x.data[5]||'미지정')}</td><td>${E(x.error||'정상')}</td></tr>`).join('')}</tbody></table></div>${good.length?B('register-upload','정상 건 예시 등록','btn primary'):''}`;
+ }catch(e){uploadData=null;el.textContent=e.message}
+};
+registerUpload=function(){if(current!=='BAS-12')return agencyBaseRegister();const source=uploadData?.route===current?uploadData.good:[];for(const x of source)if(x.data[2]==='해외바이어')invitationInfo.set(x.data[3]+'|'+x.data[0],{type:x.data[4]||'미지정',office:x.data[5]||'미지정'});agencyBaseRegister();if(source.some(x=>x.data[2]==='해외바이어'))nav('BAS-03')};
+function agencyRecords(){
+ const mapping={'F-1':{type:'GBC',office:'GBC 두바이'},'F-2':{type:'KBC',office:'KBC 도쿄'},'F-3':{type:'민간 에이전시',office:'예시 에이전시 A'},'F-4':{type:'GBC',office:'GBC 프랑크푸르트'}};
+ const data=annualRecords.filter(r=>String(r.year)===event&&r.type==='수출').map(r=>({...r,...mapping[r.id]}));
+ // 참가자 등록은 기관 연결만 추가하며, 상담 실적은 발생 전까지 0이다.
+ for(const x of rows(map.get('BAS-03'))){if(x[4]!==event)continue;const key=event+'|'+x[0],info=invitationInfo.get(key);const found=data.find(r=>r.name===x[1]);if(found){if(info)Object.assign(found,info);continue}data.push({id:x[0],name:x[1],type:info?.type||'미지정',office:info?.office||'미지정',count:0,contracts:0,amount:0,contractAmount:0})}
+ return data;
+}
+function agencySelected(){return agencyRecords().filter(r=>(agencyFilter.type==='전체'||r.type===agencyFilter.type)&&(agencyFilter.office==='전체'||r.office===agencyFilter.office))}
+function agencySummary(){const grouped=new Map();for(const r of agencySelected()){const key=r.type+'|'+r.office;if(!grouped.has(key))grouped.set(key,{type:r.type,office:r.office,buyers:0,count:0,contracts:0,amount:0,contractAmount:0});const g=grouped.get(key);g.buyers++;for(const k of ['count','contracts','amount','contractAmount'])g[k]+=r[k]}return [...grouped.values()].sort((a,b)=>b.count-a.count)}
+function agencyStats(){const rr=agencySummary(),sum=k=>rr.reduce((n,r)=>n+r[k],0),offices=[...new Set(agencyRecords().filter(r=>agencyFilter.type==='전체'||r.type===agencyFilter.type).map(r=>r.office))].sort();return `<section class="panel pad agency-statistics" style="margin:24px 0"><h2>초청기관·해외사무소별 상담 및 계약 현황</h2><p class="small" style="margin:12px 0">수출상담 기준 · 아래 기관 필터는 이 영역에만 적용합니다. 상단 전체 통계는 유지합니다.</p><div class="filters">${F('초청기관 유형',`<select id="agency-type">${O(['전체',...agencyTypes,'미지정'],agencyFilter.type)}</select>`)}${F('초청기관·사무소명',`<select id="agency-office">${O(['전체',...offices],agencyFilter.office)}</select>`)}${B('agency-reset','초기화')}${B('refresh','새로고침')}</div><div class="kpis">${[['해외 바이어',sum('buyers'),'명'],['상담 건수',sum('count'),'건'],['상담액',sum('amount').toLocaleString(),'USD'],['계약 추진 건수',sum('contracts'),'건'],['계약 추진액',sum('contractAmount').toLocaleString(),'USD']].map(([k,v,u])=>`<article class="kpi"><div class="kpi-label">${k}</div><div class="kpi-value">${v}<small>${u}</small></div></article>`).join('')}</div><div class="tablewrap"><table><thead><tr>${['초청기관 유형','기관·사무소명','바이어 수','상담 건수','상담액 (USD)','계약 추진 건수','계약 추진액 (USD)'].map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rr.length?rr.map(r=>`<tr><td>${E(r.type)}</td><td>${E(r.office)}</td><td>${r.buyers}</td><td>${r.count}</td><td>${r.amount.toLocaleString()}</td><td>${r.contracts}</td><td>${r.contractAmount.toLocaleString()}</td></tr>`).join(''):'<tr><td colspan="7">조회 결과가 없습니다.</td></tr>'}</tbody></table></div><p class="small" style="margin-top:16px">최종 집계 시각: ${new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'})} · 1분 예시 갱신. 실제 실시간 서버 연동 전입니다.</p><p class="small">기관·사무소명 및 매핑은 예시입니다. 해외 바이어에 연결된 기관 기준으로 집계하며, 등록 직후 상담이 없는 바이어의 실적은 0입니다. 계약 지표는 ‘계약 추진’ 기준이며 최종 집계 기준은 협의 필요합니다. 기관 정보는 행사 연도별로 구분한 제안입니다.</p></section>`}
+const agencyDashboard=dash;
+dash=function(s){const html=agencyDashboard(s);return s.id==='STA-01'&&role==='admin'?html+agencyStats():html};
+const agencyExport=exportRows;
+exportRows=function(){const out=agencyExport();if(current==='STA-01')out.push([],['초청기관·사무소별 수출상담 통계',event,agencyFilter.type,agencyFilter.office],['기관 유형','기관·사무소명','바이어 수','상담 건수','상담액 USD','계약 추진 건수','계약 추진액 USD'],...agencySummary().map(r=>[r.type,r.office,r.buyers,r.count,r.amount,r.contracts,r.contractAmount]));return out};
+root.addEventListener('change',ev=>{if(ev.target.id==='agency-type'){agencyFilter.type=ev.target.value;agencyFilter.office='전체';render()}if(ev.target.id==='agency-office'){agencyFilter.office=ev.target.value;render()}});
+root.addEventListener('click',ev=>{if(ev.target.closest('[data-action="agency-reset"]')){agencyFilter.type='전체';agencyFilter.office='전체';render()}});
+const agencyRender=render;
+render=function(){agencyRender();if(current==='BAS-04'&&role==='admin'){const r=rows(map.get('BAS-03'))[selectedRow],info=r?invitationInfo.get(r[4]+'|'+r[0]):null;root.querySelector('#content')?.insertAdjacentHTML('beforeend',`<section class="panel pad" style="margin-top:20px"><h2>초청기관 정보 · 제안 항목</h2><dl class="detaildata" style="margin-top:16px"><dt>초청기관 유형</dt><dd>${E(info?.type||'미지정')}</dd><dt>초청기관·사무소명</dt><dd>${E(info?.office||'미지정')}</dd></dl></section>`)}if(current==='BAS-12')root.querySelector('.pagehead')?.insertAdjacentHTML('afterend','<p class="notice">초청기관 유형 / 초청기관·사무소명 2열 추가 제안 · 해외 바이어용 선택 항목입니다. 클라이언트 최종 양식에 따라 변경할 수 있습니다.</p>')};
+setInterval(()=>{if(current==='STA-01'&&role==='admin'&&!document.hidden)render()},60000);
+
 window.addEventListener("attendance-dashboard-ready",()=>{if(location.hash==="#MON-08"||!location.hash&&document.body.dataset.screen==="MON-08")render();});
 render();})();
 
