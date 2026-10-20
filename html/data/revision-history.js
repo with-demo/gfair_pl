@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-01","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"기능별 권한 매트릭스를 그룹별 메뉴 접근 권한 팝업으로 변경","note":"역할 5개 그룹의 기존 메뉴 접근을 기본 선택. 대메뉴 전체·하위 메뉴 개별 선택, 저장·취소 및 그룹 등록·수정 제공. 현재 탭의 목업 설정이며 실제 서버 권한과 연동되지 않음."},
+{"screenId":"SET-02","version":"v0.2","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"기능별 권한 매트릭스를 그룹별 메뉴 접근 권한 팝업으로 변경","note":"역할 5개 그룹의 기존 메뉴 접근을 기본 선택. 대메뉴 전체·하위 메뉴 개별 선택, 저장·취소 및 그룹 등록·수정 제공. 현재 탭의 목업 설정이며 실제 서버 권한과 연동되지 않음."},
 {"screenId":"MON-01","version":"v0.6","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"통합 대시보드 위치 안내 제거"},
 {"screenId":"MON-08","version":"v1.4","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"출결 대시보드 위치 안내 제거"},
 {"screenId":"BAS-01","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"중복 상세·수정 버튼 제거, 행 클릭 상세 진입 유지"},

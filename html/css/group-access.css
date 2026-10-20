@@ -1,0 +1,13 @@
+.group-access-dialog{width:700px;max-width:calc(100vw - 32px);max-height:88vh;padding:0;border:1px solid #bbb;border-radius:10px;color:#222}
+.group-access-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;border-bottom:1px solid #ddd}
+.group-access-heading h2{font-size:19px;margin:0}.group-access-heading button{font-size:24px;border:0;padding:0 8px}
+.group-access-body{padding:20px 24px}.group-access-body fieldset{margin-top:24px;padding:16px;border:1px solid #ddd}.group-access-body fieldset label{margin-right:20px}
+.group-access-all{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-weight:600}
+.group-access-scroll{max-height:52vh;overflow:auto;border:1px solid #ddd}.group-access-scroll table{width:100%;border-collapse:collapse;table-layout:fixed}
+.group-access-scroll th,.group-access-scroll td{padding:11px 16px;border-bottom:1px solid #ddd;font-size:14px}
+.group-access-scroll thead th{position:sticky;top:0;z-index:1;background:#eee;text-align:left}.group-access-scroll th:last-child,.group-access-scroll td:last-child{width:112px;text-align:center}
+.group-access-scroll input[type=checkbox],.group-access-all input{width:17px;height:17px;accent-color:#444;cursor:pointer}
+.group-access-scroll tbody td:first-child{padding-left:32px}.group-access-scroll tbody td label{display:block;cursor:pointer}
+.group-access-section{background:#f1f1f1}.group-access-section th{text-align:left}
+.group-access-footer{display:flex;justify-content:flex-end;gap:10px;padding:16px 24px;border-top:1px solid #ddd}
+[data-group-error]{color:#b3261e}[data-group-root]>[role=status]:empty{display:none}
