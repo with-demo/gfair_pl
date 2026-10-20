@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"방한 현황 요약을 유지하며 계정·QR 발급 기능 연결"},
 {"screenId":"PRE-01","version":"v0.6","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"해외 바이어 임시 계정·QR 발급 및 일괄 다운로드 목업 추가"},
 {"screenId":"EVT-01","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"국내 바이어 임시 계정·QR 발급 및 일괄 다운로드 목업 추가"},
 {"screenId":"EVT-02","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"통역원 임시 계정·QR 발급 및 일괄 다운로드 목업 추가"},
