@@ -1,13 +1,13 @@
 (()=>{
  const app=document.getElementById('app');if(!app)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/write-form-layout.css?v=20261020-2',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/write-form-layout.css?v=20261020-3',document.currentScript.src);document.head.append(css);
  function arrange(){
   app.querySelectorAll('form .formgrid,form.formgrid,form .notice-form-grid,form .management-form,form .group-detail-form').forEach(grid=>{
    if(grid.closest('.filters,.login-form,.survey-paper'))return;
    grid.classList.add('write-form-rows');
-   grid.querySelectorAll(':scope > .field').forEach(field=>{
+   grid.querySelectorAll(':scope > .field,:scope > fieldset:has(>legend)').forEach(field=>{
     if(field.classList.contains('write-form-row'))return;
-    const label=field.firstElementChild;if(!label||!label.matches('span,label'))return;
+    const label=field.firstElementChild;if(!label||!label.matches('span,label,legend'))return;
     const controls=document.createElement('div');controls.className='write-form-controls';
     Array.from(field.childNodes).filter(node=>node!==label&&!node.classList?.contains('ui-spec-pin')).forEach(node=>controls.append(node));
     field.append(controls);field.classList.add('write-form-row');
