@@ -233,6 +233,8 @@ exportRows=function(){if(current!=='STA-03')return buyerOnlyExport();const d=buy
 const buyerPageWithoutHistory=annualPage;
 annualPage=function(s){const html=buyerPageWithoutHistory(s);return s.id==='STA-03'?html.replace(/<section class="panel"><div class="panelhead"><h2>연도별 바이어 참가 이력<\/h2>[\s\S]*?<\/section>/,''):html};
 root.addEventListener('click',ev=>{if(ev.target.closest('[data-action=my-info]')){if(['buyOperator','exportOperator'].includes(role)){nav('COM-06');return}modal('내정보',`<dl class="detaildata"><dt>사용자 유형</dt><dd>${E(roles[role])}</dd><dt>선택 행사</dt><dd>G-FAIR KOREA ${E(event)}</dd><dt>계정 상태</dt><dd>검토용 예시 계정</dd></dl><p class="small" style="margin-top:18px">실제 계정 정보는 회원 연계 후 제공됩니다.</p>`);}});
+const annualPerformancePage=annualPage;
+annualPage=function(s){const html=annualPerformancePage(s);if(s.id!=='STA-02')return html;const match=html.match(/<div class="head-actions">([\s\S]*?)<\/div><\/div>(<form id="annual-filter")/);return match?html.replace(match[0],`</div><div class="row" style="justify-content:flex-end;margin:0 0 12px">${match[1]}</div>${match[2]}`):html};
 const surveyTargets=['국내 바이어','해외 바이어','통역원'],surveyTypes=['단일응답형','복수응답형','단답형','서술형','척도형'];
 const surveyClone=v=>JSON.parse(JSON.stringify(v));
 function surveyQuestion(type='단일응답형',title=''){return {title,type,required:true,options:(type==='척도형'?['매우 불만족','불만족','보통','만족','매우 만족']:['예','아니오']).map(label=>({label,extra:false}))}}
