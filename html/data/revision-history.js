@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-15","version":"v2.6","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"연도·상담 구분 라디오·통합검색 필터 추가"},
 {"screenId":"BAS-01","version":"v0.9","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"검색 필터를 연도·행사명·운영 상태 순으로 정렬"},
 {"screenId":"BAS-01","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"운영 상태를 행사전·행사중·종료로 변경하고 참가자 연계 컬럼 제거"},
 {"screenId":"PRE-01","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"기발급된 QR과 미발급 상태에 맞게 버튼 문구 구분"},
