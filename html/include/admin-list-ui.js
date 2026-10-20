@@ -42,6 +42,15 @@
   const size=document.createElement('select');size.setAttribute('aria-label',title+' 페이지당 표시 개수');
   [10,30,50].forEach(n=>size.add(new Option(n+'건씩 보기',String(n))));
   tools.prepend(sort,size);
+  if(route==='BAS-09'){
+   const qrDownload=document.createElement('button');qrDownload.type='button';qrDownload.className='btn';qrDownload.textContent='QR 일괄 다운로드';
+   qrDownload.addEventListener('click',async()=>{
+    const headerCells=[...table.querySelectorAll('thead tr:last-child>th')].map(clean),column=name=>headerCells.indexOf(name),keyIndex=column('연계키'),companyIndex=column('참가기업'),boothIndex=column('부스번호'),statusIndex=column('QR상태');
+    const data=[['연계키','참가기업','부스번호','QR상태','QR정보 (예시 식별값)'],...rows.map(row=>{const value=i=>row.cells[i]?.textContent.trim()||'',qrStatus=value(statusIndex),id=value(keyIndex);return[id,value(companyIndex),value(boothIndex),qrStatus,qrStatus==='발급'?'DEMO-QR-'+id:'미발급']})];
+    try{const blob=await window.GFAIRWorkbook.write(data),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='G-FAIR_참가기업_QR정보_검토용.xlsx';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);const notice=document.getElementById('toast');if(notice){notice.textContent='참가기업 QR 예시 정보를 다운로드했습니다. 실제 QR 이미지·인증은 서버 연동이 필요합니다.';notice.hidden=false;setTimeout(()=>notice.hidden=true,3500)}}catch{const notice=document.getElementById('toast');if(notice){notice.textContent='QR 정보 파일을 생성하지 못했습니다.';notice.hidden=false;setTimeout(()=>notice.hidden=true,2800)}}
+   });
+   tools.append(qrDownload);
+  }
   panel.querySelectorAll(':scope>.tablefoot').forEach(el=>el.hidden=true);
   const pagination=document.createElement('nav');pagination.className='admin-list-pagination';pagination.setAttribute('aria-label',title+' 페이지');panel.append(pagination);
   let page=1;
