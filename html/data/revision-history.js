@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v0.9","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"목록 열 순서를 유지하고 2026·2027 참가 상태 기준 반영"},
+{"screenId":"BAS-05","version":"v0.9","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"목록 컬럼 순서를 참가연도·참가상태·QR상태로 통일"},
+{"screenId":"BAS-07","version":"v0.9","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"특이사항 열 제거 및 2026·2027 참가 상태 기준 반영"},
 {"screenId":"BAS-03","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"이름·생년월일 기준 연도별 참가 상태 표시 및 중복 정보 갱신"},
 {"screenId":"BAS-05","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"이름·생년월일 기준 연도별 참가 상태 표시 및 중복 정보 갱신"},
 {"screenId":"BAS-07","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"이름·생년월일 기준 연도별 참가 상태 표시 및 중복 정보 갱신"},

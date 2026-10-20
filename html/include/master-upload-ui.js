@@ -9,17 +9,18 @@
  let nextId=1,validated=null;
  const key=(name,dob)=>name.trim().toLocaleLowerCase()+'|'+dob;
  const people=new Map([
-  ['BAS-03',new Map([[key('해외바이어 A','1990-01-01'),{index:0,years:['2025','2026']} ]])],
-  ['BAS-05',new Map([[key('국내바이어 B','1991-01-01'),{index:1,years:['2025','2026']} ]])],
-  ['BAS-07',new Map([[key('통역원 A','1992-01-01'),{index:0,years:['2025','2026']} ]])]
+  ['BAS-03',new Map([[key('해외바이어 A','1990-01-01'),{index:0,years:['2026']}],[key('해외바이어 B','1993-03-03'),{index:1,years:['2026','2027']}],[key('해외바이어 C','1994-04-04'),{index:2,years:['2027']}]])],
+  ['BAS-05',new Map([[key('국내바이어 A','1995-05-05'),{index:0,years:['2027']}],[key('국내바이어 B','1991-01-01'),{index:1,years:['2026','2027']}],[key('국내바이어 C','1996-06-06'),{index:2,years:['2026']}]])],
+  ['BAS-07',new Map([[key('통역원 A','1992-01-01'),{index:0,years:['2026','2027']}],[key('통역원 B','1997-07-07'),{index:1,years:['2027']}],[key('통역원 C','1998-08-08'),{index:2,years:['2026']}]])]
  ]);
+ const participantStatus=years=>years.has('2026')&&years.has('2027')?'참가 확정':years.has('2027')?'신규':'참가 미정';
  function syncButtons(){if(!targets.has(screen()))return;app?.querySelectorAll('.pagehead [data-action="action"]').forEach(button=>{if(button.dataset.label==='엑셀 양식 다운로드')button.classList.remove('primary');if(button.dataset.label==='엑셀 일괄 업로드')button.classList.add('primary');});const field=[...(app?.querySelectorAll('.filters .field')||[])].find(x=>x.querySelector('span')?.textContent.trim()==='참가 상태'),select=field?.querySelector('select');if(select&&!['전체','신규','참가 확정','참가 미정'].every((v,i)=>select.options[i]?.value===v))select.replaceChildren(...['전체','신규','참가 확정','참가 미정'].map(v=>new Option(v,v)));}
  if(app){new MutationObserver(syncButtons).observe(app,{childList:true,subtree:true});syncButtons();}
  function page(id){return (window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).find(s=>s.id===id)}
  function templateColumns(s){const columns=[...s.ui.columns],nameIndex=columns.indexOf(nameFields[s.id]);columns.splice(nameIndex+1,0,'생년월일');return columns}
  function openUpload(id){
   validated=null;const name=labels[id];
-  content.innerHTML=`<div class="dialoghead"><h2>${name} 엑셀 일괄 업로드</h2><button type="button" class="btn ghost" data-action="close">닫기</button></div><div class="dialogbody"><p>이름과 생년월일로 과거 참가 이력을 확인하고, 같은 참가자면 이전 연도 정보를 최신 업로드 내용으로 덮어씁니다.</p><p class="small">생년월일 입력은 YYYY-MM-DD 형식을 검토용으로 사용합니다. 상태는 신규·참가 확정·참가 미정으로 분류하며, 세부 운영 기준은 협의 필요합니다. 실제 서버 저장은 하지 않습니다.</p><form data-master-upload-form="${id}"><label class="field"><span>엑셀 파일</span><input type="file" name="file" accept=".xlsx" required></label><button type="submit" class="btn primary">파일 검증</button></form><div data-master-upload-result aria-live="polite"></div></div>`;
+  content.innerHTML=`<div class="dialoghead"><h2>${name} 엑셀 일괄 업로드</h2><button type="button" class="btn ghost" data-action="close">닫기</button></div><div class="dialogbody"><p>이름과 생년월일로 2026·2027 참가 여부를 확인합니다. 같은 참가자는 기존 정보를 최신 업로드 내용으로 갱신합니다.</p><p class="small">2026·2027 모두 참여하면 참가 확정, 2027만 참여하면 신규, 2026에 참여했으나 2027에 참여하지 않으면 참가 미정으로 표시합니다. 생년월일 YYYY-MM-DD는 검토용 형식이며 실제 서버 저장은 하지 않습니다.</p><form data-master-upload-form="${id}"><label class="field"><span>엑셀 파일</span><input type="file" name="file" accept=".xlsx" required></label><button type="submit" class="btn primary">파일 검증</button></form><div data-master-upload-result aria-live="polite"></div></div>`;
   dialog.showModal();
  }
  document.addEventListener('click',async ev=>{
@@ -49,7 +50,7 @@
    if(!parsed.length)throw Error('검증할 데이터 행이 없습니다.');
    const byIdentity=new Map();parsed.filter(x=>x.valid).forEach(x=>{const k=key(x.name,x.dob);if(!byIdentity.has(k))byIdentity.set(k,[]);byIdentity.get(k).push(x)});
    const old=people.get(id)||new Map();
-   parsed.forEach(x=>{if(!x.valid){x.status='참가 미정';return;}const prior=old.get(key(x.name,x.dob)),same=byIdentity.get(key(x.name,x.dob)),years=new Set([...(prior?.years||[]),...same.map(r=>r.year)]);x.status=prior||same.length>1||years.size>1?'참가 확정':'신규';});
+   parsed.forEach(x=>{if(!x.valid){x.status='참가 미정';return;}const prior=old.get(key(x.name,x.dob)),same=byIdentity.get(key(x.name,x.dob)),years=new Set([...(prior?.years||[]),...same.map(r=>r.year)]);x.status=participantStatus(years);});
    renderValidation(id,parsed,[]);
   }catch(error){validated=null;result.innerHTML=`<div class="notice danger" style="margin-top:16px">${esc(error.message||'파일을 확인할 수 없습니다.')}</div>`;}
  },true);
@@ -57,12 +58,15 @@
   if(ev.target.closest('[data-master-apply]')){
    if(!validated||validated.id!==screen())return;const id=validated.id,s=page(id),state=people.get(id)||new Map(),entries=validated.entries,groups=new Map();
    entries.filter(x=>x.valid).forEach(x=>{const k=key(x.name,x.dob);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(x)});
+   const validEntries=entries.filter(x=>x.valid),isFull2027Upload=validEntries.length>0&&validEntries.every(x=>x.year==='2027');
+   if(isFull2027Upload)state.forEach((person,k)=>{if(person.years.includes('2026')&&!groups.has(k)){person.years=person.years.filter(year=>year!=='2027');const row=s.ui.rows[person.index];if(row)setStatus(row,s,participantStatus(new Set(person.years)));}});
    groups.forEach((items,k)=>{
     const prior=state.get(k),years=new Set([...(prior?.years||[]),...items.map(x=>x.year)]),latest=items.slice().sort((a,b)=>a.year.localeCompare(b.year)).at(-1),data=latest.raw,row=s.ui.columns.map(column=>{const ix=latest.headers?.indexOf(column)??-1;return ix>=0?String(data[ix]??'').trim():''});
     const nameIx=s.ui.columns.indexOf(nameFields[id]),yearIx=s.ui.columns.indexOf('참가연도');if(row[0]==='')row[0]=prior?s.ui.rows[prior.index][0]:`DEMO-${id.slice(-2)}-${String(nextId++).padStart(3,'0')}`;if(nameIx>=0)row[nameIx]=latest.name;if(yearIx>=0)row[yearIx]=[...years].sort().join(', ');
-    const status=items.some(x=>x.status==='참가 미정')?'참가 미정':(prior||items.length>1||years.size>1?'참가 확정':'신규');setStatus(row,s,status);
+    const status=participantStatus(years);setStatus(row,s,status);
     let index=prior?.index??-1;if(prior)row[0]=s.ui.rows[index][0];else if(!row[0])row[0]=`DEMO-${id.slice(-2)}-${String(nextId++).padStart(3,'0')}`;if(index>=0)s.ui.rows[index]=row;else{index=s.ui.rows.length;s.ui.rows.push(row)}state.set(k,{index,years:[...years]});
    });
+   state.forEach(person=>{const row=s.ui.rows[person.index];if(row)setStatus(row,s,participantStatus(new Set(person.years)));});
    people.set(id,state);dialog.close();validated=null;
    const toast=document.getElementById('toast');if(toast){toast.textContent='참가자 예시 목록을 갱신했습니다. 서버에는 저장되지 않았습니다.';toast.hidden=false;setTimeout(()=>toast.hidden=true,2800)}
   }
