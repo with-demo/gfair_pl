@@ -1,6 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
-{"screenId":"PRE-01","version":"v0.9","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"해외 바이어 방한정보 목록에서 날짜 검색 필터 제거"},
+{"screenId":"PRE-01","version":"v1.0","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"바이어 다중선택 검색과 검색 필터 순서 변경"},
 {"screenId":"BAS-09","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"참가기업별 부스 QR 이미지 ZIP 다운로드로 변경","note":"목록의 참가기업별 부스 QR GIF 이미지를 ZIP으로 다운로드합니다. QR에는 목업용 식별값이 포함되며 실제 인증에는 사용할 수 없습니다."},
 {"screenId":"BAS-03","version":"v1.0","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"해외 바이어 목록에서 QR상태 열 제거"},
 {"screenId":"BAS-05","version":"v1.0","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"국내 바이어 목록에서 QR상태 열 제거"},
