@@ -229,8 +229,8 @@ window.GFAIR_SCREENS=[
           ],
           "filters": [
             "연도",
-            "운영 상태",
-            "행사명"
+            "행사명",
+            "운영 상태"
           ],
           "actions": [
             "신규 행사",
