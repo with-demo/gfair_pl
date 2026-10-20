@@ -9,6 +9,8 @@ window.GFAIR_REVISION_HISTORY=[
 {"screenId":"MON-08","version":"v1.4","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"출결 대시보드 위치 안내 제거"},
 {"screenId":"BAS-01","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"중복 상세·수정 버튼 제거, 행 클릭 상세 진입 유지"},
 {"screenId":"SET-01","version":"v0.4","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"중복 상세·권한 버튼 제거, 행 클릭 상세 진입 유지"},
+{"screenId":"JNL-BUY","version":"v1.0","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"구매상담일지 필터·목록 유형 제거, 기업 멀티 선택 및 엑셀 다운로드 적용"},
+{"screenId":"JNL-EXP","version":"v1.0","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"수출상담일지 필터·목록 유형 제거, 기업 멀티 선택 및 엑셀 다운로드 적용"},
 {"screenId":"JNL-BUY","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"관리자 상담일지 작성·일괄 업로드 버튼 제거, 승인·반려 유지"},
 {"screenId":"JNL-EXP","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"관리자 상담일지 작성·일괄 업로드 버튼 제거, 승인·반려 유지"},
 {"screenId":"JNL-BUY","version":"v0.9","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"구매상담일지 목록의 승인·반려 컬럼 제거, 상세 검수로 이동"},
