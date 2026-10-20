@@ -1,8 +1,8 @@
 (()=>{
  const app=document.getElementById('app');if(!app)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/write-form-layout.css?v=20261020',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/write-form-layout.css?v=20261020-2',document.currentScript.src);document.head.append(css);
  function arrange(){
-  app.querySelectorAll('form .formgrid,form.formgrid,form .notice-form-grid').forEach(grid=>{
+  app.querySelectorAll('form .formgrid,form.formgrid,form .notice-form-grid,form .management-form,form .group-detail-form').forEach(grid=>{
    if(grid.closest('.filters,.login-form,.survey-paper'))return;
    grid.classList.add('write-form-rows');
    grid.querySelectorAll(':scope > .field').forEach(field=>{
