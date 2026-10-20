@@ -294,38 +294,11 @@ approve=function(reject){
 };
 
 
-// 승인/반려는 별도 메뉴가 아닌 구매·수출 목록의 행 단위 조작이다.
 function canReviewJournal(j){
  return !!j&&['admin','buyOperator','exportOperator'].includes(role)
   &&(role==='admin'||j.type===(role==='buyOperator'?'구매':'수출'))
   &&scope!=='stats'&&(scope==='all'||scope===(j.type==='구매'?'buy':'export'));
 }
-const listReviewTable=jTable;
-jTable=function(rr,personal=false){
- if(personal||!['JNL-BUY','JNL-EXP'].includes(current)||!['admin','buyOperator','exportOperator'].includes(role))return listReviewTable(rr,personal);
- return `<div class="tablewrap"><table class="journal-review-list"><thead><tr>${['일지번호','유형','참가기업 / 부스','바이어 / 작성자','제출 일자','처리 상태','상세','승인·반려'].map(t=>`<th scope="col">${t}</th>`).join('')}</tr></thead><tbody>${rr.length?rr.map(j=>`<tr><td>${E(j.id)}</td><td>${E(j.type)}</td><td><strong>${E(j.company)}</strong><small>${E(j.booth)}</small></td><td>${E(j.buyer)}<small>작성 ${E(j.writer)}</small></td><td>${E(j.time)}</td><td>${badge(j.status)}</td><td>${B('j-detail','조회','btn ghost',`data-id="${E(j.id)}"`)}</td><td>${canReviewJournal(j)&&j.status==='승인 요청'?`<span class="row" style="flex-wrap:nowrap;justify-content:center">${B('journal-list-approve','승인','btn',`data-id="${E(j.id)}"`)}${B('journal-list-reject','반려','btn',`data-id="${E(j.id)}"`)}</span>`:'<span class="small">—</span>'}</td></tr>`).join(''):'<tr><td colspan="8"><div class="empty">해당 조건의 상담일지가 없습니다.</div></td></tr>'}</tbody></table></div>`;
-};
-root.addEventListener('click',ev=>{
- const b=ev.target.closest('[data-action]');
- if(!b||!['journal-list-approve','journal-list-reject'].includes(b.dataset.action))return;
- const j=journals.find(j=>j.id===b.dataset.id);
- if(!canReviewJournal(j)||j.status!=='승인 요청')return toast('담당 범위와 최신 처리 상태를 확인해 주세요.');
- selected=j.id;
- const reject=b.dataset.action==='journal-list-reject';
- modal(reject?'상담일지 반려':'상담일지 승인',`<p><strong>${E(j.id)}</strong> · ${E(j.company)} · ${E(j.writer)}</p><p style="margin:12px 0">${reject?'반려 사유를 입력해 주세요.':'해당 상담일지를 승인할까요?'}</p>${reject?F('반려 사유','<textarea id="reject-reason" required placeholder="반려 사유를 입력해 주세요."></textarea>'):''}<p class="small">검토용 예시 처리이며 실제 서버에 저장하지 않습니다.</p>`,reject?'journal-list-confirm-reject':'journal-list-confirm-approve',reject?'반려':'승인');
- if(reject)document.getElementById('reject-reason').focus();
-});
-document.getElementById('dialog-content').addEventListener('click',ev=>{
- const b=ev.target.closest('[data-action]');
- if(!b||!['journal-list-confirm-approve','journal-list-confirm-reject'].includes(b.dataset.action))return;
- ev.stopImmediatePropagation();
- const j=journals.find(j=>j.id===selected);
- if(!canReviewJournal(j)||j.status!=='승인 요청')return toast('담당 범위와 최신 처리 상태를 확인해 주세요.');
- const reject=b.dataset.action==='journal-list-confirm-reject';
- if(reject&&!document.getElementById('reject-reason').value.trim()){document.getElementById('reject-reason').focus();return toast('반려 사유를 입력해 주세요.');}
- approve(reject);
- if(j.status===(reject?'반려':'승인 완료'))dialog.close();
-},true);
 const listReviewRender=render;
 render=function(){
  if(location.hash==='#REVIEW-01'){nav(role==='exportOperator'?'JNL-EXP':'JNL-BUY');return;}

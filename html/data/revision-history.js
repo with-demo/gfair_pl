@@ -10,6 +10,8 @@ window.GFAIR_REVISION_HISTORY=[
 {"screenId":"SET-01","version":"v0.4","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"중복 상세·권한 버튼 제거, 행 클릭 상세 진입 유지"},
 {"screenId":"JNL-BUY","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"관리자 상담일지 작성·일괄 업로드 버튼 제거, 승인·반려 유지"},
 {"screenId":"JNL-EXP","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"관리자 상담일지 작성·일괄 업로드 버튼 제거, 승인·반려 유지"},
+{"screenId":"JNL-BUY","version":"v0.9","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"구매상담일지 목록의 승인·반려 컬럼 제거, 상세 검수로 이동"},
+{"screenId":"JNL-EXP","version":"v0.9","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"수출상담일지 목록의 승인·반려 컬럼 제거, 상세 검수로 이동"},
 {"screenId":"JNL-01","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"관리자 일괄 업로드 버튼 제거, 승인·반려 유지"},
 {"screenId":"JNL-07","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"관리자 일지 작성 버튼 제거, 작성자 기능 유지"},
 {"screenId":"BAS-01","version":"v0.6","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"관리자 목록 조회 건수·정렬·표시 개수·페이지네이션 및 버튼 위치 통일","note":"위치 안내 우측, 다운로드 목록 도구 우측, 등록 작업 목록 하단 우측. 페이지네이션 첫·이전·다음·마지막 이동 제공. 열람자 화면 유지."},
