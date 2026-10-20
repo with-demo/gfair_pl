@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"엑셀 양식 다운로드와 일괄 업로드 검증 팝업 추가"},
+{"screenId":"BAS-05","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"엑셀 양식 다운로드와 일괄 업로드 검증 팝업 추가"},
+{"screenId":"BAS-07","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"엑셀 양식 다운로드와 일괄 업로드 검증 팝업 추가"},
 {"screenId":"BAS-15","version":"v2.6","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"연도·상담 구분 라디오·통합검색 필터 추가"},
 {"screenId":"BAS-01","version":"v0.9","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"검색 필터를 연도·행사명·운영 상태 순으로 정렬"},
 {"screenId":"BAS-01","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"운영 상태를 행사전·행사중·종료로 변경하고 참가자 연계 컬럼 제거"},
