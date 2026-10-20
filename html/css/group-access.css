@@ -11,3 +11,7 @@
 .group-access-section{background:#f1f1f1}.group-access-section th{text-align:left}
 .group-access-footer{display:flex;justify-content:flex-end;gap:10px;padding:16px 24px;border-top:1px solid #ddd}
 [data-group-error]{color:#b3261e}[data-group-root]>[role=status]:empty{display:none}
+.group-name-link{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.group-name-link:focus-visible{outline:2px solid #444;outline-offset:4px}
+.group-detail-form>.field{margin-top:24px;max-width:640px}.group-detail-form fieldset{margin-top:24px;padding:16px;border:1px solid #ddd}.group-detail-form fieldset label{margin-right:24px}
+.group-detail-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}

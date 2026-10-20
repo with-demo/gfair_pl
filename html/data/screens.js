@@ -3103,7 +3103,7 @@ window.GFAIR_SCREENS=[
       },
       {
         "id": "SET-02",
-        "title": "그룹 메뉴 접근 권한",
+        "title": "그룹 상세",
         "role": "최상위 관리자",
         "kind": "matrix",
         "refs": "협상 3 / 제안서 p.39 / SFR-012",
