@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v0.6","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"해외 바이어 임시 계정·QR 발급 및 일괄 다운로드 목업 추가"},
+{"screenId":"EVT-01","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"국내 바이어 임시 계정·QR 발급 및 일괄 다운로드 목업 추가"},
+{"screenId":"EVT-02","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"통역원 임시 계정·QR 발급 및 일괄 다운로드 목업 추가"},
 {"screenId":"PRE-01","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"행사정보 목록에서 행사 필터 제거"},
 {"screenId":"PRE-04","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"통역원 매칭 목록에서 행사 필터 제거"},
 {"screenId":"EVT-01","version":"v0.4","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"국내 바이어 목록에서 행사 필터 제거"},
