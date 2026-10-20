@@ -25,3 +25,5 @@
 .travel-stage-grid:has(.travel-total){grid-template-columns:repeat(7,minmax(0,1fr))}.travel-total{border-color:#555;background:#fafafa}.travel-total .travel-stage-name{font-weight:700}
 @media(max-width:1200px){.travel-stage-grid:has(.travel-total){grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:600px){.travel-stage-grid:has(.travel-total){grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.monitoring-update{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap}.monitoring-update-time{display:inline-flex;align-items:center;gap:5px;color:#777;font-size:12px;white-space:nowrap}.monitoring-update-time svg{width:14px;height:14px}
