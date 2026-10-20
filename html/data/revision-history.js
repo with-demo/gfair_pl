@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"version": "v0.2", "screenId": "PRE-01", "date": "2026.10.20", "accountName": "yulotso0310-cyber", "summary": "방한 현황에 총 해외 바이어 수 카드 추가", "note": "현재 행사 전체 목록 기준. 검색·이동 상태 필터와 별도로 전체 인원 표시."},
 {"version":"v0.4","screenId":"MON-01","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"화면 설명·목업 안내를 Description 개요 상단으로 이동","note":"화면 구성요소·입력 안내·오류·처리 결과는 유지. 기존 번호별 명세·시트 연동 유지."},
 {"version":"v1.1","screenId":"MON-08","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"화면 설명·목업 안내를 Description 개요 상단으로 이동","note":"화면 구성요소·입력 안내·오류·처리 결과는 유지. 기존 번호별 명세·시트 연동 유지."},
 {"version":"v0.4","screenId":"BAS-01","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"화면 설명·목업 안내를 Description 개요 상단으로 이동","note":"화면 구성요소·입력 안내·오류·처리 결과는 유지. 기존 번호별 명세·시트 연동 유지."},

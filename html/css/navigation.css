@@ -21,3 +21,7 @@
 #app .ui-spec-range-selected{outline:0;position:relative}
 #app .ui-spec-range-selected::after{content:"";position:absolute;inset:-8px;border:2px dashed var(--spec-range-color,#c62828);border-radius:0;pointer-events:none;z-index:2}
 #app .field.ui-spec-range-selected>.ui-spec-pin{top:-4px;right:0;z-index:3}
+
+.travel-stage-grid:has(.travel-total){grid-template-columns:repeat(7,minmax(0,1fr))}.travel-total{border-color:#555;background:#fafafa}.travel-total .travel-stage-name{font-weight:700}
+@media(max-width:1200px){.travel-stage-grid:has(.travel-total){grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.travel-stage-grid:has(.travel-total){grid-template-columns:repeat(2,minmax(0,1fr))}}
