@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"이름·생년월일 기준 연도별 참가 상태 표시 및 중복 정보 갱신"},
+{"screenId":"BAS-05","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"이름·생년월일 기준 연도별 참가 상태 표시 및 중복 정보 갱신"},
+{"screenId":"BAS-07","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"이름·생년월일 기준 연도별 참가 상태 표시 및 중복 정보 갱신"},
 {"screenId":"BAS-03","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"엑셀 양식 다운로드와 일괄 업로드 검증 팝업 추가"},
 {"screenId":"BAS-05","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"엑셀 양식 다운로드와 일괄 업로드 검증 팝업 추가"},
 {"screenId":"BAS-07","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"엑셀 양식 다운로드와 일괄 업로드 검증 팝업 추가"},
