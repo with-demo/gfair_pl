@@ -1,0 +1,21 @@
+/* 관리자 화면의 위치 안내와 목록 도구. 열람자·상세 폼에는 목록 도구를 추가하지 않는다. */
+#content.admin-list-layout .pagehead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:start}
+#content.admin-list-layout .pagehead>div:first-child{display:contents}
+#content.admin-list-layout .pagehead .breadcrumb{grid-column:2;grid-row:1;justify-content:flex-end;align-self:center;margin:0;text-align:right;flex-wrap:wrap}
+#content.admin-list-layout .pagehead h1{grid-column:1;grid-row:1;margin:0}
+#content.admin-list-layout .pagehead .head-actions{grid-column:1/-1;justify-self:end}
+.admin-list-panel>.panelhead{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.admin-list-panel>.panelhead h2{font-size:14px;font-weight:400;margin:0}
+.admin-list-tools,.admin-list-tools>.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.admin-list-tools{margin-left:auto;justify-content:flex-end}
+.admin-list-tools select{width:auto;min-width:112px;max-width:230px;height:40px;font-size:13px}
+.admin-list-tools .btn{white-space:nowrap}
+.admin-list-pagination{display:flex;justify-content:center;align-items:center;gap:6px;padding:20px}
+.admin-list-pagination .btn{min-width:34px;height:34px;padding:5px 10px;font-size:12px}
+.admin-list-pagination .btn,#content.admin-list-layout .notice-pagination .btn{border:0;background:transparent;color:#333;box-shadow:none}
+.admin-list-pagination [aria-current=page],#content.admin-list-layout .notice-pagination [aria-current=page]{background:transparent;color:#111;font-weight:700;text-decoration:underline;text-underline-offset:5px}
+.admin-list-pagination .btn:disabled,#content.admin-list-layout .notice-pagination .btn:disabled{opacity:.35;cursor:default}
+.admin-list-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin:16px 0 24px}
+.admin-list-actions .head-actions{display:flex;gap:10px;flex-wrap:wrap}
+.admin-list-panel tbody>tr[hidden],.admin-list-panel>.tablefoot[hidden]{display:none!important}
+@media(max-width:700px){#content.admin-list-layout .pagehead{grid-template-columns:minmax(0,1fr)}#content.admin-list-layout .pagehead .breadcrumb{grid-column:1;grid-row:1}#content.admin-list-layout .pagehead h1{grid-row:2}.admin-list-tools{width:100%;justify-content:flex-end}}
