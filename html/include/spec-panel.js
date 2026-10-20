@@ -2,7 +2,7 @@
  const app=document.getElementById('app');
  if(!app)return;
  const base=new URL('.',document.currentScript.src);
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/spec-panel.css?v=notice-filter-spec-20261015',base);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/spec-panel.css?v=overview-copy-20261020',base);document.head.append(css);
  let specs=window.GFAIR_NOTICE_SPEC||[];
  let sourceLabel="전용 시트 연결 준비 중",sheetBusy=false,sheetRequested=false;
  let access=window.GFAIR_NOTICE_ACCESS||[];
@@ -38,10 +38,47 @@
   releases.forEach(entry=>{const item=document.createElement('li'),meta=document.createElement('strong'),summary=document.createElement('p');meta.textContent=entry.date+' / '+revisionAccountName(entry)+(entry.version?' · '+(entry.fromVersion?entry.fromVersion+' → ':'')+entry.version:'');summary.textContent=entry.summary;item.append(meta,summary);if(entry.changes){const changes=document.createElement('ul');entry.changes.forEach(text=>{const change=document.createElement('li');change.textContent=text;changes.append(change);});item.append(changes);}if(entry.note){const note=document.createElement('p');note.textContent=entry.note;item.append(note);}list.append(item);});modal.append(list);
   const close=document.createElement('button');close.type='button';close.className='ui-revision-close';close.textContent='×';close.setAttribute('aria-label','수정 이력 닫기');close.title='닫기';close.addEventListener('click',()=>modal.close());const header=document.createElement('div');header.className='ui-revision-header';header.append(heading,close);modal.prepend(header);modal.showModal();
  }
+
+ let overviewSignature='';
+ function overviewInfo(){
+  const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
+  const role=document.getElementById('role-picker')?.value||'admin';
+  if(route==='screens')return {title:'',paragraphs:[],signature:'screens'};
+  const screen=(window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).find(s=>s.id===route);
+  const main=app.querySelector('#content'),title=main?.querySelector('h1')?.textContent.trim()||screen?.title||route;
+  const nodes=main?[...main.querySelectorAll('.pagehead .subtitle,.management-note,.attendance-demo-note,.statistics-footnote,.notice-save-note,.notice-file-note,p.small,#content>.notice')].filter(el=>{
+   if(el.closest('#form-result,#upload-result,[data-management-upload-result],[role="status"],[aria-live]'))return false;
+   const text=el.textContent.trim();
+   if(/최종 집계 시각|마지막 갱신/.test(text))return false;
+   return el.matches('.pagehead .subtitle,.management-note,.attendance-demo-note,.statistics-footnote,.notice-save-note,.notice-file-note')||/기획.*검토|검토용|실제.*(?:계정|서버|연동|연결)|협의 필요|최종.*양식|제안 항목/.test(text);
+  }):[];
+  const primary=nodes.find(el=>el.matches('.pagehead .subtitle'));
+  let summary=primary?.textContent.trim()||screen?.summary||'';
+  if(route==='NTC-01')summary=role==='admin'?'대상별 공지사항을 등록·관리합니다.':'본인 대상의 게시된 공지사항을 확인하고 첨부파일을 다운로드합니다.';
+  if(['NTC-02','NTC-03'].includes(route)){const name=route==='NTC-02'?'FAQ':'자료';summary=role==='admin'?'대상별 '+name+'를 등록·관리합니다.':'본인 대상의 게시된 '+name+'를 확인하고 첨부파일을 다운로드합니다.';}
+  const paragraphs=[...new Set([summary,...nodes.filter(el=>el!==primary).map(el=>el.textContent.trim())].filter(Boolean))];
+  nodes.forEach(el=>{el.dataset.descriptionOverview='';});
+  return {title,paragraphs,signature:JSON.stringify([route,role,title,paragraphs])};
+ }
+ function addOverview(container,info){
+  const block=document.createElement('section');block.className='ui-spec-screen-description';block.setAttribute('aria-label','화면 설명');
+  info.paragraphs.forEach(text=>{const p=document.createElement('p');p.textContent=text;block.append(p);});
+  if(info.paragraphs.length)container.append(block);
+ }
+ function drawSummaryOnly(info,version){
+  panel.append(version);
+  const heading=document.createElement('h2');heading.textContent=info.title+' Description';panel.append(heading);
+  const tabs=document.createElement('div');tabs.className='ui-spec-tabs';tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Description 항목');
+  const button=document.createElement('button');button.type='button';button.setAttribute('role','tab');button.setAttribute('aria-selected','true');button.textContent='개요';button.id='overview-only-tab';tabs.append(button);panel.append(tabs);
+  const content=document.createElement('div');content.className='ui-spec-tab-body';content.setAttribute('role','tabpanel');content.setAttribute('aria-labelledby','overview-only-tab');addOverview(content,info);
+  const title=document.createElement('h3');title.textContent='화면요소 · 개요';content.append(title);
+  const note=document.createElement('p');note.className='ui-spec-intro';note.textContent='요소별 상세 명세는 아직 작성되지 않았습니다.';content.append(note);panel.append(content);
+ }
  function draw(){
   panel.replaceChildren();
   const version=document.createElement('footer');version.className='ui-spec-version';const revisionButton=document.createElement('button');revisionButton.type='button';const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;const latest=(window.GFAIR_REVISION_HISTORY||[]).find(entry=>entry.screenId===route);revisionButton.textContent=latest?'HTML '+latest.version+' · '+latest.date+' / '+revisionAccountName(latest):'수정 이력';revisionButton.title='수정 이력 보기';revisionButton.addEventListener('click',showHistory);version.append(revisionButton);
-  if(!context()){status.textContent='';panel.append(version);return;}
+  const overviewData=overviewInfo();overviewSignature=overviewData.signature;
+  if(!context()){status.textContent='';if(overviewData.paragraphs.length)drawSummaryOnly(overviewData,version);else panel.append(version);return;}
   const heading=document.createElement('h2');heading.textContent=(contextKey==='list'?'공지사항':contextKey==='editor'?'공지사항 등록·수정':'공지사항 상세')+' Description';panel.append(heading);
   const intro=document.createElement('p');intro.className='ui-spec-intro';intro.textContent=(contextKey==='list'?'NTC-01':'NTC-04')+' · '+sourceLabel;panel.append(intro);
   const link=document.createElement('a');link.className='ui-spec-source';link.textContent='명세 시트 수정하기 ↗';link.href='https://docs.google.com/spreadsheets/d/11ta8oBialEa6NBmHdngQXZFjLCD9ouPmQ_GJBAb78RE/edit?gid='+config().gid+'#gid='+config().gid;link.target='_blank';link.rel='noopener';panel.append(link);
@@ -66,6 +103,7 @@
   });
   const content=document.createElement('div');content.id='spec-tab-body';content.className='ui-spec-tab-body';content.setAttribute('role','tabpanel');content.setAttribute('aria-labelledby','spec-tab-'+selectedTab);content.tabIndex=0;
   if(!selectedTab){
+   addOverview(content,overviewData);
    const title=document.createElement('h3');title.textContent='화면요소 · 개요';content.append(title);
    const wrap=document.createElement('div');wrap.className='ui-spec-grid-wrap';const grid=document.createElement('table');grid.className='ui-spec-grid ui-spec-overview';
    const head=document.createElement('thead'),tr=document.createElement('tr');
@@ -101,7 +139,7 @@
  }
  function sync(){
   const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
-  if(selectContext())draw();const active=!!context(),overview=route==='screens';if(active&&!sheetRequested){sheetRequested=true;refreshDescription();}toolbar.hidden=false;panel.hidden=closed||overview;
+  const overviewData=overviewInfo();if(selectContext()||overviewData.signature!==overviewSignature)draw();const active=!!context(),overview=route==='screens';if(active&&!sheetRequested){sheetRequested=true;refreshDescription();}toolbar.hidden=false;panel.hidden=closed||overview;
   ['refresh','numbers','full','close'].forEach(action=>{toolbar.querySelector('[data-spec='+action+']').hidden=overview||(action==='numbers'&&!active);});status.hidden=overview;
   screenPicker.value=route;
   panel.setAttribute('aria-label','Description');toolbar.querySelector('[data-spec=numbers]').hidden=overview||!active;

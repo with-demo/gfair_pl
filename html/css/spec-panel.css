@@ -80,3 +80,9 @@
 
 /* 공지사항 필터 개편 후 번호 위치 */
 .ui-spec-pin[data-spec-number="8"],.ui-spec-pin[data-spec-number="10"]{left:auto;right:3px;top:3px}.ui-spec-pin[data-spec-number="9"]{right:0;top:-12px}.ui-spec-pin[data-spec-number="7"]{left:0;right:auto;top:-12px}.ui-spec-control-anchor>.ui-spec-pin[data-spec-number]{left:-10px;right:auto;top:-12px}
+
+/* 화면 설명은 Description 개요에서만 표시한다. 오류·처리 결과는 유지한다. */
+#content [data-description-overview]{display:none!important}
+.ui-spec-screen-description{padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid #ddd;line-height:1.75;font-size:14px;color:#333}
+.ui-spec-screen-description p{margin:0 0 10px;white-space:pre-wrap}
+.ui-spec-screen-description p:last-child{margin-bottom:0}
