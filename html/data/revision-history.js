@@ -1,9 +1,9 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
-{"screenId":"BAS-09","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"참가기업 QR상태 열과 QR 일괄 다운로드 추가","note":"현재 목록의 연계키·기업·부스·상태와 검토용 예시 식별값을 XLSX로 제공합니다. 실제 QR 생성은 서버 연동이 필요합니다."},
-{"screenId":"BAS-03","version":"v0.9","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"목록 열 순서를 유지하고 2026·2027 참가 상태 기준 반영"},
-{"screenId":"BAS-05","version":"v0.9","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"목록 컬럼 순서를 참가연도·참가상태·QR상태로 통일"},
-{"screenId":"BAS-07","version":"v0.9","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"특이사항 열 제거 및 2026·2027 참가 상태 기준 반영"},
+{"screenId":"BAS-09","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"참가기업별 부스 QR 이미지 ZIP 다운로드로 변경","note":"목록의 참가기업별 부스 QR GIF 이미지를 ZIP으로 다운로드합니다. QR에는 목업용 식별값이 포함되며 실제 인증에는 사용할 수 없습니다."},
+{"screenId":"BAS-03","version":"v1.0","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"해외 바이어 목록에서 QR상태 열 제거"},
+{"screenId":"BAS-05","version":"v1.0","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"국내 바이어 목록에서 QR상태 열 제거"},
+{"screenId":"BAS-07","version":"v1.0","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"통역원 목록에서 QR상태 열 제거"},
 {"screenId":"BAS-03","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"이름·생년월일 기준 연도별 참가 상태 표시 및 중복 정보 갱신"},
 {"screenId":"BAS-05","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"이름·생년월일 기준 연도별 참가 상태 표시 및 중복 정보 갱신"},
 {"screenId":"BAS-07","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"이름·생년월일 기준 연도별 참가 상태 표시 및 중복 정보 갱신"},
