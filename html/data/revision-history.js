@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"version": "v1.2", "screenId": "MON-08", "date": "2026.10.20", "accountName": "yulotso0310-cyber", "summary": "상단 우측 기준 시각·새로고침 UI를 통합 대시보드와 통일", "note": "한국 시간 YY.MM.DD HH:mm 기준. 기존 30초 자동·수동 갱신 유지."},
 {"version": "v0.4", "screenId": "MON-01", "date": "2026.10.20", "accountName": "yulotso0310-cyber", "summary": "상단 우측 대시보드 갱신 기준 시각 추가", "note": "한국 시간 YY.MM.DD HH:mm 기준 표시. 새로고침 시 갱신, 탭 전환 시 유지."},
 {"screenId":"JNL-BUY","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
 {"screenId":"JNL-EXP","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
