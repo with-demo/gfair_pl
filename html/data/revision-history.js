@@ -1,5 +1,16 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-BUY","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
+{"screenId":"JNL-EXP","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
+{"screenId":"JNL-01","version":"v0.4","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
+{"screenId":"JNL-02","version":"v0.1","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
+{"screenId":"JNL-07","version":"v0.4","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
+{"screenId":"JNL-08","version":"v0.1","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
+{"screenId":"MON-01","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
+{"screenId":"MON-02","version":"v0.4","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
+{"screenId":"MON-03","version":"v0.4","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
+{"screenId":"MON-07","version":"v0.1","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
+{"screenId":"STA-01","version":"v0.4","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"상담일지 처리 상태를 역할별 임시 저장·승인 요청·승인 완료·반려로 통일","note":"검수자 목록은 임시 저장 제외. 통합 대시보드 상담일지 현황에도 동일 상태명 적용."},
 {"version": "v0.2", "screenId": "PRE-01", "date": "2026.10.20", "accountName": "yulotso0310-cyber", "summary": "방한 현황에 총 해외 바이어 수 카드 추가", "note": "현재 행사 전체 목록 기준. 검색·이동 상태 필터와 별도로 전체 인원 표시."},
 {"version":"v0.4","screenId":"MON-01","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"화면 설명·목업 안내를 Description 개요 상단으로 이동","note":"화면 구성요소·입력 안내·오류·처리 결과는 유지. 기존 번호별 명세·시트 연동 유지."},
 {"version":"v1.1","screenId":"MON-08","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"화면 설명·목업 안내를 Description 개요 상단으로 이동","note":"화면 구성요소·입력 안내·오류·처리 결과는 유지. 기존 번호별 명세·시트 연동 유지."},
