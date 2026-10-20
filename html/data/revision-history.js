@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"version":"v3.0","fromVersion":"v2.0","screenId":"PRE-01","date":"2026.10.20","accountName":"yulotso0310-cyber","release":true,"summary":"해외 바이어 목록에서 발급 작업 제거","changes":["행사정보 해외 바이어 목록의 임시 계정·QR 발급 작업 컬럼 제거","발급 상태 및 정보 다운로드 기능 유지"]},
 {"version":"v0.6","fromVersion":"v0.5","screenId":"EVT-02","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"통역원 목록에서 발급 작업 제거"},
 {"version":"v0.6","fromVersion":"v0.5","screenId":"EVT-01","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"국내 바이어 목록에서 발급 작업 제거"},
 {"version":"v2.0","fromVersion":"v1.0","screenId":"PRE-01","date":"2026.10.20","accountName":"yulotso0310-cyber","release":true,"summary":"해외 바이어 목록 표시 문구 정리","changes":["예시 데이터 표기 제거","임시 계정·QR 작업 안내는 실제 연동 여부를 설명하도록 정리"]},
