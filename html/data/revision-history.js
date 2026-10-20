@@ -1,5 +1,9 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"행사정보 목록에서 행사 필터 제거"},
+{"screenId":"PRE-04","version":"v0.5","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"통역원 매칭 목록에서 행사 필터 제거"},
+{"screenId":"EVT-01","version":"v0.4","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"국내 바이어 목록에서 행사 필터 제거"},
+{"screenId":"EVT-02","version":"v0.4","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"통역원 목록에서 행사 필터 제거"},
 {"screenId":"JNL-BUY","version":"v2.0","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"엑셀 다운로드를 버튼 UI로 변경"},
 {"screenId":"JNL-EXP","version":"v2.0","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"엑셀 다운로드를 버튼 UI로 변경"},
 {"screenId":"SET-01","version":"v0.6","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"그룹명을 텍스트 링크로 변경하고 그룹 상세 페이지 연결","note":"그룹명·사용여부 상세 수정 후 목록 복귀. 메뉴 권한 버튼의 기존 팝업 유지."},
