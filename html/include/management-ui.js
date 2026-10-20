@@ -15,7 +15,7 @@
  const button=(action,text,attrs='',primary=false)=>`<button type="button" class="btn${primary?' primary':''}" data-management-action="${action}" ${attrs}>${E(text)}</button>`;
  const field=(label,html)=>`<label class="field"><span>${label}</span>${html}</label>`;
  const input=(name,label,value='',required=false)=>field(label,`<input name="${name}" value="${E(value)}" ${required?'required':''}>`);
- const note=()=>`<p class="management-note">예시 데이터 · 업로드·등록·발급 결과는 현재 탭 메모리에만 반영되며 새로고침 시 초기화됩니다. 실제 계정·비밀번호를 발급하거나 서버에 저장하지 않습니다.</p>${state.notice?`<p class="notice" role="status">${E(state.notice)}</p>`:''}`;
+ const note=()=>`<p class="management-note">업로드·등록·발급 변경은 현재 화면에만 반영되며 새로고침 시 초기화됩니다. 실제 계정·비밀번호 발급 및 서버 저장은 지원하지 않습니다.</p>${state.notice?`<p class="notice" role="status">${E(state.notice)}</p>`:''}`;
  const table=(headers,body)=>`<div class="tablewrap"><table><thead><tr>${headers.map(h=>`<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${body||`<tr><td colspan="${headers.length}"><div class="empty">조회 결과가 없습니다.</div></td></tr>`}</tbody></table></div>`;
  function operatorList(){
   const rr=assignments.filter(a=>allowedAssignment(a)&&(state.year==='전체'||a.year===state.year)&&(state.type==='전체'||a.type===state.type)).filter(a=>{const c=companies.find(c=>c.id===a.company);return !state.query||[c.name,c.contact,a.type].join(' ').includes(state.query)});
