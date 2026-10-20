@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-01","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"운영 상태를 행사전·행사중·종료로 변경하고 참가자 연계 컬럼 제거"},
 {"screenId":"PRE-01","version":"v0.8","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"기발급된 QR과 미발급 상태에 맞게 버튼 문구 구분"},
 {"screenId":"PRE-01","version":"v0.7","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"방한 현황 요약을 유지하며 계정·QR 발급 기능 연결"},
 {"screenId":"PRE-01","version":"v0.6","date":"2026.10.20","accountName":"yulotso0310-cyber","summary":"해외 바이어 임시 계정·QR 발급 및 일괄 다운로드 목업 추가"},
