@@ -54,15 +54,31 @@
   const accessBlock=blocks['사용자별 권한'];if(!accessBlock)throw Error('사용자별 권한 표를 확인해 주세요.');
   return {specs,access:accessBlock.rows.map(r=>({role:r[0],scope:r[1],policy:r[2]}))};
  }
- function read(gid=config.gid){return new Promise((resolve,reject)=>{
+ function fetchTable(gid){return new Promise((resolve,reject)=>{
   const name='__gfairSheet'+(++sequence),script=document.createElement('script');let timeout;
   const clean=()=>{clearTimeout(timeout);script.remove();delete window[name];};
-  window[name]=result=>{clean();try{if(result.status==='error'||!result.table)throw Error('시트 응답을 읽을 수 없습니다.');resolve(normalize(result.table));}catch(e){reject(e);}};
+  window[name]=result=>{clean();try{if(result.status==='error'||!result.table)throw Error('시트 응답을 읽을 수 없습니다.');resolve(result.table);}catch(e){reject(e);}};
   script.onerror=()=>{clean();reject(Error('시트 읽기 권한 또는 네트워크를 확인해 주세요.'));};
   timeout=setTimeout(()=>{clean();reject(Error('시트 응답 시간이 초과되었습니다.'));},18000);
   const url=new URL('https://docs.google.com/spreadsheets/d/'+config.id+'/gviz/tq');
   url.searchParams.set('gid',gid);url.searchParams.set('headers','0');url.searchParams.set('tq','select *');url.searchParams.set('tqx','out:json;responseHandler:'+name);url.searchParams.set('_',Date.now());
   script.src=url.href;script.referrerPolicy='no-referrer';document.head.append(script);
  });}
- window.GFAIR_SPEC_SHEET={config,normalize,read};
+ const overviewGid='2026102001';
+ function normalizeOverview(table){
+  const rows=table.rows.map(row=>row.c.map(cell=>String(cell?.v??'')));
+  const headers=['화면 ID','화면명','화면 구분','사용자 유형','개요 설명'];
+  if(!rows.length||headers.some((name,i)=>rows[0][i]!==name))throw Error('화면별 개요명 열 제목을 확인해 주세요.');
+  const result=new Map();
+  rows.slice(1).filter(row=>row.some(value=>value.trim())).forEach(row=>{
+   const [id,,view,role,text='']=row,key=[id?.trim(),view?.trim(),role?.trim()].join('|');
+   if(!id?.trim()||!view?.trim()||!role?.trim()||result.has(key))throw Error('화면별 개요명 연결값 누락·중복을 확인해 주세요.');
+   result.set(key,text.split(/\n\s*\n/).map(value=>value.trim()).filter(Boolean));
+  });
+  if(!result.size)throw Error('화면별 개요명 내용이 비어 있습니다.');
+  return result;
+ }
+ function read(gid=config.gid){return fetchTable(gid).then(normalize);}
+ function readOverview(){return fetchTable(overviewGid).then(normalizeOverview);}
+ window.GFAIR_SPEC_SHEET={config,overviewGid,normalize,normalizeOverview,read,readOverview};
 })();

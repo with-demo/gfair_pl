@@ -39,7 +39,7 @@
   const close=document.createElement('button');close.type='button';close.className='ui-revision-close';close.textContent='×';close.setAttribute('aria-label','수정 이력 닫기');close.title='닫기';close.addEventListener('click',()=>modal.close());const header=document.createElement('div');header.className='ui-revision-header';header.append(heading,close);modal.prepend(header);modal.showModal();
  }
 
- let overviewSignature='';
+ let overviewSignature='',overviewRows=new Map(),overviewRequested=false;
  function overviewInfo(){
   const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
   const role=document.getElementById('role-picker')?.value||'admin';
@@ -56,14 +56,19 @@
   let summary=primary?.textContent.trim()||screen?.summary||'';
   if(route==='NTC-01')summary=role==='admin'?'대상별 공지사항을 등록·관리합니다.':'본인 대상의 게시된 공지사항을 확인하고 첨부파일을 다운로드합니다.';
   if(['NTC-02','NTC-03'].includes(route)){const name=route==='NTC-02'?'FAQ':'자료';summary=role==='admin'?'대상별 '+name+'를 등록·관리합니다.':'본인 대상의 게시된 '+name+'를 확인하고 첨부파일을 다운로드합니다.';}
-  const paragraphs=[...new Set([summary,...nodes.filter(el=>el!==primary).map(el=>el.textContent.trim())].filter(Boolean))];
+  let paragraphs=[...new Set([summary,...nodes.filter(el=>el!==primary).map(el=>el.textContent.trim())].filter(Boolean))];
   nodes.forEach(el=>{el.dataset.descriptionOverview='';});
+  const roleName={admin:'관리자',buyOperator:'구매상담 운영용역사',exportOperator:'수출상담 운영용역사',buyer:'국내 바이어',interpreter:'통역원'}[role]||role;
+  const view=route==='NTC-04'?(context()==='editor'?'등록·수정':'상세'):'기본';
+  const key=[roleName,'공통'].map(name=>[route,view,name].join('|')).find(key=>overviewRows.has(key));
+  if(key!==undefined)paragraphs=overviewRows.get(key);
   return {title,paragraphs,signature:JSON.stringify([route,role,title,paragraphs])};
  }
  function addOverview(container,info){
   const block=document.createElement('section');block.className='ui-spec-screen-description';block.setAttribute('aria-label','화면 설명');
   info.paragraphs.forEach(text=>{const p=document.createElement('p');p.textContent=text;block.append(p);});
-  if(info.paragraphs.length)container.append(block);
+  const link=document.createElement('a');link.className='ui-spec-source';link.textContent='개요 시트 수정하기 ↗';link.href='https://docs.google.com/spreadsheets/d/11ta8oBialEa6NBmHdngQXZFjLCD9ouPmQ_GJBAb78RE/edit?gid=2026102001#gid=2026102001';link.target='_blank';link.rel='noopener';block.append(link);
+  container.append(block);
  }
  function drawSummaryOnly(info,version){
   panel.append(version);
@@ -131,15 +136,21 @@
  }
  async function refreshDescription(){
   if(sheetBusy)return;sheetBusy=true;const button=toolbar.querySelector('[data-spec=refresh]');button.disabled=true;status.textContent='시트 명세를 불러오는 중…';
-  const requestedKey=contextKey,requestedConfig=config();
-  try{const next=await window.GFAIR_SPEC_SHEET.read(requestedConfig.gid);const label='구글 시트 연결 · '+next.specs.length+'개 항목';contextCache[requestedKey]={...next,label};if(context()&&contextKey===requestedKey){specs=next.specs;access=next.access;sourceLabel=label;const scroll=panel.scrollTop;draw();panel.scrollTop=scroll;status.textContent='시트 반영 완료 · '+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});}}
+  const requestedKey=contextKey,requestedContext=context(),requestedConfig=config();
+  try{
+   const results=await Promise.allSettled([window.GFAIR_SPEC_SHEET.readOverview(),context()?window.GFAIR_SPEC_SHEET.read(requestedConfig.gid):Promise.resolve(null)]);
+   if(results[0].status==='fulfilled')overviewRows=results[0].value;
+   if(results[1].status==='fulfilled'&&results[1].value){const next=results[1].value,label='구글 시트 연결 · '+next.specs.length+'개 항목';contextCache[requestedKey]={...next,label};if(context()&&contextKey===requestedKey){specs=next.specs;access=next.access;sourceLabel=label;}}
+   const scroll=panel.scrollTop;draw();panel.scrollTop=scroll;
+   const failed=results.some(result=>result.status==='rejected');status.textContent=failed?'일부 갱신 실패 · 이전 내용 유지':'시트 반영 완료 · '+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+  }
 
   catch(error){status.textContent='갱신 실패 · 이전 명세 유지';const intro=panel.querySelector('.ui-spec-intro');if(intro)intro.textContent='이전 명세 유지 · '+error.message;}
-  finally{sheetBusy=false;button.disabled=false;if(context()&&contextKey!==requestedKey)refreshDescription();}
+  finally{sheetBusy=false;button.disabled=false;if(context()&&(contextKey!==requestedKey||context()!==requestedContext))refreshDescription();}
  }
  function sync(){
   const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
-  const overviewData=overviewInfo();if(selectContext()||overviewData.signature!==overviewSignature)draw();const active=!!context(),overview=route==='screens';if(active&&!sheetRequested){sheetRequested=true;refreshDescription();}toolbar.hidden=false;panel.hidden=closed||overview;
+  const overviewData=overviewInfo();if(selectContext()||overviewData.signature!==overviewSignature)draw();const active=!!context(),overview=route==='screens';if(!overview&&(!overviewRequested||(active&&!sheetRequested))){overviewRequested=true;if(active)sheetRequested=true;refreshDescription();}toolbar.hidden=false;panel.hidden=closed||overview;
   ['refresh','numbers','full','close'].forEach(action=>{toolbar.querySelector('[data-spec='+action+']').hidden=overview||(action==='numbers'&&!active);});status.hidden=overview;
   screenPicker.value=route;
   panel.setAttribute('aria-label','Description');toolbar.querySelector('[data-spec=numbers]').hidden=overview||!active;
@@ -181,7 +192,7 @@
  toolbar.addEventListener('click',event=>{
   const action=event.target.dataset.spec;
   if(action==='screen-search'){closed=false;full=false;location.hash='screens';}
-  if(action==='refresh'){closed=false;if(context())refreshDescription();else draw();}
+  if(action==='refresh'){closed=false;refreshDescription();}
   if(action==='numbers')numbers=!numbers;
   if(action==='full'){closed=false;full=!full;}
   if(action==='close'){closed=!closed;full=false;}
@@ -203,5 +214,5 @@
  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&full){full=false;sync();}});
  new MutationObserver(sync).observe(app,{childList:true,subtree:true});
  window.addEventListener('revision-history-loaded',draw);
- window.addEventListener('hashchange',()=>{selectedTab=0;draw();sync();});setInterval(()=>{if(!document.hidden&&context())refreshDescription();sync();},60000);draw();sync();
+ window.addEventListener('hashchange',()=>{selectedTab=0;draw();sync();});setInterval(()=>{if(!document.hidden&&location.hash!=='#screens')refreshDescription();sync();},60000);draw();sync();
 })();
