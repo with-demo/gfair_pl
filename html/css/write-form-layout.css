@@ -1,0 +1,13 @@
+/* 작성·등록·수정 폼: 항목명 / 입력 영역 행 레이아웃 */
+#app .write-form-rows{display:block;padding:0;border-top:1px solid #ddd;background:#fff}
+#app .write-form-rows>.write-form-row{display:grid;grid-template-columns:160px minmax(0,1fr);gap:0;margin:0;border-bottom:1px solid #ddd;min-width:0;align-items:stretch}
+#app .write-form-row>span:first-child,#app .write-form-row>label:first-child{display:flex;align-items:center;gap:5px;background:#f7f7f7;padding:16px;font-size:13px;color:#111;font-weight:400;line-height:1.6}
+#app .write-form-row em,#app .write-form-row .notice-required{color:#c62828;font-style:normal}
+#app .write-form-controls{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;min-width:0;padding:12px 20px;min-height:60px;font-size:13px}
+#app .write-form-controls>input:not([type=checkbox]):not([type=radio]):not([type=file]),#app .write-form-controls>select{width:300px;max-width:100%;min-height:36px;padding:7px 10px;font-size:13px;border-radius:2px}
+#app .write-form-controls>textarea{width:100%;min-height:160px;font-size:13px;border-radius:2px}
+#app .write-form-controls>.row{flex:1;min-width:0}
+#app .write-form-controls>.small,#app .write-form-controls>p,#app .write-form-controls>[id$="file-info"]{flex-basis:100%}
+#app .write-form-controls .btn{min-height:36px;font-size:12px;white-space:nowrap}
+#app .write-form-rows>.check{padding:14px 20px;margin:0;border-bottom:1px solid #ddd}
+@media(max-width:600px){#app .write-form-rows>.write-form-row{grid-template-columns:110px minmax(0,1fr)}#app .write-form-row>span:first-child,#app .write-form-row>label:first-child{padding:12px 10px}#app .write-form-controls{padding:10px;gap:8px}#app .write-form-controls>.row{flex-wrap:wrap}#app .write-form-controls .row>input{min-width:0;max-width:100%}}
