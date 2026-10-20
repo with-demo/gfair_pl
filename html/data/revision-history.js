@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"version": "v0.2", "screenId": "STA-01", "date": "2026.10.20", "accountName": "yulotso0310-cyber", "summary": "기관명 검색·다중 선택 및 수출 관련 탭 표시 범위 적용", "changes": ["기관·사무소명을 기관명으로 변경", "검색창·체크박스 다중 선택·선택값 쉼표 표시", "초청기관 유형 선택 후 기관명 활성화, 유형 변경 시 선택 초기화", "전체·수출 탭만 해외 초청기관 통계 표시, 구매 화면·엑셀에서는 제외"]},
 {"version": "v0.1", "screenId": "BAS-12", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "참가자 엑셀에 초청기관 유형·기관 사무소명 2열 추가 제안", "note": "클라이언트 최종 엑셀 양식·통계 집계 규칙은 협의 필요. 예시 데이터."},
 {"version": "v0.1", "screenId": "BAS-04", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "엑셀에서 연결한 행사별 초청기관 정보 표시", "note": "클라이언트 최종 엑셀 양식·통계 집계 규칙은 협의 필요. 예시 데이터."},
 {"version": "v0.1", "screenId": "STA-01", "date": "2026.10.19", "accountName": "yulotso0310-cyber", "summary": "GBC·KBC·민간 에이전시 및 사무소별 상담·계약 추진 통계 추가", "note": "클라이언트 최종 엑셀 양식·통계 집계 규칙은 협의 필요. 예시 데이터."},
