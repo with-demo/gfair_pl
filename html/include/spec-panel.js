@@ -23,7 +23,7 @@
  const measureToolbar=()=>document.documentElement.style.setProperty('--sb-toolbar-height',toolbar.getBoundingClientRect().height+'px');
  new ResizeObserver(measureToolbar).observe(toolbar);measureToolbar();
  const panel=document.createElement('aside');panel.className='ui-spec-panel';panel.setAttribute('aria-label','공지사항 Description');panel.hidden=true;layout.append(panel);
- let closed=false,full=false,numbers=true,selectedTab=0;
+ let closed=true,full=false,numbers=true,selectedTab=0;
  const status=toolbar.querySelector('.ui-spec-status');
  function revisionAccountName(entry){const actual=entry.account||entry.accountName||'';return (window.GFAIR_REVISION_ACCOUNT_NAMES||{})[actual]||entry.accountName||actual;}
  function showHistory(){
@@ -202,7 +202,7 @@
   sync();
  });
  toolbar.addEventListener('change',event=>{
-  if(event.target.dataset.spec==='screen'){closed=false;full=false;location.hash=event.target.value;sync();return;}
+  if(event.target.dataset.spec==='screen'){full=false;location.hash=event.target.value;sync();return;}
   if(event.target===toolbar.querySelector('.ui-spec-actions select')){
    const role=document.getElementById('role-picker'),form=document.getElementById('filter-form');
    const values=form?Array.from(new FormData(form)):[];
