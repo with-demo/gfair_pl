@@ -7,7 +7,7 @@
  const parse=record=>{try{const value=JSON.parse(record.text);return value.format==='screen-message-v1'?value:null;}catch{return null;}};
  function entries(){
   const current=route(),base=window.GFAIR_WORKFLOW?.entry(current)?.parent||current.split('-P')[0],records=store.records.map(record=>({record,value:parse(record)})).filter(item=>item.value);
-  const defaults=(window.GFAIR_MESSAGE_SPECS||[]).filter(item=>item.screens.includes(current)||item.screens.includes(base)||item.screens.includes('*'));
+  const defaults=(window.GFAIR_MESSAGE_SPECS||[]).filter(item=>item.screens.includes(current)||item.screens.includes(base)||(current==='MON-01'&&item.screens.includes('*')));
   return [...defaults.map(item=>{const saved=records.find(r=>r.value.key===item.key);return saved?{...item,...saved.value,record:saved.record}:item;}),...records.filter(item=>!defaults.some(d=>d.key===item.value.key)).map(item=>({...item.value,record:item.record}))];
  }
  function edit(item){
