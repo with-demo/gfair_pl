@@ -45,3 +45,17 @@
 #app #content .unified-search .search-condition-controls,#app #content .unified-search :is(.notice-category-options,.management-type-options){min-height:36px}
 #app #content .unified-search .search-actions .btn{height:36px;min-height:36px;font-size:13px}
 @media(max-width:900px){#app #content .unified-search .search-keyword-controls>.search-actions{margin:4px 0 0}}
+
+/* 기본 3열, 선택 내용이 많은 조건은 반 너비로 배치한다. */
+#app #content form.unified-search{grid-template-columns:repeat(6,minmax(0,1fr));gap:16px 24px}
+#app #content .unified-search>.search-condition{grid-column:span 2;min-width:0}
+#app #content .unified-search>.search-condition.search-condition-wide{grid-column:span 3}
+#app #content .unified-search>.search-keyword{grid-column:1/-1;width:100%}
+#app #content .unified-search .search-keyword-controls{flex-wrap:nowrap;width:100%}
+#app #content .unified-search .search-keyword-controls>input{flex:1 1 0;width:0;min-width:0;max-width:none}
+#app #content .unified-search .search-keyword-controls>.search-actions{flex:0 0 auto;margin:0 0 0 8px}
+#app #content .unified-search .search-radio-options{display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px;min-height:36px}
+#app #content .unified-search .search-radio-options label{display:inline-flex;align-items:center;gap:6px;margin:0;white-space:nowrap;font-size:13px;color:#222;font-weight:400}
+#app #content .unified-search .search-condition-controls select[hidden]{display:none}
+@media(max-width:1100px){#app #content .unified-search>.search-condition{grid-column:span 3}}
+@media(max-width:700px){#app #content .unified-search>.search-condition,#app #content .unified-search>.search-condition.search-condition-wide{grid-column:1/-1}#app #content .unified-search .search-keyword-controls{flex-wrap:wrap}#app #content .unified-search .search-keyword-controls>input{flex:1 1 120px}#app #content .unified-search .search-keyword-controls>.search-actions{flex-basis:100%;margin:4px 0 0}}

@@ -21,6 +21,18 @@ input.placeholder='검색어를 입력해 주세요';controls.append(select,inpu
 [...form.children].filter(e=>e.matches('.field,fieldset')&&!e.classList.contains('search-keyword')).forEach(field=>{field.classList.add('search-condition');const caption=field.querySelector(':scope>legend,:scope>span,:scope>label');if(!caption)return;caption.classList.add('search-condition-caption');const controls=document.createElement('div');controls.className='search-condition-controls';[...field.childNodes].filter(n=>n!==caption).forEach(n=>controls.append(n));field.append(controls);});
 // fieldset의 범례를 가로 그리드에 맞추고 접근 가능한 그룹 이름을 유지한다.
 form.querySelectorAll(':scope>fieldset.search-condition').forEach((fieldset,index)=>{const group=document.createElement('div');group.className=fieldset.className;group.setAttribute('role','group');const legend=fieldset.querySelector(':scope>legend');if(legend){const caption=document.createElement('span');caption.className=legend.className;caption.id='search-caption-'+Math.random().toString(36).slice(2);caption.textContent=legend.textContent;legend.replaceWith(caption);group.setAttribute('aria-labelledby',caption.id);}group.append(...fieldset.childNodes);fieldset.replaceWith(group);});
+// 선택지가 적고 의미가 고정된 상태·구분 항목은 펼쳐진 라디오로 제공한다.
+form.querySelectorAll(':scope>.search-condition').forEach(field=>{
+ const controls=field.querySelector('.search-condition-controls'),caption=field.querySelector('.search-condition-caption')?.textContent||'';if(!controls)return;
+ const select=controls.querySelector(':scope>select');
+ if(select&&!select.multiple&&select.name&&!select.disabled&&/상태|구분|여부|유형|사용/.test(caption)&&select.options.length>=2&&select.options.length<=4&&[...select.options].every(o=>o.text.length<=8)){
+ const radios=document.createElement('div');radios.className='search-radio-options';radios.setAttribute('role','radiogroup');radios.setAttribute('aria-label',caption);
+ [...select.options].forEach(option=>{const label=document.createElement('label'),radio=document.createElement('input');radio.type='radio';radio.name=select.name;radio.value=option.value;radio.checked=radio.defaultChecked=option.selected;radio.disabled=option.disabled;radio.addEventListener('change',()=>{select.value=radio.value;select.dispatchEvent(new Event('change',{bubbles:true}));});label.append(radio,document.createTextNode(option.text));radios.append(label);});
+ select.hidden=true;select.disabled=true;controls.append(radios);
+ }
+ const radioCount=controls.querySelectorAll('input[type=radio]').length;
+ if(controls.querySelector('details,input[type=date],input[type=datetime-local]')||radioCount>=3||controls.textContent.trim().length>32)field.classList.add('search-condition-wide');
+});
 if(keywords.length){keywords[0].querySelector('.search-keyword-controls').append(actions);form.classList.add('search-has-keyword');}
 form.addEventListener('reset',()=>{keywords.forEach(f=>{const i=f.querySelector('input');scopes.delete(key(form,i));f.querySelector('select').value='전체';});});
 }
