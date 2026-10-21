@@ -2,11 +2,10 @@
 (()=>{
  'use strict';
  const app=document.getElementById('app'),store=window.GFAIR_COLLAB;if(!app||!store)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=description-order-20261021-12',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=description-no-comments-20261021-13',document.currentScript.src);document.head.append(css);
  let selected=null,picking=false,queued=false,view={closed:document.querySelector('.ui-spec-panel')?.hidden??true,full:false,numbers:true};
  const route=()=>decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
  const records=()=>store.records,canEdit=()=>!!store.user?.editor;
- const drafts=new Map();
  const element=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
  const button=(text,action)=>{const el=element('button',text);el.type='button';el.addEventListener('click',action);return el;};
  const format=value=>value?new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',dateStyle:'short',timeStyle:'short'}).format(new Date(value)):'';
@@ -82,7 +81,7 @@
    const comments=element('div',undefined,'annotation-comments');record.comments.forEach(comment=>{const item=element('div',undefined,'annotation-comment');item.append(element('strong',comment.author+' · '+format(comment.created)),element('p',comment.text,'annotation-text'));
     if(canEdit()){const label=element('label','처리 상태 '),select=element('select');select.setAttribute('aria-label','의견 처리 상태');['미처리','처리중','처리완료'].forEach(state=>{const option=element('option',state);option.selected=comment.status===state;select.append(option);});select.addEventListener('change',event=>change('status',{id:comment.id,status:select.value,revision:comment.revision},event.currentTarget));label.append(select);item.append(label);}else item.append(element('span',comment.status,'annotation-state'));if(comment.updated)item.append(element('small',comment.updatedBy+' · '+format(comment.updated)));comments.append(item);
    });
-   const form=element('form'),label=element('label','의견 작성'),input=element('textarea');input.required=true;input.maxLength=2000;input.rows=2;input.value=drafts.get(record.id)||'';input.setAttribute('aria-label',record.number+'번 설명에 의견 작성');input.addEventListener('input',()=>drafts.set(record.id,input.value));label.append(input);const submit=element('button','댓글 등록');submit.type='submit';if(!store.user){const guestLabel=element('label','이름'),guestName=element('input');guestName.type='text';guestName.required=true;guestName.maxLength=40;guestName.dataset.commentName='';guestName.setAttribute('aria-label','댓글 작성자 이름');guestName.value=localStorage.getItem('gfair.collab.commentName')||'';guestName.addEventListener('input',()=>localStorage.setItem('gfair.collab.commentName',guestName.value));guestLabel.append(guestName);form.append(guestLabel);}form.append(label,submit);form.addEventListener('submit',async event=>{event.preventDefault();if(!input.value.trim())return;const text=input.value.trim();if(await change('comment',{id:record.id,text,...(!store.user?{name:form.querySelector('input[data-comment-name]').value.trim()}:{})},submit)){drafts.delete(record.id);render();}});comments.append(form);card.append(comments);section.append(card);
+   if(record.comments.length)card.append(comments);section.append(card);
   });
   const version=panel.querySelector('.ui-spec-version');if(version)version.after(section);else panel.prepend(section);panel.scrollTop=scrollTop;if(focusId){const input=document.getElementById(focusId)?.querySelector(focusSelector);input?.focus({preventScroll:true});if(input&&selection)input.setSelectionRange(...selection);}pins();
  }
