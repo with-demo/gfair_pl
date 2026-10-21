@@ -2,7 +2,7 @@
 (()=>{
  'use strict';
  const app=document.getElementById('app'),store=window.GFAIR_COLLAB;if(!app||!store)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=projects-20261021-1',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=description-guide-20261021-5',document.currentScript.src);document.head.append(css);
  let selected=null,picking=false,queued=false,view={closed:document.querySelector('.ui-spec-panel')?.hidden??true,full:false,numbers:true};
  const route=()=>decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
  const records=()=>store.records,canEdit=()=>!!store.user?.editor;
@@ -41,9 +41,9 @@
   else {const login=button('GitHub 공동작업자 로그인',()=>store.login().catch(error=>message(error.message)));login.disabled=!store.githubReady;login.title=store.githubReady?'GitHub 계정으로 저장소 공동작업자 확인':'GitHub 로그인 앱 연결 설정 중';controls.append(login);}
   document.body.classList.toggle('annotation-picking',picking);const old=document.getElementById('annotation-panel');old?.remove();if(route()==='screens'){pins();return;}
   const section=element('section',undefined,'annotation-panel');section.id='annotation-panel';const screen=(window.GFAIR_SCREENS||[]).flatMap(group=>group.screens).find(screen=>screen.id===route());section.append(element('h2','['+route()+'] '+(screen?.title||'')));
-  if(picking)section.append(element('p','본문의 설명할 영역을 클릭하세요. Esc로 취소할 수 있습니다.','annotation-hint'));
+  if(picking)section.append(element('p','본문의 설명할 영역을 클릭하세요. Esc로 취소할 수 있습니다.','annotation-guide'));
   if(store.error)section.append(element('p',store.error,'annotation-hint'));
-  if(!records().length)section.append(element('p',canEdit()?'영역에 설명 추가 버튼을 눌러 시작하세요.':'아직 작성된 설명이 없습니다.'));
+  if(!records().length&&!picking)section.append(element('p',canEdit()?'영역에 설명 추가 버튼을 눌러 시작하세요.':'아직 작성된 설명이 없습니다.','annotation-guide'));
   records().forEach(record=>{
    const card=element('article',undefined,'annotation-card'+(record.id===selected?' selected':''));card.id='annotation-'+record.id;const head=element('div',undefined,'annotation-actions');
    head.append(button(String(record.number).padStart(2,'0')+' · 위치 보기',()=>{selected=record.id;const target=find(record);if(target){target.scrollIntoView({block:'center',behavior:'smooth'});target.animate([{outline:'3px solid #c62828'},{outline:'3px solid transparent'}],{duration:1500});}else message('연결 영역이 현재 화면에 없습니다. 사용구분이나 화면 구성을 확인해 주세요.');render();}));
