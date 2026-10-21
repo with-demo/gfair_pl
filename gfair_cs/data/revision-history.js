@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-15","version":"v2.18","fromVersion":"v2.17","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"운영용역사 등록 화면 연결 및 목록 버튼·컬럼 수정","changes":["엑셀 다운로드·일괄 업로드를 제거하고 목록 우측 하단에 등록 버튼 배치.","기업명 컬럼을 용역사로 변경.","등록 버튼에서 BAS-19 운영용역사 등록 화면으로 이동."]},
+  {"screenId":"BAS-19","version":"v1.0","date":"2026.10.21","accountName":"yulotso0310-cyber","release":true,"summary":"운영용역사 등록 화면 신규 구성 완료","changes":["기존 등록 폼 UI에 맞춰 성명·소속업체·직위·이메일·연락처 입력 구성.","필수 항목 검증과 등록 후 BAS-15 목록 복귀 적용."],"note":"목업 데이터는 현재 탭에만 반영되며 실제 계정·권한·서버 저장은 연결하지 않음."},
   {"screenId":"BAS-03","version":"v0.5","fromVersion":"v0.4","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"해외 바이어 고유식별코드 정책 형식 적용","changes":["목록의 고유 번호를 F+행사연도 4자리+일련번호 4자리 형식으로 표시."]},
   {"screenId":"BAS-05","version":"v0.5","fromVersion":"v0.4","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"국내 바이어 고유식별코드 정책 형식 적용","changes":["목록의 고유 번호를 K+행사연도 4자리+일련번호 4자리 형식으로 표시."]},
   {"screenId":"BAS-07","version":"v0.5","fromVersion":"v0.4","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"통역원 고유식별코드 정책 형식 적용","changes":["목록의 고유 번호를 I+행사연도 4자리+일련번호 4자리 형식으로 표시."]},
