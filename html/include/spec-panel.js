@@ -85,5 +85,6 @@
  new MutationObserver(sync).observe(app,{childList:true,subtree:true});
  window.addEventListener('revision-history-loaded',draw);
  window.addEventListener('collaboration-updated',sync);
+ window.addEventListener('annotation-open',()=>{closed=false;sync();});
  window.addEventListener('hashchange',()=>{draw();sync();});draw();sync();
 })();
