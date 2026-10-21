@@ -20,7 +20,13 @@
   form.addEventListener('submit',async event=>{event.preventDefault();if(!canEdit()||!input.value.trim()||screen!==route())return;const result=await change(record?'update':'create',record?{id:record.id,text:input.value.trim(),revision:record.revision}:{screen,text:input.value.trim(),anchor},submit);if(result){dialog.close();picking=false;selected=result.id||record?.id;render();}});dialog.append(form);dialog.showModal();input.focus();
  }
  function selectorFor(target){const parts=[];let el=target;while(el&&el!==app){if(el.id){parts.unshift('#'+CSS.escape(el.id));break;}const siblings=el.parentElement?Array.from(el.parentElement.children).filter(x=>x.tagName===el.tagName):[];parts.unshift(el.tagName.toLowerCase()+':nth-of-type('+(siblings.indexOf(el)+1)+')');el=el.parentElement;}return parts.join(' > ');}
- function find(record){try{const el=app.querySelector(record.anchor.selector);if(!el)return null;return record.anchor.sample&&!el.textContent.replace(/\s+/g,' ').trim().includes(record.anchor.sample)?null:el;}catch{return null;}}
+ function find(record){try{
+  const anchor=record.anchor,el=app.querySelector(anchor.selector);if(!el)return null;
+  // An explicit unique element ID survives changing timestamps, counters and text.
+  if(/^#[\w-]+$/.test(anchor.selector)&&el.id===anchor.selector.slice(1))return el;
+  const stableText=value=>value.replace(/\d+(?:[.,:/-]\d+)*/g,'#').replace(/\s+/g,' ').trim();
+  return anchor.sample&&!stableText(el.textContent).includes(stableText(anchor.sample))?null:el;
+ }catch{return null;}}
  function pins(){
   overlay.replaceChildren();if(route()==='screens'||view.closed||view.full||!view.numbers)return;
   records().forEach(record=>{const target=find(record);if(!target||!target.getClientRects().length)return;const rect=target.getBoundingClientRect(),top=rect.top+rect.height*record.anchor.y,left=rect.left+rect.width*record.anchor.x,toolbar=document.querySelector('.ui-spec-toolbar');if(top<(toolbar?.getBoundingClientRect().bottom||0)||top>innerHeight||left<0||left>innerWidth)return;
