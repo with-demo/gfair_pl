@@ -1007,8 +1007,7 @@ window.GFAIR_SCREENS=[
             "바이어명"
           ],
           "actions": [
-            "엑셀 다운로드",
-            "PDF 다운로드"
+            "엑셀 다운로드"
           ],
           "rows": [
             [

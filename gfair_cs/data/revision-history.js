@@ -1,5 +1,15 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"NTC-03","version":"v1.13","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},
+  {"screenId":"NTC-02","version":"v1.13","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},
+  {"screenId":"NTC-01","version":"v5.34","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},
+  {"screenId":"PRE-09","version":"v0.10","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},
+  {"screenId":"PRE-04","version":"v0.13","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},
+  {"screenId":"PRE-01","version":"v3.8","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"해외 바이어 목록 다운로드 도구를 엑셀·QR로 정리"},
+  {"screenId":"BAS-15","version":"v2.17","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"엑셀 일괄 업로드를 목록 상단 우측으로 이동하고 등록 버튼명을 통일"},
+  {"screenId":"BAS-07","version":"v1.9","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"엑셀 일괄 업로드를 목록 상단 우측으로 이동"},
+  {"screenId":"BAS-05","version":"v1.9","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"엑셀 일괄 업로드를 목록 상단 우측으로 이동"},
+  {"screenId":"BAS-03","version":"v1.9","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"엑셀 일괄 업로드를 목록 상단 우측으로 이동"},
   {"screenId":"BAS-01","version":"v0.21","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"중복 건수 선택을 제거하고 동기화 버튼을 우측 목록 도구로 이동"},
   {"screenId":"BAS-02","version":"v0.12","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"상세 폼의 항목명·값 열 폭과 행 구분을 공통 기준으로 조정"},
   {"screenId":"BAS-04","version":"v0.12","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"등록 폼을 공통 항목명·입력 영역 행 구조로 통일"},
