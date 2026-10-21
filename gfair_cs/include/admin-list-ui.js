@@ -42,6 +42,7 @@
   const size=document.createElement('select');size.setAttribute('aria-label',title+' 페이지당 표시 개수');
   [10,30,50].forEach(n=>size.add(new Option(n+'건씩 보기',String(n))));
   tools.prepend(sort,size);
+  if(route==='BAS-01'){const sync=header.querySelector('[data-action="event-sync"]');if(sync){sync.className='btn';tools.append(sync);}}
   if(route==='BAS-09'){
    const qrDownload=document.createElement('button');qrDownload.type='button';qrDownload.className='btn';qrDownload.textContent='QR 일괄 다운로드';
    qrDownload.addEventListener('click',async()=>{

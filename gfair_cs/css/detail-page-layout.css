@@ -87,3 +87,5 @@
   #app .notice-panel .notice-detail,
   .detail-form-panel .form-rows > .field { grid-template-columns: 180px minmax(0, 1fr); }
 }
+
+.event-list-tools:empty { display: none; }
