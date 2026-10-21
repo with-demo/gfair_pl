@@ -24,7 +24,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/list-row-navigation.css?v=row-navigation-20261019',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('list-row-navigation.js?v=clean-copy-20261021',base).href;document.head.append(script);})();
 
-(()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/management-ui.css?v=management-radio-ui-20261020',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('management-ui.js?v=clean-copy-20261021',base).href;document.head.append(script);})();
+(()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/management-ui.css?v=detail-layout-20261021',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('management-ui.js?v=detail-layout-20261021',base).href;document.head.append(script);})();
 
 (()=>{const script=document.createElement('script');script.src=new URL('public-boards.js?v=clean-copy-20261021',document.currentScript.src).href;document.head.append(script);})();
 
