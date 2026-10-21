@@ -32,3 +32,5 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const script=document.createElement('script');script.src=new URL('master-upload-ui.js?v=clean-copy-20261021',document.currentScript.src).href;document.head.append(script);})();
 (()=>{const script=document.createElement('script');script.src=new URL('popup-description-example.js?v=clean-copy-20261021',document.currentScript.src).href;document.head.append(script);})();
+
+(()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=all-lists-20261021",document.currentScript.src).href;document.head.append(script);})();
