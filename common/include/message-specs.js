@@ -1,0 +1,33 @@
+(()=>{
+ 'use strict';const store=window.GFAIR_COLLAB;if(!store)return;
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/message-specs.css?v=20261021',document.currentScript.src);document.head.append(css);
+ const tabs=new Map(),route=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
+ const el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
+ const button=(text,fn)=>{const node=el('button',text);node.type='button';node.addEventListener('click',fn);return node;};
+ const parse=record=>{try{const value=JSON.parse(record.text);return value.format==='screen-message-v1'?value:null;}catch{return null;}};
+ function entries(){
+  const current=route(),base=window.GFAIR_WORKFLOW?.entry(current)?.parent||current.split('-P')[0],records=store.records.map(record=>({record,value:parse(record)})).filter(item=>item.value);
+  const defaults=(window.GFAIR_MESSAGE_SPECS||[]).filter(item=>item.screens.includes(current)||item.screens.includes(base)||item.screens.includes('*'));
+  return [...defaults.map(item=>{const saved=records.find(r=>r.value.key===item.key);return saved?{...item,...saved.value,record:saved.record}:item;}),...records.filter(item=>!defaults.some(d=>d.key===item.value.key)).map(item=>({...item.value,record:item.record}))];
+ }
+ function edit(item){
+  if(!store.user?.editor)return;const screen=route(),dialog=el('dialog',undefined,'annotation-dialog message-spec-dialog'),form=el('form'),header=el('div',undefined,'message-spec-heading'),close=button('×',()=>dialog.close());close.setAttribute('aria-label','메시지 설명 수정 닫기');header.append(el('h2',item?'메시지 설명 수정':'메시지 설명 추가'),close);form.append(header);
+  const fields={},labels={type:'표시 유형',trigger:'발생 조건',message:'메시지 문구',confirm:'확인 후 동작',cancel:'취소 후 동작'};
+  Object.entries(labels).forEach(([key,title])=>{const label=el('label',title),control=el(key==='type'?'select':'textarea');control.name=key;control.value=item?.[key]||'';control.required=['type','trigger','message'].includes(key);if(control.required)label.append(el('span',' *','annotation-required-mark'));control.maxLength=key==='message'?1500:600;if(key==='type'){['알럿','컨펌','레이어 컨펌','토스트','인라인 오류'].forEach(text=>control.append(new Option(text,text)));control.value=item?.type||'알럿';}label.append(control);form.append(label);fields[key]=control;});
+  const error=el('p',undefined,'message-spec-error');error.setAttribute('role','alert');const save=el('button','저장');save.type='submit';const actions=el('div',undefined,'annotation-actions');actions.append(button('취소',()=>dialog.close()),save);form.append(error,actions);
+  form.addEventListener('submit',async event=>{event.preventDefault();if(!store.user?.editor||screen!==route()||!form.reportValidity())return;const spec={format:'screen-message-v1',key:item?.key||'custom-'+Date.now()};for(const key of Object.keys(labels))spec[key]=fields[key].value.trim();if(!spec.trigger||!spec.message){error.textContent='발생 조건과 메시지를 입력해 주세요.';return;}const text=JSON.stringify(spec);if(text.length>5000){error.textContent='전체 내용을 5,000자 이하로 작성해 주세요.';return;}save.disabled=true;try{await store.mutate(item?.record?'update':'create',item?.record?{id:item.record.id,text,revision:item.record.revision}:{screen,text,anchor:{selector:'#content',sample:'알럿/컨펌',x:0,y:0}});dialog.close();}catch(e){error.textContent=e.message;}finally{save.disabled=false;}});
+  dialog.addEventListener('close',()=>dialog.remove(),{once:true});dialog.append(form);document.body.append(dialog);dialog.showModal();fields.trigger.focus();
+ }
+ function buildMessages(){
+  const area=el('div',undefined,'message-spec-list');area.append(el('p','현재 목업 구현 기준 초안입니다. 브라우저 알럿·컨펌, 레이어 확인창, 토스트·입력 오류를 구분합니다.','annotation-guide'));if(store.user?.editor)area.append(button('메시지 추가',()=>edit()));
+  const items=entries();if(!items.length)area.append(el('p','이 화면에서 별도로 정의된 알럿/컨펌이 없습니다.','annotation-guide'));
+  items.forEach((item,index)=>{const card=el('article',undefined,'message-spec-card'),header=el('div',undefined,'message-spec-heading');header.append(el('h3',String(index+1).padStart(2,'0')+' · '+item.type));if(item.screens?.includes('*'))header.append(el('small','공통'));if(store.user?.editor)header.append(button('수정',()=>edit(item)));card.append(header);const dl=el('dl',undefined,'annotation-spec');for(const [key,title] of Object.entries({trigger:'발생 조건',message:'메시지',confirm:'확인 후',cancel:'취소 후'}))if(item[key])dl.append(el('dt',title),el('dd',item[key]));card.append(dl);area.append(card);});return area;
+ }
+ function mount(){
+  const section=document.getElementById('annotation-panel');if(!section||section.dataset.messageTabs)return;section.dataset.messageTabs='true';const details=el('div'),messages=buildMessages(),nav=el('div',undefined,'message-spec-tabs');nav.setAttribute('role','tablist');nav.setAttribute('aria-label','Description 유형');
+  [...section.children].filter(node=>!node.matches('h2,.annotation-screen-overview')).forEach(node=>details.append(node));details.id='description-regions';messages.id='description-messages';details.setAttribute('role','tabpanel');messages.setAttribute('role','tabpanel');
+  const buttons=[];function activate(key,focus=false){tabs.set(route(),key);details.hidden=key!=='regions';messages.hidden=key!=='messages';buttons.forEach(({button,value})=>{const selected=value===key;button.setAttribute('aria-selected',String(selected));button.tabIndex=selected?0:-1;if(selected&&focus)button.focus();});}
+  [['regions','영역 설명',details],['messages','알럿/컨펌',messages]].forEach(([key,title,pane])=>{const tab=button(title,()=>activate(key));tab.id='description-tab-'+key;tab.setAttribute('role','tab');tab.setAttribute('aria-controls',pane.id);pane.setAttribute('aria-labelledby',tab.id);tab.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();activate(key==='regions'?'messages':'regions',true);}});buttons.push({button:tab,value:key});nav.append(tab);});section.append(nav,details,messages);activate(tabs.get(route())||'regions');
+ }
+ document.addEventListener('click',event=>{if(event.target.closest('.annotation-pin'))tabs.set(route(),'regions');},true);window.addEventListener('annotation-select-scope',()=>tabs.set(route(),'regions'));new MutationObserver(mount).observe(document.body,{childList:true,subtree:true});window.addEventListener('description-context-changed',mount);mount();
+})();
