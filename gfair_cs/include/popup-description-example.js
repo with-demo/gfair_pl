@@ -14,5 +14,6 @@
    modal.close();modal.show();modal.classList.add('popup-description-live');button.textContent='설명 닫기';window.dispatchEvent(new Event('description-context-changed'));window.dispatchEvent(new Event('annotation-open'));
   });
  }
+ window.addEventListener('annotation-select-scope',()=>{if(route()==='SET-03'&&modal.open&&!window.MOCKUP_DESCRIPTION_CONTEXT)modal.querySelector('[data-popup-description]')?.click();});
  new MutationObserver(enhance).observe(modal,{attributes:true,attributeFilter:['open'],childList:true,subtree:true});modal.addEventListener('close',()=>{if(!modal.open)reset();});window.addEventListener('hashchange',()=>{reset();if(modal.open)modal.close();});enhance();
 })();
