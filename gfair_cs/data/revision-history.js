@@ -1,5 +1,17 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"EVT-01","version":"v0.9","fromVersion":"v0.8","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 상단에 엑셀 다운로드와 QR 일괄 다운로드 버튼 배치","changes":["국내 바이어 목록의 우측 상단 도구에 엑셀 다운로드·QR일괄 다운로드 버튼 제공."]},
+  {"screenId":"EVT-02","version":"v0.9","fromVersion":"v0.8","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 상단에 엑셀 다운로드와 QR 일괄 다운로드 버튼 배치","changes":["통역원 목록의 우측 상단 도구에 엑셀 다운로드·QR일괄 다운로드 버튼 제공."]},
+  {"screenId":"NTC-03","version":"v1.13","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},
+  {"screenId":"NTC-02","version":"v1.13","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},
+  {"screenId":"NTC-01","version":"v5.34","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},
+  {"screenId":"PRE-09","version":"v0.10","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},
+  {"screenId":"PRE-04","version":"v0.13","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},
+  {"screenId":"PRE-01","version":"v3.8","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"해외 바이어 목록 다운로드 도구를 엑셀·QR로 정리"},
+  {"screenId":"BAS-15","version":"v2.17","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"엑셀 일괄 업로드를 목록 상단 우측으로 이동하고 등록 버튼명을 통일"},
+  {"screenId":"BAS-07","version":"v1.9","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"엑셀 일괄 업로드를 목록 상단 우측으로 이동"},
+  {"screenId":"BAS-05","version":"v1.9","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"엑셀 일괄 업로드를 목록 상단 우측으로 이동"},
+  {"screenId":"BAS-03","version":"v1.9","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"엑셀 일괄 업로드를 목록 상단 우측으로 이동"},
 {"screenId":"COM-07","version":"v1.10","date":"2026.10.21","accountName":"mjha","summary":"운영용역사 담당자관리 대메뉴와 하위 담당자 직접 등록 진입 추가"},
 {"screenId":"COM-08","version":"v0.1","date":"2026.10.21","accountName":"mjha","summary":"본인 소속 회사·배정 행사에 한정한 하위 담당자 직접 등록 화면 추가"},
 

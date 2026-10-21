@@ -16,12 +16,14 @@
   let tools=header.querySelector('.admin-list-tools');
   if(!tools){tools=document.createElement('div');tools.className='admin-list-tools';header.append(tools);}
   // 다운로드는 기존 버튼 노드를 이동하여 원래 동작과 속성을 보존한다.
-  [...main.querySelectorAll('.pagehead button,.pagehead a,.management-actions button,.panelhead button,.panelhead a')].filter(el=>!el.closest('table,form')&&/다운로드|내려받기|^CSV$|^PDF$/.test(clean(el))).forEach(el=>tools.append(el));
+  [...main.querySelectorAll('.pagehead button,.pagehead a,.management-actions button,.panelhead button,.panelhead a')].filter(el=>!el.closest('table,form')&&/다운로드|내려받기|일괄 업로드|^CSV$|^PDF$/.test(clean(el))).forEach(el=>tools.append(el));
   const bottom=document.createElement('div');bottom.className='admin-list-actions';panel.after(bottom);
   main.querySelectorAll('.pagehead>.head-actions,.pagehead>button,.pagehead>a.btn,.management-actions').forEach(group=>{
    if(group.matches('.management-actions')){[...group.children].filter(el=>el.matches('button,a')).forEach(el=>bottom.append(el));group.remove();}
    else if(group.matches('button,a')||group.querySelector('button,a'))bottom.append(group);
+   else if(group.matches('.head-actions'))group.remove();
   });
+  bottom.querySelectorAll('button,a').forEach(el=>{if(/등록$/.test(clean(el))){el.textContent='등록';el.className='btn primary registration';}});
   if(!bottom.children.length)bottom.remove();
   if(native){
    const row=header.querySelector(':scope>.row');if(row)tools.prepend(row);
