@@ -16,7 +16,7 @@
  async function refresh(){
   const route=current();if(route==='screens'||busy)return;
   busy=true;try{const result=await api('list');if(route!==current())return;user=result.user;githubReady=!!result.githubConfigured;records=result.records;screen=route;const next=JSON.stringify(result);if(next!==snapshot){snapshot=next;changed();}if(!new URL(location.href).searchParams.has('annotation_error')&&!window.GFAIR_COLLAB.authError)window.GFAIR_COLLAB.error='';}
-  catch(error){window.GFAIR_COLLAB.error=error.message;changed();}finally{busy=false;}
+  catch(error){window.GFAIR_COLLAB.error=error.message;changed();}finally{busy=false;if(route!==current())refresh();}
  }
  async function login(){
   if(!githubReady)throw Error('GitHub 로그인 앱 연결 설정이 필요합니다.');

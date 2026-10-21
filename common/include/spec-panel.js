@@ -8,40 +8,17 @@
  const screenPicker=toolbar.querySelector('[data-spec=screen]');
  (window.GFAIR_SCREENS||[]).forEach(group=>{
   const section=document.createElement('optgroup');section.label=group.name;
-  group.screens.forEach(screen=>{const option=document.createElement('option');option.value=screen.id;option.textContent=screen.id+' : '+(screen.id==='NTC-01'?'공지사항 목록':screen.title);section.append(option);});screenPicker.append(section);
+  group.screens.forEach(screen=>{const option=document.createElement('option');option.value=screen.id;option.textContent=screen.id+' : '+screen.title;section.append(option);});screenPicker.append(section);
  });
  const overview=document.createElement('option');overview.value='screens';overview.textContent='SCREEN-LIST : 전체 화면 목록';screenPicker.append(overview);
  const layout=document.createElement('div');layout.className='ui-spec-layout';app.before(toolbar,layout);layout.append(app);
  const measureToolbar=()=>document.documentElement.style.setProperty('--sb-toolbar-height',toolbar.getBoundingClientRect().height+'px');
  new ResizeObserver(measureToolbar).observe(toolbar);measureToolbar();
  const panel=document.createElement('aside');panel.className='ui-spec-panel';panel.setAttribute('aria-label','Description');panel.hidden=true;layout.append(panel);
- let closed=true,full=false,numbers=true;
+ const visibilityKey='mockup.description.open.'+(document.body.dataset.project||'default');
+ let closed=sessionStorage.getItem(visibilityKey)!=='true',full=false,numbers=true;
  const status=toolbar.querySelector('.ui-spec-status');
- function revisionAccountName(entry){const actual=entry.account||entry.accountName||'';return (window.GFAIR_REVISION_ACCOUNT_NAMES||{})[actual]||entry.accountName||actual;}
- function showHistory(){
-  let modal=document.getElementById('revision-history-dialog');
-  if(!modal){modal=document.createElement('dialog');modal.id='revision-history-dialog';modal.className='ui-revision-dialog';document.body.append(modal);}
-  modal.replaceChildren();const heading=document.createElement('h2');heading.textContent='화면 / Description 수정 이력';modal.append(heading);
-  const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
-  const releases=(window.GFAIR_REVISION_HISTORY||[]).filter(entry=>entry.release&&(!entry.screenId||entry.screenId===route));
-  heading.textContent='개발 전달 이력';
-  const list=document.createElement('ul');
-  if(!releases.length){const empty=document.createElement('li');empty.textContent='등록된 수정 이력이 없습니다.';list.append(empty);}
-  releases.forEach(entry=>{const item=document.createElement('li'),meta=document.createElement('strong'),summary=document.createElement('p');meta.textContent=entry.date+' / '+revisionAccountName(entry)+(entry.version?' · '+(entry.fromVersion?entry.fromVersion+' → ':'')+entry.version:'');summary.textContent=entry.summary;item.append(meta,summary);if(entry.changes){const changes=document.createElement('ul');entry.changes.forEach(text=>{const change=document.createElement('li');change.textContent=text;changes.append(change);});item.append(changes);}if(entry.note){const note=document.createElement('p');note.textContent=entry.note;item.append(note);}list.append(item);});modal.append(list);
-  const close=document.createElement('button');close.type='button';close.className='ui-revision-close';close.textContent='×';close.setAttribute('aria-label','수정 이력 닫기');close.title='닫기';close.addEventListener('click',()=>modal.close());const header=document.createElement('div');header.className='ui-revision-header';header.append(heading,close);modal.prepend(header);modal.showModal();
- }
-
-
- function draw(){
-  panel.replaceChildren();
-  const version=document.createElement('footer');version.className='ui-spec-version';
-  const revisionButton=document.createElement('button');revisionButton.type='button';
-  const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
-  const latest=(window.GFAIR_REVISION_HISTORY||[]).find(entry=>entry.screenId===route);
-  revisionButton.textContent=latest?'HTML '+latest.version+' · '+latest.date+' / '+revisionAccountName(latest):'수정 이력';
-  revisionButton.title='수정 이력 보기';revisionButton.addEventListener('click',showHistory);version.append(revisionButton);panel.append(version);
-  window.dispatchEvent(new Event('annotation-render'));
- }
+ function draw(){panel.replaceChildren();window.dispatchEvent(new Event('annotation-render'));}
  function sync(){
   // Former overview copy must not reappear inside the mockup after removing the panel content.
   app.querySelectorAll('#content .pagehead .subtitle,#content .management-note,#content .attendance-demo-note,#content .statistics-footnote,#content .notice-save-note,#content .notice-file-note').forEach(el=>{el.dataset.descriptionOverview='';});
@@ -59,7 +36,7 @@
  toolbar.addEventListener('click',event=>{
   const action=event.target.dataset.spec;
   if(action==='screen-search'){full=false;location.hash='screens';}
-  if(action==='close'){closed=!closed;full=false;}
+  if(action==='close'){closed=!closed;full=false;sessionStorage.setItem(visibilityKey,String(!closed));}
   sync();
  });
  toolbar.addEventListener('change',event=>{
@@ -78,8 +55,8 @@
 
  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&full){full=false;sync();}});
  new MutationObserver(sync).observe(app,{childList:true,subtree:true});
- window.addEventListener('revision-history-loaded',draw);
+
  window.addEventListener('collaboration-updated',sync);
- window.addEventListener('annotation-open',()=>{closed=false;sync();});
+ window.addEventListener('annotation-open',()=>{closed=false;sessionStorage.setItem(visibilityKey,'true');sync();});
  window.addEventListener('hashchange',()=>{draw();sync();});draw();sync();
 })();

@@ -40,8 +40,8 @@
   if(store.user){controls.append(element('span',store.user.name+' · '+(canEdit()?'공동작업자':'댓글 참여자')));if(canEdit()){const add=button(picking?'영역 선택 취소':'영역에 설명 추가',()=>{picking=!picking;if(picking)window.dispatchEvent(new Event('annotation-open'));render();});add.setAttribute('aria-pressed',String(picking));controls.append(add);}controls.append(button('로그아웃',async()=>{await store.logout();picking=false;dialog.close();render();}));}
   else {const login=button('GitHub 공동작업자 로그인',()=>store.login().catch(error=>message(error.message)));login.disabled=!store.githubReady;login.title=store.githubReady?'GitHub 계정으로 저장소 공동작업자 확인':'GitHub 로그인 앱 연결 설정 중';controls.append(login);}
   document.body.classList.toggle('annotation-picking',picking);const old=document.getElementById('annotation-panel');old?.remove();if(route()==='screens'){pins();return;}
-  const section=element('section',undefined,'annotation-panel');section.id='annotation-panel';section.append(element('h2','영역 Description'));
-  section.append(element('p',store.user?(picking?'본문의 설명할 영역을 클릭하세요. Esc로 취소할 수 있습니다.':'서버 공유 · 5초 간격으로 최신 의견을 확인합니다.'):'로그인 없이 설명을 확인하고 이름을 입력해 의견을 남길 수 있습니다.','annotation-hint'));
+  const section=element('section',undefined,'annotation-panel');section.id='annotation-panel';const screen=(window.GFAIR_SCREENS||[]).flatMap(group=>group.screens).find(screen=>screen.id===route());section.append(element('h2','['+route()+'] '+(screen?.title||'')));
+  if(picking)section.append(element('p','본문의 설명할 영역을 클릭하세요. Esc로 취소할 수 있습니다.','annotation-hint'));
   if(store.error)section.append(element('p',store.error,'annotation-hint'));
   if(!records().length)section.append(element('p',canEdit()?'영역에 설명 추가 버튼을 눌러 시작하세요.':'아직 작성된 설명이 없습니다.'));
   records().forEach(record=>{
