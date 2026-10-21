@@ -68,11 +68,7 @@
  function defaultOverview(screen){
   if(!screen)return '화면 개요를 작성해 주세요.';
   if(window.GFAIR_SCREEN_OVERVIEWS?.[screen.id])return window.GFAIR_SCREEN_OVERVIEWS[screen.id];
-  const parts=[screen.summary||screen.title+' 화면입니다.'];
-  const columns=screen.ui?.columns||[],fields=screen.ui?.fields||[];
-  if(columns.length)parts.push('주요 조회 항목: '+columns.join(', ')+'.');
-  else if(fields.length)parts.push('주요 입력 항목: '+fields.map(field=>field[0]).join(', ')+'.');
-  return parts.join('\n');
+  return screen.summary||screen.title+'의 내용을 확인하는 화면입니다.';
  }
  function screenOverview(screen){
   const record=store.records.find(isOverview),section=element('section',undefined,'annotation-screen-overview'),heading=element('div',undefined,'annotation-overview-heading');heading.append(element('h3','화면 개요'));
