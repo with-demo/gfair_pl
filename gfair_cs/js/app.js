@@ -307,7 +307,7 @@ root.addEventListener('click',ev=>{const a=ev.target.closest('a[href="#SET-05"],
 
 // 관리 목록·상세는 전용 목업 모듈을 사용한다.
 const managementBaseList=list;
-list=function(s){if(!['BAS-15','BAS-16','BAS-17','BAS-18','BAS-19','COM-06','COM-07','COM-08'].includes(s.id))return managementBaseList(s);return head(s)+(window.GFAIR_MANAGEMENT?window.GFAIR_MANAGEMENT.render(s.id,role,event):'<p>화면을 불러오는 중입니다.</p>')};
+list=function(s){if(!['BAS-15','BAS-16','BAS-17','BAS-18','BAS-19','COM-06','COM-07','COM-08'].includes(s.id))return managementBaseList(s);const page=s.id==='BAS-19'?{...s,title:'운영용역사 등록',kind:'list'}:s;return head(page)+(window.GFAIR_MANAGEMENT?window.GFAIR_MANAGEMENT.render(s.id,role,event):'<p>화면을 불러오는 중입니다.</p>')};
 parentRoutes['COM-08']='COM-07';parentRoutes['BAS-17']='BAS-15';parentRoutes['BAS-18']='BAS-16';parentRoutes['BAS-19']='BAS-15';
 window.addEventListener('management-ui-ready',()=>{if(['BAS-15','BAS-16','BAS-17','BAS-18','BAS-19','COM-06','COM-07','COM-08'].includes(current))render()});
 // 운영사는 담당 상담 범위만 조회·검수한다. 기존 관리자/작성자 흐름은 유지한다.
