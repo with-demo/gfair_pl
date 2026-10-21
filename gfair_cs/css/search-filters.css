@@ -1,33 +1,28 @@
-#app #content form.unified-search{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:20px 24px;padding:24px 28px;background:#fff;border:1px solid #ddd;border-radius:5px;box-shadow:none}
-#app #content .unified-search>.field,#app #content .unified-search>fieldset{display:flex;flex:0 1 auto;align-items:center;gap:16px;min-width:160px;margin:0;padding:0;border:0}
-#app #content .unified-search>.field>span,#app #content .unified-search legend{white-space:nowrap;font-size:13px;font-weight:400;color:#111}
-#app #content .unified-search>fieldset{display:block}#app #content .unified-search legend{float:left;margin-right:16px;padding-top:9px}
-#app #content .unified-search input:not([type=radio]):not([type=checkbox]),#app #content .unified-search select{height:36px;min-height:36px;border-radius:2px;font-size:13px;padding:6px 10px}
-#app #content .unified-search>.search-keyword{flex:1 0 50%;min-width:min(100%,360px)}
-#app #content .unified-search .search-keyword-controls{display:flex;flex:1;min-width:0;gap:6px}#app #content .unified-search .search-keyword-controls select{width:auto;max-width:150px;flex:0 1 auto}#app #content .unified-search .search-keyword-controls input{width:0;flex:1;min-width:0}
-#app #content .unified-search>.search-actions{display:flex;align-items:center;gap:8px;margin-left:auto}#app #content .unified-search .search-actions .btn{min-width:84px;min-height:36px;border-radius:2px;white-space:nowrap}
-@media(max-width:700px){#app #content form.unified-search{padding:18px;gap:16px}#app #content .unified-search>.search-keyword{flex-basis:100%;width:100%}#app #content .unified-search>.search-actions{width:100%;justify-content:center}}
+/* KRDS 필터링·정렬 패턴을 참고한 공통 검색 영역. */
+#app #content form.unified-search{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;gap:16px 32px;padding:24px 28px;background:#f6f7f9;border:1px solid #e3e6ea;border-radius:8px;box-shadow:none}
+#app #content .unified-search>.search-condition{display:grid;grid-template-columns:minmax(80px,3fr) minmax(0,7fr);gap:0;align-items:center;min-width:0;width:100%;max-width:none;margin:0;padding:0;border:0;align-self:center}
+#app #content .unified-search .search-condition-caption,#app #content .unified-search>.search-keyword>span{margin:0;padding:0 16px 0 0;min-width:0;color:#30343b;font-size:13px;font-weight:500;line-height:1.5;white-space:normal;box-sizing:border-box}
+#app #content .unified-search .search-condition-controls{display:flex;align-items:center;gap:8px;min-width:0;width:100%;min-height:40px}
+#app #content .unified-search .search-condition-controls>select,#app #content .unified-search .search-condition-controls>input:not([type=radio]):not([type=checkbox]),#app #content .unified-search .search-condition-controls>details,#app #content .unified-search .search-condition-controls>div{flex:1;width:100%;min-width:0;max-width:none}
+#app #content .unified-search input:not([type=radio]):not([type=checkbox]),#app #content .unified-search select{height:40px;min-height:40px;padding:8px 12px;border:1px solid #b8bdc5;border-radius:5px;background-color:#fff;color:#25282d;font-size:13px;box-sizing:border-box;box-shadow:none}
+#app #content .unified-search input::placeholder{color:#8a8e95}
+#app #content .unified-search :is(input,select,summary):focus-visible{outline:2px solid #555;outline-offset:2px}
+#app #content .unified-search .notice-category-options,#app #content .unified-search .management-type-options{display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px;min-height:40px}
+#app #content .unified-search :is(.notice-category-options,.management-type-options) label{display:inline-flex;align-items:center;gap:6px;width:auto;white-space:nowrap;margin:0;font-weight:400;color:#353940}
+#app #content .unified-search input:is([type=radio],[type=checkbox]){width:16px;height:16px;min-height:0;margin:0;flex:none;accent-color:#333}
+#app #content .unified-search .notice-dates{display:flex;align-items:center;gap:8px;width:100%;min-width:0}
+#app #content .unified-search .notice-dates input{width:0;min-width:0;flex:1;padding:8px}
+#app #content .unified-search>.search-keyword{grid-column:1/-1;display:grid;grid-template-columns:minmax(80px,calc((100% - 32px)*.15)) minmax(0,1fr);align-items:center;gap:0;width:100%;max-width:none;min-width:0;margin:2px 0 0;padding:18px 0 0;border-top:1px solid #dfe2e7}
+#app #content .unified-search .search-keyword-controls{display:flex;align-items:center;gap:8px;width:100%;min-width:0}
+#app #content .unified-search .search-keyword-controls>select{flex:0 0 120px;width:120px;max-width:160px}
+#app #content .unified-search .search-keyword-controls>input{flex:1;width:0;min-width:0}
+#app #content .unified-search .search-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin:0 0 0 8px;min-width:0}
+#app #content .unified-search>.search-actions{grid-column:1/-1;padding-top:16px;margin:0;border-top:1px solid #dfe2e7}
+#app #content .unified-search .search-actions .btn{width:auto;min-width:84px;min-height:40px;height:40px;padding:8px 20px;border:1px solid #aeb4bd;border-radius:5px;background:#fff;color:#34383e;font-size:13px;font-weight:500;white-space:nowrap;box-shadow:none}
+#app #content .unified-search .search-actions .btn.primary{background:#30343b;border-color:#30343b;color:#fff}
+#app #content .unified-search .matching-multi summary{min-height:40px;border-color:#b8bdc5;border-radius:5px;background:#fff;padding:8px 12px}
+@media(max-width:900px){#app #content form.unified-search{gap:16px 24px;padding:20px}#app #content .unified-search .search-keyword-controls{flex-wrap:wrap}#app #content .unified-search .search-keyword-controls>.search-actions{flex-basis:100%;margin:4px 0 0}#app #content .unified-search .search-keyword-controls>input{min-width:100px}}
+@media(max-width:600px){#app #content form.unified-search{grid-template-columns:minmax(0,1fr);padding:16px;gap:14px}#app #content .unified-search>.search-keyword{grid-template-columns:minmax(80px,3fr) minmax(0,7fr)}#app #content .unified-search .search-keyword-controls>select{flex:0 1 90px;width:90px}#app #content .unified-search .search-keyword-controls>input{flex-basis:calc(100% - 100px);min-width:0}#app #content .unified-search .search-actions .btn{min-width:72px;padding:8px 14px}}
 
-#app #content .unified-search>.search-keyword.search-keyword-full{flex-basis:100%;width:100%}
-
-/* 분류 조건은 내용에 맞게 2~3개씩 묶어 세로 공간을 줄인다. */
-#app #content form.unified-search{gap:12px 20px;padding:20px 24px}
-#app #content .unified-search>.field:not(.search-keyword),#app #content .unified-search>fieldset:not(.search-keyword){flex:1 1 240px;width:auto;min-width:min(100%,240px);max-width:100%;gap:12px;align-self:center}
-#app #content .unified-search>.field:not(.search-keyword)>select,#app #content .unified-search>.field:not(.search-keyword)>input{flex:1;min-width:0;width:auto;max-width:240px}
-#app #content .unified-search>.notice-registration-filter{flex-basis:380px;min-width:min(100%,340px)}
-#app #content .unified-search .notice-dates{display:flex;flex:1;gap:8px;width:auto;min-width:0;align-items:center}
-#app #content .unified-search .notice-dates input{width:0;min-width:0;flex:1}
-#app #content .unified-search>fieldset legend{margin-right:12px}
-#app #content .unified-search .notice-category-options,#app #content .unified-search .management-type-options{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
-#app #content .unified-search .notice-category-options label,#app #content .unified-search .management-type-options label{width:auto;white-space:nowrap;margin:0}
-@media(max-width:700px){#app #content form.unified-search{padding:16px;gap:12px 16px}#app #content .unified-search>.field:not(.search-keyword),#app #content .unified-search>fieldset:not(.search-keyword){flex-basis:200px;min-width:min(100%,200px)}}
-
-/* 일반 검색 조건: 한 줄 두 항목, 항목명과 컨트롤은 3:7 정렬. */
-#app #content .unified-search>.search-condition:not(.search-keyword){display:grid;grid-template-columns:minmax(0,3fr) minmax(0,7fr);flex:0 0 calc((100% - 20px)/2);width:calc((100% - 20px)/2);min-width:0;max-width:calc((100% - 20px)/2);gap:0;align-items:center}
-#app #content .unified-search .search-condition-caption{margin:0;padding:0 12px 0 0;min-width:0;white-space:normal;line-height:1.4;box-sizing:border-box}
-#app #content .unified-search .search-condition-controls{min-width:0;width:100%;display:flex;align-items:center;gap:8px}
-#app #content .unified-search .search-condition-controls>select,#app #content .unified-search .search-condition-controls>input:not([type=radio]):not([type=checkbox]),#app #content .unified-search .search-condition-controls>details,#app #content .unified-search .search-condition-controls>div{width:100%;min-width:0;max-width:none;flex:1}
-#app #content .unified-search>fieldset.search-condition{display:block}
-#app #content .unified-search>fieldset.search-condition>legend{float:left;width:30%;margin:0;padding:8px 12px 0 0}
-#app #content .unified-search>fieldset.search-condition>.search-condition-controls{margin-left:30%;width:70%}
-@media(max-width:600px){#app #content .unified-search>.search-condition:not(.search-keyword){flex-basis:100%;width:100%;max-width:100%;min-width:0}}
+#app #content .unified-search>.search-condition{grid-column:auto;grid-row:auto;order:0}
+#app #content .unified-search>[hidden]{display:none}
