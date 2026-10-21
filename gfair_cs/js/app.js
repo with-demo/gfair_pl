@@ -118,7 +118,7 @@ render=function(){oldRender();const s=map.get(current);if(!s||isMobile(s)||curre
  if(false){root.querySelector('.pagehead')?.insertAdjacentHTML('afterend',`<div class="dashboard-switch">${A('SET-05','설문관리','btn '+(current==='SET-05'?'primary':''))}${A('SET-06','응답관리','btn '+(current==='SET-06'?'primary':''))}</div>`)}
  
  if(current==='REVIEW-01'){filter.status=filter.status||'승인 요청';const select=root.querySelector('[name=status]');if(select)select.value=filter.status;root.querySelector('.tablewrap')?.replaceWith(document.createRange().createContextualFragment(jTable(jRows(map.get('JNL-01')))));}
- if(current==='BAS-09')root.querySelector('.head-actions')?.insertAdjacentHTML('beforeend',A('BAS-13','연계현황'));
+ 
 
  if(current==='NTC-02'&&role==='admin')root.querySelectorAll('.panel details').forEach(d=>d.insertAdjacentHTML('beforeend',A('NTC-04','질문 상세·수정','btn ghost')));
  
