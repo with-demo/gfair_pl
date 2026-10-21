@@ -57,7 +57,7 @@
       zip.file(`${String(index+1).padStart(3,'0')}_${safe(company)}_${safe(booth)}.gif`,base64,{base64:true});
      });
      const blob=await zip.generateAsync({type:'blob'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='G-FAIR_참가기업_부스QR이미지_검토용.zip';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-     const notice=document.getElementById('toast');if(notice){notice.textContent=`부스별 QR 이미지 ${rows.length}개를 ZIP으로 다운로드했습니다. 목업 예시 QR이며 실제 인증에는 사용할 수 없습니다.`;notice.hidden=false;setTimeout(()=>notice.hidden=true,4000)}
+     const notice=document.getElementById('toast');if(notice){notice.textContent=`부스별 QR 이미지 ${rows.length}개를 ZIP으로 다운로드했습니다. 목업 QR이며 실제 인증에는 사용할 수 없습니다.`;notice.hidden=false;setTimeout(()=>notice.hidden=true,4000)}
     }catch(error){const notice=document.getElementById('toast');if(notice){notice.textContent=error.message||'QR 이미지 파일을 생성하지 못했습니다.';notice.hidden=false;setTimeout(()=>notice.hidden=true,3000)}}
    });
    tools.append(qrDownload);

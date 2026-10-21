@@ -445,3 +445,9 @@ window.GFAIR_MENU.find(group=>group.name==="모니터링").items.push(["MON-08",
 Object.assign(GFAIR_MENU.find(g=>g.name==='기본정보관리').items.find(i=>i[0]==='BAS-15')[3],{buyOperator:'X',exportOperator:'X'});
 
 GFAIR_MENU.find(g=>g.name==='공지/알림').items.forEach(i=>{if(['NTC-01','NTC-02','NTC-03'].includes(i[0]))Object.assign(i[3],{admin:'O',buyOperator:'△',exportOperator:'△',buyer:'△',interpreter:'△'})});
+// 참가기업 조회는 모든 사용자가 행사정보 메뉴에서 이용한다.
+(()=>{
+ const menu=GFAIR_MENU.find(group=>group.name==='행사정보')?.items.find(item=>item[0]==='BAS-09');
+ if(menu){menu[1]='참가기업';Object.assign(menu[3],{admin:'O',buyOperator:'△',exportOperator:'△',buyer:'△',interpreter:'△'});}
+ const old=GFAIR_MENU.findIndex(group=>group.name==='기업정보');if(old>=0)GFAIR_MENU.splice(old,1);
+})();
