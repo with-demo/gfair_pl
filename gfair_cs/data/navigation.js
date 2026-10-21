@@ -427,6 +427,9 @@ window.GFAIR_MENU.find(group=>group.name==="모니터링").items.push(["MON-08",
 (()=>{
  const adminOnly={admin:'O',buyOperator:'X',exportOperator:'X',interpreter:'X',buyer:'X'};
  const basic=GFAIR_MENU.find(g=>g.name==='기본정보관리');
+ const eventInfo=GFAIR_MENU.find(g=>g.name==='행사정보');
+ const companyMenuIndex=basic.items.findIndex(i=>i[0]==='BAS-09');
+ if(companyMenuIndex!==-1)eventInfo.items.unshift(basic.items.splice(companyMenuIndex,1)[0]);
  basic.items.splice(1,0,['BAS-15','운영용역사 관리',[],{...adminOnly}]);
  basic.items.push(['BAS-16','관리자 관리',[],{...adminOnly}]);
  const journal=GFAIR_MENU.find(g=>g.name==='상담일지');
