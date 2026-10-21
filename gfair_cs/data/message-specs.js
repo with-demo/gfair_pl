@@ -10,7 +10,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "입력을 취소하고 이전 화면으로 돌아갈까요?",
     "confirm": "등록 취소는 목록으로, 수정 취소는 상세 화면으로 복귀",
     "cancel": "현재 입력 화면 유지",
-    "source": "include/notice-ui.js"
+    "source": "include/notice-ui.js",
+    "title": "입력 취소 확인"
   },
   {
     "key": "notice-required",
@@ -23,7 +24,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "제목과 내용을 입력해 주세요.",
     "confirm": "저장 중단 후 현재 입력 화면 유지",
     "cancel": "",
-    "source": "include/notice-ui.js"
+    "source": "include/notice-ui.js",
+    "title": "제목·내용 미입력"
   },
   {
     "key": "notice-file",
@@ -36,7 +38,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "허용 확장자의 10MB 이하 파일 1개를 선택해 주세요.",
     "confirm": "선택한 파일 입력을 비우고 재선택 대기",
     "cancel": "",
-    "source": "include/notice-ui.js"
+    "source": "include/notice-ui.js",
+    "title": "첨부파일 조건 오류"
   },
   {
     "key": "logout",
@@ -48,7 +51,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "초안 없음: 검토용 화면에서 로그아웃할까요?\n초안 있음: 이 기기에 저장된 검토용 초안이 정리됩니다.",
     "confirm": "기기 초안을 정리하고 관리자 로그인 화면으로 이동",
     "cancel": "현재 화면 유지",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "로그아웃 확인"
   },
   {
     "key": "send",
@@ -60,7 +64,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "대상과 내용을 확인합니다. 실제 SMS는 발송하지 않습니다.",
     "confirm": "검토 완료 시 발송 검토 이력을 남김; 실제 SMS 미발송",
     "cancel": "발송 검토 중단",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "발송 대상 확인"
   },
   {
     "key": "send-result",
@@ -72,7 +77,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "검토를 완료했습니다. 실제 SMS는 발송하지 않았습니다.",
     "confirm": "안내 후 현재 화면 유지",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "발송 검토 완료"
   },
   {
     "key": "accept",
@@ -84,7 +90,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "현재 담당 일정과 중복되지 않는지 확인해 주세요.\n최종 매칭은 운영 담당자가 확정합니다.",
     "confirm": "수락 확인 이력을 남기고 담당 일정 화면으로 이동",
     "cancel": "기존 상태 유지",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "통역 요청 수락 확인"
   },
   {
     "key": "review-permission",
@@ -98,7 +105,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "승인·반려 권한이 없습니다.",
     "confirm": "상태 변경 중단",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "검수 권한 없음"
   },
   {
     "key": "review-stale",
@@ -112,7 +120,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "최신 처리 상태를 다시 확인해 주세요.",
     "confirm": "기존 처리 상태 유지",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "검수 상태 변경됨"
   },
   {
     "key": "review-reason",
@@ -126,7 +135,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "반려 사유를 입력해 주세요.",
     "confirm": "반려사유 입력란에 포커스; 반려 처리 중단",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "반려 사유 미입력"
   },
   {
     "key": "journal-offline",
@@ -140,7 +150,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "오프라인입니다. 기기 초안은 저장했으며 제출할 수 없습니다.",
     "confirm": "기기 초안 유지; 제출 중단",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "오프라인 제출 불가"
   },
   {
     "key": "journal-content",
@@ -154,7 +165,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "상담내용을 먼저 작성해 주세요.",
     "confirm": "현재 작성 화면 유지",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "상담내용 미입력"
   },
   {
     "key": "journal-company",
@@ -168,7 +180,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "상담기업을 선택해 주세요.",
     "confirm": "상담기업 선택 대기",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "상담기업 미선택"
   },
   {
     "key": "image-format",
@@ -182,7 +195,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "이미지 파일을 선택해 주세요.",
     "confirm": "첨부 반영 중단",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "이미지 형식 오류"
   },
   {
     "key": "camera-unavailable",
@@ -196,7 +210,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "카메라를 사용할 수 없습니다. 코드 입력을 이용해 주세요.",
     "confirm": "직접 코드 입력으로 진행 가능",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "카메라 사용 불가"
   },
   {
     "key": "camera-denied",
@@ -210,7 +225,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "카메라 권한을 확인하거나 코드 입력을 이용해 주세요.",
     "confirm": "스캔 중단; 직접 코드 입력 제공",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "카메라 접근 실패"
   },
   {
     "key": "qr-invalid",
@@ -224,7 +240,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "현재 행사와 QR 대상 코드를 확인해 주세요.",
     "confirm": "QR 확인 처리 중단",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "QR 확인 오류"
   },
   {
     "key": "file-missing",
@@ -238,7 +255,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "파일을 먼저 선택해 주세요.",
     "confirm": "파일 선택 대기",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "파일 미선택"
   },
   {
     "key": "file-validate-first",
@@ -251,7 +269,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "파일 검증을 먼저 진행해 주세요.",
     "confirm": "등록 중단",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "파일 검증 필요"
   },
   {
     "key": "travel-target",
@@ -263,7 +282,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "대상과 이동상태를 확인해 주세요.",
     "confirm": "상태 변경 중단",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "이동상태 입력 오류"
   },
   {
     "key": "travel-result",
@@ -275,7 +295,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "이동상태와 단계별 현황을 갱신했습니다.",
     "confirm": "목록과 현황에 변경 내용 반영",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "이동상태 변경 완료"
   },
   {
     "key": "stats-year",
@@ -288,7 +309,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "종료 연도는 시작 연도보다 같거나 늦어야 합니다.",
     "confirm": "조회 중단; 연도 재입력",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "조회 연도 오류"
   },
   {
     "key": "group-name",
@@ -301,7 +323,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "공백: 그룹명을 입력해 주세요.\n중복: 같은 이름의 그룹이 있습니다.",
     "confirm": "저장 중단; 입력한 내용 유지",
     "cancel": "",
-    "source": "include/group-access.js"
+    "source": "include/group-access.js",
+    "title": "그룹명 입력 오류"
   },
   {
     "key": "staff-scope",
@@ -313,7 +336,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "본인 회사에 배정된 행사만 등록할 수 있습니다.",
     "confirm": "등록 중단",
     "cancel": "",
-    "source": "include/management-ui.js"
+    "source": "include/management-ui.js",
+    "title": "담당 행사 범위 오류"
   },
   {
     "key": "staff-required",
@@ -325,7 +349,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "담당자코드와 이름을 입력해 주세요.",
     "confirm": "등록 중단; 입력값 유지",
     "cancel": "",
-    "source": "include/management-ui.js"
+    "source": "include/management-ui.js",
+    "title": "담당자 필수 항목 누락"
   },
   {
     "key": "staff-duplicate",
@@ -337,7 +362,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "같은 행사에 이미 등록된 담당자코드입니다.",
     "confirm": "등록 중단; 코드 수정 대기",
     "cancel": "",
-    "source": "include/management-ui.js"
+    "source": "include/management-ui.js",
+    "title": "담당자코드 중복"
   },
   {
     "key": "admin-required",
@@ -350,7 +376,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "ID와 이름은 공백만 입력할 수 없습니다.",
     "confirm": "저장 중단",
     "cancel": "",
-    "source": "include/management-ui.js"
+    "source": "include/management-ui.js",
+    "title": "관리자 필수 항목 누락"
   },
   {
     "key": "admin-duplicate",
@@ -363,7 +390,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "이미 등록된 관리자 ID입니다.",
     "confirm": "등록·수정 중단",
     "cancel": "",
-    "source": "include/management-ui.js"
+    "source": "include/management-ui.js",
+    "title": "관리자 ID 중복"
   },
   {
     "key": "survey-delete",
@@ -375,7 +403,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "{설문제목}을 삭제할까요?\n해당 설문의 응답도 함께 삭제됩니다.",
     "confirm": "삭제 확인 선택 시 설문과 응답을 목록에서 제거",
     "cancel": "설문·응답 유지",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "설문 삭제 확인"
   },
   {
     "key": "survey-date",
@@ -387,7 +416,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "조사 종료일은 시작일 이후로 입력해주세요.",
     "confirm": "저장 중단; 입력값 유지",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "조사기간 오류"
   },
   {
     "key": "survey-required",
@@ -399,7 +429,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "설문제목·그룹명·질문·보기 내용을 입력해주세요.",
     "confirm": "저장 중단; 누락 항목 보완",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "설문 필수 항목 누락"
   },
   {
     "key": "survey-group",
@@ -411,7 +442,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "그룹에는 최소 한 문항이 필요합니다.",
     "confirm": "마지막 문항 유지",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "마지막 문항 삭제 불가"
   },
   {
     "key": "survey-copy",
@@ -423,7 +455,8 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "설문을 복사했습니다.",
     "confirm": "응답이 없는 복사본을 생성하고 목록 갱신",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "설문 복사 완료"
   },
   {
     "key": "response-date",
@@ -435,6 +468,7 @@ window.GFAIR_MESSAGE_SPECS=[
     "message": "응답 종료일은 시작일 이후로 선택해주세요.",
     "confirm": "응답 조회 중단",
     "cancel": "",
-    "source": "js/app.js"
+    "source": "js/app.js",
+    "title": "응답 조회기간 오류"
   }
 ];
