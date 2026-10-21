@@ -3,7 +3,7 @@
  'use strict';
  const app=document.getElementById('app'),store=window.GFAIR_COLLAB;if(!app||!store)return;
  const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=shared-20261021-1',document.currentScript.src);document.head.append(css);
- let selected=null,picking=false,queued=false,view={closed:false,full:false,numbers:true};
+ let selected=null,picking=false,queued=false,view={closed:document.querySelector('.ui-spec-panel')?.hidden??true,full:false,numbers:true};
  const route=()=>decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
  const records=()=>store.records,canEdit=()=>!!store.user?.editor;
  const drafts=new Map();
