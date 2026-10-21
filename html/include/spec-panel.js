@@ -80,6 +80,7 @@
   const note=document.createElement('p');note.className='ui-spec-intro';note.textContent='요소별 상세 명세는 아직 작성되지 않았습니다.';content.append(note);panel.append(content);
  }
  function draw(){
+  window.dispatchEvent(new Event('annotation-render'));
   panel.replaceChildren();
   const version=document.createElement('footer');version.className='ui-spec-version';const revisionButton=document.createElement('button');revisionButton.type='button';const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;const latest=(window.GFAIR_REVISION_HISTORY||[]).find(entry=>entry.screenId===route);revisionButton.textContent=latest?'HTML '+latest.version+' · '+latest.date+' / '+revisionAccountName(latest):'수정 이력';revisionButton.title='수정 이력 보기';revisionButton.addEventListener('click',showHistory);version.append(revisionButton);
   const overviewData=overviewInfo();overviewSignature=overviewData.signature;
@@ -149,11 +150,13 @@
   finally{sheetBusy=false;button.disabled=false;if(context()&&(contextKey!==requestedKey||context()!==requestedContext))refreshDescription();}
  }
  function sync(){
+  window.dispatchEvent(new CustomEvent('annotation-sync',{detail:{closed,full,numbers}}));
   const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
   const overviewData=overviewInfo();if(selectContext()||overviewData.signature!==overviewSignature)draw();const active=!!context(),overview=route==='screens';if(!overview&&(!overviewRequested||(active&&!sheetRequested))){overviewRequested=true;if(active)sheetRequested=true;refreshDescription();}toolbar.hidden=false;panel.hidden=closed||overview;
-  ['refresh','numbers','full','close'].forEach(action=>{toolbar.querySelector('[data-spec='+action+']').hidden=overview||(action==='numbers'&&!active);});status.hidden=overview;
+  const hasAnnotations=!!window.GFAIR_COLLAB?.records.length;
+  ['refresh','numbers','full','close'].forEach(action=>{toolbar.querySelector('[data-spec='+action+']').hidden=overview||(action==='numbers'&&!active&&!hasAnnotations);});status.hidden=overview;
   screenPicker.value=route;
-  panel.setAttribute('aria-label','Description');toolbar.querySelector('[data-spec=numbers]').hidden=overview||!active;
+  panel.setAttribute('aria-label','Description');toolbar.querySelector('[data-spec=numbers]').hidden=overview||(!active&&!hasAnnotations);
   layout.classList.toggle('with-spec',!closed&&!overview);layout.classList.toggle('spec-full',!closed&&!overview&&full);
   toolbar.querySelector('[data-spec=close]').textContent=closed?'열기':'닫기';
   toolbar.querySelector('[data-spec=full]').textContent=full&&!closed?'목업과 함께 보기':'전체보기';
@@ -214,5 +217,6 @@
  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&full){full=false;sync();}});
  new MutationObserver(sync).observe(app,{childList:true,subtree:true});
  window.addEventListener('revision-history-loaded',draw);
+ window.addEventListener('collaboration-updated',sync);
  window.addEventListener('hashchange',()=>{selectedTab=0;draw();sync();});setInterval(()=>{if(!document.hidden&&location.hash!=='#screens')refreshDescription();sync();},60000);draw();sync();
 })();
