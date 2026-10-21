@@ -67,6 +67,7 @@
  }
  function defaultOverview(screen){
   if(!screen)return '화면 개요를 작성해 주세요.';
+  if(window.GFAIR_SCREEN_OVERVIEWS?.[screen.id])return window.GFAIR_SCREEN_OVERVIEWS[screen.id];
   const parts=[screen.summary||screen.title+' 화면입니다.'];
   const columns=screen.ui?.columns||[],fields=screen.ui?.fields||[];
   if(columns.length)parts.push('주요 조회 항목: '+columns.join(', ')+'.');
