@@ -1,11 +1,11 @@
 window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C) G-FAIR KOREA 구매 및 수출 상담시스템 ALL RIGHTS RESERVED.</span></footer>';
 (()=>{const shared=new URL('../../common/',document.currentScript.src);const config=document.createElement('script');config.src=new URL('config.js?v=clean-copy-20261021',shared).href;config.onload=()=>{const data=document.createElement('script');data.src=new URL('include/collaboration.js?v=clean-copy-20261021',shared).href;data.onload=()=>{const script=document.createElement('script');script.src=new URL('include/annotations.js?v=description-summary-list-20261021',shared).href;document.head.append(script);};document.head.append(data);};document.head.append(config);})();
 (()=>{const base=document.currentScript.src,css=document.createElement('link'),script=document.createElement('script');css.rel='stylesheet';css.href=new URL('../css/group-access.css?v=group-detail-20261020',base).href;script.src=new URL('group-access.js?v=clean-copy-20261021',base).href;document.head.append(css,script);})();
-(()=>{const base=document.currentScript.src,css=document.createElement('link'),script=document.createElement('script');css.rel='stylesheet';css.href=new URL('../css/admin-list-ui.css?v=list-registration-button-style-20261021',base).href;script.src=new URL('admin-list-ui.js?v=list-registration-button-style-20261021',base).href;document.head.append(css,script);})();
+(()=>{const base=document.currentScript.src,css=document.createElement('link'),script=document.createElement('script');css.rel='stylesheet';css.href=new URL('../css/admin-list-ui.css?v=list-descending-sort-20261021',base).href;script.src=new URL('admin-list-ui.js?v=list-descending-sort-20261021',base).href;document.head.append(css,script);})();
 
 // 공동작업 Description 패널을 직접 불러온다.
 (()=>{const script=document.createElement('script');script.src=new URL('../../common/include/spec-panel.js?v=clean-copy-20261021',document.currentScript.src).href;document.head.append(script);})();
-(()=>{const script=document.createElement('script');script.src=new URL('notice-ui.js?v=clean-copy-20261021',document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement('script');script.src=new URL('notice-ui.js?v=list-descending-sort-20261021',document.currentScript.src).href;document.head.append(script);})();
 
 // 목록 본문은 가운데 정렬, 긴 텍스트 열은 왼쪽 정렬한다.
 (()=>{
