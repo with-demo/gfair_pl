@@ -38,12 +38,9 @@
   const headers=[...table.querySelectorAll('thead tr:last-child>th')].map(clean);
   let index=headers.findIndex(t=>/등록일|작성일|제출 일자|최근 응답|응답일시|발생일|일시|일자|날짜/.test(t));
   if(index<0)index=headers.findIndex(t=>/연도|번호|코드|ID/.test(t));if(index<0)index=0;
-  const sortName=headers[index]||'목록';
-  const sort=document.createElement('select');sort.setAttribute('aria-label',title+' 정렬');
-  for(const [value,label] of [['desc','내림차순'],['asc','오름차순']])sort.add(new Option(sortName+' '+label,value));
   const size=document.createElement('select');size.setAttribute('aria-label',title+' 페이지당 표시 개수');
   [10,30,50].forEach(n=>size.add(new Option(n+'건씩 보기',String(n))));
-  tools.prepend(sort,size);
+  tools.prepend(size);
   if(route==='BAS-01'){const sync=header.querySelector('[data-action="event-sync"]');if(sync){sync.className='btn';tools.append(sync);}}
   if(route==='BAS-09'){
    const qrDownload=document.createElement('button');qrDownload.type='button';qrDownload.className='btn';qrDownload.textContent='QR 일괄 다운로드';
@@ -69,7 +66,7 @@
   const pagination=document.createElement('nav');pagination.className='admin-list-pagination';pagination.setAttribute('aria-label',title+' 페이지');panel.append(pagination);
   let page=1;
   function paint(){
-   const ordered=rows.map((row,i)=>({row,i,key:clean(row.cells[index]||row)})).sort((a,b)=>(sort.value==='asc'?1:-1)*collator.compare(a.key,b.key)||a.i-b.i);
+   const ordered=rows.map((row,i)=>({row,i,key:clean(row.cells[index]||row)})).sort((a,b)=>collator.compare(b.key,a.key)||a.i-b.i);
    const perPage=Number(size.value),pages=Math.max(1,Math.ceil(rows.length/perPage));page=Math.min(page,pages);
    observer.disconnect();
    ordered.forEach(({row},i)=>{row.hidden=i<(page-1)*perPage||i>=page*perPage;body.append(row);});
@@ -81,7 +78,7 @@
    add('>',page+1,page===pages);add('>>',pages,page===pages);
    observer.observe(root,{childList:true,subtree:true});
   }
-  sort.addEventListener('change',()=>{page=1;paint();});size.addEventListener('change',()=>{page=1;paint();});paint();
+  size.addEventListener('change',()=>{page=1;paint();});paint();
  }
  function sync(){
   observer.disconnect();
