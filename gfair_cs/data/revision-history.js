@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-04","version":"v0.13","fromVersion":"v0.12","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"해외 바이어 상세에 연도별 임시 계정 이력 추가","changes":["행사 이력과 연도별 임시 계정 ID·PW·발급 상태를 표시.","비밀번호 보기·숨기기 동작을 추가."]},
+  {"screenId":"BAS-06","version":"v0.12","fromVersion":"v0.11","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"국내 바이어 상세에 연도별 임시 계정 이력 추가","changes":["행사 이력과 연도별 임시 계정 ID·PW·발급 상태를 표시.","비밀번호 보기·숨기기 동작을 추가."]},
+  {"screenId":"BAS-08","version":"v0.12","fromVersion":"v0.11","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"통역원 상세에 연도별 임시 계정 이력 추가","changes":["행사 이력과 연도별 임시 계정 ID·PW·발급 상태를 표시.","비밀번호 보기·숨기기 동작을 추가."]},
   {"screenId":"BAS-01","version":"v0.4","fromVersion":"v0.3","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 정렬 선택 제거, 최신일·내림차순으로 고정","changes":["정렬 드롭다운을 제거하고 날짜는 최신순, 그 외 항목은 내림차순으로 표시."]},
   {"screenId":"BAS-03","version":"v0.4","fromVersion":"v0.3","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 정렬 선택 제거, 최신일·내림차순으로 고정","changes":["정렬 드롭다운을 제거하고 날짜는 최신순, 그 외 항목은 내림차순으로 표시."]},
   {"screenId":"BAS-05","version":"v0.4","fromVersion":"v0.3","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 정렬 선택 제거, 최신일·내림차순으로 고정","changes":["정렬 드롭다운을 제거하고 날짜는 최신순, 그 외 항목은 내림차순으로 표시."]},
