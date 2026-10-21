@@ -451,3 +451,5 @@ GFAIR_MENU.find(g=>g.name==='공지/알림').items.forEach(i=>{if(['NTC-01','NTC
  if(menu){menu[1]='참가기업';Object.assign(menu[3],{admin:'O',buyOperator:'△',exportOperator:'△',buyer:'△',interpreter:'△'});}
  const old=GFAIR_MENU.findIndex(group=>group.name==='기업정보');if(old>=0)GFAIR_MENU.splice(old,1);
 })();
+// 참가자용 만족도 조사는 독립 대메뉴로 제공한다.
+GFAIR_MENU.push({name:'만족도 조사',icon:'clipboard-check',direct:true,items:[['NTC-08','만족도 조사',[],{admin:'X',buyOperator:'X',exportOperator:'X',buyer:'O',interpreter:'O'}]]});
