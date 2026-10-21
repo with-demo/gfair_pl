@@ -2,7 +2,7 @@
 (()=>{
  'use strict';
  const app=document.getElementById('app'),store=window.GFAIR_COLLAB;if(!app||!store)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=description-wide-20261021-11',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=description-order-20261021-12',document.currentScript.src);document.head.append(css);
  let selected=null,picking=false,queued=false,view={closed:document.querySelector('.ui-spec-panel')?.hidden??true,full:false,numbers:true};
  const route=()=>decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
  const records=()=>store.records,canEdit=()=>!!store.user?.editor;
@@ -40,6 +40,9 @@
    if(key==='options'){control.placeholder='선택 옵션을 한 줄에 하나씩 입력하세요.\n예: 전체\n구매\n수출';control.rows=4;}
    if(key==='relatedScreen'){const list=element('datalist');list.id='annotation-related-screens';(window.GFAIR_SCREENS||[]).flatMap(group=>group.screens).forEach(screen=>list.append(new Option('['+screen.id+'] '+screen.title,screen.id)));control.setAttribute('list',list.id);control.parentElement.append(list);}
   });});
+  const inputRulesHeading=grid.querySelector('.annotation-form-group');
+  [inputRulesHeading,...['placeholder','inputFormat','inputLimit','options'].map(key=>fields[key].parentElement)].forEach(node=>grid.insertBefore(node,required));
+  grid.insertBefore(custom,inputRulesHeading);
   function relevantFields(){const inputTypes=['인풋','텍스트에리어'],selectionTypes=['단일셀렉트박스','다중셀렉트박스','체크박스','라디오박스'],rules={placeholder:inputTypes.includes(type.value),inputFormat:type.value==='인풋',inputLimit:inputTypes.includes(type.value),options:selectionTypes.includes(type.value),validation:[...inputTypes,...selectionTypes,'날짜','파일첨부','기타'].includes(type.value),errorMessage:type.value!=='텍스트'};Object.entries(rules).forEach(([key,visible])=>{fields[key].parentElement.hidden=!visible;fields[key].parentElement.querySelectorAll('input,select,textarea').forEach(control=>control.disabled=!visible);});const first=grid.querySelector('.annotation-form-group');first.hidden=!['placeholder','inputFormat','inputLimit','options'].some(key=>!fields[key].parentElement.hidden);}
   type.addEventListener('change',relevantFields);relevantFields();
   const actions=element('div',undefined,'annotation-actions'),submit=element('button',record?'저장':'설명 등록');submit.type='submit';actions.append(button('취소',()=>dialog.close()),submit);form.append(title,element('p','* 표시 항목만 필수입니다. 나머지는 필요한 내용만 작성하세요. (전체 저장 한도 5,000자)','annotation-guide'),grid,actions);
