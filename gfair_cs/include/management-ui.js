@@ -27,7 +27,12 @@
   if(!history.some(a=>a.year===state.staffYear))state.staffYear=history[0]?.year||'';
   return `${note()}<section class="panel detail-form-panel"><div class="panelhead"><h2>기업 기본정보</h2><span>${E(c.id)}</span></div><dl class="detail-rows">${[['기업명',c.name],['기업코드',c.id],['대표자',c.representative],['주소',c.address],['담당자',c.contact]].map(([k,v])=>`<dt>${E(k)}</dt><dd>${E(v)}</dd>`).join('')}</dl><div class="formfooter"><a href="#BAS-15" class="btn">목록으로</a></div></section><section class="panel management-year"><div class="panelhead"><h2>행사 이력 및 연도별 임시 계정</h2><span>${history.length}건</span></div>${table(['연도','행사','상담 구분','ID','PW','계정 발급'],history.map(a=>{const key=a.year+'|'+a.company+'|'+a.type;return `<tr><td>${a.year}</td><td>G-FAIR KOREA ${a.year}</td><td>${a.type}</td><td>${E(a.id||'미발급')}</td><td><span class="management-password">${a.pw?(state.shown.has(key)?E(a.pw):'••••••'):'—'}</span>${a.pw?button('toggle-password',state.shown.has(key)?'숨기기':'보기',`data-key="${E(key)}" aria-pressed="${state.shown.has(key)}"`):''}</td><td>${a.id?'발급 완료':isAdmin()?button('issue','예시 계정 발급',`data-year="${a.year}" data-type="${a.type}"`):'관리자 발급 대기'}</td></tr>`}).join(''))}<p class="management-note">${E(c.name)}은 ${history.length}개 행사에 운영 담당자를 배정했습니다.</p></section>${staffSection(c,history)}`;
  }
- function staffSection(c,history){const staffRows=staff.filter(s=>s.company===c.id&&s.year===state.staffYear);return `<section class="panel pad"><div class="panelhead"><h2>하위 담당자</h2><span>${state.staffYear}년 · ${staffRows.length}명</span></div><div class="management-form">${field('행사 연도',`<select data-management-staff-year>${options([...new Set(history.map(a=>a.year))],state.staffYear)}</select>`)}${button('staff-template','담당자 엑셀 양식 다운로드')}${button('staff-upload-open','담당자 엑셀 일괄 업로드','','true')}</div>${table(['담당자코드','이름','발급 ID','임시 PW','행사 연도','계정 상태'],staffRows.map(s=>{const key='staff|'+s.id;return `<tr><td>${E(s.code)}</td><td>${E(s.name)}</td><td>${E(s.id)}</td><td><span class="management-password">${state.shown.has(key)?E(s.pw):'••••••'}</span>${button('toggle-password',state.shown.has(key)?'숨기기':'보기',`data-key="${E(key)}" aria-pressed="${state.shown.has(key)}"`)}</td><td>${s.year}</td><td>발급 완료</td></tr>`}).join(''))}</section>`;}
+ function staffSection(c,history){const staffRows=staff.filter(s=>s.company===c.id&&s.year===state.staffYear);return `<section class="panel pad"><div class="panelhead"><h2>하위 담당자</h2><span>${state.staffYear}년 · ${staffRows.length}명</span></div><div class="management-form">${field('행사 연도',`<select data-management-staff-year>${options([...new Set(history.map(a=>a.year))],state.staffYear)}</select>`)}${!isAdmin()?'<a class="btn primary" href="#COM-08">담당자 등록</a>':''}${button('staff-template','담당자 엑셀 양식 다운로드')}${button('staff-upload-open','담당자 엑셀 일괄 업로드','','true')}</div>${table(['담당자코드','이름','발급 ID','임시 PW','행사 연도','계정 상태'],staffRows.map(s=>{const key='staff|'+s.id;return `<tr><td>${E(s.code)}</td><td>${E(s.name)}</td><td>${E(s.id)}</td><td><span class="management-password">${state.shown.has(key)?E(s.pw):'••••••'}</span>${button('toggle-password',state.shown.has(key)?'숨기기':'보기',`data-key="${E(key)}" aria-pressed="${state.shown.has(key)}"`)}</td><td>${s.year}</td><td>발급 완료</td></tr>`}).join(''))}</section>`;}
+ function staffRegistration(company,history){
+ const allowedYears=[...new Set(history.map(a=>a.year))];if(!allowedYears.length)return '<div class="empty">등록 가능한 배정 행사가 없습니다.</div>';
+ if(!allowedYears.includes(state.staffYear))state.staffYear=allowedYears[0];
+ return '<form data-management-form="staff-create" class="panel detail-form-panel"><div class="panelhead"><h2>하위 담당자 등록</h2></div><div class="management-form formgrid">'+field('소속 회사','<input value="'+E(company.name)+'" readonly>')+field('행사 연도 *','<select name="year" required>'+options(allowedYears,state.staffYear)+'</select>')+input('code','담당자코드 *','',true)+input('name','이름 *','',true)+'</div><p data-management-error role="alert"></p><div class="formfooter"><a href="#COM-07" class="btn">취소</a><button type="submit" class="btn primary">등록</button></div></form>';
+ }
  function adminList(){
   const rr=admins.filter(a=>(state.status==='전체'||a.status===state.status)&&(!state.query||[a.id,a.name,a.org].join(' ').includes(state.query)));
   return `${note()}<div class="management-actions">${button('admin-create','관리자 등록','','true')}</div><form data-management-form="admin-search" class="panel filters"><fieldset class="management-type-filter"><legend>사용 상태</legend><div class="management-type-options">${['전체','사용','미사용'].map(s=>`<label><input type="radio" name="status" value="${s}"${state.status===s?' checked':''}>${s}</label>`).join('')}</div></fieldset>${field('통합검색',`<input name="query" value="${E(state.query)}" placeholder="이름, ID, 소속을 검색하세요.">`)}<div class="row"><button type="submit" class="btn primary">검색</button>${button('reset','초기화')}</div></form><section class="panel"><div class="panelhead"><h2>구매·수출 상담시스템 관리자 ${rr.length}명</h2></div>${table(['관리자 ID','이름','소속','역할','사용 상태','등록일'],rr.map(a=>`<tr tabindex="0" data-management-admin="${E(a.id)}" aria-label="${E(a.name)} 상세 보기"><td>${E(a.id)}</td><td class="management-name">${E(a.name)}</td><td>${E(a.org)}</td><td>관리자</td><td><span class="badge">${a.status}</span></td><td>${a.date}</td></tr>`).join(''))}</section>`;
@@ -36,12 +41,13 @@
  function operatorAccount(){
   const c=companies.find(c=>c.id===ownCompany()),history=assignments.filter(a=>a.company===c?.id&&allowedAssignment(a)).sort((a,b)=>b.year.localeCompare(a.year));
   if(!c)return '<div class="empty">소속 운영용역사를 확인할 수 없습니다.</div>';
+  if(state.screen==='COM-08')return staffRegistration(c,history);
   if(state.screen==='COM-06')return `${note()}<section class="panel detail-form-panel"><div class="panelhead"><h2>내 계정 정보</h2><span>${E(c.id)}</span></div><dl class="detail-rows">${[['사용구분',state.role==='buyOperator'?'구매상담 운영용역사':'수출상담 운영용역사'],['계정 구분','대표 담당자'],['소속 기업',c.name],['담당 상담',state.role==='buyOperator'?'구매상담':'수출상담'],['선택 행사','G-FAIR KOREA '+state.event]].map(([k,v])=>`<dt>${E(k)}</dt><dd>${E(v)}</dd>`).join('')}</dl><div class="formfooter"><a href="#COM-07" class="btn primary">담당자 관리</a></div></section>`;
   if(!history.some(a=>a.year===state.staffYear))state.staffYear=history[0]?.year||'';
   return `${note()}<div class="management-actions"><a href="#COM-06" class="btn">내정보</a></div><section class="panel pad"><h2>${E(c.name)}</h2><p style="margin-top:12px">${state.role==='buyOperator'?'구매상담':'수출상담'} 운영용역사 대표 담당자 · 자기 회사의 배정 행사만 관리합니다.</p></section>${staffSection(c,history)}`;
  }
  function render(){
-  if(['COM-06','COM-07'].includes(state.screen))return ['buyOperator','exportOperator'].includes(state.role)?`<div data-management-root>${operatorAccount()}</div>`:'<div class="empty">운영용역사 대표 담당자용 화면입니다.</div>';
+  if(['COM-06','COM-07','COM-08'].includes(state.screen))return ['buyOperator','exportOperator'].includes(state.role)?`<div data-management-root>${operatorAccount()}</div>`:'<div class="empty">운영용역사 대표 담당자용 화면입니다.</div>';
   if(!isAdmin())return '<div class="empty">이용 권한이 없습니다.</div>';return `<div data-management-root>${state.screen==='BAS-15'?operatorList():state.screen==='BAS-17'?operatorDetail():state.screen==='BAS-16'?adminList():adminDetail()}</div>`;}
  function paint(){const r=document.querySelector('[data-management-root]');if(r)r.outerHTML=render();}
  function message(text){state.notice=text;paint();}
@@ -50,7 +56,7 @@
  function adminForm(){modal('관리자 등록',`<form data-management-form="admin-create" class="management-form">${input('id','관리자 ID *','',true)}${input('name','이름 *','',true)}${input('org','소속')}<button type="submit" class="btn primary">등록</button></form><p class="small">실제 로그인 계정은 생성하지 않습니다.</p>`);}
 
  const staffFields=['행사 연도','기업코드','담당자코드','담당자명'];
- function staffAllowed(){return ((state.screen==='BAS-17'&&isAdmin())||(state.screen==='COM-07'&&['buyOperator','exportOperator'].includes(state.role)))&&allowed(state.company)&&assignments.some(a=>a.company===state.company&&a.year===state.staffYear&&allowedAssignment(a));}
+ function staffAllowed(){return ((state.screen==='BAS-17'&&isAdmin())||(['COM-07','COM-08'].includes(state.screen)&&['buyOperator','exportOperator'].includes(state.role)))&&allowed(state.company)&&assignments.some(a=>a.company===state.company&&a.year===state.staffYear&&allowedAssignment(a));}
  function validateStaffRows(rows,company,year,existing){
   const header=rows[0]||[];
   if(!staffFields.every(h=>header.includes(h)))throw Error('담당자 전용 양식의 열 이름을 확인해 주세요.');
@@ -118,6 +124,13 @@
    }catch(e){fail(e.message)}
    return;
   }
+  if(type==='staff-create'){
+ const year=v('year'),code=v('code'),name=v('name'),company=ownCompany();
+ if(!['buyOperator','exportOperator'].includes(state.role)||!company||!assignments.some(a=>a.company===company&&a.year===year&&allowedAssignment(a)))return fail('본인 회사에 배정된 행사만 등록할 수 있습니다.');
+ if(!code||!name)return fail('담당자코드와 이름을 입력해 주세요.');
+ if(staff.some(item=>item.company===company&&item.year===year&&item.code===code))return fail('같은 행사에 이미 등록된 담당자코드입니다.');
+ const n=staff.length+1;staff.push({company,year,code,name,id:'DEMO-S'+String(n).padStart(4,'0'),pw:'D'+year.slice(-2)+String(n).padStart(3,'0')});state.staffYear=year;state.notice=name+' 담당자를 등록했습니다.';location.hash='COM-07';return;
+ }
   if(!isAdmin())return;
   if(['admin-create','admin-save'].includes(type)){
    if(!v('id')||!v('name'))return fail('ID와 이름은 공백만 입력할 수 없습니다.');
@@ -144,6 +157,6 @@
   }
  },true);
  window.addEventListener('hashchange',()=>{state.shown.clear()});
- window.GFAIR_MANAGEMENT={render(screen,role,event){if(['COM-06','COM-07'].includes(screen)){if(state.event!==event||!['COM-06','COM-07'].includes(state.screen))state.staffYear=event;state.company=role==='exportOperator'?'OP-B':'OP-A'}if(state.role!==role){state.shown.clear();state.query='';state.year='전체';state.type='전체';state.notice='';state.company=role==='exportOperator'?'OP-B':'OP-A'}state.screen=screen;state.role=role;state.event=event;return render()}};
+ window.GFAIR_MANAGEMENT={render(screen,role,event){if(['COM-06','COM-07','COM-08'].includes(screen)){if(state.event!==event||!['COM-06','COM-07','COM-08'].includes(state.screen))state.staffYear=event;state.company=role==='exportOperator'?'OP-B':'OP-A'}if(state.role!==role){state.shown.clear();state.query='';state.year='전체';state.type='전체';state.notice='';state.company=role==='exportOperator'?'OP-B':'OP-A'}state.screen=screen;state.role=role;state.event=event;return render()}};
  window.dispatchEvent(new Event('management-ui-ready'));
 })();

@@ -453,3 +453,9 @@ GFAIR_MENU.find(g=>g.name==='공지/알림').items.forEach(i=>{if(['NTC-01','NTC
 })();
 // 참가자용 만족도 조사는 독립 대메뉴로 제공한다.
 GFAIR_MENU.push({name:'만족도 조사',icon:'clipboard-check',direct:true,items:[['NTC-08','만족도 조사',[],{admin:'X',buyOperator:'X',exportOperator:'X',buyer:'O',interpreter:'O'}]]});
+// 운영용역사 담당자관리: 기본정보관리 위치에 독립 대메뉴를 제공한다.
+(()=>{
+ const index=GFAIR_MENU.findIndex(g=>g.name==='기본정보관리');
+ GFAIR_MENU.splice(index+1,0,{name:'담당자관리',icon:'users',direct:true,items:[['COM-07','담당자관리',[],{admin:'X',buyOperator:'O',exportOperator:'O',buyer:'X',interpreter:'X'}]]});
+ const visible=GFAIR_NAV.visible.bind(GFAIR_NAV);GFAIR_NAV.visible=function(role){return visible(role).filter(g=>!(['buyOperator','exportOperator'].includes(role)&&g.name==='기본정보관리'));};
+})();
