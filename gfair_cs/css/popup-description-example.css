@@ -1,0 +1,7 @@
+.popup-example-id{display:block;font-size:11px;color:#777;font-weight:400;margin-top:4px}.popup-example-toggle{font-size:12px;margin-left:auto;min-height:32px}
+#dialog.popup-example-open{width:min(1040px,calc(100vw - 32px));max-width:1040px}
+#dialog.popup-example-open>#dialog-content{display:grid;grid-template-columns:minmax(0,1fr) 340px}
+#dialog.popup-example-open .dialoghead,#dialog.popup-example-open .dialogbody,#dialog.popup-example-open .dialogactions{grid-column:1}
+.popup-example-description{grid-column:2;grid-row:1/10;background:#fafafa;border-left:1px solid #ddd;padding:22px;max-height:75vh;overflow:auto}
+.popup-example-description h2{font-size:16px}.popup-example-description small{display:block;color:#777;font-size:11px;margin:6px 0 18px}.popup-example-description h3{font-size:13px;margin:16px 0 7px}.popup-example-description p{font-size:13px;line-height:1.8;word-break:keep-all}.popup-example-description section{border-top:1px solid #ddd;margin-top:16px}
+@media(max-width:750px){#dialog.popup-example-open>#dialog-content{grid-template-columns:1fr}.popup-example-description{grid-column:1;grid-row:auto;border-left:0;border-top:1px solid #ddd;max-height:none}}
