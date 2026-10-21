@@ -49,7 +49,7 @@
 /* 기본 3열, 선택 내용이 많은 조건은 반 너비로 배치한다. */
 #app #content form.unified-search{grid-template-columns:repeat(6,minmax(0,1fr));gap:16px 24px}
 #app #content .unified-search>.search-condition{grid-column:span 2;min-width:0}
-#app #content .unified-search>.search-condition.search-condition-wide{grid-column:span 3}
+#app #content .unified-search>.search-condition.search-condition-wide{grid-column:span 2}
 #app #content .unified-search>.search-keyword{grid-column:1/-1;width:100%}
 #app #content .unified-search .search-keyword-controls{flex-wrap:nowrap;width:100%}
 #app #content .unified-search .search-keyword-controls>input{flex:1 1 0;width:0;min-width:0;max-width:none}
