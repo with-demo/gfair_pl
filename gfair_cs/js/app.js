@@ -122,8 +122,6 @@ render=function(){oldRender();const s=map.get(current);if(!s||isMobile(s)||curre
 
  if(current==='NTC-02'&&role==='admin')root.querySelectorAll('.panel details').forEach(d=>d.insertAdjacentHTML('beforeend',A('NTC-04','질문 상세·수정','btn ghost')));
  
- if(current==='EVT-01')root.querySelector('.head-actions')?.insertAdjacentHTML('beforeend',A('MON-05','출석 현황')+A('PRE-09','사전교육'));
- if(current==='EVT-02')root.querySelector('.head-actions')?.insertAdjacentHTML('beforeend',A('MON-06','출석 현황')+A('PRE-08','담당 일정'));
  const f=root.querySelector('#generic-form');if(f&&(/^BAS-0[2468]$/.test(current)||current==='BAS-10'||current==='NTC-04')){if(viewMode==='detail'){f.querySelectorAll('input,select,textarea').forEach(e=>{e.disabled=true});const owner=menuOwner(current),source=map.get(owner),row=source?rows(source)[selectedRow]:null;if(row)f.querySelectorAll('input[type=text],input[type=search],textarea').forEach(e=>{const i=Number(e.name.replace('field',''));if(row[i])e.value=row[i]})}else if(viewMode==='create')f.querySelectorAll('input[type=text],input[type=search],textarea').forEach(e=>e.value='')}
 };
 root.addEventListener('click',ev=>{if(ev.target.closest('[data-action=workflow-edit]')){viewMode='edit';render()}});
