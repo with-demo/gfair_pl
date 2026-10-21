@@ -293,9 +293,9 @@ root.addEventListener('click',ev=>{const a=ev.target.closest('a[href="#SET-05"],
 
 // 관리 목록·상세는 전용 목업 모듈을 사용한다.
 const managementBaseList=list;
-list=function(s){if(!['BAS-15','BAS-16','BAS-17','BAS-18','COM-06','COM-07'].includes(s.id))return managementBaseList(s);return (['COM-06','COM-07'].includes(s.id)?`<div class="pagehead"><div><nav class="breadcrumb" aria-label="현재 위치"><a href="#MON-01">홈</a><span>›</span><a href="#COM-06">내정보</a>${s.id==='COM-07'?'<span>›</span><span>담당자 관리</span>':''}</nav><h1>${E(s.title)}</h1><p class="subtitle">${E(s.summary)}</p></div></div>`:head(s))+(window.GFAIR_MANAGEMENT?window.GFAIR_MANAGEMENT.render(s.id,role,event):'<p>화면을 불러오는 중입니다.</p>')};
-parentRoutes['BAS-17']='BAS-15';parentRoutes['BAS-18']='BAS-16';
-window.addEventListener('management-ui-ready',()=>{if(['BAS-15','BAS-16','BAS-17','BAS-18','COM-06','COM-07'].includes(current))render()});
+list=function(s){if(!['BAS-15','BAS-16','BAS-17','BAS-18','COM-06','COM-07','COM-08'].includes(s.id))return managementBaseList(s);return head(s)+(window.GFAIR_MANAGEMENT?window.GFAIR_MANAGEMENT.render(s.id,role,event):'<p>화면을 불러오는 중입니다.</p>')};
+parentRoutes['COM-08']='COM-07';parentRoutes['BAS-17']='BAS-15';parentRoutes['BAS-18']='BAS-16';
+window.addEventListener('management-ui-ready',()=>{if(['BAS-15','BAS-16','BAS-17','BAS-18','COM-06','COM-07','COM-08'].includes(current))render()});
 // 운영사는 담당 상담 범위만 조회·검수한다. 기존 관리자/작성자 흐름은 유지한다.
 const workflowDashboard=dash;
 dash=function(s){
@@ -409,6 +409,12 @@ window.addEventListener("attendance-dashboard-ready",()=>{if(location.hash==="#M
 const groupAccessBaseList=list;
 list=function(s){return s.id==='SET-01'?head(s)+(window.GFAIR_GROUP_ACCESS?window.GFAIR_GROUP_ACCESS.render():'<p>화면을 불러오는 중입니다.</p>'):groupAccessBaseList(s)};
 window.addEventListener('group-access-ready',()=>{if(['SET-01','SET-02'].includes(current))render()});
+// 참가기업의 공통 조회는 열되 관리용 수정 동작은 관리자에게 유지한다.
+const companyViewerRender=render;
+render=function(){companyViewerRender();if(role!=='admin'&&['BAS-09','BAS-10'].includes(current)){
+ root.querySelectorAll('a[href="#BAS-13"],[data-action="workflow-edit"],#generic-form [data-action="form-action"]').forEach(node=>node.remove());
+ if(current==='BAS-10')root.querySelectorAll('#generic-form input,#generic-form select,#generic-form textarea').forEach(node=>node.disabled=true);
+}};
 render();})();
 
 
@@ -429,9 +435,3 @@ render();})();
 
 
 
-// 참가기업의 공통 조회는 열되 관리용 수정 동작은 관리자에게 유지한다.
-const companyViewerRender=render;
-render=function(){companyViewerRender();if(role!=='admin'&&['BAS-09','BAS-10'].includes(current)){
- root.querySelectorAll('a[href="#BAS-13"],[data-action="workflow-edit"],#generic-form [data-action="form-action"]').forEach(node=>node.remove());
- if(current==='BAS-10')root.querySelectorAll('#generic-form input,#generic-form select,#generic-form textarea').forEach(node=>node.disabled=true);
-}};

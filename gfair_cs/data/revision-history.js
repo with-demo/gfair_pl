@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-07","version":"v1.10","date":"2026.10.21","accountName":"mjha","summary":"운영용역사 담당자관리 대메뉴와 하위 담당자 직접 등록 진입 추가"},
+{"screenId":"COM-08","version":"v0.1","date":"2026.10.21","accountName":"mjha","summary":"본인 소속 회사·배정 행사에 한정한 하위 담당자 직접 등록 화면 추가"},
+
   {"screenId":"BAS-01","version":"v0.19","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"행사관리 목록의 동기화 버튼과 건수 선택을 표 상단에 배치"},
   {"screenId":"BAS-02","version":"v0.11","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"행사 상세를 항목별 행형 정보로 정렬"},
   {"screenId":"BAS-04","version":"v0.11","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"해외바이어 등록 폼을 공통 행형 구조로 정렬"},
