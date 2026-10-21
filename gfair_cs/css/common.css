@@ -32,3 +32,4 @@
 #app .tablewrap tbody .badge{font-size:13px}
 #app .tablewrap tbody .btn,#app table.survey-action-list .btn{font-size:12px}
 .required-asterisk,.field .required-asterisk,legend .required-asterisk{color:#c62828!important;font-style:normal;margin-left:4px}
+.workflow-page-body{padding:22px}.workflow-page-nav{display:flex;justify-content:flex-end;margin-bottom:18px}.workflow-page-body .dialogbody{padding:0}.workflow-page-body .dialogactions{padding:18px 0}.workflow-page-body .management-form{margin-top:16px}

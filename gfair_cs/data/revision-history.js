@@ -2,6 +2,11 @@ window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
   {"screenId":"BAS-01","version":"v0.18","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"연도별 행사 조회 목록과 동기화 버튼 구성"},
   {"screenId":"BAS-02","version":"v0.10","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"행사 기본정보를 조회 전용 상세로 변경"},
+{"screenId":"SET-03","version":"v0.11","date":"2026.10.21","accountName":"mjha","summary":"로그 상세를 독립 페이지로 전환"},
+{"screenId":"SET-01","version":"v0.14","date":"2026.10.21","accountName":"mjha","summary":"그룹 등록·수정·메뉴 권한 편집을 독립 페이지로 전환"},
+{"screenId":"SET-05","version":"v0.12","date":"2026.10.21","accountName":"mjha","summary":"설문 등록·수정·미리보기를 독립 페이지로 전환"},
+{"screenId":"BAS-16","version":"v2.14","date":"2026.10.21","accountName":"mjha","summary":"관리자 신규 등록을 독립 페이지로 전환"},
+
   {"screenId":"BAS-01","version":"v0.17","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"상단 행사 연도 선택기 제거"},
   {"screenId":"BAS-02","version":"v0.9","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"상단 행사 연도 선택기 제거"},
   {"screenId":"BAS-03","version":"v1.8","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"상단 행사 연도 선택기 제거"},
