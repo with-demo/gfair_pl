@@ -31,7 +31,7 @@ form.querySelectorAll(':scope>.search-condition').forEach(field=>{
  select.hidden=true;select.disabled=true;controls.append(radios);
  }
  const radioCount=controls.querySelectorAll('input[type=radio]').length;
- if(controls.querySelector('details,input[type=date],input[type=datetime-local]')||radioCount>=3||controls.textContent.trim().length>32)field.classList.add('search-condition-wide');
+ if(controls.querySelector('details,input[type=date],input[type=datetime-local]')||radioCount>=3||[...controls.querySelectorAll('select:not([hidden])')].some(select=>[...select.selectedOptions].some(option=>option.text.length>18)))field.classList.add('search-condition-wide');
 });
 if(keywords.length){keywords[0].querySelector('.search-keyword-controls').append(actions);form.classList.add('search-has-keyword');}
 form.addEventListener('reset',()=>{keywords.forEach(f=>{const i=f.querySelector('input');scopes.delete(key(form,i));f.querySelector('select').value='전체';});});

@@ -27,9 +27,9 @@
 #app #content .unified-search>.search-condition{grid-column:auto;grid-row:auto;order:0}
 #app #content .unified-search>[hidden]{display:none}
 
-/* MD 기본 색상·13px 문구를 유지하며 항목명 150px, 컨트롤 적정 폭으로 정렬한다. */
+/* MD 기본 색상·13px 문구를 유지하며 항목명 120px, 컨트롤 적정 폭으로 정렬한다. */
 #app #content form.unified-search{background:#fff;color:#222}
-#app #content .unified-search>.search-condition,#app #content .unified-search>.search-keyword{grid-template-columns:150px minmax(0,1fr)}
+#app #content .unified-search>.search-condition,#app #content .unified-search>.search-keyword{grid-template-columns:120px minmax(0,1fr)}
 #app #content .unified-search .search-condition-caption,#app #content .unified-search>.search-keyword>span{font-size:13px;color:#222;font-weight:400}
 #app #content .unified-search .search-condition-controls{width:fit-content;max-width:100%;flex-wrap:wrap}
 #app #content .unified-search .search-condition-controls>select{flex:0 1 auto;width:220px;max-width:100%}
