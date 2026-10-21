@@ -155,10 +155,12 @@ render=function(){folderRender();const s=map.get(current);if(!s)return;const inf
  if(generic&&viewMode==='detail'&&['BAS-04','BAS-06','BAS-08'].includes(current)){
   const owner=menuOwner(current),record=rows(map.get(owner))[selectedRow];
   if(record){
-   const kind=current==='BAS-04'?'해외 바이어':current==='BAS-06'?'국내 바이어':'통역원';
    const consult=current==='BAS-06'?'구매상담':'수출상담';
-   const suffix=String(record[0]||'01').replace(/[^0-9]/g,'').slice(-2)||'01';
-   const accounts=[{year:'2027',id:(current==='BAS-08'?'I':current==='BAS-06'?'M':'B')+'27'+suffix,pw:'D270'+suffix},{year:'2026',id:(current==='BAS-08'?'I':current==='BAS-06'?'M':'B')+'26'+suffix,pw:'D260'+suffix}];
+   const suffix=String(record[0]||'0001').replace(/[^0-9]/g,'').slice(-4).padStart(4,'0');
+   const prefix=current==='BAS-08'?'GI':current==='BAS-06'?'GK':'GF';
+   const yearIndex=current==='BAS-04'?4:3;
+   const participantYears=String(record[yearIndex]||'2027').split(',').map(year=>year.trim()).filter(year=>/^\d{4}$/.test(year)).sort().reverse();
+   const accounts=participantYears.map(year=>{const seed=Number(suffix),letter=String.fromCharCode(65+(seed*13+Number(year.slice(-2)))%26),digits=String((seed*7919+Number(year)*104729)%1000000).padStart(6,'0');return{year,id:prefix+year.slice(-2)+suffix,pw:letter+digits}});
    const section=`<section class="panel management-year" style="margin-top:20px"><div class="panelhead"><h2>행사 이력 및 연도별 임시 계정</h2><span>${accounts.length}건</span></div><div class="tablewrap"><table><thead><tr><th>연도</th><th>행사</th><th>상담 구분</th><th>ID</th><th>PW</th><th>계정 발급</th></tr></thead><tbody>${accounts.map(a=>`<tr><td>${a.year}</td><td>G-FAIR KOREA ${a.year}</td><td>${consult}</td><td>${E(a.id)}</td><td><span data-account-password>${'••••••'}</span> <button type="button" class="btn" data-account-password-toggle="${E(a.pw)}" aria-label="${a.year}년 임시 계정 비밀번호 보기">보기</button></td><td>발급 완료</td></tr>`).join('')}</tbody></table></div></section>`;
    generic.insertAdjacentHTML('afterend',section);
   }
@@ -353,7 +355,7 @@ window.addEventListener('public-boards-ready',()=>{if(['NTC-02','NTC-03'].includ
 // 초청기관 2열은 클라이언트 양식 확정 전의 제안 스키마다.
 const agencyTypes=['GBC','KBC','민간 에이전시'];
 const invitationFields=['초청기관 유형','초청기관·사무소명'];
-const invitationInfo=new Map([['2026|해외-01',{type:'GBC',office:'GBC 두바이'}],['2026|임시-02',{type:'KBC',office:'KBC 도쿄'}]]);
+const invitationInfo=new Map([['2026|F20260001',{type:'GBC',office:'GBC 두바이'}],['2026|F20270001',{type:'KBC',office:'KBC 도쿄'}]]);
 const agencyFilter={type:'전체',offices:[]};
 const agencyUi={open:false,search:''};
 const agencyBaseTemplate=template,agencyBaseCheck=checkUpload,agencyBaseRegister=registerUpload;
