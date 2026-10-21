@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"EVT-01","version":"v0.9","fromVersion":"v0.8","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 상단에 엑셀 다운로드와 QR 일괄 다운로드 버튼 배치","changes":["국내 바이어 목록의 우측 상단 도구에 엑셀 다운로드·QR일괄 다운로드 버튼 제공."]},
+  {"screenId":"EVT-02","version":"v0.9","fromVersion":"v0.8","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 상단에 엑셀 다운로드와 QR 일괄 다운로드 버튼 배치","changes":["통역원 목록의 우측 상단 도구에 엑셀 다운로드·QR일괄 다운로드 버튼 제공."]},
   {"screenId":"NTC-03","version":"v1.13","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},
   {"screenId":"NTC-02","version":"v1.13","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},
   {"screenId":"NTC-01","version":"v5.34","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"목록 하단 등록 버튼명을 등록으로 통일"},

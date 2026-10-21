@@ -23,7 +23,7 @@
    else if(group.matches('button,a')||group.querySelector('button,a'))bottom.append(group);
    else if(group.matches('.head-actions'))group.remove();
   });
-  bottom.querySelectorAll('button,a').forEach(el=>{if(/^.+\s+등록$/.test(clean(el)))el.textContent='등록';});
+  bottom.querySelectorAll('button,a').forEach(el=>{if(/등록$/.test(clean(el))){el.textContent='등록';el.className='btn primary registration';}});
   if(!bottom.children.length)bottom.remove();
   if(native){
    const row=header.querySelector(':scope>.row');if(row)tools.prepend(row);
