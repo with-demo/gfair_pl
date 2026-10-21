@@ -1,5 +1,11 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-03","version":"v0.5","fromVersion":"v0.4","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"해외 바이어 고유식별코드 정책 형식 적용","changes":["목록의 고유 번호를 F+행사연도 4자리+일련번호 4자리 형식으로 표시."]},
+  {"screenId":"BAS-05","version":"v0.5","fromVersion":"v0.4","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"국내 바이어 고유식별코드 정책 형식 적용","changes":["목록의 고유 번호를 K+행사연도 4자리+일련번호 4자리 형식으로 표시."]},
+  {"screenId":"BAS-07","version":"v0.5","fromVersion":"v0.4","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"통역원 고유식별코드 정책 형식 적용","changes":["목록의 고유 번호를 I+행사연도 4자리+일련번호 4자리 형식으로 표시."]},
+  {"screenId":"BAS-04","version":"v0.14","fromVersion":"v0.13","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"해외 바이어 행사별 임시 ID 정책 형식 적용","changes":["참여 연도별 임시 ID를 GF+연도 뒤 2자리+일련번호 4자리 형식으로 표시."]},
+  {"screenId":"BAS-06","version":"v0.13","fromVersion":"v0.12","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"국내 바이어 행사별 임시 ID 정책 형식 적용","changes":["참여 연도별 임시 ID를 GK+연도 뒤 2자리+일련번호 4자리 형식으로 표시."]},
+  {"screenId":"BAS-08","version":"v0.13","fromVersion":"v0.12","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"통역원 행사별 임시 ID 정책 형식 적용","changes":["참여 연도별 임시 ID를 GI+연도 뒤 2자리+일련번호 4자리 형식으로 표시."]},
   {"screenId":"BAS-04","version":"v0.13","fromVersion":"v0.12","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"해외 바이어 상세에 연도별 임시 계정 이력 추가","changes":["행사 이력과 연도별 임시 계정 ID·PW·발급 상태를 표시.","비밀번호 보기·숨기기 동작을 추가."]},
   {"screenId":"BAS-06","version":"v0.12","fromVersion":"v0.11","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"국내 바이어 상세에 연도별 임시 계정 이력 추가","changes":["행사 이력과 연도별 임시 계정 ID·PW·발급 상태를 표시.","비밀번호 보기·숨기기 동작을 추가."]},
   {"screenId":"BAS-08","version":"v0.12","fromVersion":"v0.11","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"통역원 상세에 연도별 임시 계정 이력 추가","changes":["행사 이력과 연도별 임시 계정 ID·PW·발급 상태를 표시.","비밀번호 보기·숨기기 동작을 추가."]},
