@@ -307,7 +307,7 @@ root.addEventListener('click',ev=>{const a=ev.target.closest('a[href="#SET-05"],
 
 // 관리 목록·상세는 전용 목업 모듈을 사용한다.
 const managementBaseList=list;
-list=function(s){if(!['BAS-15','BAS-16','BAS-17','BAS-18','BAS-19','COM-06','COM-07','COM-08'].includes(s.id))return managementBaseList(s);const page=s.id==='BAS-19'?{...s,title:'운영용역사 등록',kind:'list'}:s;return head(page)+(window.GFAIR_MANAGEMENT?window.GFAIR_MANAGEMENT.render(s.id,role,event):'<p>화면을 불러오는 중입니다.</p>')};
+list=function(s){if(!['BAS-15','BAS-16','BAS-17','BAS-18','BAS-19','COM-06','COM-07','COM-08'].includes(s.id))return managementBaseList(s);const pageHead=s.id==='BAS-19'?`<div class="pagehead"><div><nav class="breadcrumb" aria-label="현재 위치"><a href="#MON-01">홈</a><span>›</span><span>기본정보관리</span><span>›</span><a href="#BAS-15">운영용역사 관리</a><span>›</span><span aria-current="page">운영용역사 등록</span></nav><h1>운영용역사 등록</h1><p class="subtitle">관리자가 운영용역사 담당자 정보를 직접 등록합니다.</p></div><div class="head-actions"><a href="#BAS-15" class="btn">목록으로</a></div></div>`:head(s);return pageHead+(window.GFAIR_MANAGEMENT?window.GFAIR_MANAGEMENT.render(s.id,role,event):'<p>화면을 불러오는 중입니다.</p>')};
 parentRoutes['COM-08']='COM-07';parentRoutes['BAS-17']='BAS-15';parentRoutes['BAS-18']='BAS-16';parentRoutes['BAS-19']='BAS-15';
 window.addEventListener('management-ui-ready',()=>{if(['BAS-15','BAS-16','BAS-17','BAS-18','BAS-19','COM-06','COM-07','COM-08'].includes(current))render()});
 // 운영사는 담당 상담 범위만 조회·검수한다. 기존 관리자/작성자 흐름은 유지한다.
