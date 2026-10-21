@@ -33,7 +33,7 @@
   const rows=[...body.rows].filter(row=>row.cells.length>1||row.cells[0]?.colSpan===1&&!row.querySelector('.empty'));
   const title=main.querySelector('h1')?.textContent.trim()||'목록';
   let count=header.querySelector('h2');if(!count){count=document.createElement('h2');header.prepend(count);}
-  count.textContent=rows.length+'건의 '+title.replace(/\s*목록$/,'')+' 정보가 조회되었습니다.';
+  count.innerHTML='총 <strong>'+rows.length+'</strong>건 · 1/1page';
   [...header.children].filter(el=>el!==count&&el!==tools).forEach(el=>{if(!el.querySelector('button,a,select'))el.hidden=true;});
   const headers=[...table.querySelectorAll('thead tr:last-child>th')].map(clean);
   let index=headers.findIndex(t=>/등록일|작성일|제출 일자|최근 응답|응답일시|발생일|일시|일자|날짜/.test(t));
@@ -68,6 +68,7 @@
   function paint(){
    const ordered=rows.map((row,i)=>({row,i,key:clean(row.cells[index]||row)})).sort((a,b)=>collator.compare(b.key,a.key)||a.i-b.i);
    const perPage=Number(size.value),pages=Math.max(1,Math.ceil(rows.length/perPage));page=Math.min(page,pages);
+   count.innerHTML='총 <strong>'+rows.length+'</strong>건 · '+page+'/'+pages+'page';
    observer.disconnect();
    ordered.forEach(({row},i)=>{row.hidden=i<(page-1)*perPage||i>=page*perPage;body.append(row);});
    pagination.replaceChildren();
