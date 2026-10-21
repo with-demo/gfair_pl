@@ -86,3 +86,6 @@
 .ui-spec-screen-description{padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid #ddd;line-height:1.75;font-size:14px;color:#333}
 .ui-spec-screen-description p{margin:0 0 10px;white-space:pre-wrap}
 .ui-spec-screen-description p:last-child{margin-bottom:0}
+
+/* Description fills the viewport below the shared toolbar. */
+@media screen and (min-width:1101px){.ui-spec-layout.with-spec>.ui-spec-panel{position:sticky;top:var(--sb-toolbar-height,51px);height:calc(100vh - var(--sb-toolbar-height,51px));height:calc(100dvh - var(--sb-toolbar-height,51px));max-height:none;box-sizing:border-box;overflow-y:auto;overscroll-behavior:contain;background:#fff;align-self:start;}}
