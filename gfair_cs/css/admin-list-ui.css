@@ -10,6 +10,8 @@
 .admin-list-tools{margin-left:auto;justify-content:flex-end}
 .admin-list-tools select{width:auto;min-width:112px;max-width:230px;height:40px;font-size:13px}
 .admin-list-tools .btn{white-space:nowrap}
+.admin-list-tools .btn,.admin-list-tools .btn.primary,.admin-list-tools .btn.ghost{min-height:40px;padding:9px 14px;border:1px solid #c9c9c9;background:#fff;color:var(--ink);box-shadow:none;text-decoration:none}
+.admin-list-tools .btn:hover{border-color:#aaa;background:#f7f7f7;text-decoration:none}
 .admin-list-pagination{display:flex;justify-content:center;align-items:center;gap:6px;padding:20px}
 .admin-list-pagination .btn{min-width:34px;height:34px;padding:5px 10px;font-size:12px}
 .admin-list-pagination .btn,#content.admin-list-layout .notice-pagination .btn{border:0;background:transparent;color:#333;box-shadow:none}
