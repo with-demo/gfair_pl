@@ -2,10 +2,11 @@
 (()=>{
  'use strict';
  const app=document.getElementById('app'),store=window.GFAIR_COLLAB;if(!app||!store)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=description-close-20261021-15',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=screen-overview-20261021',document.currentScript.src);document.head.append(css);
  let selected=null,picking=false,queued=false,view={closed:document.querySelector('.ui-spec-panel')?.hidden??true,full:false,numbers:true};
  const route=()=>decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
- const records=()=>store.records,canEdit=()=>!!store.user?.editor;
+ const isOverview=record=>{try{return JSON.parse(record.text).format==='screen-overview-v1';}catch{return false;}};
+ const records=()=>store.records.filter(record=>!isOverview(record)),canEdit=()=>!!store.user?.editor;
  const element=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
  const button=(text,action)=>{const el=element('button',text);el.type='button';el.addEventListener('click',action);return el;};
  const format=value=>value?new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',dateStyle:'short',timeStyle:'short'}).format(new Date(value)):'';
@@ -64,6 +65,28 @@
    const pin=button(String(record.number).padStart(2,'0'),event=>{event.stopPropagation();selected=record.id;render();document.getElementById('annotation-'+record.id)?.scrollIntoView({block:'nearest',behavior:'smooth'});});pin.className='annotation-pin'+(selected===record.id?' selected':'');pin.style.left=left+'px';pin.style.top=top+'px';pin.setAttribute('aria-label',record.number+'번 설명 보기');overlay.append(pin);
   });
  }
+ function defaultOverview(screen){
+  if(!screen)return '화면 개요를 작성해 주세요.';
+  const parts=[screen.summary||screen.title+' 화면입니다.'];
+  const columns=screen.ui?.columns||[],fields=screen.ui?.fields||[];
+  if(columns.length)parts.push('주요 조회 항목: '+columns.join(', ')+'.');
+  else if(fields.length)parts.push('주요 입력 항목: '+fields.map(field=>field[0]).join(', ')+'.');
+  return parts.join('\n');
+ }
+ function screenOverview(screen){
+  const record=store.records.find(isOverview),section=element('section',undefined,'annotation-screen-overview'),heading=element('div',undefined,'annotation-overview-heading');heading.append(element('h3','화면 개요'));
+  if(canEdit())heading.append(button('개요 수정',()=>showOverviewEditor(screen,record)));
+  const text=record?JSON.parse(record.text).overview:defaultOverview(screen);
+  section.append(heading,element('p',text,'annotation-text'));return section;
+ }
+ function showOverviewEditor(screen,record){
+  if(!canEdit())return;const screenId=route();dialog.replaceChildren();
+  const form=element('form',undefined,'annotation-spec-form'),header=element('div',undefined,'annotation-dialog-header'),close=button('×',()=>dialog.close());close.className='annotation-dialog-close';close.setAttribute('aria-label','화면 개요 수정 닫기');header.append(element('h2','화면 개요 수정'),close);
+  const label=element('label','화면 개요'),input=element('textarea');input.required=true;input.maxLength=2000;input.rows=7;input.value=record?JSON.parse(record.text).overview:defaultOverview(screen);label.append(input);
+  const actions=element('div',undefined,'annotation-actions'),save=element('button','저장');save.type='submit';actions.append(button('취소',()=>dialog.close()),save);form.append(header,label,actions);
+  form.addEventListener('submit',async event=>{event.preventDefault();if(!canEdit()||screenId!==route()||!form.reportValidity()||!input.value.trim())return;const text=JSON.stringify({format:'screen-overview-v1',overview:input.value.trim()});const result=await change(record?'update':'create',record?{id:record.id,text,revision:record.revision}:{screen:screenId,text,anchor:{selector:'#content',sample:'화면 개요',x:0,y:0}},save);if(result){dialog.close();render();}});
+  dialog.append(form);dialog.showModal();input.focus();
+ }
  function render(){
   queued=false;const panel=document.querySelector('.ui-spec-panel'),toolbar=document.querySelector('.ui-spec-actions');if(!panel||!toolbar)return;
   const focused=document.activeElement;const focusId=focused?.matches('.annotation-card textarea,.annotation-card input[data-comment-name]')?focused.closest('article').id:null;const focusSelector=focused?.tagName==='INPUT'?'input[data-comment-name]':'textarea';const selection=focusId?[focused.selectionStart,focused.selectionEnd]:null;const scrollTop=panel.scrollTop;
@@ -71,7 +94,7 @@
   if(store.user){controls.append(element('span',store.user.name+' · '+(canEdit()?'공동작업자':'댓글 참여자')));if(canEdit()){const add=button(picking?'영역 선택 취소':'영역에 설명 추가',()=>{picking=!picking;if(picking)window.dispatchEvent(new Event('annotation-open'));render();});add.setAttribute('aria-pressed',String(picking));controls.append(add);}controls.append(button('로그아웃',async()=>{await store.logout();picking=false;dialog.close();render();}));}
   else {const login=button('GitHub 공동작업자 로그인',()=>store.login().catch(error=>message(error.message)));login.disabled=!store.githubReady;login.title=store.githubReady?'GitHub 계정으로 저장소 공동작업자 확인':'GitHub 로그인 앱 연결 설정 중';controls.append(login);}
   document.body.classList.toggle('annotation-picking',picking);const old=document.getElementById('annotation-panel');old?.remove();if(route()==='screens'){pins();return;}
-  const section=element('section',undefined,'annotation-panel');section.id='annotation-panel';const screen=(window.GFAIR_SCREENS||[]).flatMap(group=>group.screens).find(screen=>screen.id===route());section.append(element('h2','['+route()+'] '+(screen?.title||'')));
+  const section=element('section',undefined,'annotation-panel');section.id='annotation-panel';const screen=(window.GFAIR_SCREENS||[]).flatMap(group=>group.screens).find(screen=>screen.id===route());section.append(element('h2','['+route()+'] '+(screen?.title||'')));section.append(screenOverview(screen));
   if(picking)section.append(element('p','본문의 설명할 영역을 클릭하세요. Esc로 취소할 수 있습니다.','annotation-guide'));
   if(store.error)section.append(element('p',store.error,'annotation-hint'));
   if(!records().length&&!picking)section.append(element('p',canEdit()?'영역에 설명 추가 버튼을 눌러 시작하세요.':'아직 작성된 설명이 없습니다.','annotation-guide'));
