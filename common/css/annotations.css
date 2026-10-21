@@ -6,3 +6,4 @@
 .annotation-required-mark{color:#c62828;font-weight:700;}
 .annotation-default-custom{grid-column:1/-1;width:100%;box-sizing:border-box;min-height:38px;padding:8px 10px;border:1px solid #aaa;border-radius:4px;background:#fff;color:#111;font:inherit;font-size:13px}.annotation-default-custom[hidden]{display:none}.annotation-spec-required{align-self:start;min-height:38px;box-sizing:border-box}.annotation-spec-required legend{padding:0 4px}.annotation-spec-required input[type=radio]{accent-color:#333}.annotation-spec-field textarea:focus,.annotation-default-custom:focus{outline:2px solid #555;outline-offset:1px}
 .annotation-form-group{grid-column:1/-1;margin:8px 0 0;padding:12px 0 8px;border-bottom:1px solid #ddd;font-size:14px}.annotation-spec-fields .annotation-spec-field textarea{min-height:88px}.annotation-spec dt{word-break:keep-all}
+.annotation-spec-field[hidden],.annotation-form-group[hidden]{display:none!important}
