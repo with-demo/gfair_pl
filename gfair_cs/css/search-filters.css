@@ -59,3 +59,6 @@
 #app #content .unified-search .search-condition-controls select[hidden]{display:none}
 @media(max-width:1100px){#app #content .unified-search>.search-condition{grid-column:span 3}}
 @media(max-width:700px){#app #content .unified-search>.search-condition,#app #content .unified-search>.search-condition.search-condition-wide{grid-column:1/-1}#app #content .unified-search .search-keyword-controls{flex-wrap:wrap}#app #content .unified-search .search-keyword-controls>input{flex:1 1 120px}#app #content .unified-search .search-keyword-controls>.search-actions{flex-basis:100%;margin:4px 0 0}}
+
+/* 키워드 행은 일반 조건과 같은 간격으로 이어 표시한다. */
+#app #content .unified-search>.search-keyword{border-top:0;padding-top:0;margin-top:0}
