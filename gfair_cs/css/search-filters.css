@@ -1,4 +1,4 @@
-#app #content form.unified-search{display:flex;flex-wrap:wrap;align-items:center;gap:20px 24px;padding:24px 28px;background:#fff;border:1px solid #ddd;border-radius:5px;box-shadow:none}
+#app #content form.unified-search{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:20px 24px;padding:24px 28px;background:#fff;border:1px solid #ddd;border-radius:5px;box-shadow:none}
 #app #content .unified-search>.field,#app #content .unified-search>fieldset{display:flex;flex:0 1 auto;align-items:center;gap:16px;min-width:160px;margin:0;padding:0;border:0}
 #app #content .unified-search>.field>span,#app #content .unified-search legend{white-space:nowrap;font-size:13px;font-weight:400;color:#111}
 #app #content .unified-search>fieldset{display:block}#app #content .unified-search legend{float:left;margin-right:16px;padding-top:9px}
