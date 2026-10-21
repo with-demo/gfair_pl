@@ -9,3 +9,15 @@
 @media(max-width:700px){#app #content form.unified-search{padding:18px;gap:16px}#app #content .unified-search>.search-keyword{flex-basis:100%;width:100%}#app #content .unified-search>.search-actions{width:100%;justify-content:center}}
 
 #app #content .unified-search>.search-keyword.search-keyword-full{flex-basis:100%;width:100%}
+
+/* 분류 조건은 내용에 맞게 2~3개씩 묶어 세로 공간을 줄인다. */
+#app #content form.unified-search{gap:12px 20px;padding:20px 24px}
+#app #content .unified-search>.field:not(.search-keyword),#app #content .unified-search>fieldset:not(.search-keyword){flex:1 1 240px;width:auto;min-width:min(100%,240px);max-width:100%;gap:12px;align-self:center}
+#app #content .unified-search>.field:not(.search-keyword)>select,#app #content .unified-search>.field:not(.search-keyword)>input{flex:1;min-width:0;width:auto;max-width:240px}
+#app #content .unified-search>.notice-registration-filter{flex-basis:380px;min-width:min(100%,340px)}
+#app #content .unified-search .notice-dates{display:flex;flex:1;gap:8px;width:auto;min-width:0;align-items:center}
+#app #content .unified-search .notice-dates input{width:0;min-width:0;flex:1}
+#app #content .unified-search>fieldset legend{margin-right:12px}
+#app #content .unified-search .notice-category-options,#app #content .unified-search .management-type-options{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+#app #content .unified-search .notice-category-options label,#app #content .unified-search .management-type-options label{width:auto;white-space:nowrap;margin:0}
+@media(max-width:700px){#app #content form.unified-search{padding:16px;gap:12px 16px}#app #content .unified-search>.field:not(.search-keyword),#app #content .unified-search>fieldset:not(.search-keyword){flex-basis:200px;min-width:min(100%,200px)}}

@@ -35,4 +35,4 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=all-lists-20261021",document.currentScript.src).href;document.head.append(script);})();
 
-(()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=20261021",base).href;js.src=new URL("search-filters.js?v=20261021",base).href;document.head.append(css,js);})();
+(()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=compact-20261021",base).href;js.src=new URL("search-filters.js?v=20261021",base).href;document.head.append(css,js);})();
