@@ -36,7 +36,7 @@
  function setStatus(row,s,status){const i=s.ui.columns.indexOf('참가상태');if(i>=0)row[i]=status;}
  function renderValidation(id,entries,errors){
   const result=content.querySelector('[data-master-upload-result]'),counts={'신규':0,'참가 확정':0,'참가 미정':0};entries.forEach(x=>counts[x.status]++);
-  result.innerHTML=`<div class="notice" style="margin-top:16px">검증 결과 · 신규 ${counts['신규']}건 · 참가 확정 ${counts['참가 확정']}건 · 참가 미정 ${counts['참가 미정']}건</div>${errors.length?`<p class="small">${errors.map(esc).join(' · ')}</p>`:''}${table(['이름','생년월일','참가연도','참가 상태','비고'],entries.map(x=>[x.name||'미입력',x.dob||'미확인',x.year||'미확인',x.status,x.note||'']))}<p class="small">현재 탭의 예시 목록에만 반영됩니다. 기존 동일 인물은 한 건으로 유지하고 참가연도를 누적 표시합니다.</p>${entries.some(x=>x.valid)?'<button type="button" class="btn primary" data-master-apply>예시 목록에 반영</button>':''}`;
+  result.innerHTML=`<div class="notice" style="margin-top:16px">검증 결과 · 신규 ${counts['신규']}건 · 참가 확정 ${counts['참가 확정']}건 · 참가 미정 ${counts['참가 미정']}건</div>${errors.length?`<p class="small">${errors.map(esc).join(' · ')}</p>`:''}${table(['이름','생년월일','참가연도','참가 상태','비고'],entries.map(x=>[x.name||'미입력',x.dob||'미확인',x.year||'미확인',x.status,x.note||'']))}<p class="small">현재 탭의 목록에만 반영됩니다. 기존 동일 인물은 한 건으로 유지하고 참가연도를 누적 표시합니다.</p>${entries.some(x=>x.valid)?'<button type="button" class="btn primary" data-master-apply>목록에 반영</button>':''}`;
   validated={id,entries};
  }
  document.addEventListener('submit',async ev=>{
@@ -68,7 +68,7 @@
    });
    state.forEach(person=>{const row=s.ui.rows[person.index];if(row)setStatus(row,s,participantStatus(new Set(person.years)));});
    people.set(id,state);dialog.close();validated=null;
-   const toast=document.getElementById('toast');if(toast){toast.textContent='참가자 예시 목록을 갱신했습니다. 서버에는 저장되지 않았습니다.';toast.hidden=false;setTimeout(()=>toast.hidden=true,2800)}
+   const toast=document.getElementById('toast');if(toast){toast.textContent='참가자 목록을 갱신했습니다. 서버에는 저장되지 않았습니다.';toast.hidden=false;setTimeout(()=>toast.hidden=true,2800)}
   }
  },true);
 })();
