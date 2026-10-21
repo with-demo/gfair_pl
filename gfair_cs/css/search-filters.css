@@ -1,0 +1,11 @@
+#app #content form.unified-search{display:flex;flex-wrap:wrap;align-items:center;gap:20px 24px;padding:24px 28px;background:#fff;border:1px solid #ddd;border-radius:5px;box-shadow:none}
+#app #content .unified-search>.field,#app #content .unified-search>fieldset{display:flex;flex:0 1 auto;align-items:center;gap:16px;min-width:160px;margin:0;padding:0;border:0}
+#app #content .unified-search>.field>span,#app #content .unified-search legend{white-space:nowrap;font-size:13px;font-weight:400;color:#111}
+#app #content .unified-search>fieldset{display:block}#app #content .unified-search legend{float:left;margin-right:16px;padding-top:9px}
+#app #content .unified-search input:not([type=radio]):not([type=checkbox]),#app #content .unified-search select{height:36px;min-height:36px;border-radius:2px;font-size:13px;padding:6px 10px}
+#app #content .unified-search>.search-keyword{flex:1 0 50%;min-width:min(100%,360px)}
+#app #content .unified-search .search-keyword-controls{display:flex;flex:1;min-width:0;gap:6px}#app #content .unified-search .search-keyword-controls select{width:auto;max-width:150px;flex:0 1 auto}#app #content .unified-search .search-keyword-controls input{width:0;flex:1;min-width:0}
+#app #content .unified-search>.search-actions{display:flex;align-items:center;gap:8px;margin-left:auto}#app #content .unified-search .search-actions .btn{min-width:84px;min-height:36px;border-radius:2px;white-space:nowrap}
+@media(max-width:700px){#app #content form.unified-search{padding:18px;gap:16px}#app #content .unified-search>.search-keyword{flex-basis:100%;width:100%}#app #content .unified-search>.search-actions{width:100%;justify-content:center}}
+
+#app #content .unified-search>.search-keyword.search-keyword-full{flex-basis:100%;width:100%}
