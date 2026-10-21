@@ -6,7 +6,7 @@
  const TOKEN='gfair.collab.session',VERIFIER='gfair.collab.verifier';
  let token=sessionStorage.getItem(TOKEN)||'',user=null,records=[],screen='',snapshot='',busy=false,githubReady=false;
  const changed=()=>window.dispatchEvent(new Event('collaboration-updated'));
- const current=()=>decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
+ const current=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
  async function api(op,body){
   const url=SERVER+'/api/collab'+(body?'':'?'+new URLSearchParams({op,project:PROJECT,screen:current()}));
   const response=await fetch(url,{method:body?'POST':'GET',credentials:'omit',cache:'no-store',headers:{...(body?{'Content-Type':'application/json'}:{}),...(token?{Authorization:'Bearer '+token}:{})},body:body?JSON.stringify({op,project:PROJECT,...body}):undefined});
@@ -30,6 +30,7 @@
   async mutate(op,body){const result=await api(op,body);snapshot='';await refresh();return result;},
   async logout(){try{if(token)await api('logout',{});}finally{token='';user=null;records=[];snapshot='';sessionStorage.removeItem(TOKEN);changed();}}
  };
+ window.addEventListener('description-context-changed',()=>{snapshot='';changed();refresh();});
  window.addEventListener('hashchange',()=>{snapshot='';changed();refresh();});
  document.addEventListener('click',event=>{if(event.target.closest('[data-spec=refresh]'))refresh();});
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});setInterval(()=>{if(!document.hidden)refresh();},5000);
