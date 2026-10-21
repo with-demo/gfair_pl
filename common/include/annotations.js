@@ -97,7 +97,8 @@
   if(!records().length&&!picking)section.append(element('p',canEdit()?'영역에 설명 추가 버튼을 눌러 시작하세요.':'아직 작성된 설명이 없습니다.','annotation-guide'));
   records().forEach(record=>{
    const card=element('article',undefined,'annotation-card'+(record.id===selected?' selected':''));card.id='annotation-'+record.id;const head=element('div',undefined,'annotation-actions');
-   head.append(button(String(record.number).padStart(2,'0')+' · 위치 보기',()=>{selected=record.id;const target=find(record);if(target){target.scrollIntoView({block:'center',behavior:'smooth'});target.animate([{outline:'3px solid #c62828'},{outline:'3px solid transparent'}],{duration:1500});}else message('연결 영역이 현재 화면에 없습니다. 사용구분이나 화면 구성을 확인해 주세요.');render();}));
+   head.append(button(String(record.number).padStart(2,'0'),()=>{selected=record.id;const target=find(record);if(target){target.scrollIntoView({block:'center',behavior:'smooth'});target.animate([{outline:'3px solid #c62828'},{outline:'3px solid transparent'}],{duration:1500});}else message('연결 영역이 현재 화면에 없습니다. 사용구분이나 화면 구성을 확인해 주세요.');render();}));
+   const positionButton=head.firstElementChild;positionButton.classList.add('annotation-position-number');positionButton.title=String(record.number).padStart(2,'0')+'번 위치 보기';positionButton.setAttribute('aria-label',positionButton.title);
    if(canEdit())head.append(button('수정',()=>edit(record)),button('삭제',()=>{dialog.replaceChildren(element('h2','설명을 삭제할까요?'),element('p','이 설명에 달린 댓글도 화면에서 함께 제외됩니다.'),button('취소',()=>dialog.close()),button('삭제',async event=>{if(await change('delete',{id:record.id,revision:record.revision},event.currentTarget)){dialog.close();render();}}));dialog.showModal();}));
    card.append(head,descriptionBody(record.text),element('small',record.author+' · '+format(record.created)+(record.updated?' · 수정 '+format(record.updated)+' / '+record.updatedBy:'')));
    if(!find(record))card.append(element('p','연결 영역이 현재 화면에 표시되지 않습니다.','annotation-hint'));
