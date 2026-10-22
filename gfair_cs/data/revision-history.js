@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-07","version":"v1.17","date":"2026.10.22","accountName":"mjha","summary":"고유 번호 항목명을 통역원번호로 변경","changes":["통역원 목록 및 엑셀 양식의 고유 번호 명칭을 통역원번호로 변경."]},
   {"screenId":"BAS-05","version":"v1.16","date":"2026.10.22","accountName":"mjha","summary":"기업·국내바이어·통역원 예시 통일","changes":["기업 A·국내바이어 A·통역원 A 등 임시 명칭을 자연스러운 기업명·인명으로 변경.","목록·상세·매칭·상담일지·통계·설문에서 동일 예시를 사용."]},
   {"screenId":"BAS-06","version":"v0.19","date":"2026.10.22","accountName":"mjha","summary":"기업·국내바이어·통역원 예시 통일","changes":["기업 A·국내바이어 A·통역원 A 등 임시 명칭을 자연스러운 기업명·인명으로 변경.","목록·상세·매칭·상담일지·통계·설문에서 동일 예시를 사용."]},
   {"screenId":"BAS-07","version":"v1.16","date":"2026.10.22","accountName":"mjha","summary":"기업·국내바이어·통역원 예시 통일","changes":["기업 A·국내바이어 A·통역원 A 등 임시 명칭을 자연스러운 기업명·인명으로 변경.","목록·상세·매칭·상담일지·통계·설문에서 동일 예시를 사용."]},
