@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-01","version":"v0.28","date":"2026.10.22","accountName":"mjha","summary":"Description 동작·연결 항목 통합","changes":["이동·연결 대상과 연관 화면을 이동·연결 대상 한 항목으로 통합.","기존 두 항목의 입력값과 화면 ID 자동완성 유지."]},
   {"screenId":"BAS-01","version":"v0.27","date":"2026.10.22","accountName":"mjha","summary":"Description 번호 핀 드래그 위치 저장 지원","changes":["공동작업자 로그인 시 핀을 드래그해 공유 위치를 조정.","번호·설명 내용·댓글은 유지하고 실패 시 기존 위치 복구."]},
   {"screenId":"PRE-01","version":"v3.11","date":"2026.10.22","accountName":"mjha","summary":"Description 번호 핀 드래그 위치 저장 지원","changes":["공동작업자 로그인 시 핀을 드래그해 공유 위치를 조정.","번호·설명 내용·댓글은 유지하고 실패 시 기존 위치 복구."]},
   {"screenId":"BAS-01","version":"v0.26","date":"2026.10.22","accountName":"mjha","summary":"등록된 Description의 선택 옵션 표시 순서 조정","changes":["선택 옵션을 기본값 바로 다음, 필수여부 이전에 표시."]},
