@@ -41,7 +41,7 @@
 #app fieldset.write-form-row>.write-form-controls{margin-left:130px}
 #app .write-form-rows>.check{grid-column:1/-1}
 #app .formfooter,#app .write-form-rows+.formfooter{justify-content:flex-end}
-@media(max-width:760px){
+@media(max-width:1000px){
  #app .write-form-rows{grid-template-columns:1fr}
  #app .write-form-rows>.write-form-row:has(textarea),
  #app .write-form-rows>.write-form-row:has(input[type=file]),
