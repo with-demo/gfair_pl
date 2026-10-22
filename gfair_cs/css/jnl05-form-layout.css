@@ -96,3 +96,5 @@
 #app .journal-select-option.selected .journal-select-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:#3d6cb4}
 #app .export-journal-form .journal-control>input.journal-readonly{width:min(100%,300px);background:#f1f1f1;border-color:#d2d2d2;color:#555;cursor:not-allowed;opacity:1}
 #app .export-journal-form .journal-pair.full .journal-control>.journal-single-select{width:min(100%,360px)}
+#app .export-journal-form .participant-info-section .journal-pair{grid-template-columns:150px minmax(0,1fr)}
+@media(max-width:600px){#app .export-journal-form .participant-info-section .journal-pair{grid-template-columns:110px minmax(0,1fr)}}

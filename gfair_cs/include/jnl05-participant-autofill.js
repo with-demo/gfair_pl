@@ -50,6 +50,7 @@
     const buyerSection = [...form.querySelectorAll('.journal-section')].find(section => text(section.querySelector('h2')).includes('바이어정보'));
     if (!companySection || !buyerSection) return;
     form.dataset.participantAutofillReady = 'true';
+    companySection.classList.add('participant-info-section');
 
     const pairs = [...companySection.querySelectorAll('.journal-pair')];
     const find = (label, inPairs = pairs) => inPairs.find(pair => text(pair.querySelector('.journal-label')).startsWith(label));
