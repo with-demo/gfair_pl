@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-02","version":"v0.17","date":"2026.10.22","accountName":"mjha","summary":"빈 임시 상세 화면 대신 행사 상세 복구","changes":["이전 세션에 저장된 BAS-2762908039 임시 상세를 정식 BAS-02로 복구.","행사 상세에서 남은 목록 조회 이벤트로 빈 상세 화면이 다시 생기는 동작 차단."]},
   {"screenId":"JNL-05","version":"v0.12","date":"2026.10.22","accountName":"mjha","summary":"진입 경로에 따른 표형 레이아웃 누락 수정","changes":["개별 URL 및 다른 화면에서 진입해도 수출상담일지 전용 CSS를 동일하게 로드.","모든 진입 HTML의 공통 CSS 캐시 버전을 통일."]},
   {"screenId":"JNL-05","version":"v0.11","date":"2026.10.22","accountName":"mjha","summary":"진입 경로에 따른 표형 레이아웃 누락 수정","changes":["개별 URL 및 다른 화면에서 진입해도 수출상담일지 전용 CSS를 동일하게 로드.","모든 진입 HTML의 공통 CSS 캐시 버전을 통일."]},
   {"screenId":"BAS-02","version":"v0.16","date":"2026.10.22","accountName":"mjha","summary":"부스배치도 예시 PDF 다운로드와 전시관 나열 방식 변경","changes":["부스배치도에 실제 다운로드 가능한 가상 PDF 파일 링크 추가.","전시관은 번호.명칭 형식으로 슬래시를 넣어 나열하고 빈 항목은 제외."]},
