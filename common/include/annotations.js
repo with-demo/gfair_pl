@@ -121,8 +121,8 @@
   document.body.classList.toggle('annotation-picking',picking);const old=document.getElementById('annotation-panel');old?.remove();if(route()==='screens'){pins();return;}
   const section=element('section',undefined,'annotation-panel');section.id='annotation-panel';const screen=window.MOCKUP_DESCRIPTION_CONTEXT||(window.GFAIR_SCREENS||[]).flatMap(group=>group.screens).find(screen=>screen.id===route());section.append(element('h2','['+route()+'] '+(screen?.title||'')));section.append(screenOverview(screen));
   if(picking)section.append(element('p','본문의 설명할 영역을 클릭하세요. Esc로 취소할 수 있습니다.','annotation-guide'));
-  if(store.error)section.append(element('p',store.error,'annotation-hint'));
-  if(!records().length&&!picking)section.append(element('p',canEdit()?'영역에 설명 추가 버튼을 눌러 시작하세요.':'아직 작성된 설명이 없습니다.','annotation-guide'));
+  if(store.error)section.append(element('p',store.error,'annotation-hint'),button('다시 불러오기',()=>store.refresh(true)));
+  if(!records().length&&!picking){if(store.loading||(!store.loaded&&!store.error))section.append(element('p','디스크립션을 불러오는 중입니다.','annotation-guide'));else if(!store.error)section.append(element('p',canEdit()?'영역에 설명 추가 버튼을 눌러 시작하세요.':'아직 작성된 설명이 없습니다.','annotation-guide'));}
   records().forEach(record=>{
    const card=element('article',undefined,'annotation-card'+(record.id===selected?' selected':''));card.id='annotation-'+record.id;const head=element('div',undefined,'annotation-actions');
    head.append(button(String(record.number).padStart(2,'0'),()=>{selected=record.id;const target=find(record);if(target){target.scrollIntoView({block:'center',behavior:'smooth'});target.animate([{outline:'3px solid #c62828'},{outline:'3px solid transparent'}],{duration:1500});}else message('연결 영역이 현재 화면에 없습니다. 사용구분이나 화면 구성을 확인해 주세요.');render();}));
