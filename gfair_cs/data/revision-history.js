@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"JNL-05","version":"v0.14","date":"2026.10.22","accountName":"mjha","summary":"작성자·성과 라디오·해시태그 입력 UI 세밀화","changes":["기본 정보의 통역원 항목명을 작성자로 변경.","거래 가능성과 계약·샘플·MOU 선택을 라디오 버튼 UI로 통일.","해시태그 Enter 입력으로 라벨을 추가하고 x 버튼으로 삭제, 임시저장에 반영."]},
   {"screenId":"JNL-05","version":"v0.13","date":"2026.10.22","accountName":"mjha","summary":"수출상담일지 버튼·안내 문구 및 자동저장 시각 변경","changes":["우측 하단 버튼을 목록·임시 저장·등록으로 정리.","기본 정보 우측 상단에 날짜와 시분초 자동저장 시각 표시.","연결 상태와 OCR 안내 문구 제거."]},
   {"screenId":"BAS-02","version":"v0.17","date":"2026.10.22","accountName":"mjha","summary":"빈 임시 상세 화면 대신 행사 상세 복구","changes":["이전 세션에 저장된 BAS-2762908039 임시 상세를 정식 BAS-02로 복구.","행사 상세에서 남은 목록 조회 이벤트로 빈 상세 화면이 다시 생기는 동작 차단."]},
   {"screenId":"JNL-05","version":"v0.12","date":"2026.10.22","accountName":"mjha","summary":"진입 경로에 따른 표형 레이아웃 누락 수정","changes":["개별 URL 및 다른 화면에서 진입해도 수출상담일지 전용 CSS를 동일하게 로드.","모든 진입 HTML의 공통 CSS 캐시 버전을 통일."]},
