@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-01","version":"v0.23","date":"2026.10.22","accountName":"mjha","summary":"행사 목록 검색필터를 상태·행사기간·키워드검색으로 정리","changes":["연도 필터 제거, 행사기간 시작·종료일 추가.","키워드 범위를 전체·행사명·전시관구분으로 설정하고 조건별 검색 적용."]},
   {"screenId":"BAS-02","version":"v0.20","date":"2026.10.22","accountName":"mjha","summary":"불릿 제목과 평평한 정보 표로 상세·등록 묶음 통일","changes":["묶음 제목을 둥근 카드 안에서 표 위 바깥으로 분리하고 카드 테두리·배경 제거.","항목/입력 쌍에 맞는 폼 열 구조로 항목명 겹침을 방지."]},
   {"screenId":"BAS-04","version":"v0.16","date":"2026.10.22","accountName":"mjha","summary":"불릿 제목과 평평한 정보 표로 상세·등록 묶음 통일","changes":["묶음 제목을 둥근 카드 안에서 표 위 바깥으로 분리하고 카드 테두리·배경 제거.","항목/입력 쌍에 맞는 폼 열 구조로 항목명 겹침을 방지."]},
   {"screenId":"BAS-06","version":"v0.15","date":"2026.10.22","accountName":"mjha","summary":"불릿 제목과 평평한 정보 표로 상세·등록 묶음 통일","changes":["묶음 제목을 둥근 카드 안에서 표 위 바깥으로 분리하고 카드 테두리·배경 제거.","항목/입력 쌍에 맞는 폼 열 구조로 항목명 겹침을 방지."]},
