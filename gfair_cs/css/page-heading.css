@@ -1,0 +1,15 @@
+/* 캡처 기준: 제목은 왼쪽, 현재 위치는 오른쪽의 같은 행에 표시한다. */
+#app #content .pagehead.page-heading-standard{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:24px;row-gap:12px;min-height:40px;margin:0 0 24px}
+#app #content .page-heading-standard>div:has(>h1){display:contents}
+#app #content .page-heading-standard h1{grid-column:1;grid-row:1;margin:0;font-size:28px;font-weight:700;line-height:1.4;letter-spacing:-.04em;min-width:0;overflow-wrap:anywhere}
+#app #content .page-heading-standard .breadcrumb{grid-column:2;grid-row:1;display:flex;justify-content:flex-end;align-items:center;gap:8px;flex-wrap:wrap;margin:0;text-align:right;font-size:13px;color:#777;line-height:1.6;min-width:0;max-width:100%}
+#app #content .page-heading-standard .breadcrumb a{color:inherit}
+#app #content .page-heading-standard .subtitle{display:none}
+#app #content .page-heading-standard>.head-actions{grid-column:1/-1;justify-self:end;justify-content:flex-end}
+#app #content .page-heading-standard>.head-actions:empty{display:none}
+#app #content .page-heading-standard>.btn{grid-column:1/-1;justify-self:end}
+@media(max-width:700px){
+ #app #content .pagehead.page-heading-standard{grid-template-columns:minmax(0,1fr);row-gap:8px}
+ #app #content .page-heading-standard h1{font-size:24px}
+ #app #content .page-heading-standard .breadcrumb{grid-column:1;grid-row:2;justify-content:flex-start;text-align:left}
+}
