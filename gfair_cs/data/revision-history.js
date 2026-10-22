@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-01","version":"v0.27","date":"2026.10.22","accountName":"mjha","summary":"Description 번호 핀 드래그 위치 저장 지원","changes":["공동작업자 로그인 시 핀을 드래그해 공유 위치를 조정.","번호·설명 내용·댓글은 유지하고 실패 시 기존 위치 복구."]},
+  {"screenId":"PRE-01","version":"v3.11","date":"2026.10.22","accountName":"mjha","summary":"Description 번호 핀 드래그 위치 저장 지원","changes":["공동작업자 로그인 시 핀을 드래그해 공유 위치를 조정.","번호·설명 내용·댓글은 유지하고 실패 시 기존 위치 복구."]},
   {"screenId":"BAS-01","version":"v0.26","date":"2026.10.22","accountName":"mjha","summary":"등록된 Description의 선택 옵션 표시 순서 조정","changes":["선택 옵션을 기본값 바로 다음, 필수여부 이전에 표시."]},
   {"screenId":"BAS-01","version":"v0.25","date":"2026.10.22","accountName":"mjha","summary":"상태 검색조건을 한 줄 전체 너비로 확장","changes":["일반 조건 하나와 2열에서 홀로 남은 마지막 조건은 키워드처럼 한 줄 전체 너비 적용."]},
   {"screenId":"NTC-02","version":"v1.17","date":"2026.10.22","accountName":"mjha","summary":"자료실·FAQ 페이지 작업 버튼의 공통 하단 배치와 명칭 통일","changes":["등록·목록·수정·저장 버튼을 중복 없이 본문 하단 우측에 배치.","신규 등록은 등록, 수정 내용 반영은 저장으로 표시."]},
