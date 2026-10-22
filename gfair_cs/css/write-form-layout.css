@@ -29,3 +29,26 @@
 #app .consult-date-range input{width:calc(50% - 14px);min-width:0;min-height:36px;padding:7px 8px;border:1px solid #ccc;border-radius:2px}
 #app .consult-date-range span{flex:none;color:#555}
 @media(max-width:700px){#app .basic-info-grid{grid-template-columns:1fr}#app .basic-info-cell{grid-template-columns:110px minmax(0,1fr)}#app .basic-info-cell>label{padding:10px}#app .basic-info-cell>input,#app .basic-info-cell>.consult-date-range{margin:8px}#app .consult-date-range{gap:4px}#app .consult-date-range input{padding:6px 3px;font-size:12px}}
+
+/* 역할 공통 등록 폼: 화면 폭에 따라 두 쌍 또는 한 쌍의 항목/값을 표시 */
+#app .write-form-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+#app .write-form-rows>.write-form-row{grid-template-columns:130px minmax(0,1fr);min-width:0}
+#app .write-form-rows>.write-form-row:has(textarea),
+#app .write-form-rows>.write-form-row:has(input[type=file]),
+#app .write-form-rows>.write-form-row.wide{grid-column:1/-1}
+#app .write-form-rows>fieldset.write-form-row{grid-column:1/-1}
+#app fieldset.write-form-row>legend{width:130px}
+#app fieldset.write-form-row>.write-form-controls{margin-left:130px}
+#app .write-form-rows>.check{grid-column:1/-1}
+#app .formfooter,#app .write-form-rows+.formfooter{justify-content:flex-end}
+@media(max-width:760px){
+ #app .write-form-rows{grid-template-columns:1fr}
+ #app .write-form-rows>.write-form-row:has(textarea),
+ #app .write-form-rows>.write-form-row:has(input[type=file]),
+ #app .write-form-rows>.write-form-row.wide,
+ #app .write-form-rows>fieldset.write-form-row,
+ #app .write-form-rows>.check{grid-column:1/-1}
+ #app .write-form-rows>.write-form-row{grid-template-columns:110px minmax(0,1fr)}
+ #app fieldset.write-form-row>legend{width:110px}
+ #app fieldset.write-form-row>.write-form-controls{margin-left:110px}
+}
