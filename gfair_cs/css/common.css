@@ -80,3 +80,7 @@
 .detaildata dd{padding-left:12px}
 @media(max-width:760px){.formgrid{grid-template-columns:1fr}.formgrid>.field.wide{grid-column:auto}.detaildata{grid-template-columns:110px minmax(0,1fr)}.detaildata dt,.detaildata dd{grid-column:auto}}
 @media(max-width:560px){.mobile-content .formfooter .btn{flex:0 0 auto}}
+
+/* 공통 등록·상세 액션: 반응형 화면에서도 우측 하단 정렬 */
+#app .formfooter{justify-content:flex-end}
+#app .formfooter>.btn{flex:0 0 auto}

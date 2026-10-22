@@ -89,3 +89,29 @@
 }
 
 .event-list-tools:empty { display: none; }
+
+/* 역할 공통: 상세 정보 표에 두 쌍의 항목/값을 배치하고 긴 값은 넓게 표시 */
+#app .detail-form-panel .detail-rows,
+#app .detail-form-panel .form-rows,
+#app .detaildata{grid-template-columns:130px minmax(0,1fr) 130px minmax(0,1fr)}
+#app .detail-form-panel .detail-rows>.detail-row-tall{grid-column:2/-1}
+#app .detail-form-panel .form-rows>.field{grid-template-columns:130px minmax(0,1fr)}
+#app .detail-form-panel .form-rows>.field.wide{grid-column:1/-1}
+#app .detail-form-panel .form-rows>.field:has(textarea),
+#app .detail-form-panel .form-rows>.field:has(input[type=file]){grid-column:1/-1}
+#app .detail-form-panel .detail-rows>dt,
+#app .detail-form-panel .detail-rows>dd,
+#app .detaildata>dt,
+#app .detaildata>dd{border-bottom:1px solid var(--line)}
+#app .detail-form-panel>.formfooter,
+#app .detail-form-panel .formfooter{justify-content:flex-end}
+@media(max-width:1000px){
+ #app .detail-form-panel .detail-rows,
+ #app .detail-form-panel .form-rows,
+ #app .detaildata{grid-template-columns:110px minmax(0,1fr)}
+ #app .detail-form-panel .detail-rows>.detail-row-tall{grid-column:2}
+ #app .detail-form-panel .form-rows>.field{grid-template-columns:110px minmax(0,1fr)}
+ #app .detail-form-panel .form-rows>.field.wide,
+ #app .detail-form-panel .form-rows>.field:has(textarea),
+ #app .detail-form-panel .form-rows>.field:has(input[type=file]){grid-column:1/-1}
+}
