@@ -5,6 +5,7 @@
 #app .journal-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
 #app .journal-section-head h2{margin:0}
 #app .journal-save-state{font-size:12px;color:#6b6b6b;white-space:nowrap}
+#app .journal-save-state [data-lucide="refresh-cw"],#app .save-state [data-lucide="refresh-cw"],#app .btn [data-lucide="refresh-cw"]{width:14px;height:14px;margin-right:5px;color:#888;vertical-align:-2px}
 #app .export-journal-form .journal-section h2::before{content:"○";font-size:16px;font-weight:400}
 #app .journal-table{border-top:1px solid #ddd;background:#fff}
 #app .journal-table-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:1px solid #ddd;min-width:0}
