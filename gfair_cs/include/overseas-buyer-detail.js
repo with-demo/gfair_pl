@@ -7,10 +7,11 @@
  const random=limit=>crypto.getRandomValues(new Uint32Array(1))[0]%limit;
  function account(year,prefix='GF'){let id;const used=new Set([...profiles.values()].flatMap(p=>p.history.map(h=>h.id)));do{id=prefix+String(year).slice(-2)+String(random(9999)+1).padStart(4,'0');}while(used.has(id));return{year,id,invitationType:year===2024?'GBC':'KBC',pw:String.fromCharCode(65+random(26))+String(random(1000000)).padStart(6,'0')};}
  function profileFor(record,records,screen){
-  const cfg=settings[screen],source=record||[],key=source[0]||screen+'-example',sourceYears=[...new Set(String(source[cfg.yearIndex]||'').match(/20\d{2}/g)||[])].map(Number).sort((a,b)=>b-a),years=sourceYears.length?sourceYears:[2027,2026,2024];if(profiles.has(key)){const p=profiles.get(key);p.history=years.map(year=>p.history.find(h=>h.year===year)||account(year,cfg.accountPrefix));persist();return p;}
+  const cfg=settings[screen],source=record||[],key=source[0]||screen+'-example',sourceYears=[...new Set(String(source[cfg.yearIndex]||'').match(/20\d{2}/g)||[])].map(Number).sort((a,b)=>b-a),years=sourceYears.length?sourceYears:[2027,2026,2024];if(profiles.has(key)){const p=profiles.get(key);p.name=source[1]||cfg.name;if(screen==='BAS-04')p.country=(window.GFAIR_COUNTRY_CODES||[]).find(c=>c.code===source[2]||c.name===source[2])||{name:source[2]||'영국',code:''};p.history=years.map(year=>p.history.find(h=>h.year===year)||account(year,cfg.accountPrefix));persist();return p;}
   const pattern=new RegExp('^'+cfg.prefix+'\\d{8}$'),currentPattern=new RegExp('^'+cfg.prefix+'2027\\d{4}$'),code=pattern.test(source[0]||'')?source[0]:cfg.prefix+'2027'+String(Math.max(0,...records.map(r=>currentPattern.test(r[0])?Number(r[0].slice(-4)):0))+1).padStart(4,'0');
   const country=(window.GFAIR_COUNTRY_CODES||[]).find(c=>c.code===source[2]||c.name===source[2]);
-  const profile={code,name:source[1]||cfg.name,country:country||(source[2]?{name:source[2],code:''}:{name:'영국',code:'GB'}),invitationType:'KBC',phone:['010','0000','0000'],emailLocal:cfg.email,emailDomain:'example.com',memo:'',history:years.map(year=>account(year,cfg.accountPrefix))};
+  const emailLocal=screen==='BAS-04'?(source[1]||cfg.name).toLowerCase().trim().replace(/\s+/g,'.'):cfg.email;
+  const profile={code,name:source[1]||cfg.name,country:country||(source[2]?{name:source[2],code:''}:{name:'영국',code:'GB'}),invitationType:'KBC',phone:['010','0000','0000'],emailLocal,emailDomain:'example.com',memo:'',history:years.map(year=>account(year,cfg.accountPrefix))};
   profiles.set(key,profile);persist();return profile;
  }
  const options=(values,current)=>values.map(value=>'<option value="'+escape(value)+'"'+(value===current?' selected':'')+'>'+escape(value)+'</option>').join('');

@@ -272,25 +272,25 @@ window.GFAIR_SCREENS=[
           "rows": [
             [
               "F20260001",
-              "해외바이어 A",
-              "국가 ",
-              "해외기업 A",
+              "James Whitmore",
+              "영국",
+              "Whitmore Living",
               "2026",
               "참가 미정"
             ],
             [
               "F20270001",
-              "해외바이어 B",
-              "국가 ",
-              "해외기업 B",
+              "Emily Carter",
+              "미국",
+              "Carter Home & Lifestyle",
               "2026, 2027",
               "참가 확정"
             ],
             [
               "F20270002",
-              "해외바이어 C",
-              "국가 미등록",
-              "해외기업 C",
+              "Hiroshi Tanaka",
+              "일본",
+              "Tanaka Lifestyle Trading",
               "2027",
               "신규"
             ]
@@ -949,16 +949,16 @@ window.GFAIR_SCREENS=[
           ],
           "rows": [
             [
-              "해외바이어 A",
-              "국가 ",
+              "James Whitmore",
+              "영국",
               "항공정보 ",
               "호텔 ",
               "공항 도착",
               "통역원 A"
             ],
             [
-              "해외바이어 B",
-              "국가 ",
+              "Emily Carter",
+              "미국",
               "항공정보 ",
               "호텔 ",
               "호텔 도착·체크인",
@@ -1105,8 +1105,8 @@ window.GFAIR_SCREENS=[
           ],
           "rows": [
             [
-              "해외바이어 A",
-              "국가 미등록",
+              "James Whitmore",
+              "영국",
               "통역원 A",
               "영어",
               "기간 협의",
@@ -1114,8 +1114,8 @@ window.GFAIR_SCREENS=[
               "미확인"
             ],
             [
-              "해외바이어 B",
-              "국가 미등록",
+              "Emily Carter",
+              "미국",
               "미지정",
               "언어 미등록",
               "기간 협의",
@@ -1317,14 +1317,14 @@ window.GFAIR_SCREENS=[
           "rows": [
             [
               "시간 ",
-              "해외바이어 A",
+              "James Whitmore",
               "기업 A / A-01",
               "현장확인",
               "임시저장"
             ],
             [
               "시간 ",
-              "해외바이어 B",
+              "Emily Carter",
               "기업 B / B-01",
               "사전매칭",
               "작성 전"
@@ -1434,7 +1434,7 @@ window.GFAIR_SCREENS=[
               "일지-02",
               "수출",
               "기업 B",
-              "해외바이어 A",
+              "James Whitmore",
               "통역원 A",
               "반려"
             ]
@@ -2154,7 +2154,7 @@ window.GFAIR_SCREENS=[
           ],
           "rows": [
             [
-              "해외바이어 A",
+              "James Whitmore",
               "행사장도착",
               "통역원 A",
               "완료",
@@ -2162,7 +2162,7 @@ window.GFAIR_SCREENS=[
               "—"
             ],
             [
-              "해외바이어 B",
+              "Emily Carter",
               "호텔도착",
               "미지정",
               "미완료",
@@ -2267,7 +2267,7 @@ window.GFAIR_SCREENS=[
               "언어 ",
               "출석",
               "—",
-              "해외바이어 A",
+              "James Whitmore",
               "완료"
             ],
             [
