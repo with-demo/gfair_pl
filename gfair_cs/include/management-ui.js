@@ -53,11 +53,12 @@
  }
  function render(){
   if(['COM-06','COM-07','COM-08'].includes(state.screen))return ['buyOperator','exportOperator'].includes(state.role)?`<div data-management-root>${operatorAccount()}</div>`:'<div class="empty">운영용역사 대표 담당자용 화면입니다.</div>';
-  if(!isAdmin())return '<div class="empty">이용 권한이 없습니다.</div>';return `<div data-management-root>${state.screen==='BAS-15'?operatorList():state.screen==='BAS-17'?operatorDetail():state.screen==='BAS-19'?operatorRegistration():state.screen==='BAS-16'?adminList():adminDetail()}</div>`;}
+  if(!isAdmin())return '<div class="empty">이용 권한이 없습니다.</div>';return `<div data-management-root>${state.screen==='BAS-15'?operatorList():state.screen==='BAS-17'?operatorDetail():state.screen==='BAS-19'?operatorRegistration():state.screen==='BAS-20'?adminRegistration():state.screen==='BAS-16'?adminList():adminDetail()}</div>`;}
  function paint(){const r=document.querySelector('[data-management-root]');if(r)r.outerHTML=render();}
  function message(text){state.notice=text;paint();}
  function modal(title,body){const d=document.getElementById('dialog');document.getElementById('dialog-content').innerHTML=`<div class="dialoghead"><h2>${title}</h2>${button('close','닫기')}</div><div class="dialogbody">${body}<p data-management-error role="alert"></p></div>`;d.showModal();}
  function close(){document.getElementById('dialog').close();}
+ function adminRegistration(){return `${note()}<form data-management-form="admin-create" class="panel detail-form-panel"><div class="panelhead"><h2>관리자 기본정보</h2></div><div class="management-form">${input('id','관리자 ID *','',true)}${input('name','이름 *','',true)}${input('org','소속')}</div><div class="formfooter"><a href="#BAS-16" class="btn">취소</a><button type="submit" class="btn primary">등록</button></div></form>`;}
  function adminForm(){modal('관리자 등록',`<form data-management-form="admin-create" class="management-form">${input('id','관리자 ID *','',true)}${input('name','이름 *','',true)}${input('org','소속')}<button type="submit" class="btn primary">등록</button></form><p class="small">실제 로그인 계정은 생성하지 않습니다.</p>`);}
 
  const staffFields=['행사 연도','기업코드','담당자코드','담당자명'];
@@ -98,7 +99,7 @@
    const n=upload.rows.length;state.staffUpload=null;close();message(n+'명의 담당자를 등록하고 계정을 일괄 발급했습니다.');return;
   }
   if(a==='operator-create'&&isAdmin()){state.notice='';location.hash='BAS-19';return;}
-  if(a==='admin-create'&&isAdmin()){adminForm();return;}
+  if(a==='admin-create'&&isAdmin()){location.hash='BAS-20';return;}
   if(a==='template'&&isAdmin()){
    const rows=[fields,['2027','구매상담','DEMO-UPLOAD-01','업로드 용역사','대표','사업장','담당자']];
    const blob=await GFAIRWorkbook.write(rows),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='운영용역사_등록양식.xlsx';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('검토용 XLSX 양식을 다운로드했습니다. 행을 수정해 업로드해 주세요.');return;
@@ -147,7 +148,7 @@
   if(['admin-create','admin-save'].includes(type)){
    if(!v('id')||!v('name'))return fail('ID와 이름은 공백만 입력할 수 없습니다.');
    if(admins.some(a=>a.id===v('id')&&(type==='admin-create'||a.id!==state.admin)))return fail('이미 등록된 관리자 ID입니다.');
-   if(type==='admin-create'){admins.push({id:v('id'),name:v('name'),org:v('org')||'미등록',status:'사용',date:new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date()).replaceAll('-','.')});close()}
+   if(type==='admin-create'){admins.push({id:v('id'),name:v('name'),org:v('org')||'미등록',status:'사용',date:new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date()).replaceAll('-','.')});state.notice='관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.';location.hash='BAS-16';return;}
    else{Object.assign(admins.find(a=>a.id===state.admin),{id:v('id'),name:v('name'),org:v('org')||'미등록',status:v('status')});state.admin=v('id')}
    message('관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.');return;
   }

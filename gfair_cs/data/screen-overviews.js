@@ -75,3 +75,5 @@ window.GFAIR_SCREEN_OVERVIEWS={
   "ENT-01": "연계된 참가기업·품목·부스정보를 검색하고 상담일지에 연결합니다.",
   "ENT-02": "상담대상 기업·제품정보를 확인하고 작성 화면으로 이동합니다."
 };
+
+window.GFAIR_SCREEN_OVERVIEWS['BAS-20']='상담시스템 관리자의 기본정보를 입력하고 등록합니다.';
