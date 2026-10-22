@@ -89,3 +89,8 @@
 #app .export-journal-form .journal-table,#app .export-journal-form .journal-table-row,#app .export-journal-form .journal-pair,#app .export-journal-form .journal-control{overflow:visible}
 #app .journal-select-options{overflow:visible}
 #app .journal-select-results{overflow-y:auto;overscroll-behavior:contain}
+
+#app .journal-select-option{display:flex;align-items:center;gap:8px}
+#app .journal-select-radio{position:relative;flex:0 0 14px;width:14px;height:14px;border:1px solid #8b929b;border-radius:50%;background:#fff;box-sizing:border-box}
+#app .journal-select-option.selected .journal-select-radio{border-color:#3d6cb4}
+#app .journal-select-option.selected .journal-select-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:#3d6cb4}
