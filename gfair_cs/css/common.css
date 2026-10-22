@@ -66,3 +66,17 @@
 /* BAS-02 전시관은 번호·명칭을 슬래시로 구분해 나열한다. */
 #app .event-halls{display:block;line-height:1.9;overflow-wrap:anywhere}
 #app .event-file-download{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+
+/* 공통 등록·상세 폼: 표형 행 구조와 우측 하단 작업 버튼 */
+.formgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.formgrid>.field{display:grid;grid-template-columns:130px minmax(0,1fr);align-items:stretch;gap:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:54px}
+.formgrid>.field>span{display:flex;align-items:center;padding:12px;background:#f3f3f3;border-right:1px solid var(--line);font-weight:600}
+.formgrid>.field>input,.formgrid>.field>select,.formgrid>.field>textarea,.formgrid>.field>.chips,.formgrid>.field>.row,.formgrid>.field>.check{align-self:center;margin:8px 12px;width:calc(100% - 24px)}
+.formgrid>.field>textarea{align-self:stretch;min-height:120px}
+.formgrid>.field.wide{grid-column:1/-1}
+.detaildata{grid-template-columns:130px minmax(0,1fr) 130px minmax(0,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.detaildata dt,.detaildata dd{display:flex;align-items:center;padding:12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.detaildata dt{background:#f3f3f3;color:var(--ink);font-weight:600}
+.detaildata dd{padding-left:12px}
+@media(max-width:760px){.formgrid{grid-template-columns:1fr}.formgrid>.field.wide{grid-column:auto}.detaildata{grid-template-columns:110px minmax(0,1fr)}.detaildata dt,.detaildata dd{grid-column:auto}}
+@media(max-width:560px){.mobile-content .formfooter .btn{flex:0 0 auto}}
