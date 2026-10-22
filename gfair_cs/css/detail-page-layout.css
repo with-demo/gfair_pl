@@ -105,7 +105,7 @@
 #app .detaildata>dd{border-bottom:1px solid var(--line)}
 #app .detail-form-panel>.formfooter,
 #app .detail-form-panel .formfooter{justify-content:flex-end}
-@media(max-width:760px){
+@media(max-width:1000px){
  #app .detail-form-panel .detail-rows,
  #app .detail-form-panel .form-rows,
  #app .detaildata{grid-template-columns:110px minmax(0,1fr)}
