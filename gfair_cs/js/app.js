@@ -141,6 +141,25 @@ const folderHead=head;
 head=function(s,a=''){let html=folderHead(s,a);if(['MON-01','MON-08'].includes(s.id))html=html.replace(/<nav class="breadcrumb"[^>]*>[\s\S]*?<\/nav>/,'');const info=menuInfo(s.id);if(info?.parent)html=html.replace(`<a href="#${info.owner}">${info.item[1]}</a>`,`<span>${E(info.parent[1])}</span><span>›</span><a href="#${info.owner}">${E(info.item[1])}</a>`);return html};
 const folderGeneric=genericAction;
 genericAction=function(label){if(label==='저장'&&viewMode!=='detail'&&/^BAS-0[2468]$/.test(current)){const f=document.getElementById('generic-form');if(!f?.reportValidity())return;const owner=menuOwner(current),parent=map.get(owner),rr=rows(parent),data=Object.fromEntries(new FormData(f)),v=i=>data['field'+i]||'미등록',name=i=>v(i).split(' / ')[0],company=i=>v(i).split(' / ')[1]||'미등록';let record;if(current==='BAS-02')record=[event,v(1),(data['field2-start']||'')+' ~ '+(data['field2-end']||''),v(4),v(5)];if(current==='BAS-04')record=[v(0),name(2),v(3),company(2),event,v(8),viewMode==='create'?'미발급':rr[selectedRow]?.[6]||'미발급'];if(current==='BAS-06')record=[v(0),name(1),company(1),v(6),viewMode==='create'?'미발급':rr[selectedRow]?.[4]||'미발급',event];if(current==='BAS-08')record=[v(0),v(1),v(3),v(4),viewMode==='create'?'미발급':rr[selectedRow]?.[4]||'미발급',v(5),v(8)];if(viewMode==='create')rr.unshift(record);else if(rr[selectedRow])rr[selectedRow]=record;lists[owner]=rr;forms[current]=data;log(viewMode==='create'?'등록':'수정',owner);nav(owner);toast('예시 목록에 저장했습니다.');return}folderGeneric(label)};
+
+// BAS-02: 외부 사이트에서 연계되는 행사 상세 정보.
+const linkedEventForm=form;
+form=function(s){
+ if(s.id!=='BAS-02')return linkedEventForm(s);
+ const value=(label,text)=>`<div class="event-value" aria-label="${E(label)}">${E(text)}</div>`;
+ const pair=(label,text)=>`<div class="event-detail-label">${E(label)}</div>${value(label,text)}`;
+ const halls=['생활용품(반려동물)','생활용품(주방용품)','생활용품(생활용품)','생활용품(인테리어)','생활용품(헬스케어)','식품','뷰티/패션','테크','','','','','','',''];
+ const title=head({...s,title:'행사정보 상세'}).replace(/<div class="head-actions">[\s\S]*?<\/div>/,'');
+ return title+`<div class="event-information">
+ <section class="event-detail-section" aria-labelledby="event-basic-title"><h2 id="event-basic-title">O 기본정보</h2>
+ <div class="event-detail-grid">${pair('박람회명칭','2026 G-FAIR KOREA')}${pair('상태','진행')}${pair('행사시작','2026-10-29')}${pair('행사종료','2026-10-31')}</div></section>
+ <section class="event-detail-section" aria-labelledby="event-exhibition-title"><h2 id="event-exhibition-title">O 전시회 정보</h2>
+ <div class="event-detail-grid">${pair('신청시작','2026-03-16')}${pair('신청종료','2026-10-28')}
+ <div class="event-detail-label">부스배치도</div><div class="event-value event-detail-wide" aria-label="부스배치도"></div>
+ <div class="event-detail-label">전시관 구분</div><div class="event-halls event-detail-wide">${halls.map((text,i)=>`<div class="event-hall"><span>${String(i+1).padStart(2,'0')}.</span>${value('전시관 '+String(i+1).padStart(2,'0'),text)}</div>`).join('')}</div></div></section>
+ <div class="formfooter event-page-actions">${A('BAS-01','목록')}</div></div>`;
+};
+
 const folderRender=render;
 render=function(){folderRender();const s=map.get(current);if(!s)return;const info=menuInfo(current);if(info&&!window.GFAIR_NAV.allowed(info.item,role)&&!info.item[2].some(c=>window.GFAIR_NAV.allowed(c,role))){root.innerHTML=shell(s,`${head(s)}<section class="panel pad"><h2>이 역할에서 이용할 수 없는 메뉴입니다.</h2><p>메뉴 권한은 사이트맵 기준입니다. 예시 역할을 변경해 주세요.</p>${A(role==='buyOperator'?'EVT-01':role==='exportOperator'?'PRE-01':'MON-01','이용 가능한 메뉴로')}</section>`);return}
  if(['JNL-BUY','JNL-EXP'].includes(current)){const type=s.journalType;root.querySelector('h1').textContent=s.title;const select=root.querySelector('[name=type]');if(select){select.value=type;select.disabled=true}if(role!=='admin')root.querySelector('.head-actions')?.insertAdjacentHTML('beforeend',A(type==='구매'?'JNL-04':'JNL-05','상담일지 등록','btn primary'));}

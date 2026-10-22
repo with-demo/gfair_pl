@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-02","version":"v0.9","date":"2026.10.22","accountName":"mjha","summary":"행사정보 상세의 외부 연계 정보 배치","changes":["기본정보·전시회 정보 묶음으로 분리하고 캡처의 항목과 전시관 01~15를 표시.","부스배치도와 전시관 09~15는 빈칸 유지. 연계값은 읽기 전용으로 표시.","목록 버튼 하나를 본문 최하단 좌측에 배치."]},
   {"screenId":"COM-01","version":"v0.9","date":"2026.10.21","accountName":"mjha","summary":"Description 위치 연결의 동적 값 변경 대응","changes":["갱신 시각·건수가 바뀌어도 연결 영역을 찾도록 숫자를 제외하고 비교.","고유 ID 영역은 ID로 연결을 유지."]},
   {"screenId":"COM-02","version":"v0.8","date":"2026.10.21","accountName":"mjha","summary":"Description 위치 연결의 동적 값 변경 대응","changes":["갱신 시각·건수가 바뀌어도 연결 영역을 찾도록 숫자를 제외하고 비교.","고유 ID 영역은 ID로 연결을 유지."]},
   {"screenId":"COM-03","version":"v0.8","date":"2026.10.21","accountName":"mjha","summary":"Description 위치 연결의 동적 값 변경 대응","changes":["갱신 시각·건수가 바뀌어도 연결 영역을 찾도록 숫자를 제외하고 비교.","고유 ID 영역은 ID로 연결을 유지."]},

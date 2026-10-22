@@ -31,3 +31,23 @@
 #app .tablewrap table,#app table.survey-action-list{font-size:13px}
 #app .tablewrap tbody .badge{font-size:13px}
 #app .tablewrap tbody .btn,#app table.survey-action-list .btn{font-size:12px}
+
+/* 상세·등록 페이지 공통: 본문 하단 좌측 버튼, 특수 동작은 회색 명도로 구분. */
+#app .event-page-actions{justify-content:flex-start}
+#app .event-page-actions .btn.danger{background:#666;border-color:#666;color:#fff}
+/* BAS-02 외부 연계 정보: 캡처의 두 묶음과 3열 전시관 배치를 유지. */
+#app .event-information{font-size:13px}
+#app .event-detail-section{margin:0 0 28px}
+#app .event-detail-section>h2{font-size:16px;font-weight:700;margin:0 0 12px}
+#app .event-detail-grid{display:grid;grid-template-columns:150px minmax(0,1fr) 150px minmax(0,1fr);border-top:1px solid #ddd;border-left:1px solid #ddd;background:#fff}
+#app .event-detail-grid>div{border-right:1px solid #ddd;border-bottom:1px solid #ddd;min-width:0}
+#app .event-detail-label{display:flex;align-items:center;background:#f4f4f4;padding:14px 16px;font-weight:600}
+#app .event-value{display:flex;align-items:center;min-height:48px;padding:12px 16px;overflow-wrap:anywhere}
+#app .event-detail-wide{grid-column:span 3}
+#app .event-halls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 24px;padding:14px 16px}
+#app .event-hall{display:flex;align-items:center;gap:8px;min-width:0}
+#app .event-hall>span{flex-shrink:0}
+#app .event-hall .event-value{flex:1;min-width:0;min-height:32px;border:1px solid #ddd;padding:5px 8px}
+#app .event-page-actions{padding:0;border:0;background:transparent}
+@media(max-width:900px){#app .event-detail-grid{grid-template-columns:120px minmax(0,1fr)}#app .event-detail-wide{grid-column:span 1}#app .event-halls{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}}
+@media(max-width:600px){#app .event-detail-grid{grid-template-columns:100px minmax(0,1fr)}#app .event-halls{grid-template-columns:minmax(0,1fr)}#app .event-detail-label,#app .event-value{padding:10px}}
