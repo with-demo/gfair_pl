@@ -1,7 +1,7 @@
 (()=>{
  function sync(){
   document.querySelectorAll('.field>span:first-child,.field>label:first-child,fieldset>legend').forEach(label=>{
-   if(label.closest('.ui-spec-panel,.ui-spec-toolbar'))return;
+   if(label.closest('.ui-spec-panel,.ui-spec-toolbar,.annotation-dialog'))return;
    const field=label.parentElement;
    const old=label.querySelector('em,.notice-required,.required-asterisk');
    const starred=Array.from(label.childNodes).some(n=>n.nodeType===3&&n.textContent.includes('*'));

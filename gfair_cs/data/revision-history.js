@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-01","version":"v0.30","date":"2026.10.22","accountName":"mjha","summary":"Description 필수여부 별표 중복 제거","changes":["공통 필수표시 처리가 설명 편집창에 별표를 중복 추가하지 않도록 수정."]},
   {"screenId":"BAS-01","version":"v0.29","date":"2026.10.22","accountName":"mjha","summary":"Description 플레이스홀더 입력 순서 조정","changes":["입력 유형의 플레이스홀더를 기본값 바로 다음에 배치.","저장된 설명의 표시 순서에도 동일하게 적용."]},
   {"screenId":"BAS-01","version":"v0.28","date":"2026.10.22","accountName":"mjha","summary":"Description 동작·연결 항목 통합","changes":["이동·연결 대상과 연관 화면을 이동·연결 대상 한 항목으로 통합.","기존 두 항목의 입력값과 화면 ID 자동완성 유지."]},
   {"screenId":"BAS-01","version":"v0.27","date":"2026.10.22","accountName":"mjha","summary":"Description 번호 핀 드래그 위치 저장 지원","changes":["공동작업자 로그인 시 핀을 드래그해 공유 위치를 조정.","번호·설명 내용·댓글은 유지하고 실패 시 기존 위치 복구."]},
