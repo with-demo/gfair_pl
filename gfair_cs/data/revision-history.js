@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-04","version":"v0.20","date":"2026.10.22","accountName":"mjha","summary":"행사참가이력의 상담일지 삭제·초청기관유형 추가","changes":["상담일지 열과 버튼 삭제.","연도 다음에 초청기관유형을 추가하고 2027·2026년 KBC, 2024년 GBC 예시 표시."]},
   {"screenId":"BAS-04","version":"v0.19","date":"2026.10.22","accountName":"mjha","summary":"참가이력 제목을 행사참가이력으로 변경","changes":["연도별 이력 영역의 제목 문구 변경."]},
   {"screenId":"BAS-04","version":"v0.18","date":"2026.10.22","accountName":"mjha","summary":"해외 바이어 기본정보·연도별 참가이력 구성","changes":["기본정보를 읽기 전용 텍스트와 연락처·이메일·메모 입력으로 구분.","2027·2026·2024 참가이력과 규칙에 맞는 예시 ID·PW, 비밀번호 보기·숨기기 제공.","목록·저장은 하단 우측 한 곳에 배치하고 상담일지는 미구현 버튼으로 표시."]},
   {"screenId":"BAS-03","version":"v1.14","date":"2026.10.22","accountName":"mjha","summary":"상세 화면과 연결되는 영국 바이어 예시 반영","changes":["James Whitmore, 영국(GB), 2027·2026·2024 참가이력 예시를 상세와 동일하게 연결."]},
