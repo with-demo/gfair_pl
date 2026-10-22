@@ -2,6 +2,9 @@
 #app .export-journal-form{display:grid;gap:20px}
 #app .export-journal-form .journal-section{grid-column:1/-1}
 #app .export-journal-form .journal-section h2{display:flex;align-items:center;gap:8px;margin:0 0 14px}
+#app .journal-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+#app .journal-section-head h2{margin:0}
+#app .journal-save-state{font-size:12px;color:#6b6b6b;white-space:nowrap}
 #app .export-journal-form .journal-section h2::before{content:"○";font-size:16px;font-weight:400}
 #app .journal-table{border-top:1px solid #ddd;background:#fff}
 #app .journal-table-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:1px solid #ddd;min-width:0}
