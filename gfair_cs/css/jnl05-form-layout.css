@@ -26,6 +26,14 @@
 #app .journal-radios label{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;font-size:13px}
 #app .journal-radios input[type=radio]{margin:0;accent-color:#555}
 #app .hashtag-list{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+#app .tag-picker{position:relative;flex:0 1 300px;width:min(100%,300px)}
+#app .tag-picker>input{width:100%;min-width:0;min-height:36px;padding:7px 10px;border:1px solid #ccc;border-radius:2px;font-size:13px}
+#app .tag-suggestions{position:absolute;z-index:10;top:calc(100% + 3px);left:0;right:0;max-height:220px;overflow:auto;border:1px solid #ccc;border-radius:3px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+#app .tag-suggestions[hidden]{display:none}
+#app .tag-suggestion{display:block;width:100%;padding:9px 11px;border:0;border-bottom:1px solid #eee;background:#fff;color:#17365d;text-align:left;cursor:pointer}
+#app .tag-suggestion:last-child{border-bottom:0}
+#app .tag-suggestion:hover,#app .tag-suggestion:focus-visible{background:#f1f5fa}
+#app .tag-empty{padding:10px 11px;color:#777;font-size:12px}
 #app .hashtag-label{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid #d4d4d4;border-radius:3px;background:#f6f6f6;font-size:12px}
 #app .hashtag-label button{display:inline-grid;place-items:center;width:18px;height:18px;padding:0;border:0;border-radius:50%;background:transparent;color:#555;font-size:15px;line-height:1;cursor:pointer}
 #app .hashtag-label button:hover,#app .hashtag-label button:focus-visible{background:#e5e5e5;color:#111}
