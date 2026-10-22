@@ -58,3 +58,10 @@
 #app .journal-select-option:hover,#app .journal-select-option:focus-visible{background:#f1f5fa}
 #app .journal-select-empty{padding:10px;color:#777;font-size:12px}
 #app .journal-control>select[disabled]{color:#17365d;background:#f5f5f5;opacity:1}
+
+#app .journal-country-select{position:relative;width:min(100%,420px);max-width:100%}
+#app .journal-country-select .journal-select-search{width:100%;min-width:0;min-height:36px;padding:7px 10px;border:1px solid #ccc;border-radius:2px;font-size:13px}
+#app .journal-country-selected{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:5px}
+#app .country-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid #d2d8e0;border-radius:3px;background:#f3f6fa;color:#17365d;font-size:12px}
+#app .country-chip button{border:0;background:transparent;color:#555;font-size:15px;line-height:1;cursor:pointer}
+#app .journal-select-option.selected{background:#eef4fb;color:#17365d;font-weight:600}
