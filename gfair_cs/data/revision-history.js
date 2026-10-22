@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"EVT-01","version":"v1.1","fromVersion":"v1.0","date":"2026.10.22","accountName":"mjha","summary":"행사정보 화면 ID·페이지명·개요를 공통 화면 목록에 정식 등록"},
+  {"screenId":"EVT-02","version":"v1.1","fromVersion":"v1.0","date":"2026.10.22","accountName":"mjha","summary":"행사정보 화면 ID·페이지명·개요를 공통 화면 목록에 정식 등록"},
   {"screenId":"BAS-20","version":"v0.1","date":"2026.10.22","accountName":"mjha","summary":"관리자 등록을 정식 화면 ID BAS-20으로 등록","changes":["관리자 관리의 등록 버튼과 직접 URL 진입 지원.","기존 임시 주소는 BAS-20으로 연결하고 등록 후 관리자 목록으로 복귀."]},
   {"screenId":"BAS-09","version":"v0.6","fromVersion":"v0.5","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"참가기업 목록·상세를 원천정보 및 연도별 참가이력 조회 구조로 변경","changes":["목록에서 연계 상태와 최근 반영을 제거하고 참가 이력과 QR 상태를 표시.","목록 상단 우측에 동기화 하기 버튼을 추가하고 QR일괄 다운로드 앞에 배치.","상세에 기업 기본 정보·부스 정보·제품 정보·연도별 참가 이력을 구성."]},
   {"screenId":"EVT-01","version":"v1.0","date":"2026.10.21","accountName":"yulotso0310-cyber","summary":"국내 바이어 목록의 출석 현황·사전교육 버튼 제거"},

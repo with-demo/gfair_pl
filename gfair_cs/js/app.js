@@ -87,7 +87,7 @@ root.addEventListener('click',ev=>{if(ev.target.closest('[data-action="event-syn
 const MENU=window.GFAIR_MENU;
 const parentRoutes={'BAS-02':'BAS-01','BAS-04':'BAS-03','BAS-06':'BAS-05','BAS-08':'BAS-07','BAS-10':'BAS-09','BAS-11':'BAS-03','BAS-12':'BAS-03','BAS-13':'BAS-09','BAS-14':'BAS-03','PRE-02':'PRE-01','PRE-03':'PRE-01','PRE-05':'PRE-04','PRE-06':'PRE-04','PRE-08':'PRE-04','PRE-09':'EVT-01','JNL-02':'JNL-01','JNL-11':'JNL-01','JNL-12':'JNL-01','MON-02':'MON-01','MON-03':'MON-01','MON-04':'MON-01','MON-05':'MON-01','MON-06':'MON-01','NTC-04':'NTC-01','NTC-05':'NTC-01','STA-04':'STA-02','SET-02':'SET-01','SET-06':'SET-05'};
 let workflowParent='',viewMode='detail';
-for(const [id,source,title] of [['EVT-01','BAS-05','국내 바이어'],['EVT-02','BAS-07','통역원'],['REVIEW-01','JNL-01','상담일지 승인/반려']]){const base=map.get(source),filters=['EVT-01','EVT-02'].includes(id)?base.ui.filters.filter(label=>label!=='행사'):base.ui.filters,s={...base,id,title,group:'event',groupName:'행사정보',ui:{...base.ui,filters,actions:[]}};map.set(id,s)}
+for(const [id,source,title] of [['EVT-01','BAS-05','국내 바이어'],['EVT-02','BAS-07','통역원'],['REVIEW-01','JNL-01','상담일지 승인/반려']]){const base=map.get(source),registered=map.get(id),filters=['EVT-01','EVT-02'].includes(id)?base.ui.filters.filter(label=>label!=='행사'):base.ui.filters,s={...(registered||base),id,title,group:'event',groupName:'행사정보',ui:{...(registered||base).ui,filters,actions:[]}};map.set(id,s)}
 function menuOwner(id){return window.GFAIR_NAV.owner(id)||workflowParent||parentRoutes[id]||id}
 function menuInfo(id){return window.GFAIR_NAV.info(menuOwner(id))}
 sidebar=function(s){return window.GFAIR_INCLUDE.sidebar({s,role,event,info:menuInfo(s.id),escape:E})};
