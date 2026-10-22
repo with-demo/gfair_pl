@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.7","fromVersion":"v0.6","date":"2026.10.22","accountName":"yulotso0310-cyber","summary":"참가기업 목록에 사업자번호·담당자·연락처 추가","changes":["목록 컬럼을 참가기업·사업자번호·부스번호·담당자·연락처·참가 이력·QR상태로 구성.","기업명 셀에서 상세로 이동하고 기본정보에 사업자번호·담당자·연락처를 표시."]},
 {"screenId":"BAS-16","version":"v2.15","date":"2026.10.22","accountName":"mjha","summary":"관리자 등록·상세를 BAS-18로 통합하고 상세 ID를 읽기 전용으로 제공"},
 {"screenId":"BAS-18","version":"v1.13","date":"2026.10.22","accountName":"mjha","summary":"관리자 등록·상세를 BAS-18로 통합하고 상세 ID를 읽기 전용으로 제공"},
 {"screenId":"SET-01","version":"v0.16","date":"2026.10.22","accountName":"mjha","summary":"그룹 상세·메뉴 권한을 SET-02 기본정보·권한 공통 폼으로 통합"},
