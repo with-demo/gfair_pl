@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-02","version":"v0.14","date":"2026.10.22","accountName":"mjha","summary":"행사 상세 하단 버튼 우측 정렬","changes":["목록 버튼을 페이지 최하단 우측으로 정렬.","상세·등록 페이지 하단 버튼의 공통 정렬 기준을 우측으로 변경."]},
   {"screenId":"BAS-02","version":"v0.13","date":"2026.10.22","accountName":"mjha","summary":"행사정보 상세의 외부 연계 정보 배치","changes":["기본정보·전시회 정보 묶음으로 분리하고 캡처의 항목과 전시관 01~15를 표시.","부스배치도와 전시관 09~15는 빈칸 유지. 연계값은 읽기 전용으로 표시.","목록 버튼 하나를 본문 최하단 좌측에 배치."]},
 
 {"screenId":"BAS-01","version":"v0.22","date":"2026.10.22","accountName":"mjha","summary":"검색필터를 항목명·선택 셀의 표 형태로 통일하고 키워드 마지막 행 전체 너비 적용"},

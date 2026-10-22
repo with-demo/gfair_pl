@@ -32,8 +32,8 @@
 #app .tablewrap tbody .badge{font-size:13px}
 #app .tablewrap tbody .btn,#app table.survey-action-list .btn{font-size:12px}
 
-/* 상세·등록 페이지 공통: 본문 하단 좌측 버튼, 특수 동작은 회색 명도로 구분. */
-#app .event-page-actions{justify-content:flex-start}
+/* 상세·등록 페이지 공통: 본문 하단 우측 버튼, 특수 동작은 회색 명도로 구분. */
+#app .event-page-actions{justify-content:flex-end}
 #app .event-page-actions .btn.danger{background:#666;border-color:#666;color:#fff}
 /* BAS-02 외부 연계 정보: 캡처의 두 묶음과 3열 전시관 배치를 유지. */
 #app .event-information{font-size:13px}
@@ -54,3 +54,7 @@
 
 .required-asterisk,.field .required-asterisk,legend .required-asterisk{color:#c62828!important;font-style:normal;margin-left:4px}
 .workflow-page-body{padding:22px}.workflow-page-nav{display:flex;justify-content:flex-end;margin-bottom:18px}.workflow-page-body .dialogbody{padding:0}.workflow-page-body .dialogactions{padding:18px 0}.workflow-page-body .management-form{margin-top:16px}
+
+/* 상세·등록 페이지 하단 버튼은 화면 폭과 관계없이 우측 정렬한다. */
+#app .formfooter,#app .notice-bottom-actions,#app .group-detail-actions{justify-content:flex-end}
+#app .formfooter>.btn{flex:0 0 auto}
