@@ -1,0 +1,9 @@
+/* 사용자 확정 규칙. 화면별 스타일보다 높은 우선순위로 적용한다. */
+#app #content .page-section-title{display:flex;align-items:center;gap:9px}
+#app #content .page-section-title::before{content:"";display:block;flex:0 0 6px;width:6px;height:6px;border-radius:50%;background:#444;font-size:0}
+#app #content>.page-bottom-actions{display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:8px;width:100%;margin-top:24px;padding:16px 0;grid-column:1/-1}
+#app #content>.page-bottom-actions>.btn{flex:0 0 auto;margin:0}
+#app #content>.page-bottom-actions>.page-action-submit{background:#333;border-color:#333;color:#fff}
+#app #content>.page-bottom-actions>.page-action-delete{background:#777;border-color:#777;color:#fff}
+#app #content .page-action-source-empty{display:none}
+@media print{#app #content>.page-bottom-actions{display:none}}
