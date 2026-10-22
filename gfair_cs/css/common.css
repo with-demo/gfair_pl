@@ -87,3 +87,5 @@
 
 /* 폼 그리드 안의 액션 바는 항상 두 열 전체를 차지한다. */
 #app .formgrid>.formfooter{grid-column:1/-1;width:100%;}
+/* 참가자 관리 목록: 사용자 확정 참가 여부 색상 예외. */
+.participant-master-table .participant-state-cell{width:42px;min-width:42px;padding-left:12px;padding-right:12px;text-align:center;vertical-align:middle}.participant-state-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#9b9b9b;flex:none;vertical-align:middle}.participant-state-dot.is-present{background:#2e7d32}.participant-state-legend{display:inline-flex;align-items:center;gap:7px;font-size:12px;white-space:nowrap}.participant-state-legend .participant-state-dot:not(:first-child){margin-left:10px}.participant-master-table .list-name-link{text-decoration:underline;text-underline-offset:3px}

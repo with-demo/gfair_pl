@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-03","version":"v1.19","date":"2026.10.22","accountName":"mjha","summary":"참가상태 열을 참가 여부 원형 표시로 변경","changes":["참가상태 열을 제거하고 행 맨 앞에 참가 확정·신규는 초록색 원, 참가 미정은 회색 원으로 표시.","참가상태 검색 옵션을 전체·참가·미참가로 변경하고 참가 확정·신규를 참가로 함께 조회."]},
+  {"screenId":"BAS-05","version":"v1.18","date":"2026.10.22","accountName":"mjha","summary":"참가상태 열을 참가 여부 원형 표시로 변경","changes":["참가상태 열을 제거하고 행 맨 앞에 참가 확정·신규는 초록색 원, 참가 미정은 회색 원으로 표시.","참가상태 검색 옵션을 전체·참가·미참가로 변경하고 참가 확정·신규를 참가로 함께 조회."]},
+  {"screenId":"BAS-07","version":"v1.19","date":"2026.10.22","accountName":"mjha","summary":"참가상태 열을 참가 여부 원형 표시로 변경","changes":["참가상태 열을 제거하고 행 맨 앞에 참가 확정·신규는 초록색 원, 참가 미정은 회색 원으로 표시.","참가상태 검색 옵션을 전체·참가·미참가로 변경하고 참가 확정·신규를 참가로 함께 조회."]},
   {"screenId":"BAS-05","version":"v1.17","date":"2026.10.22","accountName":"mjha","summary":"목록 식별번호 명칭을 바이어코드로 변경","changes":["목록 및 엑셀 양식의 식별번호 항목명을 바이어코드로 통일."]},
   {"screenId":"BAS-07","version":"v1.18","date":"2026.10.22","accountName":"mjha","summary":"목록 식별번호 명칭을 통역원코드로 변경","changes":["목록 및 엑셀 양식의 식별번호 항목명을 통역원코드로 통일."]},
   {"screenId":"BAS-07","version":"v1.17","date":"2026.10.22","accountName":"mjha","summary":"고유 번호 항목명을 통역원번호로 변경","changes":["통역원 목록 및 엑셀 양식의 고유 번호 명칭을 통역원번호로 변경."]},
