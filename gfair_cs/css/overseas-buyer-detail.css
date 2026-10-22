@@ -2,6 +2,7 @@
 #app #content .overseas-buyer-basic{display:grid;grid-template-columns:130px minmax(0,1fr) 130px minmax(0,1fr);margin:0;border-top:1px solid #ddd;border-left:1px solid #ddd;background:#fff}
 #app #content .overseas-buyer-basic>dt,#app #content .overseas-buyer-basic>dd{display:flex;align-items:center;margin:0;padding:12px 16px;min-height:52px;min-width:0;border-right:1px solid #ddd;border-bottom:1px solid #ddd;font-size:13px;overflow-wrap:anywhere}
 #app #content .overseas-buyer-basic>dt{background:#f4f4f4;font-weight:500}
+#app #content .participant-name-value{flex-wrap:wrap;column-gap:5px;row-gap:2px}#app #content .participant-name-value .participant-code{color:#777;white-space:nowrap}
 #app #content .overseas-buyer-basic .buyer-memo-label{grid-column:1}
 #app #content .overseas-buyer-basic .buyer-memo{grid-column:2/-1}
 #app #content .overseas-buyer-basic .buyer-languages{flex-wrap:wrap;gap:6px}

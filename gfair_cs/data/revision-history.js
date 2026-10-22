@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-04","version":"v0.28","date":"2026.10.22","accountName":"mjha","summary":"이름과 코드 간격·회색 표시 적용","changes":["이름과 괄호 코드 사이를 띄우고 코드를 연한 회색으로 표시."]},
+  {"screenId":"BAS-06","version":"v0.23","date":"2026.10.22","accountName":"mjha","summary":"이름과 코드 간격·회색 표시 적용","changes":["이름과 괄호 코드 사이를 띄우고 코드를 연한 회색으로 표시."]},
+  {"screenId":"BAS-08","version":"v0.23","date":"2026.10.22","accountName":"mjha","summary":"이름과 코드 간격·회색 표시 적용","changes":["이름과 괄호 코드 사이를 띄우고 코드를 연한 회색으로 표시."]},
   {"screenId":"BAS-01","version":"v0.36","date":"2026.10.22","accountName":"mjha","summary":"공통 디스크립션 로딩·화면 전환 조회 개선","changes":["첫 설명 조회와 로그인 설정 조회를 동시에 시작하여 초기 대기 제거.","화면 이동 시 이전 조회를 취소하고 현재 화면 설명을 즉시 조회.","조회 중·미작성·조회 실패를 구분하고 지연 시 재시도 버튼 제공."]},
   {"screenId":"BAS-04","version":"v0.27","date":"2026.10.22","accountName":"mjha","summary":"이름과 고유코드 통합 및 기본정보 순서 변경","changes":["별도 코드 항목을 제거하고 이름 뒤 괄호로 고유코드를 표시.","이름·생년월일을 첫 행에, 국가(기업)·초청기관유형 또는 통역원 언어 전체 행을 다음에 배치."]},
   {"screenId":"BAS-06","version":"v0.22","date":"2026.10.22","accountName":"mjha","summary":"이름과 고유코드 통합 및 기본정보 순서 변경","changes":["별도 코드 항목을 제거하고 이름 뒤 괄호로 고유코드를 표시.","이름·생년월일을 첫 행에, 국가(기업)·초청기관유형 또는 통역원 언어 전체 행을 다음에 배치."]},
