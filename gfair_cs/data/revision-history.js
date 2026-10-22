@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-06","version":"v0.26","date":"2026.10.22","accountName":"mjha","summary":"초안 작성 기획비고 안내 제거","changes":["초안 작성 안내만 제거하고 기존 검토용 기획비고와 설명 내용 유지."]},
+  {"screenId":"BAS-08","version":"v0.26","date":"2026.10.22","accountName":"mjha","summary":"초안 작성 기획비고 안내 제거","changes":["초안 작성 안내만 제거하고 기존 검토용 기획비고와 설명 내용 유지."]},
   {"screenId":"BAS-06","version":"v0.25","date":"2026.10.22","accountName":"mjha","summary":"BAS-04 기준 상세 디스크립션 초안 작성","changes":["국가 대신 바이어기업을 안내하고 K·GK 코드 규칙 반영.","기본정보·고유코드·연락처·이메일·행사참가이력·보기 6개 설명과 기획비고 변경 안내 등록."]},
   {"screenId":"BAS-08","version":"v0.25","date":"2026.10.22","accountName":"mjha","summary":"BAS-04 기준 상세 디스크립션 초안 작성","changes":["국가·초청기관 없이 통역 언어 1~5개 및 I·GI 코드 규칙 반영.","기본정보·고유코드·연락처·이메일·행사참가이력·보기 6개 설명과 기획비고 변경 안내 등록."]},
   {"screenId":"BAS-04","version":"v0.31","date":"2026.10.22","accountName":"mjha","summary":"초청기관 항목명 통일","changes":["기본정보·행사참가이력의 초청기관유형을 초청기관으로 변경.","연결된 디스크립션 명칭을 수정하고 기획비고에 변경 안내 추가."]},
