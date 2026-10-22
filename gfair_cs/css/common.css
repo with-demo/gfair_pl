@@ -62,3 +62,7 @@
 /* 정보 묶음 제목 앞의 원형 불릿은 장식으로 표시한다. */
 #app .detail-section-title{display:flex;align-items:center;gap:9px}
 #app .detail-section-title::before{content:"";display:block;flex:0 0 6px;width:6px;height:6px;border-radius:50%;background:#444}
+
+/* BAS-02 전시관은 번호·명칭을 슬래시로 구분해 나열한다. */
+#app .event-halls{display:block;line-height:1.9;overflow-wrap:anywhere}
+#app .event-file-download{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}

@@ -158,14 +158,15 @@ form=function(s){
  const value=(label,text)=>`<div class="event-value" aria-label="${E(label)}">${E(text)}</div>`;
  const pair=(label,text)=>`<div class="event-detail-label">${E(label)}</div>${value(label,text)}`;
  const halls=['생활용품(반려동물)','생활용품(주방용품)','생활용품(생활용품)','생활용품(인테리어)','생활용품(헬스케어)','식품','뷰티/패션','테크','','','','','','',''];
+ const boothPdf=new URL('../downloads/2026-gfair-booth-layout-sample.pdf',document.querySelector('script[src*="/js/app.js"]').src).href;
  const title=head({...s,title:'행사정보 상세'}).replace(/<div class="head-actions">[\s\S]*?<\/div>/,'');
  return title+`<div class="event-information">
  <section class="event-detail-section" aria-labelledby="event-basic-title"><h2 id="event-basic-title" class="detail-section-title">기본정보</h2>
  <div class="event-detail-grid">${pair('박람회명칭','2026 G-FAIR KOREA')}${pair('상태','진행')}${pair('행사시작','2026-10-29')}${pair('행사종료','2026-10-31')}</div></section>
  <section class="event-detail-section" aria-labelledby="event-exhibition-title"><h2 id="event-exhibition-title" class="detail-section-title">전시회 정보</h2>
  <div class="event-detail-grid">${pair('신청시작','2026-03-16')}${pair('신청종료','2026-10-28')}
- <div class="event-detail-label">부스배치도</div><div class="event-value event-detail-wide" aria-label="부스배치도"></div>
- <div class="event-detail-label">전시관 구분</div><div class="event-halls event-detail-wide">${halls.map((text,i)=>`<div class="event-hall"><span>${String(i+1).padStart(2,'0')}.</span>${value('전시관 '+String(i+1).padStart(2,'0'),text)}</div>`).join('')}</div></div></section>
+ <div class="event-detail-label">부스배치도</div><div class="event-value event-detail-wide" aria-label="부스배치도"><a class="event-file-download" href="${E(boothPdf)}" download="2026_G-FAIR_KOREA_부스배치도_예시.pdf">2026_G-FAIR_KOREA_부스배치도_예시.pdf</a></div>
+ <div class="event-detail-label">전시관 구분</div><div class="event-halls event-detail-wide">${halls.map((text,i)=>text?`${String(i+1).padStart(2,'0')}.${E(text)}`:'').filter(Boolean).join(' / ')}</div></div></section>
  <div class="formfooter event-page-actions">${A('BAS-01','목록')}</div></div>`;
 };
 

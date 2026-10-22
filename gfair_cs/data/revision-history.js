@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-02","version":"v0.16","date":"2026.10.22","accountName":"mjha","summary":"부스배치도 예시 PDF 다운로드와 전시관 나열 방식 변경","changes":["부스배치도에 실제 다운로드 가능한 가상 PDF 파일 링크 추가.","전시관은 번호.명칭 형식으로 슬래시를 넣어 나열하고 빈 항목은 제외."]},
   {"screenId":"BAS-02","version":"v0.15","date":"2026.10.22","accountName":"mjha","summary":"정보 묶음 제목에 원형 불릿 적용","changes":["기본정보·전시회 정보 제목 앞의 O 문자를 작은 원형 불릿으로 교체.","상세 페이지의 정보 묶음 제목에 사용할 공통 불릿 스타일 추가."]},
   {"screenId":"BAS-02","version":"v0.14","date":"2026.10.22","accountName":"mjha","summary":"행사 상세 하단 버튼 우측 정렬","changes":["목록 버튼을 페이지 최하단 우측으로 정렬.","상세·등록 페이지 하단 버튼의 공통 정렬 기준을 우측으로 변경."]},
   {"screenId":"BAS-02","version":"v0.13","date":"2026.10.22","accountName":"mjha","summary":"행사정보 상세의 외부 연계 정보 배치","changes":["기본정보·전시회 정보 묶음으로 분리하고 캡처의 항목과 전시관 01~15를 표시.","부스배치도와 전시관 09~15는 빈칸 유지. 연계값은 읽기 전용으로 표시.","목록 버튼 하나를 본문 최하단 좌측에 배치."]},
