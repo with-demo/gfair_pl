@@ -34,7 +34,7 @@ window.GFAIR_SCREEN_REGISTRY=[
     "title": "설문 미리보기",
     "parent": "SET-05",
     "summary": "설문 미리보기 화면에서 대상 정보와 처리 내용을 확인합니다.",
-    "kind": "workflow",
+    "kind": "popup",
     "match": "설문 미리보기",
     "selector": "[data-action=sur-preview]",
     "contains": false

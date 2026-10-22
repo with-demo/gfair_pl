@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-05","version":"v0.15","date":"2026.10.22","accountName":"mjha","summary":"설문 미리보기를 SET-13 팝업으로 전환하고 목록·편집 상태 유지"},
+{"screenId":"SET-13","version":"v0.2","date":"2026.10.22","accountName":"mjha","summary":"설문 미리보기를 SET-13 팝업으로 전환하고 목록·편집 상태 유지"},
 {"screenId":"SET-01","version":"v0.17","date":"2026.10.22","accountName":"mjha","summary":"그룹 등록·상세·메뉴 권한을 SET-02 단일 폼으로 통합","changes":["등록은 빈 기본정보와 미선택 권한으로 시작하고 상세는 저장값 표시.","기존 SET-08은 SET-02 등록 모드로 연결."]},
 {"screenId":"SET-02","version":"v0.12","date":"2026.10.22","accountName":"mjha","summary":"그룹 등록·상세·메뉴 권한을 SET-02 단일 폼으로 통합","changes":["등록은 빈 기본정보와 미선택 권한으로 시작하고 상세는 저장값 표시.","기존 SET-08은 SET-02 등록 모드로 연결."]},
 {"screenId":"BAS-09","version":"v0.7","fromVersion":"v0.6","date":"2026.10.22","accountName":"yulotso0310-cyber","summary":"참가기업 목록에 사업자번호·담당자·연락처 추가","changes":["목록 컬럼을 참가기업·사업자번호·부스번호·담당자·연락처·참가 이력·QR상태로 구성.","기업명 셀에서 상세로 이동하고 기본정보에 사업자번호·담당자·연락처를 표시."]},
