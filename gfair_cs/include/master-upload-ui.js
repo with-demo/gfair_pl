@@ -8,11 +8,7 @@
  const dialog=document.getElementById('dialog'),content=document.getElementById('dialog-content'),app=document.getElementById('app');
  let nextId=1,validated=null;
  const key=(name,dob)=>name.trim().toLocaleLowerCase()+'|'+dob;
- const people=new Map([
-  ['BAS-03',new Map([[key('James Whitmore','1990-01-01'),{index:0,years:['2026']}],[key('Emily Carter','1993-03-03'),{index:1,years:['2026','2027']}],[key('田中 浩','1994-04-04'),{index:2,years:['2027']}]])],
-  ['BAS-05',new Map([[key('김민준','1995-05-05'),{index:0,years:['2027']}],[key('이서준','1991-01-01'),{index:1,years:['2026','2027']}],[key('박지은','1996-06-06'),{index:2,years:['2026']}]])],
-  ['BAS-07',new Map([[key('박서연','1992-01-01'),{index:0,years:['2026','2027']}],[key('이준호','1997-07-07'),{index:1,years:['2027']}],[key('김하린','1998-08-08'),{index:2,years:['2026']}]])]
- ]);
+ const people=new Map([['BAS-03',[['2026'],['2026','2027'],['2027']]],['BAS-05',[['2027'],['2026','2027'],['2026']]],['BAS-07',[['2026','2027'],['2027'],['2026']]]].map(([id,histories])=>{const source=page(id);return [id,new Map(source.ui.rows.map((r,index)=>[key(r[1],source.ui.birthDates?.[r[0]]||''),{index,years:histories[index]||[]}]))];}));
  const participantStatus=years=>years.has('2026')&&years.has('2027')?'참가 확정':years.has('2027')?'신규':'참가 미정';
  function syncButtons(){if(!targets.has(screen()))return;app?.querySelectorAll('.pagehead [data-action="action"]').forEach(button=>{if(button.dataset.label==='엑셀 양식 다운로드')button.classList.remove('primary');if(button.dataset.label==='엑셀 일괄 업로드')button.classList.add('primary');});const field=[...(app?.querySelectorAll('.filters .field')||[])].find(x=>x.querySelector('span')?.textContent.trim()==='참가 상태'),select=field?.querySelector('select');if(select&&!['전체','참가','미참가'].every((v,i)=>select.options[i]?.value===v))select.replaceChildren(...['전체','참가','미참가'].map(v=>new Option(v,v)));}
  if(app){new MutationObserver(syncButtons).observe(app,{childList:true,subtree:true});syncButtons();}
@@ -64,7 +60,7 @@
     const prior=state.get(k),years=new Set([...(prior?.years||[]),...items.map(x=>x.year)]),latest=items.slice().sort((a,b)=>a.year.localeCompare(b.year)).at(-1),data=latest.raw,row=s.ui.columns.map(column=>{const ix=latest.headers?.indexOf(column)??-1;return ix>=0?String(data[ix]??'').trim():''});
     const nameIx=s.ui.columns.indexOf(nameFields[id]),yearIx=s.ui.columns.indexOf('참가연도');if(row[0]==='')row[0]=prior?s.ui.rows[prior.index][0]:`DEMO-${id.slice(-2)}-${String(nextId++).padStart(3,'0')}`;if(nameIx>=0)row[nameIx]=latest.name;if(yearIx>=0)row[yearIx]=[...years].sort().join(', ');
     const status=participantStatus(years);setStatus(row,s,status);
-    let index=prior?.index??-1;if(prior)row[0]=s.ui.rows[index][0];else if(!row[0])row[0]=`DEMO-${id.slice(-2)}-${String(nextId++).padStart(3,'0')}`;if(index>=0)s.ui.rows[index]=row;else{index=s.ui.rows.length;s.ui.rows.push(row)}state.set(k,{index,years:[...years]});
+    let index=prior?.index??-1;if(prior)row[0]=s.ui.rows[index][0];else if(!row[0])row[0]=`DEMO-${id.slice(-2)}-${String(nextId++).padStart(3,'0')}`;if(index>=0)s.ui.rows[index]=row;else{index=s.ui.rows.length;s.ui.rows.push(row)}state.set(k,{index,years:[...years]});s.ui.birthDates??={};s.ui.birthDates[row[0]]=latest.dob;
    });
    state.forEach(person=>{const row=s.ui.rows[person.index];if(row)setStatus(row,s,participantStatus(new Set(person.years)));});
    people.set(id,state);dialog.close();validated=null;

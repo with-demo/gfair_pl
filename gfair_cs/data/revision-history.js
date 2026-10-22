@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-04","version":"v0.25","date":"2026.10.22","accountName":"mjha","summary":"기본정보 생년월일 추가","changes":["기본정보에 엑셀 연계 생년월일을 YYYY-MM-DD 텍스트로 표시.","이름+생년월일 중복 확인에 사용하는 데이터와 상세 표시를 연결."]},
+  {"screenId":"BAS-06","version":"v0.20","date":"2026.10.22","accountName":"mjha","summary":"기본정보 생년월일 추가","changes":["기본정보에 엑셀 연계 생년월일을 YYYY-MM-DD 텍스트로 표시.","이름+생년월일 중복 확인에 사용하는 데이터와 상세 표시를 연결."]},
+  {"screenId":"BAS-08","version":"v0.20","date":"2026.10.22","accountName":"mjha","summary":"기본정보 생년월일 추가","changes":["기본정보에 엑셀 연계 생년월일을 YYYY-MM-DD 텍스트로 표시.","이름+생년월일 중복 확인에 사용하는 데이터와 상세 표시를 연결."]},
   {"screenId":"BAS-03","version":"v1.19","date":"2026.10.22","accountName":"mjha","summary":"참가상태 열을 참가 여부 원형 표시로 변경","changes":["참가상태 열을 제거하고 행 맨 앞에 참가 확정·신규는 초록색 원, 참가 미정은 회색 원으로 표시.","참가상태 검색 옵션을 전체·참가·미참가로 변경하고 참가 확정·신규를 참가로 함께 조회."]},
   {"screenId":"BAS-05","version":"v1.18","date":"2026.10.22","accountName":"mjha","summary":"참가상태 열을 참가 여부 원형 표시로 변경","changes":["참가상태 열을 제거하고 행 맨 앞에 참가 확정·신규는 초록색 원, 참가 미정은 회색 원으로 표시.","참가상태 검색 옵션을 전체·참가·미참가로 변경하고 참가 확정·신규를 참가로 함께 조회."]},
   {"screenId":"BAS-07","version":"v1.19","date":"2026.10.22","accountName":"mjha","summary":"참가상태 열을 참가 여부 원형 표시로 변경","changes":["참가상태 열을 제거하고 행 맨 앞에 참가 확정·신규는 초록색 원, 참가 미정은 회색 원으로 표시.","참가상태 검색 옵션을 전체·참가·미참가로 변경하고 참가 확정·신규를 참가로 함께 조회."]},
