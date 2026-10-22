@@ -29,3 +29,7 @@
 #app #content .unified-search>.notice-search-error:not([hidden]){grid-column:1/-1;margin:0;padding:8px 16px;background:#fff}
 @container search-content (max-width:1000px){#app #content .unified-search>.search-condition{grid-column:span 3}}
 @container search-content (max-width:620px){#app #content .unified-search>.search-condition,#app #content .unified-search:has(>.search-condition-wide)>.search-condition{grid-column:1/-1}#app #content .unified-search .search-keyword-controls{flex-wrap:wrap}#app #content .unified-search .search-keyword-controls>input{flex:1 1 100px}#app #content .unified-search .search-keyword-controls>.search-actions{flex-basis:100%;margin:0}}
+/* 일반 조건 하나 또는 2열에서 홀로 남은 마지막 조건은 한 줄 전체를 사용한다. */
+#app #content .unified-search.search-single-condition>.search-condition,
+#app #content .unified-search:has(>.search-condition-wide)>.search-condition-last-odd{grid-column:1/-1}
+@container search-content (max-width:1000px){#app #content .unified-search>.search-condition-last-odd{grid-column:1/-1}}

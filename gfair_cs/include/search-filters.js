@@ -35,6 +35,9 @@ form.querySelectorAll(':scope>.search-condition').forEach(field=>{
  if(controls.querySelector('details,input[type=date],input[type=datetime-local]')||radioCount>=3||[...controls.querySelectorAll('select:not([hidden])')].some(select=>[...select.selectedOptions].some(option=>option.text.length>18)))field.classList.add('search-condition-wide');
 });
 if(keywords.length){keywords[0].querySelector('.search-keyword-controls').append(actions);form.classList.add('search-has-keyword');}
+const conditions=[...form.querySelectorAll(':scope>.search-condition')].filter(e=>!e.hidden);
+form.classList.toggle('search-single-condition',conditions.length===1);
+if(conditions.length%2===1)conditions.at(-1).classList.add('search-condition-last-odd');
 form.addEventListener('reset',()=>{keywords.forEach(f=>{const i=f.querySelector('input');scopes.delete(key(form,i));f.querySelector('select').value='전체';});});
 }
 function sync(){observer.disconnect();try{app.querySelectorAll('#content form.filters').forEach(enhance);}finally{observer.observe(app,{childList:true,subtree:true});}}
