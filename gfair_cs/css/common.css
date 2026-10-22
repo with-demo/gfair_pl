@@ -51,3 +51,6 @@
 #app .event-page-actions{padding:0;border:0;background:transparent}
 @media(max-width:900px){#app .event-detail-grid{grid-template-columns:120px minmax(0,1fr)}#app .event-detail-wide{grid-column:span 1}#app .event-halls{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}}
 @media(max-width:600px){#app .event-detail-grid{grid-template-columns:100px minmax(0,1fr)}#app .event-halls{grid-template-columns:minmax(0,1fr)}#app .event-detail-label,#app .event-value{padding:10px}}
+
+.required-asterisk,.field .required-asterisk,legend .required-asterisk{color:#c62828!important;font-style:normal;margin-left:4px}
+.workflow-page-body{padding:22px}.workflow-page-nav{display:flex;justify-content:flex-end;margin-bottom:18px}.workflow-page-body .dialogbody{padding:0}.workflow-page-body .dialogactions{padding:18px 0}.workflow-page-body .management-form{margin-top:16px}

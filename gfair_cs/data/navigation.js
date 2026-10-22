@@ -146,7 +146,7 @@ window.GFAIR_MENU=[
         "상담일지 현황",
         [
           [
-            "JNL-BUY",
+            "JNL-13",
             "구매상담일지",
             [],
             {
@@ -158,7 +158,7 @@ window.GFAIR_MENU=[
             }
           ],
           [
-            "JNL-EXP",
+            "JNL-14",
             "수출상담일지",
             [],
             {
@@ -305,7 +305,7 @@ window.GFAIR_MENU=[
         }
       ],
       [
-        "SURVEY-HOME",
+        "SET-07",
         "만족도설문 관리",
         [
           [
@@ -427,6 +427,9 @@ window.GFAIR_MENU.find(group=>group.name==="모니터링").items.push(["MON-08",
 (()=>{
  const adminOnly={admin:'O',buyOperator:'X',exportOperator:'X',interpreter:'X',buyer:'X'};
  const basic=GFAIR_MENU.find(g=>g.name==='기본정보관리');
+ const eventInfo=GFAIR_MENU.find(g=>g.name==='행사정보');
+ const companyMenuIndex=basic.items.findIndex(i=>i[0]==='BAS-09');
+ if(companyMenuIndex!==-1)eventInfo.items.unshift(basic.items.splice(companyMenuIndex,1)[0]);
  basic.items.splice(1,0,['BAS-15','운영용역사 관리',[],{...adminOnly}]);
  basic.items.push(['BAS-16','관리자 관리',[],{...adminOnly}]);
  const journal=GFAIR_MENU.find(g=>g.name==='상담일지');
@@ -442,3 +445,20 @@ window.GFAIR_MENU.find(group=>group.name==="모니터링").items.push(["MON-08",
 Object.assign(GFAIR_MENU.find(g=>g.name==='기본정보관리').items.find(i=>i[0]==='BAS-15')[3],{buyOperator:'X',exportOperator:'X'});
 
 GFAIR_MENU.find(g=>g.name==='공지/알림').items.forEach(i=>{if(['NTC-01','NTC-02','NTC-03'].includes(i[0]))Object.assign(i[3],{admin:'O',buyOperator:'△',exportOperator:'△',buyer:'△',interpreter:'△'})});
+// 참가기업 조회는 모든 사용자가 행사정보 메뉴에서 이용한다.
+(()=>{
+ const menu=GFAIR_MENU.find(group=>group.name==='행사정보')?.items.find(item=>item[0]==='BAS-09');
+ if(menu){menu[1]='참가기업';Object.assign(menu[3],{admin:'O',buyOperator:'△',exportOperator:'△',buyer:'△',interpreter:'△'});}
+ const old=GFAIR_MENU.findIndex(group=>group.name==='기업정보');if(old>=0)GFAIR_MENU.splice(old,1);
+})();
+// 참가자용 만족도 조사는 독립 대메뉴로 제공한다.
+GFAIR_MENU.push({name:'만족도 조사',icon:'clipboard-check',direct:true,items:[['NTC-08','만족도 조사',[],{admin:'X',buyOperator:'X',exportOperator:'X',buyer:'O',interpreter:'O'}]]});
+// 운영용역사 담당자관리: 기본정보관리 위치에 독립 대메뉴를 제공한다.
+(()=>{
+ const index=GFAIR_MENU.findIndex(g=>g.name==='기본정보관리');
+ GFAIR_MENU.splice(index+1,0,{name:'담당자관리',icon:'users',direct:true,items:[['COM-07','담당자관리',[],{admin:'X',buyOperator:'O',exportOperator:'O',buyer:'X',interpreter:'X'}]]});
+ const visible=GFAIR_NAV.visible.bind(GFAIR_NAV);GFAIR_NAV.visible=function(role){return visible(role).filter(g=>!(['buyOperator','exportOperator'].includes(role)&&g.name==='기본정보관리'));};
+})();
+
+// 국내바이어와 통역원 LNB에는 통합 대시보드를 표시하지 않는다.
+(()=>{const group=GFAIR_MENU.find(g=>g.name==='모니터링');const dashboard=group?.items.find(item=>item[0]==='MON-01');if(dashboard)Object.assign(dashboard[3],{buyer:'X',interpreter:'X'});})();

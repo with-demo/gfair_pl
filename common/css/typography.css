@@ -1,0 +1,11 @@
+/* 전체 화면의 기본 문구는 13px, 제목·지표는 별도 위계를 유지한다. */
+body{font-size:13px}
+#app .content,#app .mobile-content,#app .topbar,#app .footer{font-size:13px}
+#app .content :is(p,label,input,select,textarea,small,.small,.subtitle,.breadcrumb,.notice,.badge,.field>span,.tablefoot,.detaildata,.detaildata dt,.detaildata dd,.panelhead>span),#app .topbar select{font-size:13px}
+#app .content :is(table,table .badge){font-size:13px}
+/* 버튼은 기본 13px, 주요 실행은 14px, 밀집된 목록은 12px로 조정한다. */
+#app .content .btn,#app .content .tablewrap :is(button,.btn){font-size:13px}
+#app .content .btn.primary{font-size:14px}
+#app .content table.survey-action-list .btn{font-size:12px}
+#app .sidebar nav :is(a,summary){font-size:13px!important}
+body .ui-spec-toolbar,body .ui-spec-toolbar :is(strong,label,select,button),body .ui-spec-toolbar select.ui-spec-screen-picker,body .ui-spec-toolbar .ui-spec-preview,body .ui-spec-toolbar .ui-spec-status,body .ui-spec-panel,body .annotation-panel,body .annotation-spec,body .annotation-text,body .message-spec-card :is(dt,dd,p){font-size:13px}

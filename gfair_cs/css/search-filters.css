@@ -1,0 +1,31 @@
+/* 검색 조건은 항목명·입력 셀로 나눈 표 형태로 제공한다. */
+#app #content{container-type:inline-size;container-name:search-content}
+#app #content form.unified-search{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:stretch;gap:0;padding:0;background:#fff;border:1px solid #ddd;border-radius:0;box-shadow:none;color:#222}
+#app #content .unified-search>.search-condition,#app #content .unified-search>.search-keyword{display:grid;grid-template-columns:120px minmax(0,1fr);align-items:stretch;grid-column:span 2;grid-row:auto;gap:0;width:100%;min-width:0;max-width:none;margin:0;padding:0;border:0;border-right:1px solid #ddd;border-bottom:1px solid #ddd;background:#fff}
+#app #content .unified-search:has(>.search-condition-wide)>.search-condition{grid-column:span 3}
+#app #content .unified-search .search-condition-caption,#app #content .unified-search>.search-keyword>span{display:flex;align-items:center;align-self:stretch;min-width:0;margin:0;padding:16px;background:#f5f5f5;border-right:1px solid #ddd;color:#222;font-size:13px;font-weight:400;line-height:1.5;white-space:normal;box-sizing:border-box}
+#app #content .unified-search .search-condition-controls,#app #content .unified-search .search-keyword-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;width:100%;min-width:0;min-height:60px;margin:0;padding:12px 16px;box-sizing:border-box;background:#fff}
+#app #content .unified-search .search-condition-controls>select{flex:0 1 auto;width:220px;max-width:100%}
+#app #content .unified-search .search-condition-controls>input:not([type=radio]):not([type=checkbox]),#app #content .unified-search .search-condition-controls>details{flex:0 1 auto;width:240px;max-width:100%;min-width:0}
+#app #content .unified-search .search-condition-controls>div{width:auto;max-width:100%;min-width:0}
+#app #content .unified-search input:not([type=radio]):not([type=checkbox]),#app #content .unified-search select{height:36px;min-height:36px;padding:6px 10px;border:1px solid #bbb;border-radius:4px;background:#fff;color:#222;font-size:13px;box-sizing:border-box;box-shadow:none}
+#app #content .unified-search input::placeholder{color:#888}
+#app #content .unified-search :is(input,select,summary):focus-visible{outline:2px solid #555;outline-offset:2px}
+#app #content .unified-search :is(.search-radio-options,.notice-category-options,.management-type-options){display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px;min-height:36px}
+#app #content .unified-search :is(.search-radio-options,.notice-category-options,.management-type-options) label{display:inline-flex;align-items:center;gap:6px;width:auto;white-space:nowrap;margin:0;color:#222;font-size:13px;font-weight:400}
+#app #content .unified-search input:is([type=radio],[type=checkbox]){width:16px;height:16px;min-height:0;margin:0;flex:none;accent-color:#333}
+#app #content .unified-search .search-condition-controls>.notice-dates{display:flex;align-items:center;gap:8px;width:320px;max-width:100%;min-width:0}
+#app #content .unified-search .notice-dates input{flex:1;width:0;min-width:0;padding:6px}
+#app #content .unified-search>.search-keyword{grid-column:1/-1;border-bottom:0}
+#app #content .unified-search .search-keyword-controls{flex-wrap:nowrap}
+#app #content .unified-search .search-keyword-controls>select{flex:0 1 120px;width:120px;max-width:160px}
+#app #content .unified-search .search-keyword-controls>input{flex:1;width:0;min-width:0;max-width:none}
+#app #content .unified-search .search-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin:0 0 0 8px;flex:none}
+#app #content .unified-search>.search-actions,#app #content .unified-search>.row{grid-column:1/-1;padding:12px 16px;margin:0;background:#fff}
+#app #content .unified-search .search-actions .btn{min-width:80px;width:auto;min-height:36px;height:36px;padding:6px 18px;border:1px solid #aaa;border-radius:4px;background:#fff;color:#333;font-size:13px;white-space:nowrap;box-shadow:none}
+#app #content .unified-search .search-actions .btn.primary{background:#333;border-color:#333;color:#fff}
+#app #content .unified-search .matching-multi summary{min-height:36px;padding:6px 10px;border:1px solid #bbb;border-radius:4px;background:#fff}
+#app #content .unified-search>[hidden],#app #content .unified-search select[hidden]{display:none}
+#app #content .unified-search>.notice-search-error:not([hidden]){grid-column:1/-1;margin:0;padding:8px 16px;background:#fff}
+@container search-content (max-width:1000px){#app #content .unified-search>.search-condition{grid-column:span 3}}
+@container search-content (max-width:620px){#app #content .unified-search>.search-condition,#app #content .unified-search:has(>.search-condition-wide)>.search-condition{grid-column:1/-1}#app #content .unified-search .search-keyword-controls{flex-wrap:wrap}#app #content .unified-search .search-keyword-controls>input{flex:1 1 100px}#app #content .unified-search .search-keyword-controls>.search-actions{flex-basis:100%;margin:0}}

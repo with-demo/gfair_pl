@@ -17,3 +17,5 @@
 [data-management-root] .management-name{text-align:left;text-decoration:underline}
 [data-management-error]{color:#a11;line-height:1.6;margin-top:14px}
 @media(max-width:700px){.management-form{display:grid;grid-template-columns:1fr}.management-form .field{min-width:0}}
+
+[data-management-form="admin-save"] input[readonly]{background:#f5f5f5;color:#555;cursor:default}

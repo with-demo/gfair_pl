@@ -15,3 +15,5 @@
 .group-name-link:focus-visible{outline:2px solid #444;outline-offset:4px}
 .group-detail-form>.field{margin-top:24px;max-width:640px}.group-detail-form fieldset{margin-top:24px;padding:16px;border:1px solid #ddd}.group-detail-form fieldset label{margin-right:24px}
 .group-detail-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+
+.group-create-permissions{margin-top:24px;padding-top:20px;border-top:1px solid #ddd}.group-create-permissions h3{font-size:14px;margin-bottom:16px}.group-create-permissions .group-access-scroll{max-height:none}.group-access-scroll th,.group-access-scroll td{font-size:13px}
