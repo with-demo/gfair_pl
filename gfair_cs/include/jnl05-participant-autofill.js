@@ -87,9 +87,9 @@
     const selectedCompanyValue = companyInput?.querySelector('[data-select-value]')?.value;
     const selectedCompany = companyOptions.find(item => item.value === selectedCompanyValue);
     if (participant) {
-      participant.querySelector('.journal-label').innerHTML = '참가기업<em> *</em>';
-      participant.classList.add('full');
+      participant.querySelector('.journal-label').innerHTML = '참가기업명<em> *</em>';
     }
+    if (booth) booth.querySelector('.journal-label').innerHTML = '부스 번호<em> *</em>';
     replaceWithLockedInput(number, 'businessNo', businessNumber(selectedCompany, companyInput));
     if (number) number.querySelector('.journal-label').innerHTML = '사업자 번호<em> *</em>';
     replaceWithLockedInput(country, 'sellerCountry', initialCountry);
@@ -101,15 +101,19 @@
 
     if (table) {
       const orderedRows = [
-        [participant],
-        [number, country],
-        [product, contact],
-        [phone],
-        [booth, card]
+        [participant, booth],
+        [number],
+        [country],
+        [product],
+        [contact, phone],
+        [card]
       ];
       table.replaceChildren(...orderedRows.map(items => {
         const row = document.createElement('div');
         row.className = 'journal-table-row';
+        if (items.includes(participant)) row.classList.add('participant-booth-row');
+        if (items.includes(contact)) row.classList.add('advisor-contact-row');
+        if (items.length === 1) items[0]?.classList.add('full');
         items.filter(Boolean).forEach(pair => row.append(pair));
         return row;
       }));
@@ -145,8 +149,13 @@
       row.append(buyerSelectPair);
       const detailRow = document.createElement('div');
       detailRow.className = 'journal-table-row';
-      [buyerCode, buyerCountry].filter(Boolean).forEach(pair => detailRow.append(pair));
-      buyerTable.replaceChildren(row, detailRow);
+      if (buyerCode) buyerCode.classList.add('full');
+      const countryRow = document.createElement('div');
+      countryRow.className = 'journal-table-row';
+      if (buyerCountry) buyerCountry.classList.add('full');
+      if (buyerCode) detailRow.append(buyerCode);
+      if (buyerCountry) countryRow.append(buyerCountry);
+      buyerTable.replaceChildren(row, detailRow, countryRow);
     }
     form.dataset.participantCompanySelect = companyInput?.dataset.name || 'company';
   }

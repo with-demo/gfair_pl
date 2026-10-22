@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"JNL-05","version":"v0.22","fromVersion":"v0.21","date":"2026.10.22","accountName":"yulotso0310-cyber","summary":"참가기업·부스 및 상담 담당자 행 배치 조정","changes":["참가기업명 선택과 부스 번호를 한 행에 나란히 배치.","상담사(기업 담당자)와 연락처를 한 행에 배치."]},
   {"screenId":"JNL-05","version":"v0.21","fromVersion":"v0.20","date":"2026.10.22","accountName":"yulotso0310-cyber","summary":"참가기업·바이어 선택과 자동 입력 필드 구분","changes":["셀러 기업명 항목을 참가기업으로 변경하고 선택 시 기업 정보를 자동 입력하도록 표시.","사업자 번호·국가·제품군·상담 담당자 정보를 비활성 입력 필드로 구성.","바이어 선택 시 바이어 코드·국가를 비활성 입력 필드에 자동 입력하도록 구성."]},
   {"screenId":"JNL-16","version":"v0.7","fromVersion":"v0.6","date":"2026.10.22","accountName":"yulotso0310-cyber","summary":"상세페이지에서 이동 없이 상담일지 수정","changes":["수정 클릭 시 JNL-05 등록 페이지로 이동하지 않고 JNL-16 화면 내에서 편집 모드로 전환.","저장·취소 후에도 현재 상세 화면을 유지."]},
   {"screenId":"BAS-03","version":"v1.18","date":"2026.10.22","accountName":"mjha","summary":"일본 바이어 이름 일본어 표기","changes":["일본 바이어 예시 이름을 田中 浩로 통일."]},
