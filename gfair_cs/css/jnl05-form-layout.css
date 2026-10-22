@@ -85,3 +85,8 @@
 #app .journal-select-results .journal-select-option.selected::before{content:"✓";display:grid;place-items:center;border-color:#4267b2;background:#4267b2;color:#fff;font-size:11px}
 #app .journal-select-results .journal-select-option:hover,#app .journal-select-results .journal-select-option:focus-visible{background:#f1f5fa}
 #app .journal-select-empty{grid-column:1/-1;padding:9px 5px;color:#777;font-size:12px}
+
+#app .export-journal-form .journal-section{overflow:visible}
+#app .export-journal-form .journal-table,#app .export-journal-form .journal-table-row,#app .export-journal-form .journal-pair,#app .export-journal-form .journal-control{overflow:visible}
+#app .journal-select-options{overflow:visible}
+#app .journal-select-results{overflow-y:auto;overscroll-behavior:contain}
