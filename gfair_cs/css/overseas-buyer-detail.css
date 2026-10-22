@@ -5,6 +5,7 @@
 #app #content .overseas-buyer-basic .buyer-memo-label{grid-column:1}
 #app #content .overseas-buyer-basic .buyer-memo{grid-column:2/-1}
 #app #content .overseas-buyer-basic .buyer-languages{flex-wrap:wrap;gap:6px}
+#app #content [data-participant-detail="BAS-08"] .buyer-languages{grid-column:2/-1}
 #app #content .overseas-buyer-basic .buyer-code-wide{grid-column:2/-1}
 #app #content .overseas-buyer-basic .buyer-birthdate{grid-column:2/-1;font-variant-numeric:tabular-nums}
 #app #content .buyer-memo textarea{width:100%;min-height:100px}
