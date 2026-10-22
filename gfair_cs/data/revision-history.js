@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-01","version":"v0.26","date":"2026.10.22","accountName":"mjha","summary":"등록된 Description의 선택 옵션 표시 순서 조정","changes":["선택 옵션을 기본값 바로 다음, 필수여부 이전에 표시."]},
   {"screenId":"BAS-01","version":"v0.25","date":"2026.10.22","accountName":"mjha","summary":"상태 검색조건을 한 줄 전체 너비로 확장","changes":["일반 조건 하나와 2열에서 홀로 남은 마지막 조건은 키워드처럼 한 줄 전체 너비 적용."]},
   {"screenId":"NTC-02","version":"v1.17","date":"2026.10.22","accountName":"mjha","summary":"자료실·FAQ 페이지 작업 버튼의 공통 하단 배치와 명칭 통일","changes":["등록·목록·수정·저장 버튼을 중복 없이 본문 하단 우측에 배치.","신규 등록은 등록, 수정 내용 반영은 저장으로 표시."]},
   {"screenId":"NTC-03","version":"v1.16","date":"2026.10.22","accountName":"mjha","summary":"자료실·FAQ 페이지 작업 버튼의 공통 하단 배치와 명칭 통일","changes":["등록·목록·수정·저장 버튼을 중복 없이 본문 하단 우측에 배치.","신규 등록은 등록, 수정 내용 반영은 저장으로 표시."]},
