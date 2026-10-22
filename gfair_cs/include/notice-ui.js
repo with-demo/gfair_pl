@@ -31,9 +31,9 @@
   <label class="field"><span>게시 상태 <span class="notice-required" role="img" aria-label="필수">*</span></span><select name="status" required>${options(['게시','미게시'],r.status||'미게시')}</select></label>
   <label class="field wide"><span>제목 <span class="notice-required" role="img" aria-label="필수">*</span></span><input name="title" required maxlength="200" value="${E(r.title)}" placeholder="제목을 입력해 주세요"></label><label class="field wide"><span>내용 <span class="notice-required" role="img" aria-label="필수">*</span></span><textarea class="notice-editor-body" name="body" required placeholder="내용을 입력해 주세요">${E(r.body)}</textarea></label><div class="field wide"><label for="notice-file">첨부파일</label><input id="notice-file" type="file" accept=".jpg,.png,.bmp,.zip,.hwp,.doc,.xls,.ppt,.pdf"><p class="small">파일 1개, 10MB 이하 · jpg, png, bmp, zip, hwp, doc, xls, ppt, pdf</p><div id="notice-file-info">${r.attachment?`${E(r.attachment.name)} ${button('remove-file','첨부 삭제')}`:'선택된 파일 없음'}</div></div></div></section><div class="notice-bottom-actions">${button('cancel','취소')}<button type="submit" class="btn primary">저장</button></div><p class="small notice-save-note">저장한 공지는 현재 열린 화면에서만 유지됩니다.</p></form></div>`;}
  function route(){return decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;}
- function render(){const current=route(),main=app.querySelector('main');if(!main)return;if(current==='NTC-01'){activeNotice=true;if(main.querySelector('.notice-board'))return;main.innerHTML=list();}else if(current==='NTC-04'&&activeNotice){if(main.querySelector('.notice-board'))return;if(!admin()&&mode!=='detail')mode='detail';main.innerHTML=mode==='detail'?detail():editor();}else activeNotice=false;}
+ function render(){const current=route(),main=app.querySelector('main');if(!main)return;if(current==='NTC-01'){activeNotice=true;if(main.querySelector('.notice-board'))return;main.innerHTML=list();}else if(['NTC-04','NTC-15','NTC-16'].includes(current)){if(main.querySelector('.notice-board'))return;activeNotice=true;mode=current==='NTC-15'?'create':current==='NTC-16'?'edit':'detail';if(!selected)selected=visible()[0]?.id;if(mode==='edit'&&(!draft||draft.id!==selected))draft={...item()};if(mode==='create'&&!draft)draft={event:document.getElementById('event-picker')?.value||'2026',target:'전체',pinned:false,status:'미게시'};if(!admin()&&mode!=='detail')mode='detail';main.innerHTML=mode==='detail'?detail():editor();}else activeNotice=false;}
  function refresh(){const main=app.querySelector('main');if(main){main.querySelector('.notice-board')?.remove();}render();}
- function gotoDetail(){if(route()==='NTC-04')refresh();else location.hash='NTC-04';}
+ function gotoDetail(){const id=mode==='create'?'NTC-15':mode==='edit'?'NTC-16':'NTC-04';if(route()===id)refresh();else location.hash=id;}
  document.addEventListener('click',e=>{
   const link=e.target.closest('[data-notice-id]'),b=e.target.closest('[data-notice-action]');if(!link&&!b)return;e.preventDefault();e.stopImmediatePropagation();
   if(link){selected=link.dataset.noticeId;mode='detail';activeNotice=true;gotoDetail();return;}
@@ -41,9 +41,9 @@
   switch(b.dataset.noticeAction){
    case 'sample-download':{const r=item();if(!r?.attachment)return;const url=URL.createObjectURL(new Blob(['G-FAIR KOREA 행사 운영 안내 · 기획 검토용 파일입니다.'],{type:'text/plain;charset=utf-8'})),link=document.createElement('a');link.href=url;link.download=r.attachment.name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);break;}
    case 'create':mode='create';draft={event:document.getElementById('event-picker')?.value||'2026',target:'전체',pinned:false,status:'미게시'};gotoDetail();break;
-   case 'edit':mode='edit';draft={...item()};refresh();break;
+   case 'edit':mode='edit';draft={...item()};gotoDetail();break;
    case 'back':mode='detail';location.hash='NTC-01';break;
-   case 'cancel':if(confirm('입력을 취소하고 이전 화면으로 돌아갈까요?')){if(mode==='create')location.hash='NTC-01';else{mode='detail';refresh();}}break;
+   case 'cancel':if(confirm('입력을 취소하고 이전 화면으로 돌아갈까요?')){if(mode==='create')location.hash='NTC-01';else{mode='detail';gotoDetail();}}break;
    case 'reset':criteria={target:'전체',title:'',status:'전체',category:'전체',registeredFrom:'',registeredTo:''};page=1;refresh();break;
    case 'page':page=Number(b.dataset.page);refresh();break;
    case 'remove-file':draft.attachment=null;document.getElementById('notice-file-info').textContent='선택된 파일 없음';document.getElementById('notice-file').value='';break;
@@ -60,7 +60,7 @@
   const date=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replace(/-/g,'.');
   const r={...draft,event:data.get('event'),target:data.get('target'),category:data.get('category'),pinned:data.get('pinned')==='yes',status:data.get('status'),title:String(data.get('title')).trim(),body:String(data.get('body')).trim()};
   if(mode==='create'){r.id='NOTICE-'+Date.now();r.writer='운영 관리자';r.date=date;records.unshift(r);}else records=records.map(old=>old.id===selected?r:old);
-  selected=r.id;mode='detail';refresh();
+  selected=r.id;mode='detail';gotoDetail();
  },true);
  document.addEventListener('change',e=>{
   if(e.target.id==='notice-size'){size=Number(e.target.value);page=1;refresh();}if(e.target.id==='notice-file'){const file=e.target.files[0];if(!file)return;if(file.size>10*1024*1024||!/\.(jpg|png|bmp|zip|hwp|doc|xls|ppt|pdf)$/i.test(file.name)){alert('허용 확장자의 10MB 이하 파일 1개를 선택해 주세요.');e.target.value='';return;}draft.attachment={name:file.name,url:URL.createObjectURL(file)};document.getElementById('notice-file-info').textContent=file.name;}},true);

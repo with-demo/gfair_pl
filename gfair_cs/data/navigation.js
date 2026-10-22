@@ -305,7 +305,7 @@ window.GFAIR_MENU=[
         }
       ],
       [
-        "SURVEY-HOME",
+        "SET-07",
         "만족도설문 관리",
         [
           [
