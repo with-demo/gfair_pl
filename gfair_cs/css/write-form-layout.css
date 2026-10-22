@@ -24,7 +24,7 @@
 #app .basic-info-cell>label{display:flex;align-items:center;padding:12px 14px;background:#f7f7f7;font-size:13px;line-height:1.5;color:#111}
 #app .basic-info-cell em{margin-left:4px;color:#c62828;font-style:normal}
 #app .basic-info-cell>input,#app .basic-info-cell>.consult-date-range{align-self:center;min-width:0;margin:8px 12px}
-#app .basic-info-cell>input{width:min(100% - 24px,300px);min-height:36px;padding:7px 10px;border:1px solid #ccc;border-radius:2px}
+#app .basic-info-cell>input{width:min(calc(100% - 24px),300px);min-height:36px;padding:7px 10px;border:1px solid #ccc;border-radius:2px}
 #app .consult-date-range{display:flex;align-items:center;gap:8px}
 #app .consult-date-range input{width:calc(50% - 14px);min-width:0;min-height:36px;padding:7px 8px;border:1px solid #ccc;border-radius:2px}
 #app .consult-date-range span{flex:none;color:#555}
