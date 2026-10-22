@@ -1,0 +1,20 @@
+#app #content .overseas-buyer-section{margin:0 0 28px}
+#app #content .overseas-buyer-basic{display:grid;grid-template-columns:130px minmax(0,1fr) 130px minmax(0,1fr);margin:0;border-top:1px solid #ddd;border-left:1px solid #ddd;background:#fff}
+#app #content .overseas-buyer-basic>dt,#app #content .overseas-buyer-basic>dd{display:flex;align-items:center;margin:0;padding:12px 16px;min-height:52px;min-width:0;border-right:1px solid #ddd;border-bottom:1px solid #ddd;font-size:13px;overflow-wrap:anywhere}
+#app #content .overseas-buyer-basic>dt{background:#f4f4f4;font-weight:500}
+#app #content .overseas-buyer-basic .buyer-memo-label{grid-column:1}
+#app #content .overseas-buyer-basic .buyer-memo{grid-column:2/-1}
+#app #content .buyer-memo textarea{width:100%;min-height:100px}
+#app #content .buyer-phone,#app #content .buyer-email{display:flex;align-items:center;gap:7px;width:100%;min-width:0}
+#app #content .buyer-phone input{width:78px;min-width:0;min-height:36px;padding:7px 9px}
+#app #content .buyer-phone select{width:78px;min-height:36px;padding:7px 9px}
+#app #content .buyer-email input{flex:1 1 85px;width:85px;min-width:0;min-height:36px;padding:7px 9px}
+#app #content .buyer-email select{flex:0 1 125px;width:125px;min-width:90px;min-height:36px;padding:7px 9px}
+#app #content .overseas-buyer-history{border:1px solid #ddd;background:#fff;border-radius:0}
+#app #content .overseas-buyer-history table{width:100%;min-width:500px}
+#app #content .overseas-buyer-history th{background:#f4f4f4}
+#app #content .buyer-password{display:flex;align-items:center;justify-content:center;gap:12px}
+#app #content .buyer-password>span{display:inline-block;min-width:70px;font-variant-numeric:tabular-nums;letter-spacing:.06em}
+#app #content .buyer-password button{min-width:56px}
+@media(max-width:1200px){#app #content .overseas-buyer-basic{grid-template-columns:130px minmax(0,1fr)}#app #content .overseas-buyer-basic .buyer-memo{grid-column:2}}
+@media(max-width:600px){#app #content .overseas-buyer-basic{grid-template-columns:100px minmax(0,1fr)}#app #content .overseas-buyer-basic>dt,#app #content .overseas-buyer-basic>dd{padding:10px}#app #content .buyer-phone input,#app #content .buyer-phone select{width:calc((100% - 34px)/3);padding:7px 4px}#app #content .buyer-email{flex-wrap:wrap}#app #content .buyer-email select{flex-basis:100%;width:100%}}
