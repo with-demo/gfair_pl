@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v0.6","fromVersion":"v0.5","date":"2026.10.22","accountName":"yulotso0310-cyber","summary":"참가연도·참가상태 기준 조회 필터 적용","changes":["행사 선택 필터를 참가연도 드롭다운으로 변경하고 참가연도·참가상태를 첫 순서로 배치.","전체 참가 이력에서 해당 연도 참여자와 참가상태를 조회."]},
+{"screenId":"BAS-05","version":"v0.6","fromVersion":"v0.5","date":"2026.10.22","accountName":"yulotso0310-cyber","summary":"참가연도·참가상태 기준 조회 필터 적용","changes":["행사 선택 필터를 참가연도 드롭다운으로 변경하고 참가연도·참가상태를 첫 순서로 배치.","전체 참가 이력에서 해당 연도 참여자와 참가상태를 조회."]},
+{"screenId":"BAS-07","version":"v0.6","fromVersion":"v0.5","date":"2026.10.22","accountName":"yulotso0310-cyber","summary":"참가연도·참가상태 기준 조회 필터 적용","changes":["행사 선택 필터를 참가연도 드롭다운으로 변경하고 참가연도·참가상태를 첫 순서로 배치.","전체 참가 이력에서 해당 연도 참여자와 참가상태를 조회."]},
 {"screenId":"SET-05","version":"v0.15","date":"2026.10.22","accountName":"mjha","summary":"설문 미리보기를 SET-13 팝업으로 전환하고 목록·편집 상태 유지"},
 {"screenId":"SET-13","version":"v0.2","date":"2026.10.22","accountName":"mjha","summary":"설문 미리보기를 SET-13 팝업으로 전환하고 목록·편집 상태 유지"},
 {"screenId":"SET-01","version":"v0.17","date":"2026.10.22","accountName":"mjha","summary":"그룹 등록·상세·메뉴 권한을 SET-02 단일 폼으로 통합","changes":["등록은 빈 기본정보와 미선택 권한으로 시작하고 상세는 저장값 표시.","기존 SET-08은 SET-02 등록 모드로 연결."]},
