@@ -1,5 +1,9 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-06","version":"v0.17","date":"2026.10.22","accountName":"mjha","summary":"BAS-04 공통 구조로 기본정보·행사참가이력 구성","changes":["텍스트 기본정보와 연락처·이메일·전체 너비 메모 입력란을 구분.","유형별 코드·예시 임시계정·비밀번호와 연도별 보기·숨기기 제공.","바이어기업과 초청기관유형, 연도별 KBC·GBC 표시."]},
+  {"screenId":"BAS-08","version":"v0.17","date":"2026.10.22","accountName":"mjha","summary":"BAS-04 공통 구조로 기본정보·행사참가이력 구성","changes":["텍스트 기본정보와 연락처·이메일·전체 너비 메모 입력란을 구분.","유형별 코드·예시 임시계정·비밀번호와 연도별 보기·숨기기 제공.","제공 언어 코드표 기반 1~5지망과 언어 1개·5개 예시 제공."]},
+  {"screenId":"BAS-05","version":"v1.14","date":"2026.10.22","accountName":"mjha","summary":"국내 바이어·통역원 상세와 연결되는 예시 데이터 반영","changes":["예시 이름과 참가연도, 기업·언어 정보를 상세와 동일한 원본 데이터로 연결."]},
+  {"screenId":"BAS-07","version":"v1.14","date":"2026.10.22","accountName":"mjha","summary":"국내 바이어·통역원 상세와 연결되는 예시 데이터 반영","changes":["예시 이름과 참가연도, 기업·언어 정보를 상세와 동일한 원본 데이터로 연결."]},
   {"screenId":"BAS-01","version":"v0.33","date":"2026.10.22","accountName":"mjha","summary":"공통 Description 기획비고 항목 추가","changes":["설명 작성·수정 폼 마지막에 선택 입력인 기획비고 추가.","입력한 기획비고는 조회 표에서 빨간색으로 표시하고 기존 설명은 그대로 유지."]},
   {"screenId":"BAS-04","version":"v0.21","date":"2026.10.22","accountName":"mjha","summary":"바이어별 전체 참가연도와 상세 이력 연결","changes":["목록에서 요약된 연도도 해당 바이어의 상세 행사참가이력에 모두 표시.","기존 연도의 예시 ID·PW와 직접 입력 정보 유지."]},
   {"screenId":"BAS-03","version":"v1.15","date":"2026.10.22","accountName":"mjha","summary":"해외 바이어 목록 열·참가연도 요약 표시 변경","changes":["바이어코드·바이어명·국가·참가연도·참가상태 5개 열로 구성.","참가연도는 최신순 최대 3개와 그 외 N건으로 표시하고 5개 연도 예시 추가.","전체 참가연도 데이터와 검색·상세 진입 연결은 유지."]},
