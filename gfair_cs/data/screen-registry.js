@@ -99,15 +99,6 @@ window.GFAIR_SCREEN_REGISTRY=[
     "surveyResult": true
   },
   {
-    "id": "NTC-09",
-    "title": "FAQ 상세",
-    "parent": "NTC-02",
-    "summary": "FAQ 상세 화면에서 대상 정보와 처리 내용을 확인합니다.",
-    "kind": "list",
-    "publicBoard": "faq",
-    "boardView": "detail"
-  },
-  {
     "id": "NTC-10",
     "title": "FAQ 등록",
     "parent": "NTC-02",
@@ -279,6 +270,8 @@ window.GFAIR_SCREEN_REGISTRY=[
 ];
 (()=>{const all=GFAIR_SCREENS.flatMap(g=>g.screens);for(const item of GFAIR_SCREEN_REGISTRY){const source=all.find(s=>s.id===(item.source||item.parent));const group=GFAIR_SCREENS.find(g=>g.screens.some(s=>s.id===item.parent))||GFAIR_SCREENS[0];group.screens.push({...source,...item,ui:{...(source?.ui||{})},workflowParent:item.kind==='workflow'?item.parent:undefined});if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[item.id]=item.summary;}})();
 
-(()=>{const all=GFAIR_SCREENS.flatMap(g=>g.screens);for(const [id,title] of [['NTC-01','공지사항 목록'],['NTC-02','FAQ 목록'],['NTC-03','자료실 목록']])all.find(s=>s.id===id).title=title;})();
+(()=>{const all=GFAIR_SCREENS.flatMap(g=>g.screens);for(const [id,title] of [['NTC-01','공지사항 목록'],['NTC-02','FAQ 목록·답변'],['NTC-03','자료실 목록']])all.find(s=>s.id===id).title=title;})();
 
 (()=>{const screen=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='NTC-04');screen.title='공지사항 상세';screen.summary='공지사항의 대상·게시 정보와 본문·첨부파일을 확인합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)window.GFAIR_SCREEN_OVERVIEWS['NTC-04']=screen.summary;})();
+
+(()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='NTC-02');s.summary='FAQ 질문을 선택해 답변과 첨부파일을 펼쳐 확인합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();
