@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"JNL-05","version":"v0.15","date":"2026.10.22","accountName":"mjha","summary":"사전 태그 추천 선택과 저장·새로고침 아이콘 반영","changes":["예시 사전 태그에서 입력어·연관어가 포함된 추천 목록을 표시하고 항목 선택으로만 추가.","음 입력 시 음식 추천, 김치찌개 입력 시 음식 추천 예시 포함.","임시저장 상태와 저장·새로고침 버튼 앞에 새로고침 아이콘 표시. 태그 사전은 추후 확정 목록으로 교체 예정."]},
   {"screenId":"COM-08","version":"v0.2","date":"2026.10.22","accountName":"mjha","summary":"정보 묶음·페이지 작업 버튼의 최우선 공통 규칙 적용","changes":["페이지 작업 버튼을 중복 없이 본문 우측 최하단에 모으고 폼 연결 유지."]},
   {"screenId":"BAS-02","version":"v0.18","date":"2026.10.22","accountName":"mjha","summary":"정보 묶음·페이지 작업 버튼의 최우선 공통 규칙 적용","changes":["페이지 작업 버튼을 중복 없이 본문 우측 최하단에 모으고 폼 연결 유지.","정보 묶음 제목에 공통 원형 불릿 적용."]},
   {"screenId":"BAS-04","version":"v0.15","date":"2026.10.22","accountName":"mjha","summary":"정보 묶음·페이지 작업 버튼의 최우선 공통 규칙 적용","changes":["페이지 작업 버튼을 중복 없이 본문 우측 최하단에 모으고 폼 연결 유지.","정보 묶음 제목에 공통 원형 불릿 적용."]},
