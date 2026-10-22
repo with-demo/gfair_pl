@@ -151,7 +151,7 @@ if(current==='JNL-05'&&form){
   setSelect('productGroup',meta.productGroup||'');
   setField('contactPerson',meta.contactPerson||'');
   setField('contactPhone',meta.contactPhone||'');
-  const cardSvg='<svg xmlns="http://www.w3.org/2000/svg" width="360" height="200" viewBox="0 0 360 200"><rect x="2" y="2" width="356" height="196" rx="12" fill="#fff" stroke="#cbd3df" stroke-width="4"/><rect x="2" y="2" width="356" height="48" rx="12" fill="#315b9a"/><text x="24" y="34" fill="#fff" font-family="Arial,sans-serif" font-size="20" font-weight="700">G-FAIR KOREA</text><text x="24" y="105" fill="#233b5d" font-family="Arial,sans-serif" font-size="18" font-weight="700">${E(selectedName)}</text><text x="24" y="140" fill="#546579" font-family="Arial,sans-serif" font-size="15">BUSINESS CARD · SAMPLE</text></svg>';
+  const cardSvg='<svg xmlns="http://www.w3.org/2000/svg" width="360" height="200" viewBox="0 0 360 200"><rect x="2" y="2" width="356" height="196" rx="12" fill="#fff" stroke="#cbd3df" stroke-width="4"/><rect x="2" y="2" width="356" height="48" rx="12" fill="#315b9a"/><text x="24" y="34" fill="#fff" font-family="Arial,sans-serif" font-size="20" font-weight="700">G-FAIR KOREA</text><text x="24" y="105" fill="#233b5d" font-family="Arial,sans-serif" font-size="18" font-weight="700">EXHIBITOR</text><text x="24" y="140" fill="#546579" font-family="Arial,sans-serif" font-size="15">BUSINESS CARD · SAMPLE</text></svg>';
   const cardName=meta.businessCardName||selectedName+' · 셀러 명함 예시';
   image=meta.businessCardUrl?{name:cardName,url:meta.businessCardUrl}:{name:cardName,url:'data:image/svg+xml,'+encodeURIComponent(cardSvg)};
   const upload=root.querySelector('.journal-upload');
