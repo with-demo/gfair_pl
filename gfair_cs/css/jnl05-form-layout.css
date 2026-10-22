@@ -81,8 +81,7 @@
 #app .journal-single-select .journal-select-search{width:100%;min-width:0;min-height:33px;margin-bottom:8px;padding:6px 9px;border:1px solid #bbb;border-radius:3px;background:#fff;font-size:13px;cursor:text}
 #app .journal-select-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-height:210px;overflow:auto}
 #app .journal-select-results .journal-select-option{display:flex;align-items:center;gap:6px;min-width:0;padding:7px 4px;border:0;background:#fff;color:#17365d;text-align:left;font-size:13px;cursor:pointer}
-#app .journal-select-results .journal-select-option::before{content:"";display:inline-block;flex:0 0 13px;width:13px;height:13px;border:1px solid #999;border-radius:2px;background:#fff}
-#app .journal-select-results .journal-select-option.selected::before{content:"✓";display:grid;place-items:center;border-color:#4267b2;background:#4267b2;color:#fff;font-size:11px}
+#app .journal-select-results .journal-select-option::before{content:none;display:none}
 #app .journal-select-results .journal-select-option:hover,#app .journal-select-results .journal-select-option:focus-visible{background:#f1f5fa}
 #app .journal-select-empty{grid-column:1/-1;padding:9px 5px;color:#777;font-size:12px}
 
