@@ -1,4 +1,7 @@
 #content tr[data-list-row-navigation]{cursor:pointer}
 #content tr[data-list-row-navigation]:hover>td{background:#f4f4f4}
 #content tr[data-list-row-navigation]:focus-visible{outline:2px solid #333;outline-offset:-2px}
+#app #content .tablewrap :is(a[href],button.btn.ghost,.list-name-link,.list-clickable-text),#app #content .faq-question{text-decoration:underline;text-underline-offset:3px}
+#app #content .tablewrap .list-name-link{display:inline;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:inherit;cursor:pointer}
+#app #content .tablewrap .list-name-link:hover{color:#555}
 #content [data-list-row-trigger][hidden]{display:none!important}
