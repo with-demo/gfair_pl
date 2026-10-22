@@ -1,5 +1,10 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-03","version":"v1.20","date":"2026.10.22","accountName":"mjha","summary":"참가연도 시작·종료 범위 검색 적용","changes":["참가연도를 시작 연도~종료 연도 두 개의 선택 항목으로 변경.","시작·종료 연도를 포함한 기간 중 참가이력이 하나라도 있으면 조회하고 상태·키워드와 AND 적용.","역전 범위 검증 및 초기화 적용, 검색필터 디스크립션 갱신."]},
+  {"screenId":"BAS-05","version":"v1.19","date":"2026.10.22","accountName":"mjha","summary":"참가연도 시작·종료 범위 검색 적용","changes":["참가연도를 시작 연도~종료 연도 두 개의 선택 항목으로 변경.","시작·종료 연도를 포함한 기간 중 참가이력이 하나라도 있으면 조회하고 상태·키워드와 AND 적용.","역전 범위 검증 및 초기화 적용, 검색필터 디스크립션 갱신."]},
+  {"screenId":"BAS-07","version":"v1.20","date":"2026.10.22","accountName":"mjha","summary":"참가연도 시작·종료 범위 검색 적용","changes":["참가연도를 시작 연도~종료 연도 두 개의 선택 항목으로 변경.","시작·종료 연도를 포함한 기간 중 참가이력이 하나라도 있으면 조회하고 상태·키워드와 AND 적용.","역전 범위 검증 및 초기화 적용, 검색필터 디스크립션 갱신."]},
+  {"screenId":"BAS-04","version":"v0.29","date":"2026.10.22","accountName":"mjha","summary":"1·2번 디스크립션 연결 위치 교환","changes":["설명 내용과 번호를 유지하며 1번과 2번의 핀 위치를 서로 교환."]},
+  {"screenId":"BAS-08","version":"v0.24","date":"2026.10.22","accountName":"mjha","summary":"통역원 언어 항목명 변경","changes":["통역원 언어 항목명을 통역 언어로 변경."]},
   {"screenId":"BAS-04","version":"v0.28","date":"2026.10.22","accountName":"mjha","summary":"이름과 코드 간격·회색 표시 적용","changes":["이름과 괄호 코드 사이를 띄우고 코드를 연한 회색으로 표시."]},
   {"screenId":"BAS-06","version":"v0.23","date":"2026.10.22","accountName":"mjha","summary":"이름과 코드 간격·회색 표시 적용","changes":["이름과 괄호 코드 사이를 띄우고 코드를 연한 회색으로 표시."]},
   {"screenId":"BAS-08","version":"v0.23","date":"2026.10.22","accountName":"mjha","summary":"이름과 코드 간격·회색 표시 적용","changes":["이름과 괄호 코드 사이를 띄우고 코드를 연한 회색으로 표시."]},

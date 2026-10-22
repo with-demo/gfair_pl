@@ -89,3 +89,6 @@
 #app .formgrid>.formfooter{grid-column:1/-1;width:100%;}
 /* 참가자 관리 목록: 사용자 확정 참가 여부 색상 예외. */
 .participant-master-table .participant-state-cell{width:42px;min-width:42px;padding-left:24px;padding-right:0px;text-align:center;vertical-align:middle}.participant-state-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#9b9b9b;flex:none;vertical-align:middle}.participant-state-dot.is-present{background:#2e7d32}.participant-state-legend{display:inline-flex;align-items:center;gap:7px;font-size:12px;white-space:nowrap}.participant-state-legend .participant-state-dot:not(:first-child){margin-left:10px}.participant-master-table .list-name-link{text-decoration:underline;text-underline-offset:3px}
+/* 참가자 이력 검색의 시작·종료 연도. */
+#app #content .participant-year-range{display:flex;align-items:center;gap:8px;width:100%;min-width:0}#app #content .participant-year-range>select{flex:1 1 0;width:0;min-width:0}#app #content .participant-year-range>span{flex:none}
+#app #content .unified-search .search-condition-controls>.participant-year-range{width:360px;max-width:100%;flex:0 1 360px}

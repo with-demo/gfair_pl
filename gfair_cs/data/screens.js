@@ -3489,3 +3489,6 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 
 // 참가자 코드는 이름 뒤 괄호로 통합하며 기본정보의 별도 코드 행은 표시하지 않는다.
 (()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens);for(const id of ['BAS-04','BAS-06','BAS-08']){const s=all.find(s=>s.id===id),fields=new Map(s.ui.fields.map(f=>[f[0],f])),interpreter=id==='BAS-08',name=interpreter?'통역원명':'바이어명';fields.set(name,[name,'이름(고유코드) / 엑셀 연계 / 텍스트']);s.ui.fields=(interpreter?['통역원명','생년월일','통역원 언어']:['바이어명','생년월일',id==='BAS-04'?'바이어국가':'바이어기업','초청기관유형']).concat(['연락처','이메일','메모']).map(label=>fields.get(label));}})();
+
+// BAS-08 항목명: 통역 언어.
+(()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-08');s.ui.fields=s.ui.fields.map(([label,value])=>[label==='통역원 언어'?'통역 언어':label,value]);})();
