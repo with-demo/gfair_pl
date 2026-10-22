@@ -9,7 +9,7 @@
  let nextId=1,validated=null;
  const key=(name,dob)=>name.trim().toLocaleLowerCase()+'|'+dob;
  const people=new Map([
-  ['BAS-03',new Map([[key('James Whitmore','1990-01-01'),{index:0,years:['2026']}],[key('Emily Carter','1993-03-03'),{index:1,years:['2026','2027']}],[key('Hiroshi Tanaka','1994-04-04'),{index:2,years:['2027']}]])],
+  ['BAS-03',new Map([[key('James Whitmore','1990-01-01'),{index:0,years:['2026']}],[key('Emily Carter','1993-03-03'),{index:1,years:['2026','2027']}],[key('田中 浩','1994-04-04'),{index:2,years:['2027']}]])],
   ['BAS-05',new Map([[key('국내바이어 A','1995-05-05'),{index:0,years:['2027']}],[key('국내바이어 B','1991-01-01'),{index:1,years:['2026','2027']}],[key('국내바이어 C','1996-06-06'),{index:2,years:['2026']}]])],
   ['BAS-07',new Map([[key('통역원 A','1992-01-01'),{index:0,years:['2026','2027']}],[key('통역원 B','1997-07-07'),{index:1,years:['2027']}],[key('통역원 C','1998-08-08'),{index:2,years:['2026']}]])]
  ]);

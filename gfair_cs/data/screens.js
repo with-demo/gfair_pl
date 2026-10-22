@@ -288,7 +288,7 @@ window.GFAIR_SCREENS=[
             ],
             [
               "F20270002",
-              "Hiroshi Tanaka",
+              "田中 浩",
               "일본",
               "Tanaka Lifestyle Trading",
               "2027",

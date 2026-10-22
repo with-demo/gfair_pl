@@ -1,5 +1,12 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-03","version":"v1.18","date":"2026.10.22","accountName":"mjha","summary":"일본 바이어 이름 일본어 표기","changes":["일본 바이어 예시 이름을 田中 浩로 통일."]},
+  {"screenId":"BAS-04","version":"v0.24","date":"2026.10.22","accountName":"mjha","summary":"일본 바이어 이름 일본어 표기","changes":["일본 바이어 예시 이름을 田中 浩로 통일."]},
+  {"screenId":"JNL-05","version":"v0.20","date":"2026.10.22","accountName":"mjha","summary":"일본 바이어 이름 일본어 표기","changes":["일본 바이어 예시 이름을 田中 浩로 통일."]},
+  {"screenId":"JNL-14","version":"v0.9","date":"2026.10.22","accountName":"mjha","summary":"일본 바이어 이름 일본어 표기","changes":["일본 바이어 예시 이름을 田中 浩로 통일."]},
+  {"screenId":"JNL-16","version":"v0.6","date":"2026.10.22","accountName":"mjha","summary":"일본 바이어 이름 일본어 표기","changes":["일본 바이어 예시 이름을 田中 浩로 통일."]},
+  {"screenId":"STA-02","version":"v0.18","date":"2026.10.22","accountName":"mjha","summary":"일본 바이어 이름 일본어 표기","changes":["일본 바이어 예시 이름을 田中 浩로 통일."]},
+  {"screenId":"STA-03","version":"v0.17","date":"2026.10.22","accountName":"mjha","summary":"일본 바이어 이름 일본어 표기","changes":["일본 바이어 예시 이름을 田中 浩로 통일."]},
   {"screenId":"BAS-03","version":"v1.17","date":"2026.10.22","accountName":"mjha","summary":"해외바이어 예시 이름·국가 통일","changes":["해외바이어 예시를 자연스러운 영문 이름과 제공 국가코드의 국가명으로 변경.","목록·상세·방한·매칭·상담일지·통계에서 동일 예시를 일관되게 표시."]},
   {"screenId":"BAS-04","version":"v0.23","date":"2026.10.22","accountName":"mjha","summary":"해외바이어 예시 이름·국가 통일","changes":["해외바이어 예시를 자연스러운 영문 이름과 제공 국가코드의 국가명으로 변경.","목록·상세·방한·매칭·상담일지·통계에서 동일 예시를 일관되게 표시."]},
   {"screenId":"PRE-02","version":"v0.14","date":"2026.10.22","accountName":"mjha","summary":"해외바이어 예시 이름·국가 통일","changes":["해외바이어 예시를 자연스러운 영문 이름과 제공 국가코드의 국가명으로 변경.","목록·상세·방한·매칭·상담일지·통계에서 동일 예시를 일관되게 표시."]},
