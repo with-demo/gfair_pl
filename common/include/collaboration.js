@@ -27,6 +27,7 @@
   location.assign(SERVER+'/api/github/start?'+new URLSearchParams({challenge,project:PROJECT,screen:current()==='screens'?'MON-01':current()}));
  }
  window.GFAIR_COLLAB={get user(){return user;},get githubReady(){return githubReady;},get records(){return screen===current()?records:[];},error:'',login,refresh,
+  async planningNotes(){return (await api('planning-notes')).records;},
   async mutate(op,body){const result=await api(op,body);snapshot='';await refresh();return result;},
   async logout(){try{if(token)await api('logout',{});}finally{token='';user=null;records=[];snapshot='';sessionStorage.removeItem(TOKEN);changed();}}
  };

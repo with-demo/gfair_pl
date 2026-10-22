@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-01","version":"v0.35","date":"2026.10.22","accountName":"mjha","summary":"공통 기획비고 모아보기 팝업 추가","changes":["상단 공통 영역에 기획비고 버튼 추가.","전체 화면의 기획비고를 화면 ID·라벨번호와 항목명·비고·바로가기로 조회.","바로가기에서 해당 화면의 디스크립션 항목으로 이동."]},
   {"screenId":"BAS-01","version":"v0.34","date":"2026.10.22","accountName":"mjha","summary":"목록의 클릭 가능한 텍스트 밑줄 표시","changes":["클릭 가능한 이름·제목 등 목록 텍스트에 밑줄 적용."]},
   {"screenId":"BAS-03","version":"v1.16","date":"2026.10.22","accountName":"mjha","summary":"목록의 클릭 가능한 텍스트 밑줄 표시","changes":["클릭 가능한 이름·제목 등 목록 텍스트에 밑줄 적용."]},
   {"screenId":"BAS-05","version":"v1.15","date":"2026.10.22","accountName":"mjha","summary":"이름 텍스트로 상세 진입하도록 변경","changes":["행 전체 클릭을 제거하고 이름 버튼으로 상세 화면에 진입.","클릭 가능한 이름·제목 등 목록 텍스트에 밑줄 적용."]},

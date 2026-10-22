@@ -2,7 +2,7 @@
 (()=>{
  'use strict';
  const app=document.getElementById('app'),store=window.GFAIR_COLLAB;if(!app||!store)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=planning-note-20261022',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=planning-note-list-20261022',document.currentScript.src);document.head.append(css);
  let selected=null,picking=false,queued=false,dragging=null,view={closed:document.querySelector('.ui-spec-panel')?.hidden??true,full:false,numbers:true};
  const savingPins=new Set();
  const route=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
@@ -14,6 +14,16 @@
  function message(text){let el=document.getElementById('annotation-message');if(!el){el=element('div');el.id='annotation-message';el.setAttribute('role','status');document.body.append(el);}el.textContent=text;clearTimeout(message.timer);message.timer=setTimeout(()=>{el.textContent='';},7000);}
  const overlay=element('div',undefined,'annotation-overlay');document.body.append(overlay);
  const dialog=element('dialog',undefined,'annotation-dialog');document.body.append(dialog);
+ const planningDialog=element('dialog',undefined,'annotation-dialog annotation-planning-dialog');planningDialog.setAttribute('aria-label','전체 기획비고');document.body.append(planningDialog);
+ let pendingPlanningTarget=null,planningRequest=0;
+ const planningPopup=document.getElementById('dialog');if(planningPopup)new MutationObserver(()=>{if(pendingPlanningTarget&&planningPopup.open&&planningPopup.dataset.screenId===pendingPlanningTarget.screen&&!window.MOCKUP_DESCRIPTION_CONTEXT)planningPopup.querySelector('[data-popup-description]')?.click();}).observe(planningPopup,{attributes:true,attributeFilter:['open','data-screen-id'],childList:true,subtree:true});
+ async function showPlanningNotes(){
+  const request=++planningRequest,header=element('div',undefined,'annotation-dialog-header'),close=button('×',()=>planningDialog.close()),body=element('div');close.className='annotation-dialog-close';close.setAttribute('aria-label','기획비고 팝업 닫기');header.append(element('h2','기획비고'),close);body.setAttribute('aria-live','polite');body.append(element('p','기획비고를 불러오는 중입니다.'));planningDialog.replaceChildren(header,body);if(!planningDialog.open)planningDialog.showModal();
+  try{const notes=await store.planningNotes();if(request!==planningRequest||!planningDialog.open)return;body.replaceChildren(element('p','전체 '+notes.length+'건','annotation-guide'));if(!notes.length){body.append(element('p','등록된 기획비고가 없습니다.'));return;}
+   const wrap=element('div',undefined,'annotation-planning-table-wrap'),table=element('table',undefined,'annotation-planning-table'),head=element('thead'),tr=element('tr'),tbody=element('tbody');['화면 ID','라벨번호 · 항목명','비고','바로가기'].forEach(label=>{const th=element('th',label);th.scope='col';tr.append(th);});head.append(tr);table.append(head,tbody);
+   notes.forEach(note=>{const row=element('tr'),go=button('바로가기',()=>{planningDialog.close();pendingPlanningTarget={screen:note.screen,id:note.id};const modal=document.getElementById('dialog');if(modal?.open)modal.close();if(location.hash.slice(1)!==note.screen)location.hash=note.screen;window.dispatchEvent(new Event('annotation-open'));store.refresh();schedule();});go.setAttribute('aria-label',note.screen+' '+String(note.number).padStart(2,'0')+'번 '+note.item+' 바로가기');const action=element('td');action.append(go);row.append(element('td',note.screen),element('td',String(note.number).padStart(2,'0')+'. '+note.item),element('td',note.planningNote,'annotation-planning-note'),action);tbody.append(row);});wrap.append(table);body.append(wrap);
+  }catch(error){if(request!==planningRequest||!planningDialog.open)return;body.replaceChildren(element('p',error.message),button('다시 불러오기',showPlanningNotes));}
+ }
  async function change(op,body,control){if(control)control.disabled=true;try{const result=await store.mutate(op,body);message('서버에 저장했습니다.');return result;}catch(error){message(error.message);if(error.message.includes('다른 사용자가'))store.refresh();return null;}finally{if(control)control.disabled=false;}}
  const specLabels={item:'항목',type:'유형',defaultValue:'기본값',placeholder:'플레이스홀더',options:'선택 옵션',required:'필수여부',detail:'기능상세',inputFormat:'입력 형식',inputLimit:'입력 제한',visibility:'표시 조건',enabled:'활성·비활성 조건',permission:'사용 권한',trigger:'실행 시점',result:'처리 결과',destination:'이동·연결 대상',validation:'유효성 검사',errorMessage:'오류 안내 문구',loading:'로딩·중복 실행 처리',emptyState:'데이터 없음 처리',dataSource:'데이터 출처',policy:'기본정책',exception:'예외사항',planningNote:'기획비고'};
  const typeDefaults={'버튼':['해당 없음','활성','비활성'],'단일셀렉트박스':['미선택','전체','첫 번째 항목'],'다중셀렉트박스':['미선택','전체 선택'],'인풋':['빈 값','0'],'텍스트':['해당 없음','빈 값'],'텍스트에리어':['빈 값'],'체크박스':['미선택','선택'],'라디오박스':['미선택','첫 번째 항목'],'날짜':['미선택','오늘'],'파일첨부':['미첨부'],'기타':['해당 없음']};
@@ -102,6 +112,8 @@
  }
  function render(){
   queued=false;const panel=document.querySelector('.ui-spec-panel'),toolbar=document.querySelector('.ui-spec-actions');if(!panel||!toolbar)return;
+  if(!toolbar.querySelector('[data-planning-notes]')){const planningButton=button('기획비고',showPlanningNotes);planningButton.dataset.planningNotes='';toolbar.insertBefore(planningButton,toolbar.querySelector('[data-spec=close]'));}
+  const pending=pendingPlanningTarget&&route()===pendingPlanningTarget.screen&&records().find(record=>record.id===pendingPlanningTarget.id);if(pending)selected=pending.id;
   const focused=document.activeElement;const focusId=focused?.matches('.annotation-card textarea,.annotation-card input[data-comment-name]')?focused.closest('article').id:null;const focusSelector=focused?.tagName==='INPUT'?'input[data-comment-name]':'textarea';const selection=focusId?[focused.selectionStart,focused.selectionEnd]:null;const scrollTop=panel.scrollTop;
   let controls=document.getElementById('annotation-controls');if(!controls){controls=element('div',undefined,'annotation-controls');controls.id='annotation-controls';toolbar.append(controls);}controls.replaceChildren();controls.hidden=route()==='screens';
   if(store.user){controls.append(element('span',store.user.name+' · '+(canEdit()?'공동작업자':'댓글 참여자')));if(canEdit()){const add=button(picking?'영역 선택 취소':'영역에 설명 추가',()=>{if(!picking)window.dispatchEvent(new Event('annotation-select-scope'));picking=!picking;if(picking)window.dispatchEvent(new Event('annotation-open'));render();});add.setAttribute('aria-pressed',String(picking));controls.append(add);}controls.append(button('로그아웃',async()=>{await store.logout();picking=false;dialog.close();render();}));}
@@ -124,6 +136,7 @@
    if(record.comments.length)card.append(comments);section.append(card);
   });
   const version=panel.querySelector('.ui-spec-version');if(version)version.after(section);else panel.prepend(section);panel.scrollTop=scrollTop;if(focusId){const input=document.getElementById(focusId)?.querySelector(focusSelector);input?.focus({preventScroll:true});if(input&&selection)input.setSelectionRange(...selection);}pins();
+  if(pending){pendingPlanningTarget=null;const card=document.getElementById('annotation-'+pending.id);card.tabIndex=-1;card.focus({preventScroll:true});card.scrollIntoView({block:'nearest'});const target=find(pending);if(target)target.scrollIntoView({block:'center'});}
  }
  function schedule(){if(queued)return;queued=true;requestAnimationFrame(render);}
  document.addEventListener('click',event=>{if(!picking||!canEdit()||route()==='screens')return;const scope=window.MOCKUP_DESCRIPTION_CONTEXT?document.getElementById('dialog-content'):app;if(!scope?.contains(event.target)||event.target.closest('[data-popup-description]'))return;event.preventDefault();event.stopImmediatePropagation();if(event.target.closest('.ui-spec-pin'))return;const target=event.target.closest('button,input,select,textarea,a,th,td,dt,dd,dl,label,h1,h2,h3,p,.field,.dialogbody,.dialoghead,section,article')||event.target;if(!(window.MOCKUP_DESCRIPTION_CONTEXT?document.getElementById('dialog-content'):app).contains(target))return;const rect=target.getBoundingClientRect();edit(null,{selector:selectorFor(target),sample:target.textContent.replace(/\s+/g,' ').trim().slice(0,60),x:Math.max(0,Math.min(1,(event.clientX-rect.left)/(rect.width||1))),y:Math.max(0,Math.min(1,(event.clientY-rect.top)/(rect.height||1)))});},true);
