@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-04","version":"v0.26","date":"2026.10.22","accountName":"mjha","summary":"생년월일·초청기관유형 위치 교환","changes":["바이어 코드 옆에 생년월일을 배치하고 초청기관유형은 이름·국가(기업) 다음 행 전체 너비로 이동.","연락처·이메일·메모 디스크립션을 03·04·05번으로 분리하고 행사참가이력·보기 번호를 순차 조정."]},
+  {"screenId":"BAS-06","version":"v0.21","date":"2026.10.22","accountName":"mjha","summary":"생년월일·초청기관유형 위치 교환","changes":["바이어 코드 옆에 생년월일을 배치하고 초청기관유형은 이름·국가(기업) 다음 행 전체 너비로 이동."]},
   {"screenId":"BAS-08","version":"v0.21","date":"2026.10.22","accountName":"mjha","summary":"생년월일·통역원 언어 위치 및 언어 표기 변경","changes":["통역원명 옆에 생년월일을 배치하고 통역원 언어는 다음 행 전체 너비로 표시.","지망 번호를 제거하고 영어(en) / 일본어(ja) 형식으로 표시."]},
   {"screenId":"BAS-04","version":"v0.25","date":"2026.10.22","accountName":"mjha","summary":"기본정보 생년월일 추가","changes":["기본정보에 엑셀 연계 생년월일을 YYYY-MM-DD 텍스트로 표시.","이름+생년월일 중복 확인에 사용하는 데이터와 상세 표시를 연결."]},
   {"screenId":"BAS-06","version":"v0.20","date":"2026.10.22","accountName":"mjha","summary":"기본정보 생년월일 추가","changes":["기본정보에 엑셀 연계 생년월일을 YYYY-MM-DD 텍스트로 표시.","이름+생년월일 중복 확인에 사용하는 데이터와 상세 표시를 연결."]},

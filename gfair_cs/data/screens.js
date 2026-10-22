@@ -3483,3 +3483,6 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 
 // 통역원 상세: 이름·생년월일 다음에 언어 전체 행을 표시한다.
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-08'),fields=new Map(s.ui.fields.map(f=>[f[0],f]));fields.set('통역원 언어',['통역원 언어','제공 언어 코드표 / 최대 5개 / 언어명(코드)을 / 로 구분 / 텍스트']);s.ui.fields=['통역원 코드','통역원명','생년월일','통역원 언어','연락처','이메일','메모'].map(label=>fields.get(label));s.rules=s.rules.map(rule=>rule.startsWith('통역원 언어는')?'통역원 언어는 제공 코드표의 언어명(코드)을 / 로 구분해 전체 행에 표시한다. 엑셀 지망 순서는 유지하고 지망 번호는 표시하지 않는다.':rule);})();
+
+// 바이어 상세: 코드·생년월일 / 이름·국가(기업) / 초청기관유형 전체 행.
+(()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens);for(const id of ['BAS-04','BAS-06']){const s=all.find(s=>s.id===id),fields=new Map(s.ui.fields.map(f=>[f[0],f]));s.ui.fields=['바이어 코드','생년월일','바이어명',id==='BAS-04'?'바이어국가':'바이어기업','초청기관유형','연락처','이메일','메모'].map(label=>fields.get(label));}})();
