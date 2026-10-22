@@ -71,3 +71,17 @@
 
 #app .journal-pair.contact-person-label{grid-template-columns:max-content minmax(0,1fr)}
 #app .journal-pair.contact-person-label .journal-label{white-space:nowrap}
+
+#app .journal-single-select{position:relative;width:min(100%,360px);max-width:100%}
+#app .journal-select-trigger{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-width:0;min-height:36px;padding:7px 10px;border:1px solid #ccc;border-radius:2px;background:#fff;color:#17365d;text-align:left;font:inherit;cursor:pointer}
+#app .journal-select-trigger:hover,#app .journal-select-trigger[aria-expanded=true]{border-color:#7d91a9}
+#app .journal-select-chevron{color:#555;font-size:16px;line-height:1}
+#app .journal-select-options{position:absolute;z-index:30;top:calc(100% + 3px);left:0;width:max(100%,306px);max-width:min(90vw,420px);padding:8px;border:1px solid #888;border-radius:4px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.16)}
+#app .journal-select-options[hidden]{display:none}
+#app .journal-single-select .journal-select-search{width:100%;min-width:0;min-height:33px;margin-bottom:8px;padding:6px 9px;border:1px solid #bbb;border-radius:3px;background:#fff;font-size:13px;cursor:text}
+#app .journal-select-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-height:210px;overflow:auto}
+#app .journal-select-results .journal-select-option{display:flex;align-items:center;gap:6px;min-width:0;padding:7px 4px;border:0;background:#fff;color:#17365d;text-align:left;font-size:13px;cursor:pointer}
+#app .journal-select-results .journal-select-option::before{content:"";display:inline-block;flex:0 0 13px;width:13px;height:13px;border:1px solid #999;border-radius:2px;background:#fff}
+#app .journal-select-results .journal-select-option.selected::before{content:"✓";display:grid;place-items:center;border-color:#4267b2;background:#4267b2;color:#fff;font-size:11px}
+#app .journal-select-results .journal-select-option:hover,#app .journal-select-results .journal-select-option:focus-visible{background:#f1f5fa}
+#app .journal-select-empty{grid-column:1/-1;padding:9px 5px;color:#777;font-size:12px}
