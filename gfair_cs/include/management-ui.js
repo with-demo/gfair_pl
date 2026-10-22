@@ -42,7 +42,13 @@
   const rr=admins.filter(a=>(state.status==='전체'||a.status===state.status)&&(!state.query||({'관리자 ID':a.id,'이름':a.name,'소속':a.org}[window.GFAIR_SEARCH_SCOPE?.('query')]||[a.id,a.name,a.org].join(' ')).includes(state.query)));
   return `${note()}<div class="management-actions">${button('admin-create','관리자 등록','','true')}</div><form data-management-form="admin-search" class="panel filters"><fieldset class="management-type-filter"><legend>사용 상태</legend><div class="management-type-options">${['전체','사용','미사용'].map(s=>`<label><input type="radio" name="status" value="${s}"${state.status===s?' checked':''}>${s}</label>`).join('')}</div></fieldset>${field('통합검색',`<input name="query" value="${E(state.query)}" placeholder="이름, ID, 소속을 검색하세요.">`)}<div class="row"><button type="submit" class="btn primary">검색</button>${button('reset','초기화')}</div></form><section class="panel"><div class="panelhead"><h2>구매·수출 상담시스템 관리자 ${rr.length}명</h2></div>${table(['관리자 ID','이름','소속','역할','사용 상태','등록일'],rr.map(a=>`<tr tabindex="0" data-management-admin="${E(a.id)}" aria-label="${E(a.name)} 상세 보기"><td>${E(a.id)}</td><td class="management-name">${E(a.name)}</td><td>${E(a.org)}</td><td>관리자</td><td><span class="badge">${a.status}</span></td><td>${a.date}</td></tr>`).join(''))}</section>`;
  }
- function adminDetail(){const a=admins.find(a=>a.id===state.admin);return `${note()}${a?`<form data-management-form="admin-save" class="panel detail-form-panel"><div class="panelhead"><h2>관리자 기본정보</h2><span>${E(a.id)}</span></div><div class="detail-rows form-rows">${input('id','관리자 ID *',a.id,true)}${input('name','이름 *',a.name,true)}${input('org','소속',a.org)}${field('사용 상태',`<select name="status">${options(['사용','미사용'],a.status)}</select>`)}</div><div class="formfooter"><button class="btn primary" type="submit">수정</button><a href="#BAS-16" class="btn">목록으로</a></div></form>`:'<div class="empty">관리자를 찾을 수 없습니다.</div>'}`;}
+ function adminEditor(create=new URLSearchParams(location.search).get('adminMode')==='create'){
+ const a=create?{id:'',name:'',org:'',status:'사용'}:admins.find(a=>a.id===state.admin);if(!a)return '<div class="empty">관리자를 찾을 수 없습니다.</div>';
+ return `${note()}<form data-management-form="${create?'admin-create':'admin-save'}" class="panel detail-form-panel"><div class="panelhead"><h2>관리자 기본정보</h2></div><div class="detail-rows form-rows">${field('관리자 ID *','<input name="id" value="'+E(a.id)+'" required '+(create?'':'readonly aria-readonly="true"')+'>')}${input('name','이름 *',a.name,true)}${input('org','소속',a.org)}${field('사용 상태','<select name="status">'+options(['사용','미사용'],a.status)+'</select>')}</div><p data-management-error role="alert"></p><div class="formfooter"><a href="#BAS-16" class="btn">${create?'취소':'목록으로'}</a><button class="btn primary" type="submit">${create?'등록':'수정'}</button></div></form>`;
+ }
+ function adminDetail(){return adminEditor();}
+ function adminMode(create){const url=new URL(location.href);if(create)url.searchParams.set('adminMode','create');else url.searchParams.delete('adminMode');history.replaceState(null,'',url.pathname+url.search+url.hash);}
+
  function operatorAccount(){
   const c=companies.find(c=>c.id===ownCompany()),history=assignments.filter(a=>a.company===c?.id&&allowedAssignment(a)).sort((a,b)=>b.year.localeCompare(a.year));
   if(!c)return '<div class="empty">소속 운영용역사를 확인할 수 없습니다.</div>';
@@ -53,13 +59,11 @@
  }
  function render(){
   if(['COM-06','COM-07','COM-08'].includes(state.screen))return ['buyOperator','exportOperator'].includes(state.role)?`<div data-management-root>${operatorAccount()}</div>`:'<div class="empty">운영용역사 대표 담당자용 화면입니다.</div>';
-  if(!isAdmin())return '<div class="empty">이용 권한이 없습니다.</div>';return `<div data-management-root>${state.screen==='BAS-15'?operatorList():state.screen==='BAS-17'?operatorDetail():state.screen==='BAS-19'?operatorRegistration():state.screen==='BAS-20'?adminRegistration():state.screen==='BAS-16'?adminList():adminDetail()}</div>`;}
+  if(!isAdmin())return '<div class="empty">이용 권한이 없습니다.</div>';return `<div data-management-root>${state.screen==='BAS-15'?operatorList():state.screen==='BAS-17'?operatorDetail():state.screen==='BAS-19'?operatorRegistration():state.screen==='BAS-16'?adminList():adminDetail()}</div>`;}
  function paint(){const r=document.querySelector('[data-management-root]');if(r)r.outerHTML=render();}
  function message(text){state.notice=text;paint();}
  function modal(title,body){const d=document.getElementById('dialog');document.getElementById('dialog-content').innerHTML=`<div class="dialoghead"><h2>${title}</h2>${button('close','닫기')}</div><div class="dialogbody">${body}<p data-management-error role="alert"></p></div>`;d.showModal();}
  function close(){document.getElementById('dialog').close();}
- function adminRegistration(){return `${note()}<form data-management-form="admin-create" class="panel detail-form-panel"><div class="panelhead"><h2>관리자 기본정보</h2></div><div class="management-form">${input('id','관리자 ID *','',true)}${input('name','이름 *','',true)}${input('org','소속')}</div><div class="formfooter"><a href="#BAS-16" class="btn">취소</a><button type="submit" class="btn primary">등록</button></div></form>`;}
- function adminForm(){modal('관리자 등록',`<form data-management-form="admin-create" class="management-form">${input('id','관리자 ID *','',true)}${input('name','이름 *','',true)}${input('org','소속')}<button type="submit" class="btn primary">등록</button></form><p class="small">실제 로그인 계정은 생성하지 않습니다.</p>`);}
 
  const staffFields=['행사 연도','기업코드','담당자코드','담당자명'];
  function staffAllowed(){return ((state.screen==='BAS-17'&&isAdmin())||(['COM-07','COM-08'].includes(state.screen)&&['buyOperator','exportOperator'].includes(state.role)))&&allowed(state.company)&&assignments.some(a=>a.company===state.company&&a.year===state.staffYear&&allowedAssignment(a));}
@@ -99,7 +103,7 @@
    const n=upload.rows.length;state.staffUpload=null;close();message(n+'명의 담당자를 등록하고 계정을 일괄 발급했습니다.');return;
   }
   if(a==='operator-create'&&isAdmin()){state.notice='';location.hash='BAS-19';return;}
-  if(a==='admin-create'&&isAdmin()){location.hash='BAS-20';return;}
+  if(a==='admin-create'&&isAdmin()){adminMode(true);location.hash='BAS-18';return;}
   if(a==='template'&&isAdmin()){
    const rows=[fields,['2027','구매상담','DEMO-UPLOAD-01','업로드 용역사','대표','사업장','담당자']];
    const blob=await GFAIRWorkbook.write(rows),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='운영용역사_등록양식.xlsx';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('검토용 XLSX 양식을 다운로드했습니다. 행을 수정해 업로드해 주세요.');return;
@@ -110,8 +114,8 @@
    const n=state.upload.length;state.upload=null;close();state.year='전체';state.query='';message(n+'건을 목록에 반영했습니다. 기업 상세에서 연도별 계정을 발급할 수 있습니다.');
   }
  }
- document.addEventListener('click',ev=>{const b=ev.target.closest('[data-management-action]');if(b){if(!document.querySelector('[data-management-root]'))return;ev.preventDefault();ev.stopImmediatePropagation();action(b).catch(e=>message(e.message));return;}const row=ev.target.closest('[data-management-company],[data-management-admin]');if(!row||ev.target.closest('button,a,input,select,textarea'))return;openRow(row);},true);
- function openRow(row){state.notice='';state.shown.clear();if(row.dataset.managementCompany){if(!allowed(row.dataset.managementCompany))return;state.company=row.dataset.managementCompany;state.staffYear=row.dataset.managementYear;location.hash='BAS-17'}else{if(!isAdmin())return;state.admin=row.dataset.managementAdmin;location.hash='BAS-18'}}
+ document.addEventListener('click',ev=>{if(ev.target.closest('a[href="#BAS-16"]'))adminMode(false);const b=ev.target.closest('[data-management-action]');if(b){if(!document.querySelector('[data-management-root]'))return;ev.preventDefault();ev.stopImmediatePropagation();action(b).catch(e=>message(e.message));return;}const row=ev.target.closest('[data-management-company],[data-management-admin]');if(!row||ev.target.closest('button,a,input,select,textarea'))return;openRow(row);},true);
+ function openRow(row){state.notice='';state.shown.clear();if(row.dataset.managementCompany){if(!allowed(row.dataset.managementCompany))return;state.company=row.dataset.managementCompany;state.staffYear=row.dataset.managementYear;location.hash='BAS-17'}else{if(!isAdmin())return;state.admin=row.dataset.managementAdmin;adminMode(false);location.hash='BAS-18'}}
  document.addEventListener('keydown',ev=>{const row=ev.target.closest('[data-management-company],[data-management-admin]');if(row&&ev.target===row&&['Enter',' '].includes(ev.key)){ev.preventDefault();openRow(row)}});
  document.addEventListener('change',ev=>{if(ev.target.matches('[data-management-staff-year]')){state.staffYear=ev.target.value;paint()}});
  document.addEventListener('submit',async ev=>{
@@ -147,9 +151,10 @@
   if(!isAdmin())return;
   if(['admin-create','admin-save'].includes(type)){
    if(!v('id')||!v('name'))return fail('ID와 이름은 공백만 입력할 수 없습니다.');
+   if(type==='admin-save'&&v('id')!==state.admin)return fail('기존 관리자 ID는 변경할 수 없습니다.');
    if(admins.some(a=>a.id===v('id')&&(type==='admin-create'||a.id!==state.admin)))return fail('이미 등록된 관리자 ID입니다.');
-   if(type==='admin-create'){admins.push({id:v('id'),name:v('name'),org:v('org')||'미등록',status:'사용',date:new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date()).replaceAll('-','.')});state.notice='관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.';location.hash='BAS-16';return;}
-   else{Object.assign(admins.find(a=>a.id===state.admin),{id:v('id'),name:v('name'),org:v('org')||'미등록',status:v('status')});state.admin=v('id')}
+   if(type==='admin-create'){admins.push({id:v('id'),name:v('name'),org:v('org')||'미등록',status:v('status')||'사용',date:new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date()).replaceAll('-','.')});state.notice='관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.';adminMode(false);location.hash='BAS-16';return;}
+   else{Object.assign(admins.find(a=>a.id===state.admin),{name:v('name'),org:v('org')||'미등록',status:v('status')})}
    message('관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.');return;
   }
   if(type==='upload'){
@@ -169,7 +174,7 @@
    }catch(e){fail(e.message)}
   }
  },true);
- window.addEventListener('hashchange',()=>{state.shown.clear()});
+ window.addEventListener('hashchange',()=>{state.shown.clear();if(location.hash!=='#BAS-18')adminMode(false)});
  window.GFAIR_MANAGEMENT={render(screen,role,event){if(['COM-06','COM-07','COM-08'].includes(screen)){if(state.event!==event||!['COM-06','COM-07','COM-08'].includes(state.screen))state.staffYear=event;state.company=role==='exportOperator'?'OP-B':'OP-A'}if(state.role!==role){state.shown.clear();state.query='';state.year='전체';state.type='전체';state.notice='';state.company=role==='exportOperator'?'OP-B':'OP-A'}state.screen=screen;state.role=role;state.event=event;return render()}};
  window.dispatchEvent(new Event('management-ui-ready'));
 })();

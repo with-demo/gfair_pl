@@ -1,5 +1,9 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-16","version":"v2.15","date":"2026.10.22","accountName":"mjha","summary":"관리자 등록·상세를 BAS-18로 통합하고 상세 ID를 읽기 전용으로 제공"},
+{"screenId":"BAS-18","version":"v1.13","date":"2026.10.22","accountName":"mjha","summary":"관리자 등록·상세를 BAS-18로 통합하고 상세 ID를 읽기 전용으로 제공"},
+{"screenId":"SET-01","version":"v0.16","date":"2026.10.22","accountName":"mjha","summary":"그룹 상세·메뉴 권한을 SET-02 기본정보·권한 공통 폼으로 통합"},
+{"screenId":"SET-02","version":"v0.11","date":"2026.10.22","accountName":"mjha","summary":"그룹 상세·메뉴 권한을 SET-02 기본정보·권한 공통 폼으로 통합"},
 {"screenId":"SET-01","version":"v0.15","date":"2026.10.22","accountName":"mjha","summary":"메뉴 권한 편집을 SET-09 팝업으로 제공"},
 {"screenId":"SET-08","version":"v0.2","date":"2026.10.22","accountName":"mjha","summary":"그룹 생성 시 메뉴 접근 권한을 함께 설정·저장"},
 {"screenId":"SET-09","version":"v0.2","date":"2026.10.22","accountName":"mjha","summary":"메뉴 권한 편집을 SET-09 팝업으로 제공"},
