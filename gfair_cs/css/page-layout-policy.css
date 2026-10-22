@@ -6,4 +6,22 @@
 #app #content>.page-bottom-actions>.page-action-submit{background:#333;border-color:#333;color:#fff}
 #app #content>.page-bottom-actions>.page-action-delete{background:#777;border-color:#777;color:#fff}
 #app #content .page-action-source-empty{display:none}
+/* 묶음 제목은 카드 밖에, 표·콘텐츠는 사각형 영역으로 분리한다. */
+#app #content .page-section-title{font-size:16px;font-weight:700;margin:0 0 12px;padding:0;grid-column:1/-1}
+#app #content .page-information-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px;padding:0;border:0;background:transparent;grid-column:1/-1}
+#app #content .page-information-heading>.page-section-title{margin:0}
+#app #content .page-information-body{border:0;border-radius:0;box-shadow:none;background:transparent;padding:0;margin:0 0 28px;grid-column:1/-1;overflow:visible}
+#app #content .page-information-body>.panel.pad{padding:0;border:0;border-radius:0;background:transparent}
+#app #content .page-information-body>.page-information-tools{padding:0 0 10px;border:0;background:transparent;justify-content:flex-end}
+#app #content .page-information-body>.detail-rows,#app #content .page-information-body .write-form-rows,#app #content .page-information-body>.tablewrap,#app #content .page-information-body>.journal-table,#app #content .page-information-body>.notice-detail{background:#fff;border:1px solid #ddd;border-radius:0}
+#app #content .export-journal-form{gap:0}
+/* dl은 항목/값 셀, form-rows는 항목/입력 쌍을 자식으로 가진다. */
+#app #content .form-rows.write-form-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;padding:0}
+#app #content .form-rows.write-form-rows>.write-form-row{display:grid;grid-template-columns:150px minmax(0,1fr);min-width:0;margin:0;border:0;border-right:1px solid #ddd;border-bottom:1px solid #ddd}
+#app #content .form-rows.write-form-rows>.write-form-row.wide{grid-column:1/-1}
+#app #content .form-rows .write-form-row>span:first-child{padding:12px 16px;background:#f4f4f4;border-right:1px solid #ddd}
+#app #content .form-rows .write-form-controls{padding:10px 16px;min-height:48px}
+#app #content .page-information-body .detail-rows>dt,#app #content .page-information-body .detail-rows>dd{margin:0;border-top:0;border-right:1px solid #ddd;border-bottom:1px solid #ddd}
+@media(max-width:1000px){#app #content .form-rows.write-form-rows{grid-template-columns:minmax(0,1fr)}#app #content .form-rows.write-form-rows>.write-form-row{grid-template-columns:120px minmax(0,1fr)}}
+@media(max-width:600px){#app #content .form-rows.write-form-rows>.write-form-row{grid-template-columns:110px minmax(0,1fr)}}
 @media print{#app #content>.page-bottom-actions{display:none}}

@@ -11,10 +11,17 @@
   const meta=(window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).find(s=>s.id===route);
   if(['COM-01','screens'].includes(route))return;
   const detail=meta&& !['list','matrix','dashboard'].includes(meta.kind)||!!main.querySelector('.event-information,.notice-board[data-notice-view="detail"],.notice-board[data-notice-view="editor"],.workflow-page-body,form:not(.filters):not(#filter-form):not(#journal-filter):not([role=search])');
-  if(detail)main.querySelectorAll('section>h2,section>h3,section>.panelhead>h2').forEach(h=>{
+  if(detail)main.querySelectorAll('section>h2,section>h3,.panel>.panelhead>h2,form>.panelhead>h2,.journal-section-head>h2').forEach(h=>{
    if(h.closest('.filters,.survey-paper,.tablewrap'))return;
    if(!h.classList.contains('page-section-title'))h.classList.add('page-section-title');
    if(/^\s*[O○●]\s+/.test(h.textContent)&&h.childElementCount===0)h.textContent=h.textContent.replace(/^\s*[O○●]\s+/,'');
+   const panel=h.parentElement.matches('.panelhead,.journal-section-head')?h.parentElement.parentElement:h.parentElement;
+   if(panel.classList.contains('panel')){
+    const header=h.parentElement;
+    panel.classList.add('page-information-body');
+    if(header!==panel&&header.children.length>1){panel.before(header);header.classList.remove('panelhead');header.classList.add('page-information-heading');}
+    else{panel.before(h);if(header!==panel)header.remove();}
+   }
   });
   let bar=main.querySelector(':scope>.page-bottom-actions');
   const candidates=[...new Set([...main.querySelectorAll(sources+(!detail?',.panelhead':''))].flatMap(group=>[...group.querySelectorAll('button,a.btn,input[type=submit]')]))].filter(b=>!b.closest('.tablewrap,table,dialog,.page-bottom-actions')&&!b.matches('[hidden]'));
