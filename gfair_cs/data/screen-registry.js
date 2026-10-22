@@ -10,16 +10,6 @@ window.GFAIR_SCREEN_REGISTRY=[
     "alias": "SURVEY-HOME"
   },
   {
-    "id": "SET-08",
-    "title": "그룹 등록",
-    "parent": "SET-01",
-    "summary": "그룹 등록 화면에서 대상 정보와 처리 내용을 확인합니다.",
-    "kind": "workflow",
-    "match": "그룹 등록",
-    "selector": "[data-group-action=create]",
-    "contains": false
-  },
-  {
     "id": "SET-11",
     "title": "설문 등록",
     "parent": "SET-05",
@@ -271,3 +261,5 @@ window.GFAIR_SCREEN_REGISTRY=[
 (()=>{for(const group of GFAIR_SCREENS)group.screens=group.screens.filter(s=>s.id!=='BAS-20');const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-18');s.title='관리자 등록·상세';s.summary='관리자를 등록하거나 기본정보를 수정하며 기존 관리자 ID는 변경하지 않습니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();
 
 (()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='SET-02');s.title='그룹 기본정보·메뉴 권한';s.summary='그룹의 기본정보와 메뉴 접근 권한을 함께 확인하고 수정합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();
+
+(()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='SET-02');s.title='그룹 등록·상세·메뉴 권한';s.summary='그룹 기본정보와 메뉴 접근 권한을 등록하거나 수정합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();
