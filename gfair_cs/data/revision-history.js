@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-04","version":"v0.30","date":"2026.10.22","accountName":"mjha","summary":"1·2번 디스크립션 내용 교환","changes":["1번에 엑셀 연계 기본정보 설명, 2번에 바이어 코드 설명을 표시하도록 내용 교환.","핀 위치·번호·댓글은 유지."]},
   {"screenId":"BAS-03","version":"v1.20","date":"2026.10.22","accountName":"mjha","summary":"참가연도 시작·종료 범위 검색 적용","changes":["참가연도를 시작 연도~종료 연도 두 개의 선택 항목으로 변경.","시작·종료 연도를 포함한 기간 중 참가이력이 하나라도 있으면 조회하고 상태·키워드와 AND 적용.","역전 범위 검증 및 초기화 적용, 검색필터 디스크립션 갱신."]},
   {"screenId":"BAS-05","version":"v1.19","date":"2026.10.22","accountName":"mjha","summary":"참가연도 시작·종료 범위 검색 적용","changes":["참가연도를 시작 연도~종료 연도 두 개의 선택 항목으로 변경.","시작·종료 연도를 포함한 기간 중 참가이력이 하나라도 있으면 조회하고 상태·키워드와 AND 적용.","역전 범위 검증 및 초기화 적용, 검색필터 디스크립션 갱신."]},
   {"screenId":"BAS-07","version":"v1.20","date":"2026.10.22","accountName":"mjha","summary":"참가연도 시작·종료 범위 검색 적용","changes":["참가연도를 시작 연도~종료 연도 두 개의 선택 항목으로 변경.","시작·종료 연도를 포함한 기간 중 참가이력이 하나라도 있으면 조회하고 상태·키워드와 AND 적용.","역전 범위 검증 및 초기화 적용, 검색필터 디스크립션 갱신."]},
