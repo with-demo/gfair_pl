@@ -157,11 +157,11 @@
     const buyerCountry = buyerPairs.find(pair => text(pair.querySelector('.journal-label')).startsWith('바이어 국가'));
     const buyerCountrySelect = buyerCountry?.querySelector('[data-single-select]');
     const initialBuyerCountry = buyerCountrySelect?.querySelector('[data-select-label]')?.textContent || '';
-    replaceWithLockedInput(buyerCode, 'buyerCode', buyerCode?.querySelector('[name="buyerCode"]')?.value || '');
+    buyerCode?.remove();
     const buyerCountryOptions = JSON.parse(buyerCountrySelect?.dataset.options || '[]');
     optionMap.set('buyerCountry', buyerCountryOptions);
     replaceWithLockedInput(buyerCountry, 'buyerCountry', initialBuyerCountry, buyerCountryOptions);
-    [buyerCode, buyerCountry].forEach(pair => {
+    [buyerCountry].forEach(pair => {
       const input = pair?.querySelector('.journal-control input');
       if (input) { input.readOnly = true; input.disabled = true; input.classList.add('journal-readonly'); }
     });
@@ -171,15 +171,11 @@
       const row = document.createElement('div');
       row.className = 'journal-table-row';
       row.append(buyerSelectPair);
-      const detailRow = document.createElement('div');
-      detailRow.className = 'journal-table-row';
-      if (buyerCode) buyerCode.classList.add('full');
       const countryRow = document.createElement('div');
       countryRow.className = 'journal-table-row';
       if (buyerCountry) buyerCountry.classList.add('full');
-      if (buyerCode) detailRow.append(buyerCode);
       if (buyerCountry) countryRow.append(buyerCountry);
-      buyerTable.replaceChildren(row, detailRow, countryRow);
+      buyerTable.replaceChildren(row, countryRow);
     }
     form.dataset.participantCompanySelect = companyInput?.dataset.name || 'company';
   }
