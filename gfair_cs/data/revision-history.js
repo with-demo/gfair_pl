@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"JNL-16","version":"v0.7","fromVersion":"v0.6","date":"2026.10.22","accountName":"yulotso0310-cyber","summary":"상세페이지에서 이동 없이 상담일지 수정","changes":["수정 클릭 시 JNL-05 등록 페이지로 이동하지 않고 JNL-16 화면 내에서 편집 모드로 전환.","저장·취소 후에도 현재 상세 화면을 유지."]},
   {"screenId":"BAS-03","version":"v1.18","date":"2026.10.22","accountName":"mjha","summary":"일본 바이어 이름 일본어 표기","changes":["일본 바이어 예시 이름을 田中 浩로 통일."]},
   {"screenId":"BAS-04","version":"v0.24","date":"2026.10.22","accountName":"mjha","summary":"일본 바이어 이름 일본어 표기","changes":["일본 바이어 예시 이름을 田中 浩로 통일."]},
   {"screenId":"JNL-05","version":"v0.20","date":"2026.10.22","accountName":"mjha","summary":"일본 바이어 이름 일본어 표기","changes":["일본 바이어 예시 이름을 田中 浩로 통일."]},
