@@ -459,3 +459,6 @@ GFAIR_MENU.push({name:'만족도 조사',icon:'clipboard-check',direct:true,item
  GFAIR_MENU.splice(index+1,0,{name:'담당자관리',icon:'users',direct:true,items:[['COM-07','담당자관리',[],{admin:'X',buyOperator:'O',exportOperator:'O',buyer:'X',interpreter:'X'}]]});
  const visible=GFAIR_NAV.visible.bind(GFAIR_NAV);GFAIR_NAV.visible=function(role){return visible(role).filter(g=>!(['buyOperator','exportOperator'].includes(role)&&g.name==='기본정보관리'));};
 })();
+
+// 국내바이어와 통역원 LNB에는 통합 대시보드를 표시하지 않는다.
+(()=>{const group=GFAIR_MENU.find(g=>g.name==='모니터링');const dashboard=group?.items.find(item=>item[0]==='MON-01');if(dashboard)Object.assign(dashboard[3],{buyer:'X',interpreter:'X'});})();
