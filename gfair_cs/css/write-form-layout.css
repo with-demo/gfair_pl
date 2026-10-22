@@ -18,3 +18,14 @@
 #app .write-form-controls>label:has(>input[type=radio]),#app .write-form-controls>label:has(>input[type=checkbox]){display:inline-flex;align-items:center;gap:6px;margin:0;white-space:nowrap;font-size:13px}
 @media(max-width:600px){#app fieldset.write-form-row>legend{width:110px;padding:12px 10px}#app fieldset.write-form-row>.write-form-controls{margin-left:110px}}
 @media(min-width:601px) and (max-width:1000px){#app .write-form-rows>.write-form-row{grid-template-columns:180px minmax(0,1fr)}#app fieldset.write-form-row>legend{width:180px}#app fieldset.write-form-row>.write-form-controls{margin-left:180px}}
+/* JNL-05 기본 정보: 2열 배치와 상담 시간 범위 */
+#app .basic-info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid #ddd;background:#fff}
+#app .basic-info-cell{display:grid;grid-template-columns:140px minmax(0,1fr);align-items:stretch;min-width:0;min-height:58px;border-bottom:1px solid #ddd}
+#app .basic-info-cell>label{display:flex;align-items:center;padding:12px 14px;background:#f7f7f7;font-size:13px;line-height:1.5;color:#111}
+#app .basic-info-cell em{margin-left:4px;color:#c62828;font-style:normal}
+#app .basic-info-cell>input,#app .basic-info-cell>.consult-date-range{align-self:center;min-width:0;margin:8px 12px}
+#app .basic-info-cell>input{width:min(100% - 24px,300px);min-height:36px;padding:7px 10px;border:1px solid #ccc;border-radius:2px}
+#app .consult-date-range{display:flex;align-items:center;gap:8px}
+#app .consult-date-range input{width:calc(50% - 14px);min-width:0;min-height:36px;padding:7px 8px;border:1px solid #ccc;border-radius:2px}
+#app .consult-date-range span{flex:none;color:#555}
+@media(max-width:700px){#app .basic-info-grid{grid-template-columns:1fr}#app .basic-info-cell{grid-template-columns:110px minmax(0,1fr)}#app .basic-info-cell>label{padding:10px}#app .basic-info-cell>input,#app .basic-info-cell>.consult-date-range{margin:8px}#app .consult-date-range{gap:4px}#app .consult-date-range input{padding:6px 3px;font-size:12px}}
