@@ -10,8 +10,8 @@
  const key=(name,dob)=>name.trim().toLocaleLowerCase()+'|'+dob;
  const people=new Map([
   ['BAS-03',new Map([[key('James Whitmore','1990-01-01'),{index:0,years:['2026']}],[key('Emily Carter','1993-03-03'),{index:1,years:['2026','2027']}],[key('田中 浩','1994-04-04'),{index:2,years:['2027']}]])],
-  ['BAS-05',new Map([[key('국내바이어 A','1995-05-05'),{index:0,years:['2027']}],[key('국내바이어 B','1991-01-01'),{index:1,years:['2026','2027']}],[key('국내바이어 C','1996-06-06'),{index:2,years:['2026']}]])],
-  ['BAS-07',new Map([[key('통역원 A','1992-01-01'),{index:0,years:['2026','2027']}],[key('통역원 B','1997-07-07'),{index:1,years:['2027']}],[key('통역원 C','1998-08-08'),{index:2,years:['2026']}]])]
+  ['BAS-05',new Map([[key('김민준','1995-05-05'),{index:0,years:['2027']}],[key('이서준','1991-01-01'),{index:1,years:['2026','2027']}],[key('박지은','1996-06-06'),{index:2,years:['2026']}]])],
+  ['BAS-07',new Map([[key('박서연','1992-01-01'),{index:0,years:['2026','2027']}],[key('이준호','1997-07-07'),{index:1,years:['2027']}],[key('김하린','1998-08-08'),{index:2,years:['2026']}]])]
  ]);
  const participantStatus=years=>years.has('2026')&&years.has('2027')?'참가 확정':years.has('2027')?'신규':'참가 미정';
  function syncButtons(){if(!targets.has(screen()))return;app?.querySelectorAll('.pagehead [data-action="action"]').forEach(button=>{if(button.dataset.label==='엑셀 양식 다운로드')button.classList.remove('primary');if(button.dataset.label==='엑셀 일괄 업로드')button.classList.add('primary');});const field=[...(app?.querySelectorAll('.filters .field')||[])].find(x=>x.querySelector('span')?.textContent.trim()==='참가 상태'),select=field?.querySelector('select');if(select&&!['전체','신규','참가 확정','참가 미정'].every((v,i)=>select.options[i]?.value===v))select.replaceChildren(...['전체','신규','참가 확정','참가 미정'].map(v=>new Option(v,v)));}
