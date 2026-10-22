@@ -58,3 +58,7 @@
 /* 상세·등록 페이지 하단 버튼은 화면 폭과 관계없이 우측 정렬한다. */
 #app .formfooter,#app .notice-bottom-actions,#app .group-detail-actions{justify-content:flex-end}
 #app .formfooter>.btn{flex:0 0 auto}
+
+/* 정보 묶음 제목 앞의 원형 불릿은 장식으로 표시한다. */
+#app .detail-section-title{display:flex;align-items:center;gap:9px}
+#app .detail-section-title::before{content:"";display:block;flex:0 0 6px;width:6px;height:6px;border-radius:50%;background:#444}
