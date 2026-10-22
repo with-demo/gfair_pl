@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-02","version":"v0.19","date":"2026.10.22","accountName":"mjha","summary":"index.html 단일 진입점에서 행사 상세·다운로드 정상 표시","changes":["개별 페이지 진입 구조에 의존하던 PDF 리소스 탐색을 수정.","index.html#BAS-02에서 행사 상세와 부스배치도 다운로드를 정상 표시."]},
   {"screenId":"COM-08","version":"v0.2","date":"2026.10.22","accountName":"mjha","summary":"정보 묶음·페이지 작업 버튼의 최우선 공통 규칙 적용","changes":["페이지 작업 버튼을 중복 없이 본문 우측 최하단에 모으고 폼 연결 유지."]},
   {"screenId":"BAS-02","version":"v0.18","date":"2026.10.22","accountName":"mjha","summary":"정보 묶음·페이지 작업 버튼의 최우선 공통 규칙 적용","changes":["페이지 작업 버튼을 중복 없이 본문 우측 최하단에 모으고 폼 연결 유지.","정보 묶음 제목에 공통 원형 불릿 적용."]},
   {"screenId":"BAS-04","version":"v0.15","date":"2026.10.22","accountName":"mjha","summary":"정보 묶음·페이지 작업 버튼의 최우선 공통 규칙 적용","changes":["페이지 작업 버튼을 중복 없이 본문 우측 최하단에 모으고 폼 연결 유지.","정보 묶음 제목에 공통 원형 불릿 적용."]},

@@ -165,7 +165,7 @@ form=function(s){
  const value=(label,text)=>`<div class="event-value" aria-label="${E(label)}">${E(text)}</div>`;
  const pair=(label,text)=>`<div class="event-detail-label">${E(label)}</div>${value(label,text)}`;
  const halls=['생활용품(반려동물)','생활용품(주방용품)','생활용품(생활용품)','생활용품(인테리어)','생활용품(헬스케어)','식품','뷰티/패션','테크','','','','','','',''];
- const boothPdf=new URL('../downloads/2026-gfair-booth-layout-sample.pdf',document.querySelector('script[src*="/js/app.js"]').src).href;
+ const boothPdf=new URL('../downloads/2026-gfair-booth-layout-sample.pdf',document.querySelector('script[src*="js/app.js"]').src).href;
  const title=head({...s,title:'행사정보 상세'}).replace(/<div class="head-actions">[\s\S]*?<\/div>/,'');
  return title+`<div class="event-information">
  <section class="event-detail-section" aria-labelledby="event-basic-title"><h2 id="event-basic-title" class="detail-section-title">기본정보</h2>
