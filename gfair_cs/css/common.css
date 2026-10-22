@@ -84,3 +84,6 @@
 /* 공통 등록·상세 액션: 반응형 화면에서도 우측 하단 정렬 */
 #app .formfooter{justify-content:flex-end}
 #app .formfooter>.btn{flex:0 0 auto}
+
+/* 폼 그리드 안의 액션 바는 항상 두 열 전체를 차지한다. */
+#app .formgrid>.formfooter{grid-column:1/-1;width:100%;}
