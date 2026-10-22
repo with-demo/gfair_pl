@@ -86,10 +86,34 @@
     const companyOptions = JSON.parse(companyInput?.dataset.options || '[]');
     const selectedCompanyValue = companyInput?.querySelector('[data-select-value]')?.value;
     const selectedCompany = companyOptions.find(item => item.value === selectedCompanyValue);
-    if (participant) {
-      participant.querySelector('.journal-label').innerHTML = '참가기업명<em> *</em>';
+    const exhibitorScreen = (window.GFAIR_SCREENS || []).flatMap(group => group.screens || []).find(screen => screen.id === 'ENT-01');
+    const boothByCompany = new Map((exhibitorScreen?.ui?.rows || []).map(row => [row[0], String(row[1] || '').replace(/^부스\s*/, '')]));
+    companyOptions.forEach(item => {
+      const boothNumber = boothByCompany.get(item.value);
+      if (!boothNumber) return;
+      item.boothNumber = boothNumber;
+      item.label = `${item.value} / ${boothNumber}`;
+      item.search = `${item.search || item.value} ${item.label} ${boothNumber}`;
+    });
+    if (companyInput) {
+      companyInput.dataset.options = JSON.stringify(companyOptions);
+      const selectedLabel = companyOptions.find(item => item.value === selectedCompanyValue)?.label;
+      if (selectedLabel) companyInput.querySelector('[data-select-label]').textContent = selectedLabel;
+      companyInput.querySelectorAll('.journal-select-option[data-select-value]').forEach(option => {
+        const item = companyOptions.find(record => record.value === option.dataset.selectValue);
+        if (!item) return;
+        option.dataset.selectLabel = item.label;
+        option.dataset.selectMeta = JSON.stringify(item);
+        option.setAttribute('aria-label', item.label);
+        const labelNode = [...option.childNodes].find(node => node.nodeType === Node.TEXT_NODE);
+        if (labelNode) labelNode.textContent = item.label;
+        else option.append(document.createTextNode(item.label));
+      });
     }
-    if (booth) booth.querySelector('.journal-label').innerHTML = '부스 번호<em> *</em>';
+    if (participant) {
+      participant.querySelector('.journal-label').innerHTML = '참가 기업<em> *</em>';
+      participant.classList.add('full');
+    }
     replaceWithLockedInput(number, 'businessNo', businessNumber(selectedCompany, companyInput));
     if (number) number.querySelector('.journal-label').innerHTML = '사업자 번호<em> *</em>';
     replaceWithLockedInput(country, 'sellerCountry', initialCountry);
@@ -101,9 +125,8 @@
 
     if (table) {
       const orderedRows = [
-        [participant, booth],
-        [number],
-        [country],
+        [participant],
+        [number, country],
         [product],
         [contact, phone],
         [card]
