@@ -26,7 +26,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/management-ui.css?v=unified-editors-20261022',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('management-ui.js?v=unified-editors-20261022',base).href;document.head.append(script);})();
 
-(()=>{const script=document.createElement('script');script.src=new URL('public-boards.js?v=faq-accordion-20261022',document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement('script');script.src=new URL('public-boards.js?v=resource-actions-20261022',document.currentScript.src).href;document.head.append(script);})();
 
 (()=>{const link=document.createElement('link');link.rel='stylesheet';link.href=new URL('../css/agency-filters.css?v=agency-multi-20261020',document.currentScript.src).href;document.head.append(link);})();
 
