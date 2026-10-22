@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-01","version":"v0.15","date":"2026.10.22","accountName":"mjha","summary":"메뉴 권한 편집을 SET-09 팝업으로 제공"},
+{"screenId":"SET-08","version":"v0.2","date":"2026.10.22","accountName":"mjha","summary":"그룹 생성 시 메뉴 접근 권한을 함께 설정·저장"},
+{"screenId":"SET-09","version":"v0.2","date":"2026.10.22","accountName":"mjha","summary":"메뉴 권한 편집을 SET-09 팝업으로 제공"},
 {"screenId":"NTC-02","version":"v1.15","date":"2026.10.22","accountName":"mjha","summary":"FAQ 목록·상세를 NTC-02 질문·답변 토글 화면으로 통합","changes":["질문 선택으로 답변·첨부파일을 펼치거나 접음.","FAQ 등록·수정은 독립 화면 유지, 기존 NTC-09 주소는 NTC-02로 연결."]},
 {"screenId":"NTC-01","version":"v5.35","date":"2026.10.22","accountName":"mjha","summary":"목록·상세·등록·수정을 독립 화면 ID로 분리하여 페이지별 Description 작성 지원"},
 {"screenId":"NTC-02","version":"v1.14","date":"2026.10.22","accountName":"mjha","summary":"목록·상세·등록·수정을 독립 화면 ID로 분리하여 페이지별 Description 작성 지원"},

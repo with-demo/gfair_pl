@@ -11,6 +11,7 @@
  try{for(const e of JSON.parse(sessionStorage.getItem(storage)||'[]')){const canonical=definition(e.parent,e.title);if(canonical){if(route()===e.id&&e.id!==canonical.id)history.replaceState(null,'',location.pathname+location.search+'#'+canonical.id);e.id=canonical.id;}const node=document.createElement('section');node.className='panel workflow-page-body';node.innerHTML=e.html;entries.set(e.id,{...e,node});register(e);}}catch{}
  window.GFAIR_WORKFLOW={entry:id=>entries.get(id),parent:()=>entries.get(route())?.parent||route(),back:()=>{const e=entries.get(route());if(e)location.hash=e.parent;}};
  modal.showModal=function(){
+  if(modal.dataset.presentation==='popup')return nativeShow();
   const host=document.getElementById('dialog-content'),title=(host.querySelector('h2,h3')?.textContent||'').trim();
   const action=/삭제|승인|반려|발송|호출|재발급|발급|출석|출결|보정|상태 변경|처리|업로드|첨부|촬영|긴급|로그아웃|인증|검증|확인하시|저장하시/.test(title);
   const page=!action;

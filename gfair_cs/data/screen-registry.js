@@ -24,7 +24,7 @@ window.GFAIR_SCREEN_REGISTRY=[
     "title": "그룹 메뉴 접근 권한",
     "parent": "SET-01",
     "summary": "그룹 메뉴 접근 권한 화면에서 대상 정보와 처리 내용을 확인합니다.",
-    "kind": "workflow",
+    "kind": "popup",
     "match": "메뉴 접근 권한",
     "selector": "[data-group-action=permissions]",
     "contains": true
@@ -275,3 +275,5 @@ window.GFAIR_SCREEN_REGISTRY=[
 (()=>{const screen=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='NTC-04');screen.title='공지사항 상세';screen.summary='공지사항의 대상·게시 정보와 본문·첨부파일을 확인합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)window.GFAIR_SCREEN_OVERVIEWS['NTC-04']=screen.summary;})();
 
 (()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='NTC-02');s.summary='FAQ 질문을 선택해 답변과 첨부파일을 펼쳐 확인합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();
+
+(()=>{for(const s of GFAIR_SCREENS.flatMap(g=>g.screens)){if(s.id==='SET-08')s.summary='그룹 기본정보와 메뉴 접근 권한을 함께 설정하고 등록합니다.';if(s.id==='SET-09')s.summary='선택한 그룹의 메뉴 접근 권한을 팝업에서 변경합니다.';if(['SET-08','SET-09'].includes(s.id)&&window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;}})();
