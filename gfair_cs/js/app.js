@@ -66,14 +66,15 @@ function exportJournalDetail(s){
    row(pair('행사',field(val('eventName','G-FAIR KOREA '+event))),pair('무역관',field(val('tradeOffice','경기 무역관'))))+
    row(pair('작성자',field(val('writer','통역원 A'))),pair('상담 시간',timeRange))
  );
+ const cardSvg='<svg xmlns="http://www.w3.org/2000/svg" width="360" height="200" viewBox="0 0 360 200"><rect x="2" y="2" width="356" height="196" rx="12" fill="#ffffff" stroke="#cbd3df" stroke-width="4"/><rect x="2" y="2" width="356" height="48" rx="12" fill="#315b9a"/><path d="M2 38h356v12H2z" fill="#315b9a"/><text x="24" y="34" fill="#fff" font-family="Arial,sans-serif" font-size="20" font-weight="700">G-FAIR KOREA</text><circle cx="52" cy="112" r="28" fill="#e8eef7"/><text x="96" y="101" fill="#233b5d" font-family="Arial,sans-serif" font-size="19" font-weight="700">EXHIBITOR</text><text x="96" y="130" fill="#546579" font-family="Arial,sans-serif" font-size="15">BUSINESS CARD</text><path d="M24 164h312" stroke="#dbe1e9" stroke-width="2"/></svg>';
+ const cardPreview='<figure style="margin:0"><img src="data:image/svg+xml,'+encodeURIComponent(cardSvg)+'" alt="셀러 명함 예시" style="display:block;width:140px;height:auto;max-height:80px;object-fit:contain;border:1px solid #ddd"><figcaption style="margin-top:4px;font-size:11px;color:#777">첨부 명함 예시</figcaption></figure>';
  const company=section('기업 정보',
    row(pair('부스 / 홀',field(val('booth','A-01'))),pair('셀러 (기업명)',field(val('company','기업 A'))))+
    row(pair('셀러 코드',field(val('sellerCode','K20260001'))),pair('셀러 국가',field(val('sellerCountry','대한민국 (KR)'))))+
    row(pair('셀러 명함',cardPreview),pair('제품군',field(val('productGroup','Food (식품)'))))+
    row(pair('상담사 (기업 담당자)',field(val('contactPerson','담당자 A'))),pair('상담사 연락처',field(val('contactPhone','031-000-0000'))))
  );
- const cardSvg='<svg xmlns="http://www.w3.org/2000/svg" width="360" height="200" viewBox="0 0 360 200"><rect x="2" y="2" width="356" height="196" rx="12" fill="#ffffff" stroke="#cbd3df" stroke-width="4"/><rect x="2" y="2" width="356" height="48" rx="12" fill="#315b9a"/><path d="M2 38h356v12H2z" fill="#315b9a"/><text x="24" y="34" fill="#fff" font-family="Arial,sans-serif" font-size="20" font-weight="700">G-FAIR KOREA</text><circle cx="52" cy="112" r="28" fill="#e8eef7"/><text x="96" y="101" fill="#233b5d" font-family="Arial,sans-serif" font-size="19" font-weight="700">EXHIBITOR</text><text x="96" y="130" fill="#546579" font-family="Arial,sans-serif" font-size="15">BUSINESS CARD</text><path d="M24 164h312" stroke="#dbe1e9" stroke-width="2"/></svg>';
- const cardPreview='<figure style="margin:0"><img src="data:image/svg+xml,'+encodeURIComponent(cardSvg)+'" alt="셀러 명함 예시" style="display:block;width:140px;height:auto;max-height:80px;object-fit:contain;border:1px solid #ddd"><figcaption style="margin-top:4px;font-size:11px;color:#777">첨부 명함 예시</figcaption></figure>';
+
  const buyer=section('바이어정보',
    row(pair('바이어',field(val('buyer','해외바이어 A'))),pair('바이어 코드',field(val('buyerCode','F20260001'))))+
    row(pair('바이어 국가',field(val('buyerCountry','미국 (US)'))),'')
