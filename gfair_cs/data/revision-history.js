@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-03","version":"v1.21","date":"2026.10.22","accountName":"mjha","summary":"국가 다중 선택 검색 분리","changes":["국가를 별도 코드표 기반 다중 선택으로 분리하고 키워드 국가 검색 제거.","다중 선택 OR 및 연도·상태·키워드 AND 적용, 초기화와 설명·핀 연결 갱신."]},
+  {"screenId":"BAS-07","version":"v1.21","date":"2026.10.22","accountName":"mjha","summary":"통역 언어 다중 선택 및 키워드 검색 범위 정리","changes":["통역 언어를 코드표 기반 다중 선택으로 변경하고 전체·통역원코드·통역원명 키워드 검색 제공.","다중 선택 OR 및 연도·상태·키워드 AND 적용, 초기화와 설명·핀 연결 갱신."]},
   {"screenId":"BAS-06","version":"v0.26","date":"2026.10.22","accountName":"mjha","summary":"초안 작성 기획비고 안내 제거","changes":["초안 작성 안내만 제거하고 기존 검토용 기획비고와 설명 내용 유지."]},
   {"screenId":"BAS-08","version":"v0.26","date":"2026.10.22","accountName":"mjha","summary":"초안 작성 기획비고 안내 제거","changes":["초안 작성 안내만 제거하고 기존 검토용 기획비고와 설명 내용 유지."]},
   {"screenId":"BAS-06","version":"v0.25","date":"2026.10.22","accountName":"mjha","summary":"BAS-04 기준 상세 디스크립션 초안 작성","changes":["국가 대신 바이어기업을 안내하고 K·GK 코드 규칙 반영.","기본정보·고유코드·연락처·이메일·행사참가이력·보기 6개 설명과 기획비고 변경 안내 등록."]},

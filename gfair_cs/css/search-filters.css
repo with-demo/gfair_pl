@@ -33,3 +33,9 @@
 #app #content .unified-search.search-single-condition>.search-condition,
 #app #content .unified-search:has(>.search-condition-wide)>.search-condition-last-odd{grid-column:1/-1}
 @container search-content (max-width:1000px){#app #content .unified-search>.search-condition-last-odd{grid-column:1/-1}}
+
+/* 국가·통역 언어 선택창은 검색 표 위에 펼치고 좁은 화면에서도 입력 셀 안에 유지한다. */
+#app #content .unified-search:has([name=f2][type=checkbox]){position:relative;z-index:2;overflow:visible}
+#app #content .unified-search .matching-options{box-sizing:border-box}
+#app #content .unified-search .matching-options .matching-search{width:100%;min-width:0}
+#app #content .unified-search .matching-multi[open] summary{color:#222;border-color:#555}

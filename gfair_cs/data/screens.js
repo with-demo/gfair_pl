@@ -3492,3 +3492,6 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 
 // BAS-08 항목명: 통역 언어.
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-08');s.ui.fields=s.ui.fields.map(([label,value])=>[label==='통역원 언어'?'통역 언어':label,value]);})();
+
+// 국가·통역 언어는 키워드와 분리한 코드표 기반 다중 선택 조건으로 제공한다.
+(()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens);all.find(s=>s.id==='BAS-03').ui.filters=['참가연도','참가 상태','국가','키워드 검색'];all.find(s=>s.id==='BAS-07').ui.filters=['참가연도','참가 상태','통역 언어','키워드 검색'];})();
