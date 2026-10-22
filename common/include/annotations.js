@@ -2,7 +2,7 @@
 (()=>{
  'use strict';
  const app=document.getElementById('app'),store=window.GFAIR_COLLAB;if(!app||!store)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=table-12px-90px-20261022',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=planning-note-20261022',document.currentScript.src);document.head.append(css);
  let selected=null,picking=false,queued=false,dragging=null,view={closed:document.querySelector('.ui-spec-panel')?.hidden??true,full:false,numbers:true};
  const savingPins=new Set();
  const route=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
@@ -15,14 +15,14 @@
  const overlay=element('div',undefined,'annotation-overlay');document.body.append(overlay);
  const dialog=element('dialog',undefined,'annotation-dialog');document.body.append(dialog);
  async function change(op,body,control){if(control)control.disabled=true;try{const result=await store.mutate(op,body);message('서버에 저장했습니다.');return result;}catch(error){message(error.message);if(error.message.includes('다른 사용자가'))store.refresh();return null;}finally{if(control)control.disabled=false;}}
- const specLabels={item:'항목',type:'유형',defaultValue:'기본값',placeholder:'플레이스홀더',options:'선택 옵션',required:'필수여부',detail:'기능상세',inputFormat:'입력 형식',inputLimit:'입력 제한',visibility:'표시 조건',enabled:'활성·비활성 조건',permission:'사용 권한',trigger:'실행 시점',result:'처리 결과',destination:'이동·연결 대상',validation:'유효성 검사',errorMessage:'오류 안내 문구',loading:'로딩·중복 실행 처리',emptyState:'데이터 없음 처리',dataSource:'데이터 출처',policy:'기본정책',exception:'예외사항'};
+ const specLabels={item:'항목',type:'유형',defaultValue:'기본값',placeholder:'플레이스홀더',options:'선택 옵션',required:'필수여부',detail:'기능상세',inputFormat:'입력 형식',inputLimit:'입력 제한',visibility:'표시 조건',enabled:'활성·비활성 조건',permission:'사용 권한',trigger:'실행 시점',result:'처리 결과',destination:'이동·연결 대상',validation:'유효성 검사',errorMessage:'오류 안내 문구',loading:'로딩·중복 실행 처리',emptyState:'데이터 없음 처리',dataSource:'데이터 출처',policy:'기본정책',exception:'예외사항',planningNote:'기획비고'};
  const typeDefaults={'버튼':['해당 없음','활성','비활성'],'단일셀렉트박스':['미선택','전체','첫 번째 항목'],'다중셀렉트박스':['미선택','전체 선택'],'인풋':['빈 값','0'],'텍스트':['해당 없음','빈 값'],'텍스트에리어':['빈 값'],'체크박스':['미선택','선택'],'라디오박스':['미선택','첫 번째 항목'],'날짜':['미선택','오늘'],'파일첨부':['미첨부'],'기타':['해당 없음']};
  const requiredSpecKeys=['item','type','defaultValue','required','detail'];
  function descriptionBullets(text){
   return text.split(/\n+|\.\s+(?=[가-힣\[])/).map(line=>line.trim().replace(/^[-•]\s*/, '').replace(/\.$/,'').replace(/한다$/,'')).filter(Boolean).map(line=>'- '+line).join('\n');
  }
  function readSpec(text){try{const value=JSON.parse(text);if(value?.format!=='description-spec-v1'||!requiredSpecKeys.every(key=>typeof value[key]==='string'))return null;value.destination=[...new Set([value.destination,value.relatedScreen].filter(value=>typeof value==='string'&&value.trim()).map(value=>value.trim()))].join(' / ');const spec=Object.fromEntries([['format',value.format],...Object.keys(specLabels).map(key=>[key,typeof value[key]==='string'?value[key]:''])]);if(route()==='PRE-01')for(const key of ['detail','policy','exception'])if(spec[key])spec[key]=descriptionBullets(spec[key]);return spec;}catch{return null;}}
- function descriptionBody(text){const spec=readSpec(text);if(!spec)return element('p',text,'annotation-text');const dl=element('dl',undefined,'annotation-spec');Object.entries(specLabels).filter(([key])=>requiredSpecKeys.includes(key)||spec[key]).forEach(([key,label])=>{const value=spec[key]||'—',dd=element('dd');if(/^\s*[-•]\s+/m.test(value)){const list=element('ul',undefined,'annotation-summary-list');value.split(/\n+/).filter(line=>line.trim()).forEach(line=>list.append(element('li',line.replace(/^\s*[-•]\s*/,''))));dd.append(list);}else dd.textContent=value;dl.append(element('dt',label),dd);});return dl;}
+ function descriptionBody(text){const spec=readSpec(text);if(!spec)return element('p',text,'annotation-text');const dl=element('dl',undefined,'annotation-spec');Object.entries(specLabels).filter(([key])=>requiredSpecKeys.includes(key)||spec[key]).forEach(([key,label])=>{const value=spec[key]||'—',dd=element('dd');if(key==='planningNote')dd.classList.add('annotation-planning-note');if(/^\s*[-•]\s+/m.test(value)){const list=element('ul',undefined,'annotation-summary-list');value.split(/\n+/).filter(line=>line.trim()).forEach(line=>list.append(element('li',line.replace(/^\s*[-•]\s*/,''))));dd.append(list);}else dd.textContent=value;const dt=element('dt',label);if(key==='planningNote')dt.classList.add('annotation-planning-note');dl.append(dt,dd);});return dl;}
 
  function edit(record,anchor){
   if(!canEdit())return;const screen=route(),saved=readSpec(record?.text||'')||{detail:record?.text||''};dialog.replaceChildren();
@@ -45,6 +45,7 @@
    if(key==='options'){control.placeholder='선택 옵션을 한 줄에 하나씩 입력하세요.\n예: 전체\n구매\n수출';control.rows=4;}
    if(key==='destination'){const list=element('datalist');list.id='annotation-related-screens';(window.GFAIR_SCREENS||[]).flatMap(group=>group.screens).forEach(screen=>list.append(new Option('['+screen.id+'] '+screen.title,screen.id)));control.setAttribute('list',list.id);control.parentElement.append(list);}
   });});
+  const planningNote=field('planningNote','textarea',1000);planningNote.placeholder='협의 사항이나 추가 검토 내용을 입력하세요. (선택)';
   const inputRulesHeading=grid.querySelector('.annotation-form-group');
   [inputRulesHeading,...['placeholder','inputFormat','inputLimit','options'].map(key=>fields[key].parentElement)].forEach(node=>grid.insertBefore(node,required));
   grid.insertBefore(custom,inputRulesHeading);

@@ -19,3 +19,5 @@
 .annotation-pin.annotation-pin-movable{cursor:grab;touch-action:none;user-select:none}.annotation-pin-movable.dragging{cursor:grabbing;z-index:2;box-shadow:0 2px 8px #0008}
 
 body .annotation-spec,body .annotation-spec :is(dt,dd,li){font-size:12px}
+
+body .annotation-spec .annotation-planning-note,body .annotation-spec .annotation-planning-note :is(li,p){color:#c62828}

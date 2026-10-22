@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-01","version":"v0.33","date":"2026.10.22","accountName":"mjha","summary":"공통 Description 기획비고 항목 추가","changes":["설명 작성·수정 폼 마지막에 선택 입력인 기획비고 추가.","입력한 기획비고는 조회 표에서 빨간색으로 표시하고 기존 설명은 그대로 유지."]},
   {"screenId":"BAS-04","version":"v0.21","date":"2026.10.22","accountName":"mjha","summary":"바이어별 전체 참가연도와 상세 이력 연결","changes":["목록에서 요약된 연도도 해당 바이어의 상세 행사참가이력에 모두 표시.","기존 연도의 예시 ID·PW와 직접 입력 정보 유지."]},
   {"screenId":"BAS-03","version":"v1.15","date":"2026.10.22","accountName":"mjha","summary":"해외 바이어 목록 열·참가연도 요약 표시 변경","changes":["바이어코드·바이어명·국가·참가연도·참가상태 5개 열로 구성.","참가연도는 최신순 최대 3개와 그 외 N건으로 표시하고 5개 연도 예시 추가.","전체 참가연도 데이터와 검색·상세 진입 연결은 유지."]},
   {"screenId":"BAS-04","version":"v0.20","date":"2026.10.22","accountName":"mjha","summary":"행사참가이력의 상담일지 삭제·초청기관유형 추가","changes":["상담일지 열과 버튼 삭제.","연도 다음에 초청기관유형을 추가하고 2027·2026년 KBC, 2024년 GBC 예시 표시."]},
