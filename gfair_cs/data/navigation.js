@@ -146,7 +146,7 @@ window.GFAIR_MENU=[
         "상담일지 현황",
         [
           [
-            "JNL-BUY",
+            "JNL-13",
             "구매상담일지",
             [],
             {
@@ -158,7 +158,7 @@ window.GFAIR_MENU=[
             }
           ],
           [
-            "JNL-EXP",
+            "JNL-14",
             "수출상담일지",
             [],
             {

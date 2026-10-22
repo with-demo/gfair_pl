@@ -3,7 +3,7 @@
  const root=document.getElementById('app');if(!root)return;
  const excluded=new Set(['COM-04','COM-05','COM-06','COM-07','BAS-17','BAS-18','NTC-07']);
  const routes=new Set((window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).filter(s=>s.kind==='list'&&!excluded.has(s.id)).map(s=>s.id));
- ['EVT-01','EVT-02','JNL-BUY','JNL-EXP','SET-05','SURVEY-HOME'].forEach(id=>routes.add(id));
+ ['EVT-01','EVT-02','JNL-13','JNL-14','SET-05','SURVEY-HOME'].forEach(id=>routes.add(id));
  const prepared=new WeakSet(),collator=new Intl.Collator('ko',{numeric:true,sensitivity:'base'});
  const clean=el=>{const copy=el.cloneNode(true);copy.querySelectorAll('.ui-spec-badge,[data-list-row-trigger]').forEach(e=>e.remove());return copy.textContent.trim().replace(/\s+/g,' ');};
  function enhance(table,main,route){

@@ -1,5 +1,13 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04","version":"v0.14","date":"2026.10.22","accountName":"mjha","summary":"사전매칭 팝업에서 통역원 매칭·변경·취소 처리"},
+{"screenId":"PRE-05","version":"v0.11","date":"2026.10.22","accountName":"mjha","summary":"사전매칭 팝업에서 통역원 매칭·변경·취소 처리"},
+{"screenId":"JNL-04","version":"v0.10","date":"2026.10.22","accountName":"mjha","summary":"구매·수출 상담일지의 목록·상세·등록 화면 ID와 페이지명 분리"},
+{"screenId":"JNL-05","version":"v0.10","date":"2026.10.22","accountName":"mjha","summary":"구매·수출 상담일지의 목록·상세·등록 화면 ID와 페이지명 분리"},
+{"screenId":"JNL-13","version":"v0.1","date":"2026.10.22","accountName":"mjha","summary":"구매·수출 상담일지의 목록·상세·등록 화면 ID와 페이지명 분리"},
+{"screenId":"JNL-14","version":"v0.1","date":"2026.10.22","accountName":"mjha","summary":"구매·수출 상담일지의 목록·상세·등록 화면 ID와 페이지명 분리"},
+{"screenId":"JNL-15","version":"v0.1","date":"2026.10.22","accountName":"mjha","summary":"구매·수출 상담일지의 목록·상세·등록 화면 ID와 페이지명 분리"},
+{"screenId":"JNL-16","version":"v0.1","date":"2026.10.22","accountName":"mjha","summary":"구매·수출 상담일지의 목록·상세·등록 화면 ID와 페이지명 분리"},
 {"screenId":"EVT-01","version":"v1.2","date":"2026.10.22","accountName":"mjha","summary":"행사정보 회원 조회에서 고유번호 제외 및 EVT 상세 화면 연결"},
 {"screenId":"EVT-02","version":"v1.2","date":"2026.10.22","accountName":"mjha","summary":"행사정보 회원 조회에서 고유번호 제외 및 EVT 상세 화면 연결"},
 {"screenId":"EVT-03","version":"v0.1","date":"2026.10.22","accountName":"mjha","summary":"행사정보 전용 상세 화면 ID 분리 및 고유번호·행사이력 제외"},
