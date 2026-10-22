@@ -6,10 +6,10 @@
  const random=limit=>crypto.getRandomValues(new Uint32Array(1))[0]%limit;
  function account(year){let id;const used=new Set([...profiles.values()].flatMap(p=>p.history.map(h=>h.id)));do{id='GF'+String(year).slice(-2)+String(random(9999)+1).padStart(4,'0');}while(used.has(id));return{year,id,invitationType:year===2024?'GBC':'KBC',pw:String.fromCharCode(65+random(26))+String(random(1000000)).padStart(6,'0')};}
  function profileFor(record,records){
-  const source=record||[],key=source[0]||'BAS-04-example';if(profiles.has(key))return profiles.get(key);
+  const source=record||[],key=source[0]||'BAS-04-example',sourceYears=[...new Set(String(source[4]||'').match(/20\d{2}/g)||[])].map(Number).sort((a,b)=>b-a),years=sourceYears.length?sourceYears:[2027,2026,2024];if(profiles.has(key)){const p=profiles.get(key);p.history=years.map(year=>p.history.find(h=>h.year===year)||account(year));persist();return p;}
   const code=/^F\d{8}$/.test(source[0]||'')?source[0]:'F2027'+String(Math.max(0,...records.map(r=>/^F2027\d{4}$/.test(r[0])?Number(r[0].slice(-4)):0))+1).padStart(4,'0');
   const country=(window.GFAIR_COUNTRY_CODES||[]).find(c=>c.code===source[2]||c.name===source[2]);
-  const profile={code,name:source[1]||'James Whitmore',country:country||(source[2]?{name:source[2],code:''}:{name:'영국',code:'GB'}),invitationType:'KBC',phone:['010','0000','0000'],emailLocal:'james.whitmore',emailDomain:'example.com',memo:'',history:[2027,2026,2024].map(account)};
+  const profile={code,name:source[1]||'James Whitmore',country:country||(source[2]?{name:source[2],code:''}:{name:'영국',code:'GB'}),invitationType:'KBC',phone:['010','0000','0000'],emailLocal:'james.whitmore',emailDomain:'example.com',memo:'',history:years.map(account)};
   profiles.set(key,profile);persist();return profile;
  }
  const options=(values,current)=>values.map(value=>'<option value="'+escape(value)+'"'+(value===current?' selected':'')+'>'+escape(value)+'</option>').join('');
