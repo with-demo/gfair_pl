@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+  {"screenId":"BAS-04","version":"v0.22","date":"2026.10.22","accountName":"mjha","summary":"기본정보의 코드·기관·이름·소속 정보 순서 통일","changes":["첫 행에 코드·초청기관유형, 둘째 행에 이름·국가(기업·언어)를 배치."]},
+  {"screenId":"BAS-06","version":"v0.18","date":"2026.10.22","accountName":"mjha","summary":"기본정보의 코드·기관·이름·소속 정보 순서 통일","changes":["첫 행에 코드·초청기관유형, 둘째 행에 이름·국가(기업·언어)를 배치."]},
+  {"screenId":"BAS-08","version":"v0.18","date":"2026.10.22","accountName":"mjha","summary":"기본정보의 코드·기관·이름·소속 정보 순서 통일","changes":["첫 행에 코드·초청기관유형, 둘째 행에 이름·국가(기업·언어)를 배치.","초청기관유형 KBC 예시를 기본정보에 추가."]},
   {"screenId":"BAS-06","version":"v0.17","date":"2026.10.22","accountName":"mjha","summary":"BAS-04 공통 구조로 기본정보·행사참가이력 구성","changes":["텍스트 기본정보와 연락처·이메일·전체 너비 메모 입력란을 구분.","유형별 코드·예시 임시계정·비밀번호와 연도별 보기·숨기기 제공.","바이어기업과 초청기관유형, 연도별 KBC·GBC 표시."]},
   {"screenId":"BAS-08","version":"v0.17","date":"2026.10.22","accountName":"mjha","summary":"BAS-04 공통 구조로 기본정보·행사참가이력 구성","changes":["텍스트 기본정보와 연락처·이메일·전체 너비 메모 입력란을 구분.","유형별 코드·예시 임시계정·비밀번호와 연도별 보기·숨기기 제공.","제공 언어 코드표 기반 1~5지망과 언어 1개·5개 예시 제공."]},
   {"screenId":"BAS-05","version":"v1.14","date":"2026.10.22","accountName":"mjha","summary":"국내 바이어·통역원 상세와 연결되는 예시 데이터 반영","changes":["예시 이름과 참가연도, 기업·언어 정보를 상세와 동일한 원본 데이터로 연결."]},
