@@ -3531,3 +3531,5 @@ GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='COM-07').summary='본인 회
 
 // 행사정보 화면도 공통 선택 목록과 Description에서 동일한 메타데이터를 사용한다.
 (()=>{const all=GFAIR_SCREENS.flatMap(g=>g.screens),group=GFAIR_SCREENS.find(g=>g.screens.some(s=>s.id==='PRE-01'));for(const [id,source,title,role,summary] of [['EVT-01','BAS-05','국내 바이어','관리자·구매상담 운영용역사','현재 행사에 참가하는 국내 바이어의 정보와 임시 계정·QR 상태를 확인합니다.'],['EVT-02','BAS-07','통역원','관리자·수출상담 운영용역사','현재 행사에 참가하는 통역원의 정보와 임시 계정·QR 상태를 확인합니다.']]){if(all.some(s=>s.id===id))continue;const base=all.find(s=>s.id===source);group.screens.push({...base,id,title,role,kind:'list',summary,ui:{...base.ui,filters:(base.ui.filters||[]).filter(label=>label!=='행사'),actions:[]}});}})();
+
+(()=>{const all=GFAIR_SCREENS.flatMap(g=>g.screens),group=GFAIR_SCREENS.find(g=>g.screens.some(s=>s.id==='EVT-01'));for(const [id,source,title] of [['EVT-03','BAS-06','국내 바이어 상세'],['EVT-04','BAS-08','통역원 상세']]){const base=all.find(s=>s.id===source);group.screens.push({...base,id,title,summary:'현재 행사 참가자의 기본정보와 운영 정보를 확인합니다.',ui:{...base.ui}});}})();

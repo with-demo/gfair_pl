@@ -79,3 +79,5 @@ window.GFAIR_SCREEN_OVERVIEWS={
 window.GFAIR_SCREEN_OVERVIEWS['BAS-20']='상담시스템 관리자의 기본정보를 입력하고 등록합니다.';
 
 Object.assign(window.GFAIR_SCREEN_OVERVIEWS,{'EVT-01':'현재 행사에 참가하는 국내 바이어의 정보와 임시 계정·QR 상태를 확인합니다.','EVT-02':'현재 행사에 참가하는 통역원의 정보와 임시 계정·QR 상태를 확인합니다.'});
+
+Object.assign(window.GFAIR_SCREEN_OVERVIEWS,{'EVT-03':'현재 행사에 참가하는 국내 바이어의 기본정보와 운영 정보를 확인합니다.','EVT-04':'현재 행사에 참가하는 통역원의 기본정보와 운영 정보를 확인합니다.'});

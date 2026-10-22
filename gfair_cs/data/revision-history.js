@@ -1,5 +1,10 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-01","version":"v1.2","date":"2026.10.22","accountName":"mjha","summary":"행사정보 회원 조회에서 고유번호 제외 및 EVT 상세 화면 연결"},
+{"screenId":"EVT-02","version":"v1.2","date":"2026.10.22","accountName":"mjha","summary":"행사정보 회원 조회에서 고유번호 제외 및 EVT 상세 화면 연결"},
+{"screenId":"EVT-03","version":"v0.1","date":"2026.10.22","accountName":"mjha","summary":"행사정보 전용 상세 화면 ID 분리 및 고유번호·행사이력 제외"},
+{"screenId":"EVT-04","version":"v0.1","date":"2026.10.22","accountName":"mjha","summary":"행사정보 전용 상세 화면 ID 분리 및 고유번호·행사이력 제외"},
+{"screenId":"PRE-01","version":"v3.9","date":"2026.10.22","accountName":"mjha","summary":"행사정보 회원 조회에서 고유번호 제외 및 EVT 상세 화면 연결"},
   {"screenId":"EVT-01","version":"v1.1","fromVersion":"v1.0","date":"2026.10.22","accountName":"mjha","summary":"행사정보 화면 ID·페이지명·개요를 공통 화면 목록에 정식 등록"},
   {"screenId":"EVT-02","version":"v1.1","fromVersion":"v1.0","date":"2026.10.22","accountName":"mjha","summary":"행사정보 화면 ID·페이지명·개요를 공통 화면 목록에 정식 등록"},
   {"screenId":"BAS-20","version":"v0.1","date":"2026.10.22","accountName":"mjha","summary":"관리자 등록을 정식 화면 ID BAS-20으로 등록","changes":["관리자 관리의 등록 버튼과 직접 URL 진입 지원.","기존 임시 주소는 BAS-20으로 연결하고 등록 후 관리자 목록으로 복귀."]},
