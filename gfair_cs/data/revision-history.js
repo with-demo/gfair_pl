@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-14","version":"v0.19","date":"2026.10.23","accountName":"shyuwith","summary":"선택 건수 문구 제거","changes":["관리자·수출상담 운영용역사·통역원 목록 좌측 하단의 선택 n건 문구 제거.","체크 선택에 따른 일괄 처리 버튼 활성화와 좌측 하단 배치 유지."]},
 {"screenId":"JNL-14","version":"v0.18","date":"2026.10.23","accountName":"shyuwith","summary":"수출상담 운영용역사 일괄 승인·반려 추가","changes":["관리자와 동일하게 승인 요청 상태의 일지를 체크 선택하고 목록 좌측 하단에서 승인·반려 처리.","공통 반려 사유 입력 팝업 및 상태별 처리 권한 연결."]},
 {"screenId":"JNL-14","version":"v0.17","date":"2026.10.23","accountName":"shyuwith","summary":"일괄 처리 버튼 목록 하단 좌측 배치","changes":["통역원 승인 요청 및 관리자 승인·반려 버튼을 선택 건수와 함께 좌측 하단에 배치.","상담일지 등록 버튼은 우측 하단 유지."]},
 {"screenId":"JNL-14","version":"v0.16","date":"2026.10.23","accountName":"shyuwith","summary":"사용구분별 체크 선택 및 일괄 승인 처리","changes":["통역원 본인 일지의 체크 선택·일괄 승인 요청 추가.","관리자 전체 일지의 체크 선택·일괄 승인·공통 사유 입력 후 반려 추가."]},
