@@ -4,49 +4,21 @@
  const SERVER=window.MOCKUP_SHARED_CONFIG.server;
  const PROJECT=document.body.dataset.project||window.MOCKUP_SHARED_CONFIG.defaultProject;
  const TOKEN='gfair.collab.session',VERIFIER='gfair.collab.verifier';
- let token=sessionStorage.getItem(TOKEN)||'',user=null,records=[],screen='',snapshot='',activeRequest=null,loading=false,githubReady=false,inherited=false,copying=null;
+ let token=sessionStorage.getItem(TOKEN)||'',user=null,records=[],screen='',snapshot='',activeRequest=null,loading=false,githubReady=false;
  const changed=()=>window.dispatchEvent(new Event('collaboration-updated'));
- const uiRoute=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
- const role=()=>document.querySelector('select[aria-label="사용구분"]')?.value||'admin';
- const groups=['COM','BAS','PRE','EVT','JNL','MON','NTC','STA','SET','ENT'];
- const descriptionRoute=route=>PROJECT==='gfair_cs'&&groups.includes(route.slice(0,3))&&/^[A-Z]{3}-\d{2}$/.test(route)?({admin:'A',buyOperator:'B',exportOperator:'X',interpreter:'I',buyer:'D'}[role()]||'A')+route.slice(0,2)+route.slice(3):route;
- const parsed=record=>{try{return JSON.parse(record.text);}catch{return {};}};
- const current=()=>descriptionRoute(uiRoute());
+ const current=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
  async function api(op,body,options={}){
-  if(body?.screen)body={...body,screen:descriptionRoute(body.screen)};
   const url=SERVER+'/api/collab'+(body?'':'?'+new URLSearchParams({op,project:PROJECT,screen:options.route||current()}));
   const response=await fetch(url,{method:body?'POST':'GET',credentials:'omit',cache:'no-store',signal:options.signal,headers:{...(body?{'Content-Type':'application/json'}:{}),...(token?{Authorization:'Bearer '+token}:{})},body:body?JSON.stringify({op,project:PROJECT,...body}):undefined});
   let result;try{result=await response.json();}catch{throw Error('공동작업 서버에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.');}
   if(!response.ok){if(response.status===401){token='';user=null;records=[];sessionStorage.removeItem(TOKEN);changed();if(op==='list'&&!body)return api('list',undefined,options);}throw Error(result.error||'요청을 처리하지 못했습니다.');}return result;
  }
  async function refresh(force=false){
-  if(copying)return;
   const route=current();if(activeRequest?.route===route&&!force)return;
   activeRequest?.controller.abort();if(route==='screens'){activeRequest=null;loading=false;changed();return;}
   const request={route,controller:new AbortController(),notify:screen!==route||!!window.GFAIR_COLLAB.error};activeRequest=request;loading=true;if(request.notify)changed();
-  try{const options={route,signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])};let result=await api('list',undefined,options);let fallback=false;if(PROJECT==='gfair_cs'&&route!==uiRoute()&&!result.records?.some(record=>parsed(record).roleInitialized)){const initial=await api('list',undefined,{...options,route:uiRoute()});result={...result,records:initial.records?.map(record=>({...record,comments:[]}))};fallback=true;}if(activeRequest!==request||route!==current())return;if(!Array.isArray(result.records))throw Error('디스크립션 응답을 확인하지 못했습니다. 다시 불러와 주세요.');user=result.user;githubReady=!!result.githubConfigured;records=result.records;inherited=fallback;screen=route;const next=JSON.stringify(result);request.notify=request.notify||snapshot!==next;snapshot=next;if(!new URL(location.href).searchParams.has('annotation_error')&&!window.GFAIR_COLLAB.authError)window.GFAIR_COLLAB.error='';}
+  try{const result=await api('list',undefined,{route,signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])});if(activeRequest!==request||route!==current())return;if(!Array.isArray(result.records))throw Error('디스크립션 응답을 확인하지 못했습니다. 다시 불러와 주세요.');user=result.user;githubReady=!!result.githubConfigured;records=result.records;screen=route;const next=JSON.stringify(result);request.notify=request.notify||snapshot!==next;snapshot=next;if(!new URL(location.href).searchParams.has('annotation_error')&&!window.GFAIR_COLLAB.authError)window.GFAIR_COLLAB.error='';}
   catch(error){if(activeRequest!==request||request.controller.signal.aborted)return;request.notify=true;window.GFAIR_COLLAB.error=error.name==='TimeoutError'?'디스크립션 조회가 지연되고 있습니다. 다시 불러와 주세요.':error.message;}finally{if(activeRequest===request){activeRequest=null;loading=false;if(request.notify)changed();}}
- }
- async function independentRecords(){
-  if(!inherited)return new Map();
-  if(copying)return copying;
-  const route=current(),base=uiRoute(),source=records.slice();
-  copying=(async()=>{
-   const existing=(await api('list',undefined,{route})).records,ids=new Map();
-   for(const record of source.filter(record=>parsed(record).format!=='screen-overview-v1')){
-    if(route!==current())throw Error('사용구분이 변경되었습니다. 현재 화면에서 다시 저장해 주세요.');
-    let saved=existing.find(item=>item.text===record.text&&JSON.stringify(item.anchor)===JSON.stringify(record.anchor));
-    if(!saved)saved=await api('create',{screen:route,text:record.text,anchor:record.anchor});
-    ids.set(record.id,{id:saved.id,revision:saved.revision||1});
-   }
-   const overview=source.find(record=>parsed(record).format==='screen-overview-v1'),data=overview?parsed(overview):{format:'screen-overview-v1',overview:window.GFAIR_SCREEN_OVERVIEWS?.[base]||'화면 개요를 작성해 주세요.'};
-   let saved=existing.find(record=>parsed(record).roleInitialized);
-   if(!saved)saved=await api('create',{screen:route,text:JSON.stringify({...data,roleInitialized:true}),anchor:overview?.anchor||{selector:'#content',sample:'화면 개요',x:0,y:0}});
-   ids.set('__overview',{id:saved.id,revision:saved.revision||1});
-   if(overview)ids.set(overview.id,{id:saved.id,revision:saved.revision||1});
-   inherited=false;return ids;
-  })();
-  try{return await copying;}finally{copying=null;}
  }
  async function login(){
   if(!githubReady)throw Error('GitHub 로그인 앱 연결 설정이 필요합니다.');
@@ -54,16 +26,15 @@
   const bytes=crypto.getRandomValues(new Uint8Array(32)),verifier=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
   sessionStorage.setItem(VERIFIER,verifier);const digest=new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(verifier)));
   const challenge=btoa(String.fromCharCode(...digest)).replace(/=/g,'').replace(/\+/g,'-').replace(/\//g,'_');
-  location.assign(SERVER+'/api/github/start?'+new URLSearchParams({challenge,project:PROJECT,screen:uiRoute()==='screens'?'MON-01':uiRoute()}));
+  location.assign(SERVER+'/api/github/start?'+new URLSearchParams({challenge,project:PROJECT,screen:current()==='screens'?'MON-01':current()}));
  }
  window.GFAIR_COLLAB={get user(){return user;},get githubReady(){return githubReady;},get records(){return screen===current()?records:[];},get loading(){return loading;},get loaded(){return screen===current();},error:'',login,refresh,
   async planningNotes(){return (await api('planning-notes')).records;},
-  async mutate(op,body){const route=current();if(screen!==route)throw Error('현재 사용구분의 설명을 불러온 뒤 다시 저장해 주세요.');const ids=await independentRecords();if(route!==current())throw Error('사용구분이 변경되었습니다. 다시 저장해 주세요.');if(op==='create'&&parsed(body).format==='screen-overview-v1'&&ids.has('__overview')){op='update';body={...body,...ids.get('__overview')};}if(body.id&&ids.has(body.id))body={...body,...ids.get(body.id)};if(op==='update'){const previous=records.find(record=>record.id===body.id);if(previous&&parsed(previous).roleInitialized){const data=JSON.parse(body.text);body={...body,text:JSON.stringify({...data,roleInitialized:true})};}else if([...ids.values()].some(record=>record.id===body.id)&&JSON.parse(body.text).format==='screen-overview-v1')body={...body,text:JSON.stringify({...JSON.parse(body.text),roleInitialized:true})};}const result=await api(op,body);snapshot='';await refresh(true);return result;},
+  async mutate(op,body){const result=await api(op,body);snapshot='';await refresh(true);return result;},
   async logout(){try{if(token)await api('logout',{});}finally{token='';user=null;records=[];snapshot='';sessionStorage.removeItem(TOKEN);changed();}}
  };
  window.addEventListener('description-context-changed',()=>{snapshot='';changed();refresh();});
  window.addEventListener('hashchange',()=>{snapshot='';changed();refresh();});
- document.addEventListener('change',event=>{if(event.target.matches('select[aria-label="사용구분"]')){snapshot='';queueMicrotask(()=>refresh(true));}});
  document.addEventListener('click',event=>{if(event.target.closest('[data-spec=refresh]'))refresh();});
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});setInterval(()=>{if(!document.hidden)refresh();},5000);
  (async()=>{const url=new URL(location.href),code=url.searchParams.get('annotation_code'),authError=url.searchParams.get('annotation_error');
