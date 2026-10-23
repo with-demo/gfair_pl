@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v1.24","date":"2026.10.23","accountName":"mjha","summary":"목록 도구 및 데이터 표시 설명 핀 5개 추가","changes":["엑셀 양식 다운로드·일괄 업로드와 기존 업로드 팝업 흐름 설명 추가.","초록·회색 참가 표시, 바이어명 상세 이동, 최대 3개 연도와 초과 N건 표시 설명 추가.","기존 설명·핀·댓글은 유지."]},
 {"screenId":"BAS-07","version":"v1.22","date":"2026.10.23","accountName":"mjha","summary":"검색·초기화 공통 디스크립션 적용","changes":["BAS-01 04번과 동일한 검색·초기화 설명을 적용하고 기존 번호·핀·댓글 유지."]},
 {"screenId":"BAS-03","version":"v1.23","date":"2026.10.23","accountName":"mjha","summary":"검색·초기화 공통 디스크립션 적용","changes":["BAS-01 04번과 동일한 검색·초기화 설명을 적용하고 기존 번호·핀·댓글 유지."]},
 {"screenId":"BAS-05","version":"v1.20","date":"2026.10.23","accountName":"mjha","summary":"검색·초기화 공통 디스크립션 적용","changes":["BAS-01 04번과 동일한 검색·초기화 설명을 적용하고 기존 번호·핀·댓글 유지."]},
