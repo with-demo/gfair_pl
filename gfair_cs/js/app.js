@@ -477,7 +477,7 @@ setInterval(()=>{if(current==='STA-01'&&role==='admin'&&!document.hidden)render(
 
 function journalStatusOptions(){return ['전체',...(['buyer','interpreter'].includes(role)?['임시 저장']:[]),'승인 요청','승인 완료','반려'];}
 // 작성자에게만 보이는 임시 저장 . 검수자 목록과 집계에는 포함하지 않는다.
-for(const [type,writer] of [['구매','김민준'],['수출','박서연']])journals.push({id:'GF-DRAFT-'+(type==='구매'?'BUY':'EXPORT'),type,company:'다온리빙',booth:'미선택',buyer:type==='구매'?'김민준':'James Whitmore',writer,time:'2026-10-20 09:00',status:'임시 저장',amount:0,contract:0,currency:type==='구매'?'KRW':'USD',content:'작성 중인 상담일지 입니다.',reason:'',history:[['임시 저장',writer]]});
+for(const [type,writer] of [['구매','김민준'],['수출','박서연']])journals.push({id:'GF-DRAFT-'+(type==='구매'?'BUY':'EXPORT'),type,company:'다온리빙',booth:'미선택',buyer:type==='구매'?'김민준':'James Whitmore',writer,time:'2026-10-20 09:00',status:'임시 저장',amount:0,contract:0,currency:type==='구매'?'KRW':'USD',content:'',reason:'',history:[['임시 저장',writer]]});
 const journalStatusRows=jRows;
 jRows=function(s){let rr=journalStatusRows(s);if(['admin','buyOperator','exportOperator'].includes(role))return rr.filter(j=>j.status!=='임시 저장');return rr.filter(j=>j.writer===(role==='buyer'?'김민준':'박서연')&&j.type===(role==='buyer'?'구매':'수출'));};
 
