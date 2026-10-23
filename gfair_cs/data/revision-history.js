@@ -6,6 +6,7 @@ window.GFAIR_REVISION_HISTORY=[
 {"screenId":"BAS-03","version":"v1.23","date":"2026.10.23","accountName":"mjha","summary":"검색·초기화 공통 디스크립션 적용","changes":["BAS-01 04번과 동일한 검색·초기화 설명을 적용하고 기존 번호·핀·댓글 유지."]},
 {"screenId":"BAS-05","version":"v1.20","date":"2026.10.23","accountName":"mjha","summary":"검색·초기화 공통 디스크립션 적용","changes":["BAS-01 04번과 동일한 검색·초기화 설명을 적용하고 기존 번호·핀·댓글 유지."]},
 {"screenId":"BAS-16","version":"v2.23","date":"2026.10.23","accountName":"mjha","summary":"검색·초기화 공통 디스크립션 적용","changes":["BAS-01 04번과 동일한 검색·초기화 설명을 적용하고 기존 번호·핀·댓글 유지."]},
+{"screenId":"JNL-16","version":"v0.7","date":"2026.10.23","accountName":"shyuwith","summary":"검수 의견·승인·반려 개별 설명 추가","changes":["기존 설명 본문을 보존하고 검수 의견 06·승인 07·반려 08 설명 및 연결 핀 추가.","기존 공통 처리 설명은 09번으로 유지.","사용자 정정에 따라 별도 저장 버튼 및 해당 설명은 추가하지 않음."]},
 {"screenId":"BAS-16","version":"v2.22","date":"2026.10.23","accountName":"mjha","summary":"목록에서 미사용 등록 검증 안내 제외","changes":["필수 항목 누락·아이디 중복 안내를 목록 알럿/컨펌에서 제외.","실제 사용하는 BAS-18 등록·상세의 안내와 검증은 유지."]},
 {"screenId":"JNL-16","version":"v0.6","date":"2026.10.23","accountName":"shyuwith","summary":"검수 사용자 원문 편집 허용","changes":["관리자·수출상담 운영용역사의 상세 원문 상태별 회색 비활성 제한 해제.","승인·반려 시 필수 입력을 검증하고 수정한 원문과 성과를 해당 일지에 함께 반영.","통역원 상태별 편집 제한과 기업·바이어 연계 항목 및 USD 고정 정책 유지."]},
 {"screenId":"BAS-03","version":"v1.22","date":"2026.10.23","accountName":"mjha","summary":"키워드 검색 소속기업 옵션 제거","changes":["검색 범위를 전체·바이어코드·바이어명으로 정리.","전체 검색에서도 소속기업을 제외하고 관련 설명·기획비고 갱신."]},
