@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v1.27","date":"2026.10.23","accountName":"mjha","summary":"목록 엑셀 다운로드와 업로드용 양식 분리","changes":["목록 엑셀 다운로드는 현재 검색 결과 전체를 XLSX로 제공.","BAS-03-p01에 양식 다운로드 버튼과 바이어 정보 작성·첨부 안내 배치.","관련 Description·핀 연결·기획비고 동시 반영."]},
 {"screenId":"JNL-14","version":"v0.23","date":"2026.10.23","accountName":"shyuwith","summary":"사용자별 목록 제목·페이지 도구 통일","changes":["관리자·수출상담 운영용역사·통역원 목록에 상담일지 제목, 10/30/50건씩 보기와 페이지네이션 적용.","수출상담일지 더미 9건을 추가해 기본 10건 보기에서 2페이지 이동 가능.","통역원 엑셀 다운로드 버튼 제거.","현재 페이지의 처리 가능 행만 전체 선택하고 페이지 이동 시 체크 선택 해제."]},
 {"screenId":"BAS-03","version":"v1.26","date":"2026.10.23","accountName":"mjha","summary":"미참가 해외 바이어 예시의 참가연도 정정","changes":["James Whitmore(F20260001)의 2027년 이력을 제거하고 목록·상세를 2026·2024년으로 통일.","미참가 상태와 기존 기본정보 유지. 사용자 요청에 따라 Description 수정 제외."]},
 {"screenId":"BAS-04","version":"v0.32","date":"2026.10.23","accountName":"mjha","summary":"미참가 해외 바이어 예시의 참가연도 정정","changes":["James Whitmore(F20260001)의 2027년 이력을 제거하고 목록·상세를 2026·2024년으로 통일.","미참가 상태와 기존 기본정보 유지. 사용자 요청에 따라 Description 수정 제외."]},

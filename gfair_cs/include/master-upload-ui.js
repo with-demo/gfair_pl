@@ -16,12 +16,13 @@
  function templateColumns(s){const columns=[...s.ui.columns],nameIndex=columns.indexOf(nameFields[s.id]);columns.splice(nameIndex+1,0,'생년월일');return columns}
  function openUpload(id){
   validated=null;const name=labels[id];
-  content.innerHTML=`<div class="dialoghead"><h2>${name} 엑셀 일괄 업로드</h2><button type="button" class="btn ghost" data-action="close">닫기</button></div><div class="dialogbody"><p>이름과 생년월일로 2026·2027 참가 여부를 확인합니다. 같은 참가자는 기존 정보를 최신 업로드 내용으로 갱신합니다.</p><p class="small">2026·2027 모두 참여하면 참가 확정, 2027만 참여하면 신규, 2026에 참여했으나 2027에 참여하지 않으면 참가 미정으로 표시합니다. 생년월일 YYYY-MM-DD는 검토용 형식이며 실제 서버 저장은 하지 않습니다.</p><form data-master-upload-form="${id}"><label class="field"><span>엑셀 파일</span><input type="file" name="file" accept=".xlsx" required></label><button type="submit" class="btn primary">파일 검증</button></form><div data-master-upload-result aria-live="polite"></div></div>`;
+  const guide=id==='BAS-03'?'<p>엑셀 양식을 다운로드하여 바이어 정보를 입력한 뒤 작성한 파일을 첨부해 주세요.</p><div class="popup-action-row" style="margin-bottom:15px"><button type="button" class="btn" data-master-template>엑셀양식 다운로드</button></div>':'<p>이름과 생년월일로 2026·2027 참가 여부를 확인합니다. 같은 참가자는 기존 정보를 최신 업로드 내용으로 갱신합니다.</p><p class="small">2026·2027 모두 참여하면 참가 확정, 2027만 참여하면 신규, 2026에 참여했으나 2027에 참여하지 않으면 참가 미정으로 표시합니다. 생년월일 YYYY-MM-DD는 검토용 형식이며 실제 서버 저장은 하지 않습니다.</p>';
+  content.innerHTML=`<div class="dialoghead"><h2>${name} 엑셀 일괄 업로드</h2><button type="button" class="btn ghost" data-action="close">닫기</button></div><div class="dialogbody">${guide}<form data-master-upload-form="${id}"><label class="field"><span>엑셀 파일</span><input type="file" name="file" accept=".xlsx" required></label><button type="submit" class="btn primary">파일 검증</button></form><div data-master-upload-result aria-live="polite"></div></div>`;
   dialog.showModal();
  }
  document.addEventListener('click',async ev=>{
-  const b=ev.target.closest('[data-action="action"]');if(!b||!targets.has(screen()))return;
-  const id=screen(),label=b.dataset.label;if(!['엑셀 양식 다운로드','엑셀 일괄 업로드'].includes(label))return;
+  const b=ev.target.closest('[data-action="action"],[data-master-template]');if(!b||!targets.has(screen()))return;
+  const id=screen(),label=b.hasAttribute('data-master-template')?'엑셀 양식 다운로드':b.dataset.label;if(!['엑셀 양식 다운로드','엑셀 일괄 업로드'].includes(label))return;
   ev.preventDefault();ev.stopImmediatePropagation();
   if(label==='엑셀 일괄 업로드'){openUpload(id);return;}
   try{const headers=templateColumns(page(id)),blob=await GFAIRWorkbook.write([headers]),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=`G-FAIR_${labels[id]}_엑셀양식_검토용.xlsx`;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
