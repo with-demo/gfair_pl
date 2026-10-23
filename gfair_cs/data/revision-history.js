@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-16","version":"v0.2","date":"2026.10.23","accountName":"shyuwith","summary":"관리자·수출상담 운영용역사 상세 검수 영역 추가","changes":["상세 하단 처리 이력과 검수 의견·반려 사유 입력란 표시.","우측 하단 반려·승인 버튼 추가 및 승인 요청 상태의 처리 연결.","통역원 상세와 등록 화면은 기존 구성 유지."]},
 {"screenId":"JNL-05","version":"v0.40","date":"2026.10.23","accountName":"shyuwith","summary":"신규 등록 상담정보·성과 초기값 제거","changes":["등록 진입 시 상담 상세·비고·수출 상담액·계약 추진액을 빈 값으로 표시.","거래 가능성·예/아니오 라디오 기본 선택 제거.","상담 상세와 비고는 플레이스홀더 표시하며 상세 화면 저장값은 유지."]},
 {"screenId":"JNL-14","version":"v0.19","date":"2026.10.23","accountName":"shyuwith","summary":"선택 건수 문구 제거","changes":["관리자·수출상담 운영용역사·통역원 목록 좌측 하단의 선택 n건 문구 제거.","체크 선택에 따른 일괄 처리 버튼 활성화와 좌측 하단 배치 유지."]},
 {"screenId":"JNL-14","version":"v0.18","date":"2026.10.23","accountName":"shyuwith","summary":"수출상담 운영용역사 일괄 승인·반려 추가","changes":["관리자와 동일하게 승인 요청 상태의 일지를 체크 선택하고 목록 좌측 하단에서 승인·반려 처리.","공통 반려 사유 입력 팝업 및 상태별 처리 권한 연결."]},
