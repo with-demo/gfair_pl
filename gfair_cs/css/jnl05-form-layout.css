@@ -98,3 +98,8 @@
 #app .export-journal-form .journal-pair.full .journal-control>.journal-single-select{width:min(100%,360px)}
 #app .export-journal-form .participant-info-section .journal-pair{grid-template-columns:150px minmax(0,1fr)}
 @media(max-width:600px){#app .export-journal-form .participant-info-section .journal-pair{grid-template-columns:110px minmax(0,1fr)}}
+
+#app .export-journal-form.journal-read-view .journal-control :disabled{background:#eee!important;border-color:#d2d2d2!important;color:#666!important;cursor:not-allowed;opacity:1}
+#app .export-journal-form.journal-read-view .journal-control input[type=radio]:disabled,#app .export-journal-form.journal-read-view .journal-control input[type=checkbox]:disabled{accent-color:#999}
+#app .export-journal-form.journal-read-view .journal-select-trigger:disabled{background:#eee!important;color:#666!important}
+#app .export-journal-form.journal-read-view .journal-radios label{color:#777}
