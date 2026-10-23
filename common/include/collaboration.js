@@ -8,7 +8,8 @@
  const changed=()=>window.dispatchEvent(new Event('collaboration-updated'));
  const uiRoute=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
  const role=()=>document.querySelector('select[aria-label="사용구분"]')?.value||'admin';
- const descriptionRoute=route=>PROJECT==='gfair_cs'&&route!=='screens'&&!route.includes('--')?route+'--'+role().toUpperCase():route;
+ const groups=['COM','BAS','PRE','EVT','JNL','MON','NTC','STA','SET','ENT'];
+ const descriptionRoute=route=>PROJECT==='gfair_cs'&&groups.includes(route.slice(0,3))&&/^[A-Z]{3}-\d{2}$/.test(route)?({admin:'A',buyOperator:'B',exportOperator:'X',interpreter:'I',buyer:'D'}[role()]||'A')+route.slice(0,2)+route.slice(3):route;
  const parsed=record=>{try{return JSON.parse(record.text);}catch{return {};}};
  const current=()=>descriptionRoute(uiRoute());
  async function api(op,body,options={}){
@@ -23,7 +24,7 @@
   const route=current();if(activeRequest?.route===route&&!force)return;
   activeRequest?.controller.abort();if(route==='screens'){activeRequest=null;loading=false;changed();return;}
   const request={route,controller:new AbortController(),notify:screen!==route||!!window.GFAIR_COLLAB.error};activeRequest=request;loading=true;if(request.notify)changed();
-  try{const options={route,signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])};let result=await api('list',undefined,options);let fallback=false;if(PROJECT==='gfair_cs'&&route.includes('--')&&!result.records?.some(record=>parsed(record).roleInitialized)){const initial=await api('list',undefined,{...options,route:uiRoute()});result={...result,records:initial.records?.map(record=>({...record,comments:[]}))};fallback=true;}if(activeRequest!==request||route!==current())return;if(!Array.isArray(result.records))throw Error('디스크립션 응답을 확인하지 못했습니다. 다시 불러와 주세요.');user=result.user;githubReady=!!result.githubConfigured;records=result.records;inherited=fallback;screen=route;const next=JSON.stringify(result);request.notify=request.notify||snapshot!==next;snapshot=next;if(!new URL(location.href).searchParams.has('annotation_error')&&!window.GFAIR_COLLAB.authError)window.GFAIR_COLLAB.error='';}
+  try{const options={route,signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])};let result=await api('list',undefined,options);let fallback=false;if(PROJECT==='gfair_cs'&&route!==uiRoute()&&!result.records?.some(record=>parsed(record).roleInitialized)){const initial=await api('list',undefined,{...options,route:uiRoute()});result={...result,records:initial.records?.map(record=>({...record,comments:[]}))};fallback=true;}if(activeRequest!==request||route!==current())return;if(!Array.isArray(result.records))throw Error('디스크립션 응답을 확인하지 못했습니다. 다시 불러와 주세요.');user=result.user;githubReady=!!result.githubConfigured;records=result.records;inherited=fallback;screen=route;const next=JSON.stringify(result);request.notify=request.notify||snapshot!==next;snapshot=next;if(!new URL(location.href).searchParams.has('annotation_error')&&!window.GFAIR_COLLAB.authError)window.GFAIR_COLLAB.error='';}
   catch(error){if(activeRequest!==request||request.controller.signal.aborted)return;request.notify=true;window.GFAIR_COLLAB.error=error.name==='TimeoutError'?'디스크립션 조회가 지연되고 있습니다. 다시 불러와 주세요.':error.message;}finally{if(activeRequest===request){activeRequest=null;loading=false;if(request.notify)changed();}}
  }
  async function independentRecords(){
