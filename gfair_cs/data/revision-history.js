@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-05","version":"v0.38","date":"2026.10.23","accountName":"shyuwith","summary":"상세 제목 및 Description 보완","changes":["상세 모드의 제목을 등록으로 덮어쓰던 부분 수정.","공동작업 서버의 개요·01~06 설명에 저장값 표시와 상태별 수정·저장 정책 반영."]},
   {"screenId":"JNL-14","version":"v0.11","date":"2026.10.23","accountName":"shyuwith","summary":"상단 화면 제목 변경","changes":["JNL-14 상단 제목을 ‘수출상담일지1’로 변경."]},
   {"screenId":"JNL-14","version":"v0.12","date":"2026.10.23","accountName":"shyuwith","summary":"상단 제목 문구 정리","changes":["목록 화면 제목을 ‘수출상담일지’로 표시."]},
   {"screenId":"JNL-05","version":"v0.37","fromVersion":"v0.36","date":"2026.10.23","accountName":"shyuwith","summary":"상세 화면 개요 보완","changes":["상세 화면에서 저장된 상담 내용·성과를 확인하고 상태에 따라 수정·저장할 수 있도록 개요 보완."]},
