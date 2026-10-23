@@ -1,6 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
   {"screenId":"JNL-14","version":"v0.11","date":"2026.10.23","accountName":"shyuwith","summary":"상단 화면 제목 변경","changes":["JNL-14 상단 제목을 ‘수출상담일지1’로 변경."]},
+  {"screenId":"JNL-14","version":"v0.12","date":"2026.10.23","accountName":"shyuwith","summary":"상단 제목 문구 정리","changes":["목록 화면 제목을 ‘수출상담일지’로 표시."]},
+  {"screenId":"JNL-05","version":"v0.37","fromVersion":"v0.36","date":"2026.10.23","accountName":"shyuwith","summary":"상세 화면 개요 보완","changes":["상세 화면에서 저장된 상담 내용·성과를 확인하고 상태에 따라 수정·저장할 수 있도록 개요 보완."]},
 {"screenId":"BAS-18","version":"v1.19","date":"2026.10.23","accountName":"mjha","summary":"관리자 등록 아이디 중복확인·비밀번호 확인 추가","changes":["등록에서도 등록일을 숨기고 자동 기록된 날짜는 목록에 유지.","아이디 옆 중복확인, 변경 시 확인 초기화 및 등록 전 재검증 적용.","등록 비밀번호 확인란과 일치 검증 및 연결 설명·메시지 반영."]},
 {"screenId":"BAS-18","version":"v1.18","date":"2026.10.23","accountName":"mjha","summary":"연락처 입력 형식·사용여부 마지막 행 및 등록일 노출 변경","changes":["전화·휴대전화 앞자리 선택 및 분리 입력, 이메일 아이디·도메인 분리와 선택·직접입력 적용.","사용여부를 마지막 전체 너비 라디오 행으로 변경하고 상세 등록일 미노출.","2열 중 단독 행은 전체 너비로 표시하며 설명·검증 안내 일치."]},
   {"screenId":"BAS-16","version":"v2.21","date":"2026.10.23","accountName":"mjha","summary":"관리자 목록 5개 항목 및 이름 밑줄 정리","changes":["이름·아이디·소속·사용여부·등록일 순서로 표시하고 역할 열 제거.","이름 밑줄을 한 개로 정리하고 검색 명칭·연결 설명 일치."]},

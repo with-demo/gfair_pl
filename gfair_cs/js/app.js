@@ -175,7 +175,7 @@ root.addEventListener('click',ev=>{if(ev.target.closest('[data-action=workflow-e
 target['EVT-01']='EVT-03';target['EVT-02']='EVT-04';parentRoutes['EVT-03']='EVT-01';parentRoutes['EVT-04']='EVT-02';
 target['NTC-01']='NTC-04';target['NTC-03']='NTC-04';
 // Additional entry pages correspond to the sitemap's third level.
-for(const [id,title,type] of [['JNL-13','구매상담일지','구매'],['JNL-14','수출상담일지1','수출']])map.set(id,{...map.get('JNL-01'),...map.get(id),id,title,group:'03',groupName:'상담일지',journalType:type});
+for(const [id,title,type] of [['JNL-13','구매상담일지','구매'],['JNL-14','수출상담일지','수출']])map.set(id,{...map.get('JNL-01'),...map.get(id),id,title,group:'03',groupName:'상담일지',journalType:type});
 map.set('SET-07',{...map.get('SET-05'),id:'SET-07',title:'만족도설문 관리'});
 const folderShell=shell;
 const folderOwner=menuOwner;
