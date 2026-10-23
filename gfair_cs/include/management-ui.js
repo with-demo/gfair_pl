@@ -1,10 +1,10 @@
 (()=>{'use strict';
  const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const companies=[{id:'OP-A',name:'구매상담 운영사',representative:'대표 A',address:'사업장 A',contact:'담당자 A'},{id:'OP-B',name:'수출상담 운영사',representative:'대표 B',address:'사업장 B',contact:'담당자 B'},{id:'OP-C',name:'운영사 C',representative:'대표 C',address:'사업장 C',contact:'담당자 C'}];
+ const companies=[{id:'OP-A',name:'구매상담 운영사',representative:'이상훈',address:'사업장 A',contact:'김도현'},{id:'OP-B',name:'수출상담 운영사',representative:'정유진',address:'사업장 B',contact:'박지훈'},{id:'OP-C',name:'운영사 C',representative:'한지우',address:'사업장 C',contact:'최은서'}];
  const assignments=[{year:'2027',company:'OP-A',type:'구매상담',id:'M0005',pw:'D27005'},{year:'2027',company:'OP-B',type:'수출상담',id:'',pw:''},{year:'2026',company:'OP-A',type:'구매상담',id:'M0003',pw:'D26003'},{year:'2026',company:'OP-B',type:'수출상담',id:'M0004',pw:'D26004'},{year:'2025',company:'OP-C',type:'구매상담',id:'M0001',pw:'D25001'},{year:'2025',company:'OP-B',type:'수출상담',id:'M0002',pw:'D25002'}];
- const staff=[{company:'OP-A',year:'2027',name:'구매 담당자',code:'STAFF-001',id:'DEMO-BUY-01',pw:'D27001'},{company:'OP-B',year:'2027',name:'수출 담당자',code:'STAFF-002',id:'DEMO-EXP-01',pw:'D27002'}];
+ const staff=[{company:'OP-A',year:'2027',name:'이민서',code:'STAFF-001',id:'DEMO-BUY-01',pw:'D27001'},{company:'OP-B',year:'2027',name:'김정우',code:'STAFF-002',id:'DEMO-EXP-01',pw:'D27002'}];
  const adminDate=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date()).replaceAll('-','.');
- const admins=[{id:'DEMO-ADMIN-01',name:'관리자 A',org:'운영기관',status:'사용',date:'2026.10.19'},{id:'DEMO-ADMIN-02',name:'관리자 B',org:'운영기관',status:'사용',date:'2026.10.18'},{id:'DEMO-ADMIN-03',name:'관리자 C',org:'운영기관',status:'미사용',date:'2026.10.17'}];
+ const admins=[{id:'DEMO-ADMIN-01',name:'윤서진',org:'운영기관',status:'사용',date:'2026.10.19'},{id:'DEMO-ADMIN-02',name:'임수현',org:'운영기관',status:'사용',date:'2026.10.18'},{id:'DEMO-ADMIN-03',name:'오지훈',org:'운영기관',status:'미사용',date:'2026.10.17'}];
  admins.forEach((a,i)=>Object.assign(a,{phone:'031-000-000'+i,mobile:'010-0000-000'+i,email:'admin'+(i+1)+'@example.com',passwordSet:true}));
  const state={screen:'BAS-15',role:'admin',event:'2026',company:'OP-A',admin:'DEMO-ADMIN-01',year:'전체',type:'전체',query:'',status:'전체',staffYear:'2027',shown:new Set(),notice:'',upload:null,staffUpload:null};
  const fields=['연도','상담 구분','기업코드','기업명','대표자','주소','담당자명'];
@@ -106,7 +106,7 @@
    item.id='M'+String(n).padStart(4,'0');item.pw='D'+item.year.slice(-2)+String(n).padStart(3,'0');message('현재 연도의 임시 계정을 발급했습니다.');return;
   }
   if(a==='staff-template'&&staffAllowed()){
-   const blob=await GFAIRWorkbook.write([staffFields,[state.staffYear,state.company,'DEMO-STAFF-NEW','신규 담당자']]),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='하위담당자_'+state.company+'_'+state.staffYear+'양식.xlsx';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('선택 행사·소속이 기입된 담당자 양식을 다운로드했습니다.');return;
+   const blob=await GFAIRWorkbook.write([staffFields,[state.staffYear,state.company,'DEMO-STAFF-NEW','정하린']]),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='하위담당자_'+state.company+'_'+state.staffYear+'양식.xlsx';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('선택 행사·소속이 기입된 담당자 양식을 다운로드했습니다.');return;
   }
   if(a==='staff-upload-open'&&staffAllowed()){
    state.staffUpload=null;
