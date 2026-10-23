@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-14","version":"v0.14","date":"2026.10.23","accountName":"shyuwith","summary":"사용구분별 독립 Description 적용","changes":["통역원·관리자 등 다섯 사용구분의 설명을 각각 독립 저장.","기존 설명을 최초 편집 시 해당 역할 전용으로 복사하고 원본은 수정하지 않음."]},
 {"screenId":"JNL-14","version":"v0.13","date":"2026.10.23","accountName":"shyuwith","summary":"통역원 Description 독립 저장","changes":["통역원 JNL-14 설명을 관리자 설명과 별도 저장하며 수기 수정이 다른 사용구분에 반영되지 않도록 분리."]},
 {"screenId":"JNL-05","version":"v0.39","date":"2026.10.23","accountName":"shyuwith","summary":"등록·상세 독립 편집 분리","changes":["등록은 JNL-05, 상세는 JNL-16으로 화면 경로와 렌더링 함수 분리."]},
 {"screenId":"JNL-16","version":"v0.1","date":"2026.10.23","accountName":"shyuwith","summary":"상세 화면 독립 분리","changes":["화면 구성 초기값은 등록과 같게 유지하고 이후 화면 및 Description은 각각 독립 편집."]},
