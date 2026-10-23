@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-15","version":"v2.24","date":"2026.10.23","accountName":"mjha","summary":"검색필터 표의 셀 높이·경계선 정렬 복구","changes":["연도 셀의 위쪽 정렬과 상담 구분 라디오의 고정 높이 충돌 제거.","공통 검색표의 셀 높이와 테두리를 일치시키고 검색 항목·기능 유지."]},
 {"screenId":"JNL-16","version":"v0.9","date":"2026.10.23","accountName":"shyuwith","summary":"상세 기본 정보의 작성자·무역관 위치 교체","changes":["등록 화면과 동일하게 1행 행사·작성자, 2행 무역관·상담 시간으로 정렬.","저장된 작성자·상담 시간과 사용자별 편집 권한 유지."]},
 {"screenId":"JNL-05","version":"v0.44","date":"2026.10.23","accountName":"shyuwith","summary":"Description 번호가 화면 밖으로 벗어나는 위치 오류 수정","changes":["항목 분리 전 저장된 핀 좌표로 번호가 숨는 경우 현재 연결 영역 좌측에 복원.","핀 이동 저장 시 복원된 실제 좌표를 기준으로 저장하며 기존 설명 내용 유지."]},
 {"screenId":"BAS-05","version":"v1.22","date":"2026.10.23","accountName":"mjha","summary":"국내바이어 기업 항목명을 소속기업으로 통일","changes":["키워드 검색 옵션·상세 항목·엑셀 머리글 명칭을 소속기업으로 통일.","기존 검색 동작·예시 데이터 유지, 관련 Description 및 기획비고 동시 반영."]},
