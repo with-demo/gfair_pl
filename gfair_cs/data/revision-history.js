@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-18","version":"v1.20","date":"2026.10.23","accountName":"mjha","summary":"연락처·이메일 디스크립션 공통 문구 통일","changes":["휴대전화·이메일의 동일 동작 설명을 BAS-04 문구와 동일하게 정리.","관리자 직접 입력 조건과 일반 전화번호 자릿수 차이를 유지하고 기존 기획비고에 변경 안내 추가."]},
 {"screenId":"BAS-18","version":"v1.19","date":"2026.10.23","accountName":"mjha","summary":"관리자 등록 아이디 중복확인·비밀번호 확인 추가","changes":["등록에서도 등록일을 숨기고 자동 기록된 날짜는 목록에 유지.","아이디 옆 중복확인, 변경 시 확인 초기화 및 등록 전 재검증 적용.","등록 비밀번호 확인란과 일치 검증 및 연결 설명·메시지 반영."]},
 {"screenId":"BAS-18","version":"v1.18","date":"2026.10.23","accountName":"mjha","summary":"연락처 입력 형식·사용여부 마지막 행 및 등록일 노출 변경","changes":["전화·휴대전화 앞자리 선택 및 분리 입력, 이메일 아이디·도메인 분리와 선택·직접입력 적용.","사용여부를 마지막 전체 너비 라디오 행으로 변경하고 상세 등록일 미노출.","2열 중 단독 행은 전체 너비로 표시하며 설명·검증 안내 일치."]},
   {"screenId":"BAS-16","version":"v2.21","date":"2026.10.23","accountName":"mjha","summary":"관리자 목록 5개 항목 및 이름 밑줄 정리","changes":["이름·아이디·소속·사용여부·등록일 순서로 표시하고 역할 열 제거.","이름 밑줄을 한 개로 정리하고 검색 명칭·연결 설명 일치."]},
