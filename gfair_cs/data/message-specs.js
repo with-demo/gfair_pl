@@ -1,4 +1,5 @@
 window.GFAIR_MESSAGE_SPECS=[
+{"key":"admin-password-required","screens":["BAS-18"],"type":"인라인 오류","trigger":"등록 시 비밀번호가 공백이거나 상세에서 공백만 입력하여 비밀번호 변경 시도","message":"비밀번호를 입력해 주세요. / 비밀번호는 공백만 입력할 수 없습니다.","confirm":"저장을 중단하고 현재 입력 화면 유지","cancel":"해당 없음","source":"include/management-ui.js","title":"관리자 비밀번호 입력 확인"},
   {
     "key": "notice-cancel",
     "screens": [
@@ -372,8 +373,8 @@ window.GFAIR_MESSAGE_SPECS=[
       "BAS-18"
     ],
     "type": "인라인 오류",
-    "trigger": "관리자 ID 또는 이름이 공백",
-    "message": "ID와 이름은 공백만 입력할 수 없습니다.",
+    "trigger": "아이디 또는 이름이 공백",
+    "message": "아이디와 이름은 공백만 입력할 수 없습니다.",
     "confirm": "저장 중단",
     "cancel": "",
     "source": "include/management-ui.js",
@@ -386,12 +387,12 @@ window.GFAIR_MESSAGE_SPECS=[
       "BAS-18"
     ],
     "type": "인라인 오류",
-    "trigger": "관리자 ID가 기존 계정과 중복",
-    "message": "이미 등록된 관리자 ID입니다.",
+    "trigger": "아이디가 기존 계정과 중복",
+    "message": "이미 등록된 아이디입니다.",
     "confirm": "등록·수정 중단",
     "cancel": "",
     "source": "include/management-ui.js",
-    "title": "관리자 ID 중복"
+    "title": "아이디 중복"
   },
   {
     "key": "survey-delete",

@@ -3,7 +3,9 @@
  const companies=[{id:'OP-A',name:'구매상담 운영사',representative:'대표 A',address:'사업장 A',contact:'담당자 A'},{id:'OP-B',name:'수출상담 운영사',representative:'대표 B',address:'사업장 B',contact:'담당자 B'},{id:'OP-C',name:'운영사 C',representative:'대표 C',address:'사업장 C',contact:'담당자 C'}];
  const assignments=[{year:'2027',company:'OP-A',type:'구매상담',id:'M0005',pw:'D27005'},{year:'2027',company:'OP-B',type:'수출상담',id:'',pw:''},{year:'2026',company:'OP-A',type:'구매상담',id:'M0003',pw:'D26003'},{year:'2026',company:'OP-B',type:'수출상담',id:'M0004',pw:'D26004'},{year:'2025',company:'OP-C',type:'구매상담',id:'M0001',pw:'D25001'},{year:'2025',company:'OP-B',type:'수출상담',id:'M0002',pw:'D25002'}];
  const staff=[{company:'OP-A',year:'2027',name:'구매 담당자',code:'STAFF-001',id:'DEMO-BUY-01',pw:'D27001'},{company:'OP-B',year:'2027',name:'수출 담당자',code:'STAFF-002',id:'DEMO-EXP-01',pw:'D27002'}];
+ const adminDate=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date()).replaceAll('-','.');
  const admins=[{id:'DEMO-ADMIN-01',name:'관리자 A',org:'운영기관',status:'사용',date:'2026.10.19'},{id:'DEMO-ADMIN-02',name:'관리자 B',org:'운영기관',status:'사용',date:'2026.10.18'},{id:'DEMO-ADMIN-03',name:'관리자 C',org:'운영기관',status:'미사용',date:'2026.10.17'}];
+ admins.forEach((a,i)=>Object.assign(a,{phone:'031-000-000'+i,mobile:'010-0000-000'+i,email:'admin'+(i+1)+'@example.com',passwordSet:true}));
  const state={screen:'BAS-15',role:'admin',event:'2026',company:'OP-A',admin:'DEMO-ADMIN-01',year:'전체',type:'전체',query:'',status:'전체',staffYear:'2027',shown:new Set(),notice:'',upload:null,staffUpload:null};
  const fields=['연도','상담 구분','기업코드','기업명','대표자','주소','담당자명'];
  const isAdmin=()=>state.role==='admin';
@@ -39,12 +41,12 @@
  return '<form data-management-form="staff-create" class="panel detail-form-panel"><div class="panelhead"><h2>하위 담당자 등록</h2></div><div class="management-form formgrid">'+field('소속 회사','<input value="'+E(company.name)+'" readonly>')+field('행사 연도 *','<select name="year" required>'+options(allowedYears,state.staffYear)+'</select>')+input('code','담당자코드 *','',true)+input('name','이름 *','',true)+'</div><p data-management-error role="alert"></p><div class="formfooter"><a href="#COM-07" class="btn">취소</a><button type="submit" class="btn primary">등록</button></div></form>';
  }
  function adminList(){
-  const rr=admins.filter(a=>(state.status==='전체'||a.status===state.status)&&(!state.query||({'관리자 ID':a.id,'이름':a.name,'소속':a.org}[window.GFAIR_SEARCH_SCOPE?.('query')]||[a.id,a.name,a.org].join(' ')).includes(state.query)));
-  return `${note()}<div class="management-actions">${button('admin-create','관리자 등록','','true')}</div><form data-management-form="admin-search" class="panel filters"><fieldset class="management-type-filter"><legend>사용 상태</legend><div class="management-type-options">${['전체','사용','미사용'].map(s=>`<label><input type="radio" name="status" value="${s}"${state.status===s?' checked':''}>${s}</label>`).join('')}</div></fieldset>${field('통합검색',`<input name="query" value="${E(state.query)}" placeholder="이름, ID, 소속을 검색하세요.">`)}<div class="row"><button type="submit" class="btn primary">검색</button>${button('reset','초기화')}</div></form><section class="panel"><div class="panelhead"><h2>구매·수출 상담시스템 관리자 ${rr.length}명</h2></div>${table(['관리자 ID','이름','소속','역할','사용 상태','등록일'],rr.map(a=>`<tr><td>${E(a.id)}</td><td class="management-name"><button type="button" class="list-name-link" data-management-admin="${E(a.id)}" aria-label="${E(a.name)} 상세">${E(a.name)}</button></td><td>${E(a.org)}</td><td>관리자</td><td><span class="badge">${a.status}</span></td><td>${a.date}</td></tr>`).join(''))}</section>`;
+  const rr=admins.filter(a=>(state.status==='전체'||a.status===state.status)&&(!state.query||({'아이디':a.id,'이름':a.name,'소속':a.org}[window.GFAIR_SEARCH_SCOPE?.('query')]||[a.id,a.name,a.org].join(' ')).includes(state.query)));
+  return `${note()}<div class="management-actions">${button('admin-create','관리자 등록','','true')}</div><form data-management-form="admin-search" class="panel filters"><fieldset class="management-type-filter"><legend>사용여부</legend><div class="management-type-options">${['전체','사용','미사용'].map(s=>`<label><input type="radio" name="status" value="${s}"${state.status===s?' checked':''}>${s}</label>`).join('')}</div></fieldset>${field('통합검색',`<input name="query" value="${E(state.query)}" placeholder="이름, ID, 소속을 검색하세요.">`)}<div class="row"><button type="submit" class="btn primary">검색</button>${button('reset','초기화')}</div></form><section class="panel"><div class="panelhead"><h2>구매·수출 상담시스템 관리자 ${rr.length}명</h2></div>${table(['이름','아이디','소속','사용여부','등록일'],rr.map(a=>`<tr><td class="management-name"><button type="button" class="list-name-link" data-management-admin="${E(a.id)}" aria-label="${E(a.name)} 상세">${E(a.name)}</button></td><td>${E(a.id)}</td><td>${E(a.org)}</td><td><span class="badge">${a.status}</span></td><td>${a.date}</td></tr>`).join(''))}</section>`;
  }
  function adminEditor(create=new URLSearchParams(location.search).get('adminMode')==='create'){
- const a=create?{id:'',name:'',org:'',status:'사용'}:admins.find(a=>a.id===state.admin);if(!a)return '<div class="empty">관리자를 찾을 수 없습니다.</div>';
- return `${note()}<form data-management-form="${create?'admin-create':'admin-save'}" class="panel detail-form-panel"><div class="panelhead"><h2>관리자 기본정보</h2></div><div class="detail-rows form-rows">${field('관리자 ID *','<input name="id" value="'+E(a.id)+'" required '+(create?'':'readonly aria-readonly="true"')+'>')}${input('name','이름 *',a.name,true)}${input('org','소속',a.org)}${field('사용 상태','<select name="status">'+options(['사용','미사용'],a.status)+'</select>')}</div><p data-management-error role="alert"></p><div class="formfooter"><a href="#BAS-16" class="btn">${create?'취소':'목록으로'}</a><button class="btn primary" type="submit">${create?'등록':'수정'}</button></div></form>`;
+ const a=create?{id:'',name:'',org:'',status:'사용',date:adminDate(),phone:'',mobile:'',email:''}:admins.find(a=>a.id===state.admin);if(!a)return '<div class="empty">관리자를 찾을 수 없습니다.</div>';
+ return `${note()}<form data-management-form="${create?'admin-create':'admin-save'}" class="panel detail-form-panel"><div class="panelhead"><h2>관리자 기본정보</h2></div><div class="detail-rows form-rows">${input('name','이름 *',a.name,true)}${field('아이디 *','<input name="id" value="'+E(a.id)+'" required autocomplete="off" '+(create?'':'readonly aria-readonly="true"')+'>')}${input('org','소속',a.org)}${field('사용여부','<select name="status">'+options(['사용','미사용'],a.status)+'</select>')}${field('등록일','<input name="date" value="'+E(a.date)+'" readonly aria-readonly="true">')}${field('비밀번호'+(create?' *':''),'<input type="password" name="password" value="" autocomplete="new-password" '+(create?'required':'placeholder="변경 시에만 입력해 주세요"')+'>')}${field('전화번호','<input type="tel" name="phone" value="'+E(a.phone)+'" autocomplete="tel">')}${field('휴대전화번호','<input type="tel" name="mobile" value="'+E(a.mobile)+'" autocomplete="tel-national">')}${field('이메일','<input type="email" name="email" value="'+E(a.email)+'" autocomplete="email">')}</div><p data-management-error role="alert"></p><div class="formfooter"><a href="#BAS-16" class="btn">목록</a><button class="btn primary" type="submit">${create?'등록':'저장'}</button></div></form>`;
  }
  function adminDetail(){return adminEditor();}
  function adminMode(create){const url=new URL(location.href);if(create)url.searchParams.set('adminMode','create');else url.searchParams.delete('adminMode');history.replaceState(null,'',url.pathname+url.search+url.hash);}
@@ -82,7 +84,7 @@
  async function action(b){
   const a=b.dataset.managementAction;
   if(a==='close'){close();return;}
-  if(a==='reset'){state.query='';state.year='전체';state.type='전체';state.status='전체';message('');return;}
+  if(a==='reset'){if(state.screen==='BAS-16')window.GFAIR_RESET_SEARCH_SCOPE?.();state.query='';state.year='전체';state.type='전체';state.status='전체';message('');return;}
   if(a==='toggle-password'&&allowed(state.company)){const k=b.dataset.key;state.shown.has(k)?state.shown.delete(k):state.shown.add(k);paint();return;}
   if(a==='issue'&&isAdmin()){
    const item=assignments.find(a=>a.company===state.company&&a.year===b.dataset.year&&a.type===b.dataset.type);if(!item||item.id)return;
@@ -150,12 +152,15 @@
  }
   if(!isAdmin())return;
   if(['admin-create','admin-save'].includes(type)){
-   if(!v('id')||!v('name'))return fail('ID와 이름은 공백만 입력할 수 없습니다.');
-   if(type==='admin-save'&&v('id')!==state.admin)return fail('기존 관리자 ID는 변경할 수 없습니다.');
-   if(admins.some(a=>a.id===v('id')&&(type==='admin-create'||a.id!==state.admin)))return fail('이미 등록된 관리자 ID입니다.');
-   if(type==='admin-create'){admins.push({id:v('id'),name:v('name'),org:v('org')||'미등록',status:v('status')||'사용',date:new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date()).replaceAll('-','.')});state.notice='관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.';adminMode(false);location.hash='BAS-16';return;}
-   else{Object.assign(admins.find(a=>a.id===state.admin),{name:v('name'),org:v('org')||'미등록',status:v('status')})}
-   message('관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.');return;
+   const error=f.querySelector('[data-management-error]');if(error)error.textContent='';
+   if(!v('id')||!v('name'))return fail('아이디와 이름은 공백만 입력할 수 없습니다.');
+   if(type==='admin-create'&&!v('password'))return fail('비밀번호를 입력해 주세요.');
+   if(fd.get('password')&&!v('password'))return fail('비밀번호는 공백만 입력할 수 없습니다.');
+   if(type==='admin-save'&&v('id')!==state.admin)return fail('기존 아이디는 변경할 수 없습니다.');
+   if(admins.some(a=>a.id===v('id')&&(type==='admin-create'||a.id!==state.admin)))return fail('이미 등록된 아이디입니다.');
+   if(type==='admin-create'){admins.push({id:v('id'),name:v('name'),org:v('org')||'미등록',status:v('status')||'사용',date:adminDate(),phone:v('phone'),mobile:v('mobile'),email:v('email'),passwordSet:true});state.notice='관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.';adminMode(false);location.hash='BAS-16';return;}
+   else{Object.assign(admins.find(a=>a.id===state.admin),{name:v('name'),org:v('org')||'미등록',status:v('status'),phone:v('phone'),mobile:v('mobile'),email:v('email'),...(v('password')?{passwordSet:true}:{})})}
+   f.elements.password.value='';message('관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.');return;
   }
   if(type==='upload'){
    state.upload=null;const result=document.querySelector('[data-management-upload-result]');result.innerHTML='';

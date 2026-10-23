@@ -19,3 +19,6 @@
 @media(max-width:700px){.management-form{display:grid;grid-template-columns:1fr}.management-form .field{min-width:0}}
 
 [data-management-form="admin-save"] input[readonly]{background:#f5f5f5;color:#555;cursor:default}
+
+/* 이름 버튼의 밑줄만 표시하여 셀과 중복되지 않게 한다. */
+[data-management-root] .management-name:has(>button[data-management-admin]){text-decoration:none}
