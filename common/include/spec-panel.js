@@ -33,7 +33,8 @@
   const role=document.getElementById('role-picker'),select=toolbar.querySelector('.ui-spec-actions select');
   if(role){if(!select.options.length)select.innerHTML=role.innerHTML;select.value=role.value;}
   status.textContent='';
-  window.dispatchEvent(new CustomEvent('annotation-sync',{detail:{closed,full,numbers}}));
+  window.GFAIR_DESCRIPTION_VIEW={closed,full,numbers};
+  window.dispatchEvent(new CustomEvent('annotation-sync',{detail:window.GFAIR_DESCRIPTION_VIEW}));
  }
  toolbar.addEventListener('click',event=>{
   const action=event.target.dataset.spec;
