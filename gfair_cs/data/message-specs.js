@@ -1,4 +1,7 @@
 window.GFAIR_MESSAGE_SPECS=[
+{"key":"admin-contact-phone","title":"관리자 전화번호 형식","message":"전화번호는 가운데 3~4자리, 마지막 4자리로 입력해 주세요.","trigger":"전화번호를 일부만 입력하거나 가운데·마지막 번호 자릿수 오류","screens":["BAS-18"],"type":"인라인 오류","confirm":"저장 중단 후 현재 입력 화면 유지","cancel":"","source":"include/management-ui.js"},
+{"key":"admin-contact-mobile","title":"관리자 휴대전화번호 형식","message":"휴대전화번호를 4자리씩 입력해 주세요.","trigger":"휴대전화번호를 일부만 입력하거나 가운데·마지막 번호 자릿수 오류","screens":["BAS-18"],"type":"인라인 오류","confirm":"저장 중단 후 현재 입력 화면 유지","cancel":"","source":"include/management-ui.js"},
+{"key":"admin-contact-email","title":"관리자 이메일 형식","message":"이메일 아이디와 도메인을 올바르게 입력해 주세요.","trigger":"이메일 아이디·도메인 일부 누락 또는 이메일 형식 오류","screens":["BAS-18"],"type":"인라인 오류","confirm":"저장 중단 후 현재 입력 화면 유지","cancel":"","source":"include/management-ui.js"},
 {"key":"admin-password-required","screens":["BAS-18"],"type":"인라인 오류","trigger":"등록 시 비밀번호가 공백이거나 상세에서 공백만 입력하여 비밀번호 변경 시도","message":"비밀번호를 입력해 주세요. / 비밀번호는 공백만 입력할 수 없습니다.","confirm":"저장을 중단하고 현재 입력 화면 유지","cancel":"해당 없음","source":"include/management-ui.js","title":"관리자 비밀번호 입력 확인"},
   {
     "key": "notice-cancel",

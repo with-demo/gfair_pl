@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-18","version":"v1.18","date":"2026.10.23","accountName":"mjha","summary":"연락처 입력 형식·사용여부 마지막 행 및 등록일 노출 변경","changes":["전화·휴대전화 앞자리 선택 및 분리 입력, 이메일 아이디·도메인 분리와 선택·직접입력 적용.","사용여부를 마지막 전체 너비 라디오 행으로 변경하고 상세 등록일 미노출.","2열 중 단독 행은 전체 너비로 표시하며 설명·검증 안내 일치."]},
   {"screenId":"BAS-16","version":"v2.21","date":"2026.10.23","accountName":"mjha","summary":"관리자 목록 5개 항목 및 이름 밑줄 정리","changes":["이름·아이디·소속·사용여부·등록일 순서로 표시하고 역할 열 제거.","이름 밑줄을 한 개로 정리하고 검색 명칭·연결 설명 일치."]},
   {"screenId":"BAS-18","version":"v1.17","date":"2026.10.23","accountName":"mjha","summary":"관리자 등록·상세 기본정보 및 연락처 확장","changes":["목록 기본정보와 비밀번호·전화번호·휴대전화번호·이메일 구성.","등록일 자동 표시, 상세 아이디·등록일 유지, 비밀번호와 이메일 검증 및 설명 반영."]},
   {"screenId":"BAS-03","version":"v1.21","date":"2026.10.22","accountName":"mjha","summary":"국가 다중 선택 검색 분리","changes":["국가를 별도 코드표 기반 다중 선택으로 분리하고 키워드 국가 검색 제거.","다중 선택 OR 및 연도·상태·키워드 AND 적용, 초기화와 설명·핀 연결 갱신."]},

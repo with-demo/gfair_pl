@@ -22,3 +22,16 @@
 
 /* 이름 버튼의 밑줄만 표시하여 셀과 중복되지 않게 한다. */
 [data-management-root] .management-name:has(>button[data-management-admin]){text-decoration:none}
+
+#app #content [data-management-form^="admin-"] .admin-phone{display:flex;gap:4px;min-width:0;width:100%}
+#app #content [data-management-form^="admin-"] .admin-phone>select{flex:0 0 64px;width:64px;min-width:0;padding:6px}
+#app #content [data-management-form^="admin-"] .admin-phone>input{flex:1 1 0;width:0;min-width:0;max-width:94px;padding:6px}
+#app #content [data-management-form^="admin-"] .admin-email{display:flex;gap:6px;min-width:0;width:100%;flex-wrap:wrap}
+#app #content [data-management-form^="admin-"] .admin-email>input{flex:1 1 70px;width:0;min-width:0;max-width:220px}
+#app #content [data-management-form^="admin-"] .admin-email>select{flex:0 1 125px;min-width:90px}
+#app #content [data-management-form^="admin-"] .admin-use-field{display:block;position:relative;min-width:0;padding:0;border:0;border-bottom:1px solid #ddd}
+#app #content [data-management-form^="admin-"] .admin-use-field>legend{width:150px;background:#f4f4f4;border-right:1px solid #ddd}
+#app #content [data-management-form^="admin-"] .admin-use-field>.write-form-controls{margin-left:150px}
+#app #content [data-management-form^="admin-"] .admin-use-field>.write-form-controls>label{display:inline-flex;align-items:center;gap:6px;width:auto;margin:0 20px 0 0}
+@media(max-width:1000px){#app #content [data-management-form^="admin-"] .admin-use-field>legend{width:120px}#app #content [data-management-form^="admin-"] .admin-use-field>.write-form-controls{margin-left:120px}}
+@media(max-width:600px){#app #content [data-management-form^="admin-"] .admin-use-field>legend{width:110px}#app #content [data-management-form^="admin-"] .admin-use-field>.write-form-controls{margin-left:110px}}

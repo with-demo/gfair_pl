@@ -52,3 +52,6 @@
  #app fieldset.write-form-row>legend{width:110px}
  #app fieldset.write-form-row>.write-form-controls{margin-left:110px}
 }
+
+/* 2열에서 단독으로 남거나 전체 행 앞에서 짝이 없는 항목은 전체 너비로 표시한다. */
+#app #content .write-form-rows>.write-form-row.write-form-single{grid-column:1/-1}
