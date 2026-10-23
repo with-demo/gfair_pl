@@ -112,7 +112,7 @@
  }
  function render(){
   queued=false;const panel=document.querySelector('.ui-spec-panel'),toolbar=document.querySelector('.ui-spec-actions');if(!panel||!toolbar)return;
-  if(!toolbar.querySelector('[data-planning-notes]')){const planningButton=button('기획비고',showPlanningNotes);planningButton.dataset.planningNotes='';toolbar.insertBefore(planningButton,toolbar.querySelector('[data-spec=close]'));}
+  if(!toolbar.querySelector('[data-planning-notes]')){const planningButton=button('기획비고',showPlanningNotes);planningButton.dataset.planningNotes='';toolbar.insertBefore(planningButton,toolbar.querySelector('[data-spec=numbers]')||toolbar.querySelector('[data-spec=close]'));}
   const pending=pendingPlanningTarget&&route()===pendingPlanningTarget.screen&&records().find(record=>record.id===pendingPlanningTarget.id);if(pending)selected=pending.id;
   const focused=document.activeElement;const focusId=focused?.matches('.annotation-card textarea,.annotation-card input[data-comment-name]')?focused.closest('article').id:null;const focusSelector=focused?.tagName==='INPUT'?'input[data-comment-name]':'textarea';const selection=focusId?[focused.selectionStart,focused.selectionEnd]:null;const scrollTop=panel.scrollTop;
   let controls=document.getElementById('annotation-controls');if(!controls){controls=element('div',undefined,'annotation-controls');controls.id='annotation-controls';toolbar.append(controls);}controls.replaceChildren();controls.hidden=route()==='screens';
