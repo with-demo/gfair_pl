@@ -1,8 +1,17 @@
-.popup-example-id{display:block;font-size:11px;color:#777;font-weight:400;margin-top:4px}.popup-example-toggle{font-size:12px;margin-left:auto;min-height:32px}
-#dialog.popup-example-open{width:min(1040px,calc(100vw - 32px));max-width:1040px}
-#dialog.popup-example-open>#dialog-content{display:grid;grid-template-columns:minmax(0,1fr) 340px}
-#dialog.popup-example-open .dialoghead,#dialog.popup-example-open .dialogbody,#dialog.popup-example-open .dialogactions{grid-column:1}
-.popup-example-description{grid-column:2;grid-row:1/10;background:#fafafa;border-left:1px solid #ddd;padding:22px;max-height:75vh;overflow:auto}
-.popup-example-description h2{font-size:16px}.popup-example-description small{display:block;color:#777;font-size:11px;margin:6px 0 18px}.popup-example-description h3{font-size:13px;margin:16px 0 7px}.popup-example-description p{font-size:13px;line-height:1.8;word-break:keep-all}.popup-example-description section{border-top:1px solid #ddd;margin-top:16px}
-@media(max-width:750px){#dialog.popup-example-open>#dialog-content{grid-template-columns:1fr}.popup-example-description{grid-column:1;grid-row:auto;border-left:0;border-top:1px solid #ddd;max-height:none}}
-#dialog.popup-description-live{position:fixed;inset:120px auto auto 20px;width:calc(65vw - 40px);max-width:none;max-height:calc(100vh - 150px);z-index:45;box-shadow:0 8px 36px #0004}.popup-description-live .dialoghead{gap:10px}@media(max-width:1100px){#dialog.popup-description-live{position:relative;inset:auto;width:calc(100% - 32px);margin:20px auto}.ui-spec-panel{position:relative}}
+/* Review tools are outside the white popup, within the dialog top layer. */
+#dialog.standard-popup{background:transparent;box-shadow:none;border:0;border-radius:0;padding:0;max-height:calc(100dvh - 32px);overflow:auto}
+#dialog.standard-popup>#dialog-content{background:#fff;border:1px solid #ccc;border-radius:8px;box-shadow:0 12px 30px #0003;overflow:hidden}
+.popup-review-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;padding:2px}
+.popup-example-id{font-size:12px;color:#fff;background:#333;padding:5px 8px;border-radius:3px}
+.popup-example-toggle{font-size:12px;min-height:32px;background:#fff;color:#222}
+#dialog.standard-popup .dialoghead,#dialog.standard-popup .group-access-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px}
+#dialog.standard-popup .dialoghead h2,#dialog.standard-popup .group-access-heading h2{margin:0;min-width:0}
+#dialog.standard-popup .popup-close{display:grid;place-items:center;flex:none;width:32px;height:32px;min-height:32px;padding:0;border:0;background:transparent;color:#222;font-size:26px;line-height:1;cursor:pointer}
+#dialog.standard-popup .popup-close:hover{background:#eee}
+#dialog.standard-popup .popup-close:focus-visible{outline:2px solid #555;outline-offset:2px}
+#dialog.standard-popup .dialogactions,#dialog.standard-popup .group-access-footer,#dialog.standard-popup .popup-action-row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:15px 0 0;padding:0;border:0}
+#dialog.standard-popup .dialogactions,#dialog.standard-popup .group-access-footer{margin:15px 24px 24px}
+#dialog.standard-popup .dialogbody:has(+.dialogactions){padding-bottom:0}
+#dialog.standard-popup .formfooter,#dialog.standard-popup .group-detail-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:15px;padding:0;border:0;background:transparent}
+#dialog.popup-description-live{position:fixed;inset:90px auto auto 20px;width:calc(65vw - 40px);max-width:none;max-height:calc(100dvh - 110px);z-index:45}
+@media(max-width:1100px){#dialog.popup-description-live{inset:60px auto auto 16px;width:calc(100vw - 32px);margin:0;max-height:calc(100dvh - 76px)}}
