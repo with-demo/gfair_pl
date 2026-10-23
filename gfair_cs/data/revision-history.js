@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-05","version":"v0.46","date":"2026.10.23","accountName":"shyuwith","summary":"사용자별 승인 요청·등록 버튼 Description 분리","changes":["08번은 통역원 승인 요청, 09번은 관리자·수출상담 운영용역사 등록 버튼으로 분리.","등록 즉시 승인 완료 처리와 검증·표시 조건·처리 결과를 각각 작성하고 해당 버튼에만 번호 연결."]},
 {"screenId":"BAS-15","version":"v2.25","date":"2026.10.23","accountName":"mjha","summary":"담당자·대표자·관리자 예시를 자연스러운 가상 인명으로 변경","changes":["담당자 A 등의 임시 이름을 김도현·박지훈 등 가상 인명으로 변경.","같은 인물의 목록·상세·검색·일지 예시 이름 연결 유지."]},
 {"screenId":"BAS-17","version":"v1.17","date":"2026.10.23","accountName":"mjha","summary":"담당자·대표자·관리자 예시를 자연스러운 가상 인명으로 변경","changes":["담당자 A 등의 임시 이름을 김도현·박지훈 등 가상 인명으로 변경.","같은 인물의 목록·상세·검색·일지 예시 이름 연결 유지."]},
 {"screenId":"BAS-16","version":"v2.24","date":"2026.10.23","accountName":"mjha","summary":"담당자·대표자·관리자 예시를 자연스러운 가상 인명으로 변경","changes":["담당자 A 등의 임시 이름을 김도현·박지훈 등 가상 인명으로 변경.","같은 인물의 목록·상세·검색·일지 예시 이름 연결 유지."]},
