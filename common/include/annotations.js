@@ -2,7 +2,7 @@
 (()=>{
  'use strict';
  const app=document.getElementById('app'),store=window.GFAIR_COLLAB;if(!app||!store)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=planning-note-list-20261022',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=label-width-100-20261023',document.currentScript.src);document.head.append(css);
  let selected=null,picking=false,queued=false,dragging=null,view=window.GFAIR_DESCRIPTION_VIEW||{closed:document.querySelector('.ui-spec-panel')?.hidden??true,full:false,numbers:true};
  const savingPins=new Set();
  const route=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
