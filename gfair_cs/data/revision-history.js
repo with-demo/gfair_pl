@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-05","version":"v0.44","date":"2026.10.23","accountName":"shyuwith","summary":"Description 번호가 화면 밖으로 벗어나는 위치 오류 수정","changes":["항목 분리 전 저장된 핀 좌표로 번호가 숨는 경우 현재 연결 영역 좌측에 복원.","핀 이동 저장 시 복원된 실제 좌표를 기준으로 저장하며 기존 설명 내용 유지."]},
 {"screenId":"BAS-05","version":"v1.22","date":"2026.10.23","accountName":"mjha","summary":"국내바이어 기업 항목명을 소속기업으로 통일","changes":["키워드 검색 옵션·상세 항목·엑셀 머리글 명칭을 소속기업으로 통일.","기존 검색 동작·예시 데이터 유지, 관련 Description 및 기획비고 동시 반영."]},
 {"screenId":"BAS-06","version":"v0.27","date":"2026.10.23","accountName":"mjha","summary":"국내바이어 기업 항목명을 소속기업으로 통일","changes":["키워드 검색 옵션·상세 항목·엑셀 머리글 명칭을 소속기업으로 통일.","기존 검색 동작·예시 데이터 유지, 관련 Description 및 기획비고 동시 반영."]},
 {"screenId":"JNL-05","version":"v0.43","date":"2026.10.23","accountName":"shyuwith","summary":"기존 Description을 8개 항목으로 분리 및 번호 연결","changes":["01 행사·작성자, 02 참가 기업, 03 셀러 명함, 04 바이어, 05 상담성과, 06 해시태그, 07 임시 저장, 08 승인 요청으로 정리.","기존 문구와 기획비고를 보존하며 명함·해시태그·버튼 설명 분리.","상담 정보 설명을 제거하고 각 항목의 실제 입력·버튼 영역에 번호 연결."]},
