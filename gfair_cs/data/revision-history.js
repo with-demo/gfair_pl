@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-05","version":"v1.22","date":"2026.10.23","accountName":"mjha","summary":"국내바이어 기업 항목명을 소속기업으로 통일","changes":["키워드 검색 옵션·상세 항목·엑셀 머리글 명칭을 소속기업으로 통일.","기존 검색 동작·예시 데이터 유지, 관련 Description 및 기획비고 동시 반영."]},
+{"screenId":"BAS-06","version":"v0.27","date":"2026.10.23","accountName":"mjha","summary":"국내바이어 기업 항목명을 소속기업으로 통일","changes":["키워드 검색 옵션·상세 항목·엑셀 머리글 명칭을 소속기업으로 통일.","기존 검색 동작·예시 데이터 유지, 관련 Description 및 기획비고 동시 반영."]},
 {"screenId":"BAS-03-p01","version":"v0.3","date":"2026.10.23","accountName":"mjha","summary":"최신 설명에 맞춰 엑셀 첨부 용량 제한 해제","changes":["사용자 확정에 따라 10MB 제한과 용량 초과 안내 제거."]},
 {"screenId":"BAS-05","version":"v1.21","date":"2026.10.23","accountName":"mjha","summary":"해외바이어 기준 목록·엑셀 디스크립션 및 양식 팝업 정합성 반영","changes":["대상별 검색·상태·이름 이동·참가연도·엑셀 설명 및 연결 핀 반영.","목록 검색 결과 엑셀 다운로드·팝업 양식 다운로드 분리, 첨부 용량 제한 없음 적용.","기존 설명·핀 위치·기획비고 유지 및 자료 요청 비고 복사."]},
 {"screenId":"BAS-05-p01","version":"v0.1","date":"2026.10.23","accountName":"mjha","summary":"해외바이어 기준 목록·엑셀 디스크립션 및 양식 팝업 정합성 반영","changes":["대상별 검색·상태·이름 이동·참가연도·엑셀 설명 및 연결 핀 반영.","목록 검색 결과 엑셀 다운로드·팝업 양식 다운로드 분리, 첨부 용량 제한 없음 적용.","기존 설명·핀 위치·기획비고 유지 및 자료 요청 비고 복사."]},
