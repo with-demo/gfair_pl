@@ -4,7 +4,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 (()=>{const base=document.currentScript.src,css=document.createElement('link'),script=document.createElement('script');css.rel='stylesheet';css.href=new URL('../css/admin-list-ui.css?v=search-layout-20261021',base).href;script.src=new URL('admin-list-ui.js?v=complete-ids-20261022',base).href;document.head.append(css,script);})();
 
 // 공동작업 Description 패널을 직접 불러온다.
-(()=>{const script=document.createElement('script');script.src=new URL('../../common/include/spec-panel.js?v=clean-copy-20261021',document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement('script');script.src=new URL('../../common/include/spec-panel.js?v=number-toggle-20261023',document.currentScript.src).href;document.head.append(script);})();
 (()=>{const script=document.createElement('script');script.src=new URL('notice-ui.js?v=complete-ids-20261022',document.currentScript.src).href;document.head.append(script);})();
 
 // 목록 본문은 가운데 정렬, 긴 텍스트 열은 왼쪽 정렬한다.

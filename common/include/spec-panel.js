@@ -16,18 +16,20 @@
  new ResizeObserver(measureToolbar).observe(toolbar);measureToolbar();
  const panel=document.createElement('aside');panel.className='ui-spec-panel';panel.setAttribute('aria-label','Description');panel.hidden=true;layout.append(panel);
  const visibilityKey='mockup.description.open.'+(document.body.dataset.project||'default');
- let closed=sessionStorage.getItem(visibilityKey)!=='true',full=false,numbers=true;
+ const numbersKey='mockup.description.numbers.'+(document.body.dataset.project||'default');
+ let closed=sessionStorage.getItem(visibilityKey)!=='true',full=false,numbers=sessionStorage.getItem(numbersKey)!=='false';
+ const numbersButton=document.createElement('button');numbersButton.type='button';numbersButton.dataset.spec='numbers';numbersButton.title='목업 화면의 설명 번호 핀만 표시하거나 숨깁니다.';toolbar.querySelector('[data-spec=close]').before(numbersButton);
  const status=toolbar.querySelector('.ui-spec-status');
  function draw(){panel.replaceChildren();window.dispatchEvent(new Event('annotation-render'));}
  function sync(){
   // Former overview copy must not reappear inside the mockup after removing the panel content.
   app.querySelectorAll('#content .pagehead .subtitle,#content .management-note,#content .attendance-demo-note,#content .statistics-footnote,#content .notice-save-note,#content .notice-file-note').forEach(el=>{el.dataset.descriptionOverview='';});
   const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen,overview=route==='screens';
-  const hasAnnotations=!!window.GFAIR_COLLAB?.records.length;
   toolbar.hidden=false;panel.hidden=closed||overview;screenPicker.value=route;
-  ['close'].forEach(action=>{toolbar.querySelector('[data-spec='+action+']').hidden=overview||(action==='numbers'&&!hasAnnotations);});status.hidden=overview;
+  ['close','numbers'].forEach(action=>{toolbar.querySelector('[data-spec='+action+']').hidden=overview;});status.hidden=overview;
   layout.classList.toggle('with-spec',!closed&&!overview);layout.classList.toggle('spec-full',!closed&&!overview&&full);
   toolbar.querySelector('[data-spec=close]').textContent=closed?'디스크립션 열기':'디스크립션 닫기';
+  numbersButton.textContent=numbers?'번호 숨기기':'번호 보이기';numbersButton.setAttribute('aria-pressed',String(numbers));
   const role=document.getElementById('role-picker'),select=toolbar.querySelector('.ui-spec-actions select');
   if(role){if(!select.options.length)select.innerHTML=role.innerHTML;select.value=role.value;}
   status.textContent='';
@@ -37,6 +39,7 @@
   const action=event.target.dataset.spec;
   if(action==='screen-search'){full=false;location.hash='screens';}
   if(action==='close'){closed=!closed;full=false;sessionStorage.setItem(visibilityKey,String(!closed));}
+  if(action==='numbers'){numbers=!numbers;sessionStorage.setItem(numbersKey,String(numbers));}
   sync();
  });
  toolbar.addEventListener('change',event=>{
