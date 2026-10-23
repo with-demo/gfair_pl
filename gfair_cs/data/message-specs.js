@@ -1,4 +1,5 @@
 window.GFAIR_MESSAGE_SPECS=[
+{"key":"admin-password-rule","screens":["BAS-18"],"type":"인라인 오류","title":"등록 비밀번호 규칙","trigger":"등록 시 비밀번호가 영문·숫자 포함 8~20자리 규칙을 충족하지 않거나 공백 포함","message":"영문·숫자 포함 8~20자리로 입력해 주세요. (특수문자 사용 가능, 공백 불가)","confirm":"등록 중단 후 현재 입력 화면 유지","cancel":"","source":"include/management-ui.js"},
 {"key":"jnl16-review-result","title":"수출상담일지 상세 승인·반려 처리","trigger":"관리자 또는 수출상담 운영용역사가 승인 요청 일지의 승인·반려 클릭","message":"검토용 일지를 승인 완료 상태로 변경했습니다. / 검토용 일지를 반려 상태로 변경했습니다.","confirm":"목록 상태와 상세 처리 이력을 갱신하고 승인·반려 버튼을 비활성화","cancel":"","screens":["JNL-16"],"type":"토스트","source":"js/app.js"},
 {"key":"jnl16-reject-reason-required","title":"상세 반려 사유 필수","trigger":"반려 사유가 비어 있거나 공백만 입력한 상태에서 반려 클릭","message":"반려 사유를 입력해 주세요.","confirm":"입력란에 포커스하고 상태를 유지","cancel":"","screens":["JNL-16"],"type":"토스트","source":"js/app.js"},
 {"key":"jnl14-bulk-request","title":"상담일지 일괄 승인 요청","trigger":"통역원이 임시 저장·반려 일지를 선택하고 승인 요청 클릭","message":"선택한 N건을 승인 요청하시겠습니까?","confirm":"승인 요청: 선택 일지를 승인 요청 상태로 변경하고 목록 갱신","cancel":"취소·닫기: 상태 변경 없이 목록 유지","screens":["JNL-14"],"type":"컨펌","source":"include/jnl14-bulk.js"},

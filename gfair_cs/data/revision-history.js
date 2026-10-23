@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-18","version":"v1.21","date":"2026.10.23","accountName":"mjha","summary":"등록 비밀번호 기본 규칙 및 사용여부 한 줄 배치","changes":["영문·숫자 포함 8~20자리 및 공백 불가 검증과 비밀번호 하단 안내 추가.","등록·상세의 사용·미사용 라디오를 같은 줄에 표시.","관련 설명·검증 안내 및 기획비고 반영."]},
 {"screenId":"BAS-18","version":"v1.20","date":"2026.10.23","accountName":"mjha","summary":"연락처·이메일 디스크립션 공통 문구 통일","changes":["휴대전화·이메일의 동일 동작 설명을 BAS-04 문구와 동일하게 정리.","관리자 직접 입력 조건과 일반 전화번호 자릿수 차이를 유지하고 기존 기획비고에 변경 안내 추가."]},
 {"screenId":"JNL-16","version":"v0.2","date":"2026.10.23","accountName":"shyuwith","summary":"관리자·수출상담 운영용역사 상세 검수 영역 추가","changes":["상세 하단 처리 이력과 검수 의견·반려 사유 입력란 표시.","우측 하단 반려·승인 버튼 추가 및 승인 요청 상태의 처리 연결.","통역원 상세와 등록 화면은 기존 구성 유지."]},
 {"screenId":"JNL-05","version":"v0.40","date":"2026.10.23","accountName":"shyuwith","summary":"신규 등록 상담정보·성과 초기값 제거","changes":["등록 진입 시 상담 상세·비고·수출 상담액·계약 추진액을 빈 값으로 표시.","거래 가능성·예/아니오 라디오 기본 선택 제거.","상담 상세와 비고는 플레이스홀더 표시하며 상세 화면 저장값은 유지."]},

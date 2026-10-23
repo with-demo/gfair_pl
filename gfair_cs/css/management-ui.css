@@ -32,6 +32,7 @@
 #app #content [data-management-form^="admin-"] .admin-use-field{display:block;position:relative;min-width:0;padding:0;border:0;border-bottom:1px solid #ddd}
 #app #content [data-management-form^="admin-"] .admin-use-field>legend{width:150px;background:#f4f4f4;border-right:1px solid #ddd}
 #app #content [data-management-form^="admin-"] .admin-use-field>.write-form-controls{margin-left:150px}
+#app #content [data-management-form^="admin-"] .admin-use-field>.write-form-controls{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:20px}
 #app #content [data-management-form^="admin-"] .admin-use-field>.write-form-controls>label{display:inline-flex;align-items:center;gap:6px;width:auto;margin:0 20px 0 0}
 @media(max-width:1000px){#app #content [data-management-form^="admin-"] .admin-use-field>legend{width:120px}#app #content [data-management-form^="admin-"] .admin-use-field>.write-form-controls{margin-left:120px}}
 @media(max-width:600px){#app #content [data-management-form^="admin-"] .admin-use-field>legend{width:110px}#app #content [data-management-form^="admin-"] .admin-use-field>.write-form-controls{margin-left:110px}}
@@ -40,3 +41,5 @@
 #app #content .admin-id-check>input{flex:1 1 0;width:0;min-width:0;max-width:300px}
 #app #content .admin-id-check>.btn{flex:none;white-space:nowrap}
 #app #content [data-admin-id-result]{flex-basis:100%;font-size:12px;line-height:1.5}
+
+#app #content .admin-password-guide{display:block;flex-basis:100%;width:100%;font-size:12px;line-height:1.5;color:#666}
