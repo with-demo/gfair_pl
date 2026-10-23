@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-14","version":"v0.16","date":"2026.10.23","accountName":"shyuwith","summary":"사용구분별 체크 선택 및 일괄 승인 처리","changes":["통역원 본인 일지의 체크 선택·일괄 승인 요청 추가.","관리자 전체 일지의 체크 선택·일괄 승인·공통 사유 입력 후 반려 추가."]},
 {"screenId":"JNL-14","version":"v0.15","date":"2026.10.23","accountName":"shyuwith","summary":"사용구분별 설명 분리 적용 취소","changes":["사용자 요청으로 사용구분별 Description 저장 분리를 취소하고 화면 ID 기준의 기존 공유 저장 방식으로 복구.","JNL-05 등록·JNL-16 상세 화면 ID 분리는 유지."]},
 {"screenId":"JNL-14","version":"v0.14","date":"2026.10.23","accountName":"shyuwith","summary":"사용구분별 독립 Description 적용","changes":["통역원·관리자 등 다섯 사용구분의 설명을 각각 독립 저장.","기존 설명을 최초 편집 시 해당 역할 전용으로 복사하고 원본은 수정하지 않음."]},
 {"screenId":"JNL-14","version":"v0.13","date":"2026.10.23","accountName":"shyuwith","summary":"통역원 Description 독립 저장","changes":["통역원 JNL-14 설명을 관리자 설명과 별도 저장하며 수기 수정이 다른 사용구분에 반영되지 않도록 분리."]},
