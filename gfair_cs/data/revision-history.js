@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-16","version":"v0.4","date":"2026.10.23","accountName":"shyuwith","summary":"상세 Description 공통·사용구분별 정책 정리","changes":["저장된 일지 조회 기준으로 개요와 번호별 설명을 정리하고 공통·통역원·관리자/수출상담 운영용역사 동작을 구분.","통역원 임시 저장·반려의 즉시 편집과 승인 요청·승인 완료의 회색 비활성 조건 명시.","관리자·수출상담 운영용역사 처리 이력 조회, 반려 사유 입력 및 승인·반려 상태 전환 명시.","공동작업 서버의 기존 설명 ID·번호·댓글·기획비고 보존."]},
 {"screenId":"JNL-16","version":"v0.3","date":"2026.10.23","accountName":"shyuwith","summary":"검수 영역 표 레이아웃 및 버튼 순서 정리","changes":["관리자·수출상담 운영용역사 우측 하단 버튼을 승인·반려·목록 순서로 표시.","처리 이력과 반려 사유를 상담정보와 같은 회색 항목명·흰색 내용의 표로 구성."]},
 {"screenId":"BAS-18","version":"v1.20","date":"2026.10.23","accountName":"mjha","summary":"연락처·이메일 디스크립션 공통 문구 통일","changes":["휴대전화·이메일의 동일 동작 설명을 BAS-04 문구와 동일하게 정리.","관리자 직접 입력 조건과 일반 전화번호 자릿수 차이를 유지하고 기존 기획비고에 변경 안내 추가."]},
 {"screenId":"JNL-16","version":"v0.2","date":"2026.10.23","accountName":"shyuwith","summary":"관리자·수출상담 운영용역사 상세 검수 영역 추가","changes":["상세 하단 처리 이력과 검수 의견·반려 사유 입력란 표시.","우측 하단 반려·승인 버튼 추가 및 승인 요청 상태의 처리 연결.","통역원 상세와 등록 화면은 기존 구성 유지."]},
