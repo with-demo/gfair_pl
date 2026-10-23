@@ -383,7 +383,6 @@ window.GFAIR_MESSAGE_SPECS=[
   {
     "key": "admin-required",
     "screens": [
-      "BAS-16",
       "BAS-18"
     ],
     "type": "인라인 오류",
@@ -397,7 +396,6 @@ window.GFAIR_MESSAGE_SPECS=[
   {
     "key": "admin-duplicate",
     "screens": [
-      "BAS-16",
       "BAS-18"
     ],
     "type": "인라인 오류",
