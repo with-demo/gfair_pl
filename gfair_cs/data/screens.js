@@ -3501,3 +3501,5 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 (()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens);for(const id of ['BAS-18','BAS-20']){const s=all.find(s=>s.id===id);if(s)s.ui.fields=[['이름','직접 입력'],['아이디','등록 입력 / 상세 읽기 전용'],['소속','직접 입력'],['비밀번호','등록 필수 / 상세 변경 시 입력'],['전화번호','앞자리 선택 - 가운데 3~4자리 - 마지막 4자리'],['휴대전화번호','앞자리 선택 - 4자리 - 4자리'],['이메일','아이디 @ 도메인 / 선택·직접입력'],['등록일','등록 모드만 읽기 전용 노출 / 상세 미노출'],['사용여부','마지막 전체 너비 행 / 사용·미사용 라디오']];}})();
 
 (()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens);for(const id of ['BAS-18','BAS-20']){const s=all.find(s=>s.id===id);if(!s)continue;s.ui.fields=s.ui.fields.filter(f=>f[0]!=='등록일');const i=s.ui.fields.findIndex(f=>f[0]==='비밀번호');s.ui.fields.splice(i+1,0,['비밀번호 확인','등록 모드만 노출 / 비밀번호와 일치']);s.ui.fields.find(f=>f[0]==='아이디')[1]='등록 입력 및 중복확인 / 상세 읽기 전용';}})();
+
+(()=>{const group=GFAIR_SCREENS.find(g=>g.screens.some(s=>s.id==='JNL-05'));const base=group.screens.find(s=>s.id==='JNL-05');if(!group.screens.some(s=>s.id==='JNL-16'))group.screens.push({...JSON.parse(JSON.stringify(base)),id:'JNL-16',title:'수출상담일지 상세',summary:'저장된 수출상담일지를 확인하고 처리 상태에 따라 수정·저장합니다.'});})();

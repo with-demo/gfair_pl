@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-05","version":"v0.39","date":"2026.10.23","accountName":"shyuwith","summary":"등록·상세 독립 편집 분리","changes":["등록은 JNL-05, 상세는 JNL-16으로 화면 경로와 렌더링 함수 분리."]},
+{"screenId":"JNL-16","version":"v0.1","date":"2026.10.23","accountName":"shyuwith","summary":"상세 화면 독립 분리","changes":["화면 구성 초기값은 등록과 같게 유지하고 이후 화면 및 Description은 각각 독립 편집."]},
 {"screenId":"JNL-05","version":"v0.38","date":"2026.10.23","accountName":"shyuwith","summary":"상세 제목 및 Description 보완","changes":["상세 모드의 제목을 등록으로 덮어쓰던 부분 수정.","공동작업 서버의 개요·01~06 설명에 저장값 표시와 상태별 수정·저장 정책 반영."]},
   {"screenId":"JNL-14","version":"v0.11","date":"2026.10.23","accountName":"shyuwith","summary":"상단 화면 제목 변경","changes":["JNL-14 상단 제목을 ‘수출상담일지1’로 변경."]},
   {"screenId":"JNL-14","version":"v0.12","date":"2026.10.23","accountName":"shyuwith","summary":"상단 제목 문구 정리","changes":["목록 화면 제목을 ‘수출상담일지’로 표시."]},
