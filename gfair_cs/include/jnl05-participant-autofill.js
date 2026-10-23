@@ -113,7 +113,7 @@
     }
     if (participant) {
       participant.querySelector('.journal-label').innerHTML = '참가 기업<em> *</em>';
-      participant.classList.add('full');
+      participant.classList.remove('full');
     }
     replaceWithLockedInput(number, 'businessNo', businessNumber(selectedCompany, companyInput));
     if (number) number.querySelector('.journal-label').innerHTML = '사업자 번호<em> *</em>';
@@ -126,9 +126,8 @@
 
     if (table) {
       const orderedRows = [
-        [participant],
-        [number, country],
-        [product],
+        [participant, number],
+        [country, product],
         [contact, phone],
         [card]
       ];
@@ -165,17 +164,15 @@
       const input = pair?.querySelector('.journal-control input');
       if (input) { input.readOnly = true; input.disabled = true; input.classList.add('journal-readonly'); }
     });
-    if (buyerSelectPair) buyerSelectPair.classList.add('full');
+    buyerSelectPair?.classList.remove('full');
+    buyerCountry?.classList.remove('full');
     const buyerTable = buyerSection.querySelector('.journal-table');
     if (buyerTable) {
       const row = document.createElement('div');
       row.className = 'journal-table-row';
       row.append(buyerSelectPair);
-      const countryRow = document.createElement('div');
-      countryRow.className = 'journal-table-row';
-      if (buyerCountry) buyerCountry.classList.add('full');
-      if (buyerCountry) countryRow.append(buyerCountry);
-      buyerTable.replaceChildren(row, countryRow);
+      if (buyerCountry) row.append(buyerCountry);
+      buyerTable.replaceChildren(row);
     }
     form.dataset.participantCompanySelect = companyInput?.dataset.name || 'company';
   }
