@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v1.22","date":"2026.10.23","accountName":"mjha","summary":"키워드 검색 소속기업 옵션 제거","changes":["검색 범위를 전체·바이어코드·바이어명으로 정리.","전체 검색에서도 소속기업을 제외하고 관련 설명·기획비고 갱신."]},
 {"screenId":"BAS-18","version":"v1.21","date":"2026.10.23","accountName":"mjha","summary":"등록 비밀번호 기본 규칙 및 사용여부 한 줄 배치","changes":["영문·숫자 포함 8~20자리 및 공백 불가 검증과 비밀번호 하단 안내 추가.","등록·상세의 사용·미사용 라디오를 같은 줄에 표시.","관련 설명·검증 안내 및 기획비고 반영."]},
 {"screenId":"JNL-16","version":"v0.4","date":"2026.10.23","accountName":"shyuwith","summary":"상세 Description 공통·사용구분별 정책 정리","changes":["저장된 일지 조회 기준으로 개요와 번호별 설명을 정리하고 공통·통역원·관리자/수출상담 운영용역사 동작을 구분.","통역원 임시 저장·반려의 즉시 편집과 승인 요청·승인 완료의 회색 비활성 조건 명시.","관리자·수출상담 운영용역사 처리 이력 조회, 반려 사유 입력 및 승인·반려 상태 전환 명시.","공동작업 서버의 기존 설명 ID·번호·댓글·기획비고 보존."]},
 {"screenId":"JNL-16","version":"v0.3","date":"2026.10.23","accountName":"shyuwith","summary":"검수 영역 표 레이아웃 및 버튼 순서 정리","changes":["관리자·수출상담 운영용역사 우측 하단 버튼을 승인·반려·목록 순서로 표시.","처리 이력과 반려 사유를 상담정보와 같은 회색 항목명·흰색 내용의 표로 구성."]},
