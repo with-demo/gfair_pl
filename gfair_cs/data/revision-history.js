@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03-p01","version":"v0.1","date":"2026.10.23","accountName":"mjha","summary":"엑셀 일괄 업로드 팝업 디스크립션 초안 등록","changes":["엑셀양식 다운로드·엑셀 파일 첨부·파일 검증의 설명과 연결 핀 3개 등록.","신규 초안의 기획비고 변경 알림 제외."]},
 {"screenId":"BAS-03","version":"v1.27","date":"2026.10.23","accountName":"mjha","summary":"목록 엑셀 다운로드와 업로드용 양식 분리","changes":["목록 엑셀 다운로드는 현재 검색 결과 전체를 XLSX로 제공.","BAS-03-p01에 양식 다운로드 버튼과 바이어 정보 작성·첨부 안내 배치.","관련 Description·핀 연결·기획비고 동시 반영."]},
 {"screenId":"JNL-14","version":"v0.24","date":"2026.10.23","accountName":"shyuwith","summary":"목록 머리글을 건수·페이지 정보로 통일","changes":["세 사용자 목록의 상담일지 제목과 별도 건수 행을 제거하고 상단 좌측에 총 N건·현재/전체 page 표시.","우측 보기 개수·다운로드 사용자별 노출 및 하단 페이지네이션 유지."]},
 {"screenId":"JNL-14","version":"v0.23","date":"2026.10.23","accountName":"shyuwith","summary":"사용자별 목록 제목·페이지 도구 통일","changes":["관리자·수출상담 운영용역사·통역원 목록에 상담일지 제목, 10/30/50건씩 보기와 페이지네이션 적용.","수출상담일지 더미 9건을 추가해 기본 10건 보기에서 2페이지 이동 가능.","통역원 엑셀 다운로드 버튼 제거.","현재 페이지의 처리 가능 행만 전체 선택하고 페이지 이동 시 체크 선택 해제."]},
