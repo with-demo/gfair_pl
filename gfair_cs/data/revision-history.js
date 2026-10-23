@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-14","version":"v0.17","date":"2026.10.23","accountName":"shyuwith","summary":"일괄 처리 버튼 목록 하단 좌측 배치","changes":["통역원 승인 요청 및 관리자 승인·반려 버튼을 선택 건수와 함께 좌측 하단에 배치.","상담일지 등록 버튼은 우측 하단 유지."]},
 {"screenId":"JNL-14","version":"v0.16","date":"2026.10.23","accountName":"shyuwith","summary":"사용구분별 체크 선택 및 일괄 승인 처리","changes":["통역원 본인 일지의 체크 선택·일괄 승인 요청 추가.","관리자 전체 일지의 체크 선택·일괄 승인·공통 사유 입력 후 반려 추가."]},
 {"screenId":"JNL-14","version":"v0.15","date":"2026.10.23","accountName":"shyuwith","summary":"사용구분별 설명 분리 적용 취소","changes":["사용자 요청으로 사용구분별 Description 저장 분리를 취소하고 화면 ID 기준의 기존 공유 저장 방식으로 복구.","JNL-05 등록·JNL-16 상세 화면 ID 분리는 유지."]},
 {"screenId":"JNL-14","version":"v0.14","date":"2026.10.23","accountName":"shyuwith","summary":"사용구분별 독립 Description 적용","changes":["통역원·관리자 등 다섯 사용구분의 설명을 각각 독립 저장.","기존 설명을 최초 편집 시 해당 역할 전용으로 복사하고 원본은 수정하지 않음."]},

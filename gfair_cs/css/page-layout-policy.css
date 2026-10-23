@@ -25,3 +25,5 @@
 @media(max-width:1000px){#app #content .form-rows.write-form-rows{grid-template-columns:minmax(0,1fr)}#app #content .form-rows.write-form-rows>.write-form-row{grid-template-columns:120px minmax(0,1fr)}}
 @media(max-width:600px){#app #content .form-rows.write-form-rows>.write-form-row{grid-template-columns:110px minmax(0,1fr)}}
 @media print{#app #content>.page-bottom-actions{display:none}}
+/* JNL-14 일괄 처리 버튼은 목록 하단 좌측, 등록은 우측에 둔다. */
+.page-bottom-actions>.jnl14-bulk-actions{display:flex;align-items:center;gap:8px;margin-right:auto;flex-wrap:wrap}
