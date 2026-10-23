@@ -4,6 +4,7 @@ window.GFAIR_REVISION_HISTORY=[
 {"screenId":"BAS-05","version":"v1.20","date":"2026.10.23","accountName":"mjha","summary":"검색·초기화 공통 디스크립션 적용","changes":["BAS-01 04번과 동일한 검색·초기화 설명을 적용하고 기존 번호·핀·댓글 유지."]},
 {"screenId":"BAS-16","version":"v2.23","date":"2026.10.23","accountName":"mjha","summary":"검색·초기화 공통 디스크립션 적용","changes":["BAS-01 04번과 동일한 검색·초기화 설명을 적용하고 기존 번호·핀·댓글 유지."]},
 {"screenId":"BAS-16","version":"v2.22","date":"2026.10.23","accountName":"mjha","summary":"목록에서 미사용 등록 검증 안내 제외","changes":["필수 항목 누락·아이디 중복 안내를 목록 알럿/컨펌에서 제외.","실제 사용하는 BAS-18 등록·상세의 안내와 검증은 유지."]},
+{"screenId":"JNL-16","version":"v0.6","date":"2026.10.23","accountName":"shyuwith","summary":"검수 사용자 원문 편집 허용","changes":["관리자·수출상담 운영용역사의 상세 원문 상태별 회색 비활성 제한 해제.","승인·반려 시 필수 입력을 검증하고 수정한 원문과 성과를 해당 일지에 함께 반영.","통역원 상태별 편집 제한과 기업·바이어 연계 항목 및 USD 고정 정책 유지."]},
 {"screenId":"BAS-03","version":"v1.22","date":"2026.10.23","accountName":"mjha","summary":"키워드 검색 소속기업 옵션 제거","changes":["검색 범위를 전체·바이어코드·바이어명으로 정리.","전체 검색에서도 소속기업을 제외하고 관련 설명·기획비고 갱신."]},
 {"screenId":"BAS-18","version":"v1.21","date":"2026.10.23","accountName":"mjha","summary":"등록 비밀번호 기본 규칙 및 사용여부 한 줄 배치","changes":["영문·숫자 포함 8~20자리 및 공백 불가 검증과 비밀번호 하단 안내 추가.","등록·상세의 사용·미사용 라디오를 같은 줄에 표시.","관련 설명·검증 안내 및 기획비고 반영."]},
 {"screenId":"JNL-16","version":"v0.5","date":"2026.10.23","accountName":"shyuwith","summary":"Description 번호 01~06 정리","changes":["화면 개요를 설명 번호에서 제외하고 기본 정보부터 01~06으로 표시.","본문 설명 번호와 목업 연결 핀 번호를 일치시키고 기존 저장 레코드·댓글·연결 위치 유지."]},
