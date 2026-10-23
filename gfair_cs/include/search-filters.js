@@ -28,7 +28,7 @@ form.querySelectorAll(':scope>fieldset.search-condition').forEach((fieldset,inde
 form.querySelectorAll(':scope>.search-condition').forEach(field=>{
  const controls=field.querySelector('.search-condition-controls'),caption=field.querySelector('.search-condition-caption')?.textContent||'';if(!controls)return;
  const select=controls.querySelector(':scope>select');
- if(select&&!select.multiple&&select.name&&!select.disabled&&/상태|구분|여부|유형|사용/.test(caption)&&select.options.length>=2&&select.options.length<=4&&[...select.options].every(o=>o.text.length<=8)){
+ if(select&&!select.multiple&&select.name&&!select.disabled&&/상태|구분|여부|유형|사용/.test(caption)&&select.options.length>=2&&select.options.length<=(location.hash.slice(1)==='JNL-14'&&select.name==='status'?5:4)&&[...select.options].every(o=>o.text.length<=8)){
  const radios=document.createElement('div');radios.className='search-radio-options';radios.setAttribute('role','radiogroup');radios.setAttribute('aria-label',caption);
  [...select.options].forEach(option=>{const label=document.createElement('label'),radio=document.createElement('input');radio.type='radio';radio.name=select.name;radio.value=option.value;radio.checked=radio.defaultChecked=option.selected;radio.disabled=option.disabled;radio.addEventListener('change',()=>{select.value=radio.value;select.dispatchEvent(new Event('change',{bubbles:true}));});label.append(radio,document.createTextNode(option.text));radios.append(label);});
  select.hidden=true;select.disabled=true;controls.append(radios);
