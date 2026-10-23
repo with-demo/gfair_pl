@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-05","version":"v0.40","date":"2026.10.23","accountName":"shyuwith","summary":"신규 등록 상담정보·성과 초기값 제거","changes":["등록 진입 시 상담 상세·비고·수출 상담액·계약 추진액을 빈 값으로 표시.","거래 가능성·예/아니오 라디오 기본 선택 제거.","상담 상세와 비고는 플레이스홀더 표시하며 상세 화면 저장값은 유지."]},
 {"screenId":"JNL-14","version":"v0.19","date":"2026.10.23","accountName":"shyuwith","summary":"선택 건수 문구 제거","changes":["관리자·수출상담 운영용역사·통역원 목록 좌측 하단의 선택 n건 문구 제거.","체크 선택에 따른 일괄 처리 버튼 활성화와 좌측 하단 배치 유지."]},
 {"screenId":"JNL-14","version":"v0.18","date":"2026.10.23","accountName":"shyuwith","summary":"수출상담 운영용역사 일괄 승인·반려 추가","changes":["관리자와 동일하게 승인 요청 상태의 일지를 체크 선택하고 목록 좌측 하단에서 승인·반려 처리.","공통 반려 사유 입력 팝업 및 상태별 처리 권한 연결."]},
 {"screenId":"JNL-14","version":"v0.17","date":"2026.10.23","accountName":"shyuwith","summary":"일괄 처리 버튼 목록 하단 좌측 배치","changes":["통역원 승인 요청 및 관리자 승인·반려 버튼을 선택 건수와 함께 좌측 하단에 배치.","상담일지 등록 버튼은 우측 하단 유지."]},
