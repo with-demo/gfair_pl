@@ -99,13 +99,15 @@
  function screenOverview(screen){
   const record=store.records.find(isOverview),section=element('section',undefined,'annotation-screen-overview'),heading=element('div',undefined,'annotation-overview-heading');heading.append(element('h3','화면 개요'));
   if(canEdit())heading.append(button('개요 수정',()=>showOverviewEditor(screen,record)));
+  if(route()==='JNL-14'&&!record){if(canEdit())section.append(button('화면 개요 작성',()=>showOverviewEditor(screen,null)));return section;}
+  if(route()==='JNL-14'&&record&&canEdit())heading.append(button('개요 삭제',()=>{dialog.replaceChildren(element('h2','화면 개요를 삭제할까요?'),element('p','JNL-14의 저장된 화면 개요를 삭제합니다. 화면 목업은 유지됩니다.'),button('취소',()=>dialog.close()),button('삭제',async event=>{if(await change('delete',{id:record.id,revision:record.revision},event.currentTarget)){dialog.close();render();}}));dialog.showModal();}));
   const text=record?JSON.parse(record.text).overview:defaultOverview(screen);
   section.append(heading,element('p',text,'annotation-text'));return section;
  }
  function showOverviewEditor(screen,record){
   if(!canEdit())return;const screenId=route();dialog.replaceChildren();
   const form=element('form',undefined,'annotation-spec-form'),header=element('div',undefined,'annotation-dialog-header'),close=button('×',()=>dialog.close());close.className='annotation-dialog-close';close.setAttribute('aria-label','화면 개요 수정 닫기');header.append(element('h2','화면 개요 수정'),close);
-  const label=element('label','화면 개요'),input=element('textarea');input.required=true;input.maxLength=2000;input.rows=7;input.value=record?JSON.parse(record.text).overview:defaultOverview(screen);label.append(input);
+  const label=element('label','화면 개요'),input=element('textarea');input.required=true;input.maxLength=2000;input.rows=7;input.value=record?JSON.parse(record.text).overview:screenId==='JNL-14'?'':defaultOverview(screen);label.append(input);
   const actions=element('div',undefined,'annotation-actions'),save=element('button','저장');save.type='submit';actions.append(button('취소',()=>dialog.close()),save);form.append(header,label,actions);
   form.addEventListener('submit',async event=>{event.preventDefault();if(!canEdit()||screenId!==route()||!form.reportValidity()||!input.value.trim())return;const text=JSON.stringify({format:'screen-overview-v1',overview:input.value.trim()});const result=await change(record?'update':'create',record?{id:record.id,text,revision:record.revision}:{screen:screenId,text,anchor:{selector:'#content',sample:'화면 개요',x:0,y:0}},save);if(result){dialog.close();render();}});
   dialog.append(form);dialog.showModal();input.focus();

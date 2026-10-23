@@ -1,6 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
 {"screenId":"BAS-03-p01","version":"v0.1","date":"2026.10.23","accountName":"mjha","summary":"엑셀 일괄 업로드 팝업 디스크립션 초안 등록","changes":["엑셀양식 다운로드·엑셀 파일 첨부·파일 검증의 설명과 연결 핀 3개 등록.","신규 초안의 기획비고 변경 알림 제외."]},
+{"screenId":"JNL-14","version":"v0.26","date":"2026.10.23","accountName":"shyuwith","summary":"Description 재작성 준비","changes":["사용자 요청으로 저장된 개요와 번호별 설명을 비우고 기존 화면 목업 유지.","개요가 없는 JNL-14에는 자동 개요 문구를 대신 표시하지 않고 새로 작성할 수 있도록 제공."]},
 {"screenId":"JNL-14","version":"v0.25","date":"2026.10.23","accountName":"shyuwith","summary":"통역원 필터 순서·처리 상태 라디오 통일","changes":["통역원 검색 필터를 처리 상태·기업명·해외 바이어 순서로 배치.","처리 상태를 전체·임시 저장·승인 요청·승인 완료·반려의 단일 선택 라디오로 표시."]},
 {"screenId":"BAS-03","version":"v1.27","date":"2026.10.23","accountName":"mjha","summary":"목록 엑셀 다운로드와 업로드용 양식 분리","changes":["목록 엑셀 다운로드는 현재 검색 결과 전체를 XLSX로 제공.","BAS-03-p01에 양식 다운로드 버튼과 바이어 정보 작성·첨부 안내 배치.","관련 Description·핀 연결·기획비고 동시 반영."]},
 {"screenId":"JNL-14","version":"v0.24","date":"2026.10.23","accountName":"shyuwith","summary":"목록 머리글을 건수·페이지 정보로 통일","changes":["세 사용자 목록의 상담일지 제목과 별도 건수 행을 제거하고 상단 좌측에 총 N건·현재/전체 page 표시.","우측 보기 개수·다운로드 사용자별 노출 및 하단 페이지네이션 유지."]},
