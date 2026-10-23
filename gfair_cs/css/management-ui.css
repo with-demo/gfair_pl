@@ -35,3 +35,8 @@
 #app #content [data-management-form^="admin-"] .admin-use-field>.write-form-controls>label{display:inline-flex;align-items:center;gap:6px;width:auto;margin:0 20px 0 0}
 @media(max-width:1000px){#app #content [data-management-form^="admin-"] .admin-use-field>legend{width:120px}#app #content [data-management-form^="admin-"] .admin-use-field>.write-form-controls{margin-left:120px}}
 @media(max-width:600px){#app #content [data-management-form^="admin-"] .admin-use-field>legend{width:110px}#app #content [data-management-form^="admin-"] .admin-use-field>.write-form-controls{margin-left:110px}}
+
+#app #content .admin-id-check{display:flex;align-items:center;gap:8px;min-width:0;width:100%}
+#app #content .admin-id-check>input{flex:1 1 0;width:0;min-width:0;max-width:300px}
+#app #content .admin-id-check>.btn{flex:none;white-space:nowrap}
+#app #content [data-admin-id-result]{flex-basis:100%;font-size:12px;line-height:1.5}
