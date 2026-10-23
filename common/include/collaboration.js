@@ -6,8 +6,11 @@
  const TOKEN='gfair.collab.session',VERIFIER='gfair.collab.verifier';
  let token=sessionStorage.getItem(TOKEN)||'',user=null,records=[],screen='',snapshot='',activeRequest=null,loading=false,githubReady=false;
  const changed=()=>window.dispatchEvent(new Event('collaboration-updated'));
- const current=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
+ const uiRoute=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
+ const descriptionRoute=route=>PROJECT==='gfair_cs'&&route==='JNL-14'&&document.querySelector('select[aria-label="사용구분"]')?.value==='interpreter'?'JNL-14-INTERPRETER':route;
+ const current=()=>descriptionRoute(uiRoute());
  async function api(op,body,options={}){
+  if(body?.screen)body={...body,screen:descriptionRoute(body.screen)};
   const url=SERVER+'/api/collab'+(body?'':'?'+new URLSearchParams({op,project:PROJECT,screen:options.route||current()}));
   const response=await fetch(url,{method:body?'POST':'GET',credentials:'omit',cache:'no-store',signal:options.signal,headers:{...(body?{'Content-Type':'application/json'}:{}),...(token?{Authorization:'Bearer '+token}:{})},body:body?JSON.stringify({op,project:PROJECT,...body}):undefined});
   let result;try{result=await response.json();}catch{throw Error('공동작업 서버에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.');}
@@ -26,7 +29,7 @@
   const bytes=crypto.getRandomValues(new Uint8Array(32)),verifier=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
   sessionStorage.setItem(VERIFIER,verifier);const digest=new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(verifier)));
   const challenge=btoa(String.fromCharCode(...digest)).replace(/=/g,'').replace(/\+/g,'-').replace(/\//g,'_');
-  location.assign(SERVER+'/api/github/start?'+new URLSearchParams({challenge,project:PROJECT,screen:current()==='screens'?'MON-01':current()}));
+  location.assign(SERVER+'/api/github/start?'+new URLSearchParams({challenge,project:PROJECT,screen:uiRoute()==='screens'?'MON-01':uiRoute()}));
  }
  window.GFAIR_COLLAB={get user(){return user;},get githubReady(){return githubReady;},get records(){return screen===current()?records:[];},get loading(){return loading;},get loaded(){return screen===current();},error:'',login,refresh,
   async planningNotes(){return (await api('planning-notes')).records;},
@@ -35,6 +38,7 @@
  };
  window.addEventListener('description-context-changed',()=>{snapshot='';changed();refresh();});
  window.addEventListener('hashchange',()=>{snapshot='';changed();refresh();});
+ document.addEventListener('change',event=>{if(event.target.matches('select[aria-label="사용구분"]')){snapshot='';queueMicrotask(()=>refresh(true));}});
  document.addEventListener('click',event=>{if(event.target.closest('[data-spec=refresh]'))refresh();});
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});setInterval(()=>{if(!document.hidden)refresh();},5000);
  (async()=>{const url=new URL(location.href),code=url.searchParams.get('annotation_code'),authError=url.searchParams.get('annotation_error');
