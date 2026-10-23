@@ -7,7 +7,7 @@
  const savingPins=new Set();
  const route=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
  const isOverview=record=>{try{return JSON.parse(record.text).format==='screen-overview-v1';}catch{return false;}};
- const records=()=>store.records.filter(record=>!isOverview(record)&&!(()=>{try{return JSON.parse(record.text).format==='screen-message-v1';}catch{return false;}})()),canEdit=()=>!!store.user?.editor;
+ const records=()=>{const visible=store.records.filter(record=>!isOverview(record)&&!(()=>{try{return JSON.parse(record.text).format==='screen-message-v1';}catch{return false;}})());return route()==='JNL-16'?visible.map((record,index)=>({...record,number:index+1})):visible;},canEdit=()=>!!store.user?.editor;
  const element=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
  const button=(text,action)=>{const el=element('button',text);el.type='button';el.addEventListener('click',action);return el;};
  const format=value=>value?new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',dateStyle:'short',timeStyle:'short'}).format(new Date(value)):'';
