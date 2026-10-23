@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-07","version":"v1.22","date":"2026.10.23","accountName":"mjha","summary":"검색·초기화 공통 디스크립션 적용","changes":["BAS-01 04번과 동일한 검색·초기화 설명을 적용하고 기존 번호·핀·댓글 유지."]},
 {"screenId":"BAS-03","version":"v1.23","date":"2026.10.23","accountName":"mjha","summary":"검색·초기화 공통 디스크립션 적용","changes":["BAS-01 04번과 동일한 검색·초기화 설명을 적용하고 기존 번호·핀·댓글 유지."]},
 {"screenId":"BAS-05","version":"v1.20","date":"2026.10.23","accountName":"mjha","summary":"검색·초기화 공통 디스크립션 적용","changes":["BAS-01 04번과 동일한 검색·초기화 설명을 적용하고 기존 번호·핀·댓글 유지."]},
 {"screenId":"BAS-16","version":"v2.23","date":"2026.10.23","accountName":"mjha","summary":"검색·초기화 공통 디스크립션 적용","changes":["BAS-01 04번과 동일한 검색·초기화 설명을 적용하고 기존 번호·핀·댓글 유지."]},
