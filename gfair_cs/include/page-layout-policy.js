@@ -43,6 +43,7 @@
    if(!original.children.length)original.classList.add('page-action-source-empty');
   }
   if(route==='JNL-14'){
+   bar.querySelectorAll('a[href="#JNL-05"]').forEach(link=>{if(link.textContent.trim()!=='등록')link.textContent='등록';});
    const buttons=[...bar.querySelectorAll('[data-jnl14-bulk]')];
    if(buttons.length){let left=bar.querySelector('.jnl14-bulk-actions');if(!left){left=document.createElement('div');left.className='jnl14-bulk-actions';bar.prepend(left);}
     const count=main.querySelector('[data-jnl14-count]')?.parentElement;if(count&&count.parentElement!==left){const original=count.parentElement;left.prepend(count);if(!original.children.length)original.classList.add('page-action-source-empty');}
