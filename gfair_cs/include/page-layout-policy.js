@@ -42,6 +42,7 @@
    seen.add(k);bar.append(b);
    if(!original.children.length)original.classList.add('page-action-source-empty');
   }
+  if(route==='JNL-05'){const request=bar.querySelector('[data-export-request]');if(request){request.style.marginRight='auto';bar.prepend(request);}}
   if(route==='JNL-14'){
    bar.querySelectorAll('a[href="#JNL-05"]').forEach(link=>{if(link.textContent.trim()!=='등록')link.textContent='등록';});
    const buttons=[...bar.querySelectorAll('[data-jnl14-bulk]')];

@@ -2,7 +2,7 @@
 (()=>{
  'use strict';let context=null,pending=[];
  const reviewer=role=>['admin','exportOperator'].includes(role);
- const eligible=(j,role)=>role==='interpreter'?['임시 저장','반려'].includes(j.status):reviewer(role)&&j.status==='승인 요청';
+ const eligible=(j,role)=>role==='interpreter'?['작성 중','반려'].includes(j.status):reviewer(role)&&j.status==='승인 요청';
  const onPage=el=>!el.closest('tr')?.hidden;
  const selected=()=>[...document.querySelectorAll('#content [data-jnl14-row]:checked')].filter(onPage).map(el=>el.value);
  function update(){const rows=[...document.querySelectorAll('#content [data-jnl14-row]:not(:disabled)')].filter(onPage),n=selected().length,all=document.querySelector('[data-jnl14-all]');if(all){all.checked=rows.length>0&&n===rows.length;all.indeterminate=n>0&&n<rows.length;}document.querySelectorAll('[data-jnl14-count]').forEach(el=>el.textContent=String(n));document.querySelectorAll('[data-jnl14-bulk]').forEach(el=>el.disabled=!n);}
