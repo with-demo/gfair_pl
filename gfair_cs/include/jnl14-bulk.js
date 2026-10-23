@@ -3,14 +3,16 @@
  'use strict';let context=null,pending=[];
  const reviewer=role=>['admin','exportOperator'].includes(role);
  const eligible=(j,role)=>role==='interpreter'?['임시 저장','반려'].includes(j.status):reviewer(role)&&j.status==='승인 요청';
- const selected=()=>[...document.querySelectorAll('#content [data-jnl14-row]:checked')].map(el=>el.value);
- function update(){const rows=[...document.querySelectorAll('#content [data-jnl14-row]:not(:disabled)')],n=selected().length,all=document.querySelector('[data-jnl14-all]');if(all){all.checked=rows.length>0&&n===rows.length;all.indeterminate=n>0&&n<rows.length;}document.querySelectorAll('[data-jnl14-count]').forEach(el=>el.textContent=String(n));document.querySelectorAll('[data-jnl14-bulk]').forEach(el=>el.disabled=!n);}
+ const onPage=el=>!el.closest('tr')?.hidden;
+ const selected=()=>[...document.querySelectorAll('#content [data-jnl14-row]:checked')].filter(onPage).map(el=>el.value);
+ function update(){const rows=[...document.querySelectorAll('#content [data-jnl14-row]:not(:disabled)')].filter(onPage),n=selected().length,all=document.querySelector('[data-jnl14-all]');if(all){all.checked=rows.length>0&&n===rows.length;all.indeterminate=n>0&&n<rows.length;}document.querySelectorAll('[data-jnl14-count]').forEach(el=>el.textContent=String(n));document.querySelectorAll('[data-jnl14-bulk]').forEach(el=>el.disabled=!n);}
  window.GFAIR_JNL14={
   table(html,rows,role){if(!['admin','exportOperator','interpreter'].includes(role))return html;let i=0;html=html.replace('<thead><tr>','<thead><tr><th><input type="checkbox" data-jnl14-all aria-label="처리 가능한 상담일지 전체 선택"></th>');html=html.replace(/(<tbody>)([\s\S]*?)(<\/tbody>)/,(_,start,body,end)=>start+body.replace(/<tr>/g,()=>{const j=rows[i++];if(!j)return '<tr>';const enabled=eligible(j,role);return '<tr><td><input type="checkbox" data-jnl14-row value="'+j.id+'" aria-label="'+j.id+' 선택" '+(enabled?'':'disabled title="현재 상태에서는 일괄 처리할 수 없습니다."')+'></td>';})+end);if(!rows.length)html=html.replace(/colspan="(\d+)"/,(_,n)=>'colspan="'+(Number(n)+1)+'"');return html;},
   actions(role,B,A){if(!['admin','exportOperator','interpreter'].includes(role))return '';const button=(action,label)=>B(action,label,'btn primary','data-jnl14-bulk disabled');return '<div class="formfooter">'+(role==='interpreter'?button('jnl14-request','승인 요청')+A('JNL-05','등록','btn primary'):button('jnl14-approve','승인')+button('jnl14-reject','반려'))+'</div>';},
   bind(value){context=value;pending=[];update();}
  };
- document.addEventListener('change',event=>{if(!context||context.current!=='JNL-14')return;if(event.target.matches('[data-jnl14-all]'))document.querySelectorAll('[data-jnl14-row]:not(:disabled)').forEach(el=>el.checked=event.target.checked);if(event.target.matches('[data-jnl14-all],[data-jnl14-row]'))update();});
+ document.addEventListener('jnl14-page-change',()=>{document.querySelectorAll('#content [data-jnl14-row]').forEach(el=>el.checked=false);update();});
+ document.addEventListener('change',event=>{if(!context||context.current!=='JNL-14')return;if(event.target.matches('[data-jnl14-all]'))document.querySelectorAll('[data-jnl14-row]:not(:disabled)').forEach(el=>el.checked=onPage(el)&&event.target.checked);if(event.target.matches('[data-jnl14-all],[data-jnl14-row]'))update();});
  document.addEventListener('click',event=>{
   const button=event.target.closest('[data-action]');if(!button||!context||context.current!=='JNL-14')return;const action=button.dataset.action;if(!action.startsWith('jnl14-'))return;event.preventDefault();event.stopImmediatePropagation();
   const c=context;

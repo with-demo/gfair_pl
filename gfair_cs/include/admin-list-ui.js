@@ -33,9 +33,11 @@
   const body=table.tBodies[0];if(!body)return;
   const rows=[...body.rows].filter(row=>row.cells.length>1||row.cells[0]?.colSpan===1&&!row.querySelector('.empty'));
   const title=main.querySelector('h1')?.textContent.trim()||'목록';
-  let count=header.querySelector('h2');if(!count){count=document.createElement('h2');header.prepend(count);}
+  let count;
+  if(route==='JNL-14'){let titleHeading=header.querySelector('h2');if(!titleHeading){titleHeading=document.createElement('h2');header.prepend(titleHeading);}titleHeading.textContent='상담일지';count=document.createElement('div');count.className='list-count-summary';count.style.cssText='padding:16px 22px;border-top:1px solid var(--line,#ddd)';header.after(count);}
+  else{count=header.querySelector('h2');if(!count){count=document.createElement('h2');header.prepend(count);}}
   count.innerHTML='총 <strong>'+rows.length+'</strong>건 · 1/1page';
-  [...header.children].filter(el=>el!==count&&el!==tools).forEach(el=>{if(!el.querySelector('button,a,select'))el.hidden=true;});
+  [...header.children].filter(el=>el!==count&&el!==tools).forEach(el=>{if(!el.querySelector('button,a,select')&&!(route==='JNL-14'&&el.tagName==='H2'))el.hidden=true;});
   const headers=[...table.querySelectorAll('thead tr:last-child>th')].map(clean);
   let index=headers.findIndex(t=>/등록일|작성일|제출 일자|최근 응답|응답일시|발생일|일시|일자|날짜/.test(t));
   if(index<0)index=headers.findIndex(t=>/연도|번호|코드|ID/.test(t));if(index<0)index=0;
@@ -79,6 +81,7 @@
    const start=Math.max(1,Math.min(page-2,pages-4)),numbers=[...new Set([1,...Array.from({length:Math.min(5,pages)},(_,i)=>start+i),pages])].sort((a,b)=>a-b);
    numbers.forEach((n,i)=>{if(i&&n>numbers[i-1]+1){const gap=document.createElement('span');gap.textContent='…';pagination.append(gap);}add(String(n),n,false,n===page);});
    add('>',page+1,page===pages);add('>>',pages,page===pages);
+   if(route==='JNL-14')document.dispatchEvent(new Event('jnl14-page-change'));
    observer.observe(root,{childList:true,subtree:true});
   }
   size.addEventListener('change',()=>{page=1;paint();});paint();
@@ -88,7 +91,7 @@
   try{
    const main=root.querySelector('#content');if(!main)return;
    const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
-   const admin=root.querySelector('#role-picker')?.value==='admin';main.classList.toggle('admin-list-layout',admin&&routes.has(route));
+   const currentRole=root.querySelector('#role-picker')?.value;const admin=currentRole==='admin'||route==='JNL-14'&&['exportOperator','interpreter'].includes(currentRole);main.classList.toggle('admin-list-layout',admin&&routes.has(route));
    if(!admin||!routes.has(route))return;
    // 상세·등록 폼과 대시보드의 집계 표는 목록 대상으로 처리하지 않는다.
    if(main.querySelector('.notice-editor,[data-notice-view="detail"],[data-public-form="save"],#survey-editor,#survey-history-size,[data-management-form="admin-save"]'))return;
