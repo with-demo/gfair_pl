@@ -35,8 +35,8 @@
    const existing=(await api('list',undefined,{route})).records,ids=new Map();
    for(const record of source.filter(record=>parsed(record).format!=='screen-overview-v1')){
     if(route!==current())throw Error('사용구분이 변경되었습니다. 현재 화면에서 다시 저장해 주세요.');
-    let saved=existing.find(item=>parsed(item).roleSourceId===record.id);
-    if(!saved){const data=parsed(record),text=JSON.stringify({...data,...(!data.format?{format:'description-spec-v1',item:'설명',type:'기타',defaultValue:'해당 없음',required:'N',detail:record.text}:{}),roleSourceId:record.id});saved=await api('create',{screen:route,text,anchor:record.anchor});}
+    let saved=existing.find(item=>item.text===record.text&&JSON.stringify(item.anchor)===JSON.stringify(record.anchor));
+    if(!saved)saved=await api('create',{screen:route,text:record.text,anchor:record.anchor});
     ids.set(record.id,{id:saved.id,revision:saved.revision||1});
    }
    const overview=source.find(record=>parsed(record).format==='screen-overview-v1'),data=overview?parsed(overview):{format:'screen-overview-v1',overview:window.GFAIR_SCREEN_OVERVIEWS?.[base]||'화면 개요를 작성해 주세요.'};
